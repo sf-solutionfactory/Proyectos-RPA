@@ -1,0 +1,27 @@
+﻿{"ts":"11:00:25.360","ctx":"Event","event":"unit1","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"11:00:25.368","ctx":"State","type":"scenario","name":"unit1","id":72,"action":"start","appliName":"GLOBAL","parentId":63,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\server"}}}
+{"ts":"11:00:25.377","ctx":"State","type":"once","name":"timeout(unit1)","id":73,"action":"set","parentName":"unit1","parentId":72}
+{"ts":"11:00:25.387","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:7",600000],"result":"","verb":"NOTIFY","parentId":72,"appliName":"GLOBAL","appliInst":0}
+{"ts":"11:00:30.413","ctx":"State","type":"step","name":"sStep1","id":75,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:31.569","ctx":"State","type":"step","name":"stStep2","id":77,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:32.309","ctx":"State","type":"step","name":"stStep2","id":77,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:33.271","ctx":"State","type":"step","name":"stStep3","id":81,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:34.285","ctx":"State","type":"step","name":"stStep3","id":81,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:37.952","ctx":"State","type":"step","name":"stStep5","id":79,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:38.827","ctx":"State","type":"step","name":"stStep4","id":83,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"11:00:39.637","ctx":"Action","action":"ctx.log","params":["ctx.scenario.step : invalid step object",1],"verb":"LOGMESS","parentId":72,"name":"Error","number":null,"description":"ctx.scenario.step : invalid step object","message":"ctx.scenario.step : invalid step object"}
+{"ts":"11:00:48.509","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":35,"action":"run"}
+{"ts":"11:00:48.513","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":35,"action":"set"}
+{"ts":"11:00:48.710","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":35,"action":"run"}
+{"ts":"11:00:48.713","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":35,"action":"set"}
+{"ts":"11:00:49.581","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"11:00:49.586","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"run"}
+{"ts":"11:00:49.598","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"set"}
+{"ts":"11:00:49.627","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"11:00:49.643","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"11:00:49.645","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"11:00:49.660","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"11:00:49.669","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":26,"action":"run"}
+{"ts":"11:00:49.677","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":26,"action":"set"}
+{"ts":"11:00:49.687","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":36,"action":"run"}
+{"ts":"11:00:49.695","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":36,"action":"set"}

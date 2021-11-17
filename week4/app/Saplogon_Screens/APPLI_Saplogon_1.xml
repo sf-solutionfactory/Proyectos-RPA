@@ -1,0 +1,6 @@
+﻿<APPLI Techno="UIAutomation" Name="APPLI_Saplogon_1" ParamName="[saplogon]">
+	<PROPERTIES>
+		<EXE>SAPLOGON.EXE</EXE>
+		<TITLE />
+	</PROPERTIES>
+</APPLI>

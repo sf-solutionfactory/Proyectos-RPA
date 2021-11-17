@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WORKFLOWDATA>
+	<ITEM Name="length" CtxtId="6cae1306-e372-4901-85f2-8122f6b4f2b7" IsIndexed="N" />
+	<ITEM Name="datetime" CtxtId="2911657d-903c-497e-88f5-364863416ea1" IsIndexed="N" />
+	<FOLDER Name="Items" CtxtId="cbb61b13-87f9-4451-9b7c-c528e8e5ea6f" IsIndexed="N">
+		<ITEM Name="FKDAT" CtxtId="da6cdd7b-bf98-44b7-8028-2cc4cb1ed87c" IsIndexed="Y" />
+		<ITEM Name="XBLNR" CtxtId="e8221be0-e18a-489a-bda5-2662672ecc60" IsIndexed="Y" />
+		<ITEM Name="FKART" CtxtId="ae82ff83-5a73-4fdf-9d3f-eb4ddd5cbc40" IsIndexed="Y" />
+		<ITEM Name="VKORG" CtxtId="be3b7537-688a-415f-87b0-a9f74d7435e5" IsIndexed="Y" />
+	</FOLDER>
+	<ITEM Name="fechaActual" CtxtId="1ac327c5-c545-47cf-ad64-ea0f2d6b0589" IsIndexed="N" />
+	<ITEM Name="texto" CtxtId="0a5b6400-19da-4d9b-ad36-2c4d30302c96" IsIndexed="N" />
+	<FOLDER Name="SAPLogon760Data" CtxtId="168532f4-ee5a-41a2-8dee-91cda9289e5f" IsIndexed="N">
+		<FOLDER Name="pSAPLoginData" CtxtId="04a8eca8-5689-4d83-8c78-b32137de6e41" IsIndexed="N">
+			<ITEM Name="edMandante" CtxtId="46d0a814-33c6-4835-8bf2-7cebe6fc77c7" IsIndexed="N" />
+			<ITEM Name="edUsuarios" CtxtId="f2674001-d333-474b-89c4-549acaabd4a5" IsIndexed="N" />
+			<ITEM Name="oClvAcc" CtxtId="6d15db1c-2bd6-482e-b98a-08eaa3bfd0a6" IsIndexed="N" />
+			<ITEM Name="edIdioma" CtxtId="786d0016-aab6-4f68-aac7-3aa748288f65" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pSAPEasyAccessData" CtxtId="f07459ee-dbb6-40ea-a16b-08dae3f36002" IsIndexed="N">
+			<ITEM Name="oGuiOkCodeField" CtxtId="ab51b75c-e618-47a7-8d26-5b7844064237" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pVentasYFacturasMasData" CtxtId="42158740-79f2-4212-9b57-581f6f8d9ff2" IsIndexed="N">
+			<ITEM Name="edFichero" CtxtId="ae4e8a90-96b6-4c5a-b59e-db23d7563174" IsIndexed="N" />
+			<ITEM Name="oVentaPorLínea" CtxtId="a318e72e-53f7-4cd5-90d7-4fe9236e9cd4" IsIndexed="N" />
+		</FOLDER>
+	</FOLDER>
+	<ITEM Name="filename" CtxtId="1238c9c4-c682-47cd-bdc1-89f717da5ad4" IsIndexed="N" />
+	<FOLDER Name="sapgui" CtxtId="432c460f-5ac1-497b-abc7-98119386fa47" IsIndexed="N">
+		<ITEM Name="uname" CtxtId="dba21ab1-ecf9-405f-9ba0-0ad176c418d1" IsIndexed="N" />
+		<ITEM Name="pass" CtxtId="84b7ed60-dc57-4391-8bbc-2f66ad24352d" IsIndexed="N" />
+	</FOLDER>
+	<ITEM Name="Lines" CtxtId="4eb506bf-fdc8-4ca8-9b21-7497eabb84c4" IsIndexed="N" />
+</WORKFLOWDATA>

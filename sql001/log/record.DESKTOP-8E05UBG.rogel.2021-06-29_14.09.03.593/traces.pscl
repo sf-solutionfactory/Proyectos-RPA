@@ -1,0 +1,16 @@
+﻿{"ts":"14:09:03.593","ctx":"Event","event":"ejecProc","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"14:09:03.596","ctx":"State","type":"scenario","name":"ejecProc","id":75,"action":"start","appliName":"GLOBAL","parentId":66,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\server"}}}
+{"ts":"14:09:03.607","ctx":"State","type":"once","name":"timeout(ejecProc)","id":76,"action":"set","parentName":"ejecProc","parentId":75}
+{"ts":"14:09:03.625","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:7",600000],"result":"","verb":"NOTIFY","parentId":75,"appliName":"GLOBAL","appliInst":0}
+{"ts":"14:09:03.639","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"14:09:24.593","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"14:09:24.677","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"run"}
+{"ts":"14:09:24.686","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"set"}
+{"ts":"14:09:24.699","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"14:09:24.719","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"14:09:24.722","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"14:09:24.731","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"14:09:24.740","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":33,"action":"run"}
+{"ts":"14:09:24.750","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":33,"action":"set"}
+{"ts":"14:09:24.766","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":39,"action":"run"}
+{"ts":"14:09:24.781","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":39,"action":"set"}

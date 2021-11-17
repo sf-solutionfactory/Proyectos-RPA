@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<USER>
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="69" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="3134" Length="22"><![CDATA[var date = new Date();]]></BREAKPOINT>
+	</BREAKPOINTS>
+	<BOOKMARKS />
+	<FINDHISTORY>
+		<FINDWHAT><![CDATA[archivoTXT]]></FINDWHAT>
+		<FINDWHAT><![CDATA[rootData.texto]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[rootData.archivoTXT]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[archivoTXT]]></REPLACEWITH>
+	</FINDHISTORY>
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon760']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasD']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentas48']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="105" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="75" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="330" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+	</OPENDOCS>
+	<PROPERTIES>
+		<DebugTester><![CDATA[]]></DebugTester>
+		<CurPerspective><![CDATA[2]]></CurPerspective>
+	</PROPERTIES>
+	<WATCHES />
+	<APPLIFILTERS />
+	<EVENTFILTERS />
+	<WORKFLOW_MOSTUSED />
+</USER>

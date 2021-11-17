@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<USER>
+	<BREAKPOINTS />
+	<BOOKMARKS />
+	<FINDHISTORY />
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPHelpPortal']/PAGE[@Name='pSearchResultsSAP']/OBJET[@Name='oSearchValue_0']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPHelpPortal']/WORKFLOWS/WORKFLOW[@Name='LoopExample']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="111" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Src='loopexample.js']" Offset="0" Length="0" />
+	</OPENDOCS>
+	<PROPERTIES>
+		<DebugTester><![CDATA[]]></DebugTester>
+		<CurPerspective><![CDATA[0]]></CurPerspective>
+	</PROPERTIES>
+	<WATCHES />
+	<APPLIFILTERS />
+	<EVENTFILTERS />
+	<WORKFLOW_MOSTUSED />
+</USER>

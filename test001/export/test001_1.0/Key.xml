@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="test001.debug.psc"/>
+		<Property Name="projectVersion" Value="1.0"/>
+		<Property Name="projectName" Value="test001"/>
+		<Property Name="projectId" Value="23551973-6e4b-49e4-9bff-31521f7f724c"/>
+		<Property Name="projectDate" Value="25/05/2021"/>
+		<Property Name="projectLabel" Value="test001"/>
+		<Property Name="projectClient" Value="Enco"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value="test001.zip"/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="25/5/2021"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="newWorkflow" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="a20d26a4-733b-45a9-9897-bcda91b06f90" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="7ed832e91c363bc281215a2123b92cb3" Type="32771"/>
+	<KeyContent Value="730be5ab509ee1f519c8f49449e76312" Type="32771"/>
+	<KeyProps Value="c64057362a0e5ec3a7bb0678f027145a" Type="32771"/>
+</doc>

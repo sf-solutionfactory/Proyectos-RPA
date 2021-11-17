@@ -1,0 +1,45 @@
+﻿{"ts":"10:55:19.519","ctx":"Event","event":"unit1","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"10:55:19.524","ctx":"State","type":"scenario","name":"unit1","id":72,"action":"start","appliName":"GLOBAL","parentId":63,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\server"}}}
+{"ts":"10:55:19.533","ctx":"State","type":"once","name":"timeout(unit1)","id":73,"action":"set","parentName":"unit1","parentId":72}
+{"ts":"10:55:19.542","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:7",600000],"result":"","verb":"NOTIFY","parentId":72,"appliName":"GLOBAL","appliInst":0}
+{"ts":"10:55:19.550","ctx":"State","type":"step","name":"sStep1","id":75,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":72}
+{"ts":"10:55:19.559","ctx":"Action","action":"ctx.log","params":["ctx.scenario.step : invalid step object",1],"verb":"LOGMESS","parentId":72,"name":"Error","number":null,"description":"ctx.scenario.step : invalid step object","message":"ctx.scenario.step : invalid step object"}
+{"ts":"10:55:49.259","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":35,"action":"run"}
+{"ts":"10:55:49.264","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":35,"action":"set"}
+{"ts":"10:59:02.988","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:SYSTRAY1","id":57,"action":"run"}
+{"ts":"10:59:02.990","ctx":"Action","action":"count","params":[],"result":1,"parentId":57,"appliName":"POPUPS","appliInst":0,"pageName":"_Systray","pageInst":100892432}
+{"ts":"10:59:03.0","ctx":"Action","action":"exist","params":[],"result":true,"parentId":57,"appliName":"POPUPS","appliInst":0,"pageName":"_Systray","pageInst":100892432}
+{"ts":"10:59:03.11","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin\\Systray\\popup.html"],"parentId":57}
+{"ts":"10:59:03.29","ctx":"Action","action":"messbox2","params":[{"visible":true,"XRelative":"center","YRelative":"center","X":1636,"Y":1017}],"result":"true","verb":"MESSBOX2","parentId":57,"appliName":"POPUPS","appliInst":0}
+{"ts":"10:59:03.32","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:SYSTRAY1","id":57,"action":"set"}
+{"ts":"10:59:04.137","ctx":"Event","event":"CLICK","appliName":"POPUPS","appliInst":0,"pageName":"_Systray","pageInst":100892432,"itemName":"unit1","itemInst":0,"data":"unit1"}
+{"ts":"10:59:04.168","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":70,"action":"run"}
+{"ts":"10:59:04.172","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin\\Systray\\popup.html"],"parentId":70}
+{"ts":"10:59:04.206","ctx":"Action","action":"messbox2","params":[{"visible":false}],"result":"true","verb":"MESSBOX2","parentId":70,"appliName":"POPUPS","appliInst":0}
+{"ts":"10:59:04.214","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"unit1","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!json:{}",0],"result":"","verb":"NOTIFY","parentId":70,"appliName":"GLOBAL","appliInst":0}
+{"ts":"10:59:04.225","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":70,"action":"set"}
+{"ts":"10:59:04.244","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":70,"action":"run"}
+{"ts":"10:59:04.254","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin\\Systray\\popup.html"],"parentId":70}
+{"ts":"10:59:04.272","ctx":"Action","action":"messbox2","params":[{"visible":false}],"result":"true","verb":"MESSBOX2","parentId":70,"appliName":"POPUPS","appliInst":0}
+{"ts":"10:59:04.277","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":70,"action":"set"}
+{"ts":"10:59:04.290","ctx":"Event","event":"unit1","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"10:59:04.297","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:unit1","id":63,"action":"run"}
+{"ts":"10:59:04.313","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:8",30000],"result":"","verb":"NOTIFY","parentId":63,"appliName":"GLOBAL","appliInst":0}
+{"ts":"10:59:04.319","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:unit1","id":63,"action":"set"}
+{"ts":"10:59:04.541","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"10:59:04.553","ctx":"State","type":"scenario","name":"unit1","id":79,"action":"start","appliName":"GLOBAL","parentId":63,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\server"}}}
+{"ts":"10:59:04.558","ctx":"State","type":"once","name":"timeout(unit1)","id":80,"action":"set","parentName":"unit1","parentId":79}
+{"ts":"10:59:04.567","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:9",600000],"result":"","verb":"NOTIFY","parentId":79,"appliName":"GLOBAL","appliInst":0}
+{"ts":"10:59:16.871","ctx":"State","type":"step","name":"sStep1","id":82,"action":"add","appliName":"GLOBAL","parentName":"unit1","parentId":79}
+{"ts":"10:59:18.732","ctx":"Action","action":"ctx.log","params":["ctx.scenario.step : invalid step object",1],"verb":"LOGMESS","parentId":79,"name":"Error","number":null,"description":"ctx.scenario.step : invalid step object","message":"ctx.scenario.step : invalid step object"}
+{"ts":"10:59:30.825","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"10:59:30.829","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"run"}
+{"ts":"10:59:30.841","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"set"}
+{"ts":"10:59:30.861","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"10:59:30.894","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"10:59:30.896","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"10:59:30.911","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"10:59:30.920","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":26,"action":"run"}
+{"ts":"10:59:30.932","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":26,"action":"set"}
+{"ts":"10:59:30.942","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":36,"action":"run"}
+{"ts":"10:59:30.949","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":36,"action":"set"}

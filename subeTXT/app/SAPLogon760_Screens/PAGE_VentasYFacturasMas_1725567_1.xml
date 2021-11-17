@@ -1,0 +1,2265 @@
+﻿<PAGE Techno="SAPGUI" Name="PAGE_VentasYFacturasMas_1725567_1" ProcessName="SAPLOGON.EXE" ParamName="Ventas y Facturas masiva" ParentTree="wnd[0]">
+	<PROPERTIES>
+		<Text>Ventas y Facturas masiva</Text>
+		<Type>GuiMainWindow</Type>
+		<Name>wnd[0]</Name>
+		<Changeable>true</Changeable>
+		<ContainerType>true</ContainerType>
+		<Deepness>0</Deepness>
+		<TAG>GuiMainWindow</TAG>
+		<X>-8</X>
+		<Y>-8</Y>
+		<CX>1936</CX>
+		<CY>1056</CY>
+		<EXE>SAPLOGON.EXE</EXE>
+	</PROPERTIES>
+	<CHILDREN>
+		<ITEM>
+			<PROPERTIES>
+				<Text>Ventas y Facturas masiva</Text>
+				<Type>GuiMainWindow</Type>
+				<Name>wnd[0]</Name>
+				<Changeable>true</Changeable>
+				<ContainerType>true</ContainerType>
+				<Deepness>0</Deepness>
+				<TAG>GuiMainWindow</TAG>
+				<X>-8</X>
+				<Y>-8</Y>
+				<CX>1936</CX>
+				<CY>1056</CY>
+				<EXE>SAPLOGON.EXE</EXE>
+			</PROPERTIES>
+			<CTX_PROPS>
+				<BOUNDINGRECT>0|0|1936|1056</BOUNDINGRECT>
+				<TITLE>GuiMainWindow - Ventas y Facturas masiva</TITLE>
+				<NAMEKEY>Name</NAMEKEY>
+				<CONTROLTYPE>GuiMainWindow</CONTROLTYPE>
+				<PREFIX />
+				<TEXT>Ventas y Facturas masiva</TEXT>
+				<TEXTKEY>Text</TEXTKEY>
+				<PARAMNAME>Ventas y Facturas masiva</PARAMNAME>
+				<PARENTTREE>wnd[0]</PARENTTREE>
+				<ISVISIBLE>True</ISVISIBLE>
+				<ISPREFERRED>False</ISPREFERRED>
+			</CTX_PROPS>
+			<CHILDREN>
+				<ITEM>
+					<PROPERTIES>
+						<Id>mbar</Id>
+						<Type>GuiMenubar</Type>
+						<Name>mbar</Name>
+						<Changeable>false</Changeable>
+						<ContainerType>true</ContainerType>
+						<Deepness>1</Deepness>
+						<TAG>GuiMenubar</TAG>
+						<X>20</X>
+						<Y>6</Y>
+						<CX>1900</CX>
+						<CY>18</CY>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>28|14|1900|18</BOUNDINGRECT>
+						<TITLE>GuiMenubar</TITLE>
+						<NAMEKEY>Name</NAMEKEY>
+						<CONTROLTYPE>GuiMenubar</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME>GuiMenubar</PARAMNAME>
+						<PARENTTREE>mbar|wnd[0]</PARENTTREE>
+						<ISVISIBLE>True</ISVISIBLE>
+						<ISPREFERRED>False</ISPREFERRED>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<Id>mbar/menu[0]</Id>
+								<Text>Programa</Text>
+								<Type>GuiMenu</Type>
+								<Name>Programa</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>true</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiMenu</TAG>
+								<X>-1</X>
+								<Y>-1</Y>
+								<CX>-1</CX>
+								<CY>-1</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+								<TITLE>GuiMenu - Programa</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Programa</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Programa</PARAMNAME>
+								<PARENTTREE>Programa|mbar|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+							<CHILDREN>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[0]/menu[0]</Id>
+										<Text>Ejecutar</Text>
+										<Type>GuiMenu</Type>
+										<Name>Ejecutar</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Ejecutar</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Ejecutar</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Ejecutar</PARAMNAME>
+										<PARENTTREE>Ejecutar|Programa|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[0]/menu[1]</Id>
+										<Text>Ejecutar e imprimir</Text>
+										<Type>GuiMenu</Type>
+										<Name>Ejecutar e imprimir</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Ejecutar e imprimir</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Ejecutar e imprimir</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Ejecutar e imprimir</PARAMNAME>
+										<PARENTTREE>Ejecutar e imprimir|Programa|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[0]/menu[2]</Id>
+										<Text>Ejecutar en proceso fondo</Text>
+										<Type>GuiMenu</Type>
+										<Name>Ejecutar en proceso fondo</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Ejecutar en proceso fondo</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Ejecutar en proceso fondo</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Ejecutar en proceso fondo</PARAMNAME>
+										<PARENTTREE>Ejecutar en proceso fondo|Programa|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[0]/menu[3]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[3]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[3]|Programa|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[0]/menu[4]</Id>
+										<Text>Finalizar</Text>
+										<Type>GuiMenu</Type>
+										<Name>Finalizar</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Finalizar</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Finalizar</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Finalizar</PARAMNAME>
+										<PARENTTREE>Finalizar|Programa|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+							</CHILDREN>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>mbar/menu[1]</Id>
+								<Text>Tratar</Text>
+								<Type>GuiMenu</Type>
+								<Name>Tratar</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>true</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiMenu</TAG>
+								<X>-1</X>
+								<Y>-1</Y>
+								<CX>-1</CX>
+								<CY>-1</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+								<TITLE>GuiMenu - Tratar</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Tratar</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Tratar</PARAMNAME>
+								<PARENTTREE>Tratar|mbar|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+							<CHILDREN>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[0]</Id>
+										<Text>Selecciones (todas)</Text>
+										<Type>GuiMenu</Type>
+										<Name>Selecciones (todas)</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Selecciones (todas)</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Selecciones (todas)</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Selecciones (todas)</PARAMNAME>
+										<PARENTTREE>Selecciones (todas)|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[1]</Id>
+										<Text>Selecciones efectuadas</Text>
+										<Type>GuiMenu</Type>
+										<Name>Selecciones efectuadas</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Selecciones efectuadas</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Selecciones efectuadas</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Selecciones efectuadas</PARAMNAME>
+										<PARENTTREE>Selecciones efectuadas|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[2]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[2]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[2]|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[3]</Id>
+										<Text>Opciones de selección</Text>
+										<Type>GuiMenu</Type>
+										<Name>Opciones de selección</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Opciones de selección</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Opciones de selección</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Opciones de selección</PARAMNAME>
+										<PARENTTREE>Opciones de selección|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[4]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[4]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[4]|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[5]</Id>
+										<Text>Borrar línea de selección</Text>
+										<Type>GuiMenu</Type>
+										<Name>Borrar línea de selección</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Borrar línea de selección</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Borrar línea de selección</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Borrar línea de selección</PARAMNAME>
+										<PARENTTREE>Borrar línea de selección|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[6]</Id>
+										<Text>Borrar selecciones por completo</Text>
+										<Type>GuiMenu</Type>
+										<Name>Borrar selecciones por completo</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Borrar selecciones por completo</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Borrar selecciones por completo</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Borrar selecciones por completo</PARAMNAME>
+										<PARENTTREE>Borrar selecciones por completo|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[7]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[7]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[7]|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[8]</Id>
+										<Text>Delimit.opcionales</Text>
+										<Type>GuiMenu</Type>
+										<Name>Delimit.opcionales</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Delimit.opcionales</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Delimit.opcionales</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Delimit.opcionales</PARAMNAME>
+										<PARENTTREE>Delimit.opcionales|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[9]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[9]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[9]|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[1]/menu[10]</Id>
+										<Text>Cancelar</Text>
+										<Type>GuiMenu</Type>
+										<Name>Cancelar</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Cancelar</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Cancelar</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Cancelar</PARAMNAME>
+										<PARENTTREE>Cancelar|Tratar|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+							</CHILDREN>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>mbar/menu[2]</Id>
+								<Text>Pasar a</Text>
+								<Type>GuiMenu</Type>
+								<Name>Pasar a</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>true</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiMenu</TAG>
+								<X>-1</X>
+								<Y>-1</Y>
+								<CX>-1</CX>
+								<CY>-1</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+								<TITLE>GuiMenu - Pasar a</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Pasar a</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Pasar a</PARAMNAME>
+								<PARENTTREE>Pasar a|mbar|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+							<CHILDREN>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[0]</Id>
+										<Text>Variantes</Text>
+										<Type>GuiMenu</Type>
+										<Name>Variantes</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Variantes</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Variantes</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Variantes</PARAMNAME>
+										<PARENTTREE>Variantes|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+									<CHILDREN>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[2]/menu[0]/menu[0]</Id>
+												<Text>Traer...</Text>
+												<Type>GuiMenu</Type>
+												<Name>Traer...</Name>
+												<Changeable>false</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Traer...</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Traer...</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Traer...</PARAMNAME>
+												<PARENTTREE>Traer...|Variantes|Pasar a|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[2]/menu[0]/menu[1]</Id>
+												<Text>Visualizar...</Text>
+												<Type>GuiMenu</Type>
+												<Name>Visualizar...</Name>
+												<Changeable>false</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Visualizar...</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Visualizar...</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Visualizar...</PARAMNAME>
+												<PARENTTREE>Visualizar...|Variantes|Pasar a|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[2]/menu[0]/menu[2]</Id>
+												<Text>Borrar...</Text>
+												<Type>GuiMenu</Type>
+												<Name>Borrar...</Name>
+												<Changeable>false</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Borrar...</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Borrar...</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Borrar...</PARAMNAME>
+												<PARENTTREE>Borrar...|Variantes|Pasar a|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[2]/menu[0]/menu[3]</Id>
+												<Text>Grabar como variante...</Text>
+												<Type>GuiMenu</Type>
+												<Name>Grabar como variante...</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Grabar como variante...</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Grabar como variante...</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Grabar como variante...</PARAMNAME>
+												<PARENTTREE>Grabar como variante...|Variantes|Pasar a|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+									</CHILDREN>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[1]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[1]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[1]|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[2]</Id>
+										<Text>Variables usuario...</Text>
+										<Type>GuiMenu</Type>
+										<Name>Variables usuario...</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Variables usuario...</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Variables usuario...</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Variables usuario...</PARAMNAME>
+										<PARENTTREE>Variables usuario...|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[3]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[3]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[3]|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[4]</Id>
+										<Text>Ayuda imagen de selección</Text>
+										<Type>GuiMenu</Type>
+										<Name>Ayuda imagen de selección</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Ayuda imagen de selección</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Ayuda imagen de selección</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Ayuda imagen de selección</PARAMNAME>
+										<PARENTTREE>Ayuda imagen de selección|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[5]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[5]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[5]|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[2]/menu[6]</Id>
+										<Text>Atrás</Text>
+										<Type>GuiMenu</Type>
+										<Name>Atrás</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Atrás</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Atrás</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Atrás</PARAMNAME>
+										<PARENTTREE>Atrás|Pasar a|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+							</CHILDREN>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>mbar/menu[3]</Id>
+								<Text>Sistema</Text>
+								<Type>GuiMenu</Type>
+								<Name>Sistema</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>true</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiMenu</TAG>
+								<X>-1</X>
+								<Y>-1</Y>
+								<CX>-1</CX>
+								<CY>-1</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+								<TITLE>GuiMenu - Sistema</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Sistema</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Sistema</PARAMNAME>
+								<PARENTTREE>Sistema|mbar|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+							<CHILDREN>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[0]</Id>
+										<Text>Ventana GUI nueva</Text>
+										<Type>GuiMenu</Type>
+										<Name>Ventana GUI nueva</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Ventana GUI nueva</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Ventana GUI nueva</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Ventana GUI nueva</PARAMNAME>
+										<PARENTTREE>Ventana GUI nueva|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[1]</Id>
+										<Text>Cerrar ventana GUI</Text>
+										<Type>GuiMenu</Type>
+										<Name>Cerrar ventana GUI</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Cerrar ventana GUI</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Cerrar ventana GUI</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Cerrar ventana GUI</PARAMNAME>
+										<PARENTTREE>Cerrar ventana GUI|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[2]</Id>
+										<Text>Datos de usuario</Text>
+										<Type>GuiMenu</Type>
+										<Name>Datos de usuario</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Datos de usuario</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Datos de usuario</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Datos de usuario</PARAMNAME>
+										<PARENTTREE>Datos de usuario|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[3]</Id>
+										<Text>Utilidades</Text>
+										<Type>GuiMenu</Type>
+										<Name>Utilidades</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Utilidades</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Utilidades</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Utilidades</PARAMNAME>
+										<PARENTTREE>Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+									<CHILDREN>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[0]</Id>
+												<Text>Debugging dynpro</Text>
+												<Type>GuiMenu</Type>
+												<Name>Debugging dynpro</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Debugging dynpro</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Debugging dynpro</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Debugging dynpro</PARAMNAME>
+												<PARENTTREE>Debugging dynpro|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[1]</Id>
+												<Text>Depuración ABAP</Text>
+												<Type>GuiMenu</Type>
+												<Name>Depuración ABAP</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Depuración ABAP</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Depuración ABAP</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Depuración ABAP</PARAMNAME>
+												<PARENTTREE>Depuración ABAP|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[2]</Id>
+												<Text>Debugging sistema</Text>
+												<Type>GuiMenu</Type>
+												<Name>Debugging sistema</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Debugging sistema</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Debugging sistema</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Debugging sistema</PARAMNAME>
+												<PARENTTREE>Debugging sistema|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[3]</Id>
+												<Text>Consumo recursos</Text>
+												<Type>GuiMenu</Type>
+												<Name>Consumo recursos</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Consumo recursos</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Consumo recursos</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Consumo recursos</PARAMNAME>
+												<PARENTTREE>Consumo recursos|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[4]</Id>
+												<Text>Cola automatiz.procesamiento sincrónico</Text>
+												<Type>GuiMenu</Type>
+												<Name>Cola automatiz.procesamiento sincrónico</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Cola automatiz.procesamiento sincrónico</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Cola automatiz.procesamiento sincrónico</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Cola automatiz.procesamiento sincrónico</PARAMNAME>
+												<PARENTTREE>Cola automatiz.procesamiento sincrónico|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[5]</Id>
+												<Text>Trace de rendimiento</Text>
+												<Type>GuiMenu</Type>
+												<Name>Trace de rendimiento</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Trace de rendimiento</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Trace de rendimiento</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Trace de rendimiento</PARAMNAME>
+												<PARENTTREE>Trace de rendimiento|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[6]</Id>
+												<Text>Trace de contexto</Text>
+												<Type>GuiMenu</Type>
+												<Name>Trace de contexto</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Trace de contexto</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Trace de contexto</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Trace de contexto</PARAMNAME>
+												<PARENTTREE>Trace de contexto|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[7]</Id>
+												<Text>Análisis de tiempo de ejecución</Text>
+												<Type>GuiMenu</Type>
+												<Name>Análisis de tiempo de ejecución</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Análisis de tiempo de ejecución</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Análisis de tiempo de ejecución</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Análisis de tiempo de ejecución</PARAMNAME>
+												<PARENTTREE>Análisis de tiempo de ejecución|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+											<CHILDREN>
+												<ITEM>
+													<PROPERTIES>
+														<Id>mbar/menu[3]/menu[3]/menu[7]/menu[0]</Id>
+														<Text>Ejecutar</Text>
+														<Type>GuiMenu</Type>
+														<Name>Ejecutar</Name>
+														<Changeable>true</Changeable>
+														<ContainerType>true</ContainerType>
+														<Deepness>5</Deepness>
+														<TAG>GuiMenu</TAG>
+														<X>-1</X>
+														<Y>-1</Y>
+														<CX>-1</CX>
+														<CY>-1</CY>
+													</PROPERTIES>
+													<CTX_PROPS>
+														<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+														<TITLE>GuiMenu - Ejecutar</TITLE>
+														<NAMEKEY>Name</NAMEKEY>
+														<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+														<PREFIX />
+														<TEXT>Ejecutar</TEXT>
+														<TEXTKEY>Text</TEXTKEY>
+														<PARAMNAME>Ejecutar</PARAMNAME>
+														<PARENTTREE>Ejecutar|Análisis de tiempo de ejecución|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+														<ISVISIBLE>True</ISVISIBLE>
+														<ISPREFERRED>False</ISPREFERRED>
+													</CTX_PROPS>
+												</ITEM>
+												<ITEM>
+													<PROPERTIES>
+														<Id>mbar/menu[3]/menu[3]/menu[7]/menu[1]</Id>
+														<Text>Activar</Text>
+														<Type>GuiMenu</Type>
+														<Name>Activar</Name>
+														<Changeable>true</Changeable>
+														<ContainerType>true</ContainerType>
+														<Deepness>5</Deepness>
+														<TAG>GuiMenu</TAG>
+														<X>-1</X>
+														<Y>-1</Y>
+														<CX>-1</CX>
+														<CY>-1</CY>
+													</PROPERTIES>
+													<CTX_PROPS>
+														<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+														<TITLE>GuiMenu - Activar</TITLE>
+														<NAMEKEY>Name</NAMEKEY>
+														<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+														<PREFIX />
+														<TEXT>Activar</TEXT>
+														<TEXTKEY>Text</TEXTKEY>
+														<PARAMNAME>Activar</PARAMNAME>
+														<PARENTTREE>Activar|Análisis de tiempo de ejecución|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+														<ISVISIBLE>True</ISVISIBLE>
+														<ISPREFERRED>False</ISPREFERRED>
+													</CTX_PROPS>
+												</ITEM>
+												<ITEM>
+													<PROPERTIES>
+														<Id>mbar/menu[3]/menu[3]/menu[7]/menu[2]</Id>
+														<Text>Desactivar</Text>
+														<Type>GuiMenu</Type>
+														<Name>Desactivar</Name>
+														<Changeable>true</Changeable>
+														<ContainerType>true</ContainerType>
+														<Deepness>5</Deepness>
+														<TAG>GuiMenu</TAG>
+														<X>-1</X>
+														<Y>-1</Y>
+														<CX>-1</CX>
+														<CY>-1</CY>
+													</PROPERTIES>
+													<CTX_PROPS>
+														<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+														<TITLE>GuiMenu - Desactivar</TITLE>
+														<NAMEKEY>Name</NAMEKEY>
+														<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+														<PREFIX />
+														<TEXT>Desactivar</TEXT>
+														<TEXTKEY>Text</TEXTKEY>
+														<PARAMNAME>Desactivar</PARAMNAME>
+														<PARENTTREE>Desactivar|Análisis de tiempo de ejecución|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+														<ISVISIBLE>True</ISVISIBLE>
+														<ISPREFERRED>False</ISPREFERRED>
+													</CTX_PROPS>
+												</ITEM>
+											</CHILDREN>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[8]</Id>
+												<Text>Visual.verif.autoriz</Text>
+												<Type>GuiMenu</Type>
+												<Name>Visual.verif.autoriz</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Visual.verif.autoriz</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Visual.verif.autoriz</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Visual.verif.autoriz</PARAMNAME>
+												<PARENTTREE>Visual.verif.autoriz|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+										</ITEM>
+										<ITEM>
+											<PROPERTIES>
+												<Id>mbar/menu[3]/menu[3]/menu[9]</Id>
+												<Text>Análisis memoria</Text>
+												<Type>GuiMenu</Type>
+												<Name>Análisis memoria</Name>
+												<Changeable>true</Changeable>
+												<ContainerType>true</ContainerType>
+												<Deepness>4</Deepness>
+												<TAG>GuiMenu</TAG>
+												<X>-1</X>
+												<Y>-1</Y>
+												<CX>-1</CX>
+												<CY>-1</CY>
+											</PROPERTIES>
+											<CTX_PROPS>
+												<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+												<TITLE>GuiMenu - Análisis memoria</TITLE>
+												<NAMEKEY>Name</NAMEKEY>
+												<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+												<PREFIX />
+												<TEXT>Análisis memoria</TEXT>
+												<TEXTKEY>Text</TEXTKEY>
+												<PARAMNAME>Análisis memoria</PARAMNAME>
+												<PARENTTREE>Análisis memoria|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+												<ISVISIBLE>True</ISVISIBLE>
+												<ISPREFERRED>False</ISPREFERRED>
+											</CTX_PROPS>
+											<CHILDREN>
+												<ITEM>
+													<PROPERTIES>
+														<Id>mbar/menu[3]/menu[3]/menu[9]/menu[0]</Id>
+														<Text>Crear instantánea memoria</Text>
+														<Type>GuiMenu</Type>
+														<Name>Crear instantánea memoria</Name>
+														<Changeable>true</Changeable>
+														<ContainerType>true</ContainerType>
+														<Deepness>5</Deepness>
+														<TAG>GuiMenu</TAG>
+														<X>-1</X>
+														<Y>-1</Y>
+														<CX>-1</CX>
+														<CY>-1</CY>
+													</PROPERTIES>
+													<CTX_PROPS>
+														<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+														<TITLE>GuiMenu - Crear instantánea memoria</TITLE>
+														<NAMEKEY>Name</NAMEKEY>
+														<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+														<PREFIX />
+														<TEXT>Crear instantánea memoria</TEXT>
+														<TEXTKEY>Text</TEXTKEY>
+														<PARAMNAME>Crear instantánea memoria</PARAMNAME>
+														<PARENTTREE>Crear instantánea memoria|Análisis memoria|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+														<ISVISIBLE>True</ISVISIBLE>
+														<ISPREFERRED>False</ISPREFERRED>
+													</CTX_PROPS>
+												</ITEM>
+												<ITEM>
+													<PROPERTIES>
+														<Id>mbar/menu[3]/menu[3]/menu[9]/menu[1]</Id>
+														<Text>Comparar instantáneas memoria</Text>
+														<Type>GuiMenu</Type>
+														<Name>Comparar instantáneas memoria</Name>
+														<Changeable>true</Changeable>
+														<ContainerType>true</ContainerType>
+														<Deepness>5</Deepness>
+														<TAG>GuiMenu</TAG>
+														<X>-1</X>
+														<Y>-1</Y>
+														<CX>-1</CX>
+														<CY>-1</CY>
+													</PROPERTIES>
+													<CTX_PROPS>
+														<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+														<TITLE>GuiMenu - Comparar instantáneas memoria</TITLE>
+														<NAMEKEY>Name</NAMEKEY>
+														<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+														<PREFIX />
+														<TEXT>Comparar instantáneas memoria</TEXT>
+														<TEXTKEY>Text</TEXTKEY>
+														<PARAMNAME>Comparar instantáneas memoria</PARAMNAME>
+														<PARENTTREE>Comparar instantáneas memoria|Análisis memoria|Utilidades|Sistema|mbar|wnd[0]</PARENTTREE>
+														<ISVISIBLE>True</ISVISIBLE>
+														<ISPREFERRED>False</ISPREFERRED>
+													</CTX_PROPS>
+												</ITEM>
+											</CHILDREN>
+										</ITEM>
+									</CHILDREN>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[4]</Id>
+										<Text>Lista</Text>
+										<Type>GuiMenu</Type>
+										<Name>Lista</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Lista</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Lista</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Lista</PARAMNAME>
+										<PARENTTREE>Lista|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[5]</Id>
+										<Text>Status...</Text>
+										<Type>GuiMenu</Type>
+										<Name>Status...</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Status...</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Status...</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Status...</PARAMNAME>
+										<PARENTTREE>Status...|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[3]/menu[6]</Id>
+										<Text>Salir del sistema</Text>
+										<Type>GuiMenu</Type>
+										<Name>Salir del sistema</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Salir del sistema</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Salir del sistema</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Salir del sistema</PARAMNAME>
+										<PARENTTREE>Salir del sistema|Sistema|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+							</CHILDREN>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>mbar/menu[4]</Id>
+								<Text>Ayuda</Text>
+								<Type>GuiMenu</Type>
+								<Name>Ayuda</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>true</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiMenu</TAG>
+								<X>-1</X>
+								<Y>-1</Y>
+								<CX>-1</CX>
+								<CY>-1</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+								<TITLE>GuiMenu - Ayuda</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+								<PREFIX />
+								<TEXT>Ayuda</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Ayuda</PARAMNAME>
+								<PARENTTREE>Ayuda|mbar|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+							<CHILDREN>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[0]</Id>
+										<Text>Ayuda p.aplicación</Text>
+										<Type>GuiMenu</Type>
+										<Name>Ayuda p.aplicación</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Ayuda p.aplicación</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Ayuda p.aplicación</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Ayuda p.aplicación</PARAMNAME>
+										<PARENTTREE>Ayuda p.aplicación|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[1]</Id>
+										<Text>Biblioteca SAP</Text>
+										<Type>GuiMenu</Type>
+										<Name>Biblioteca SAP</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Biblioteca SAP</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Biblioteca SAP</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Biblioteca SAP</PARAMNAME>
+										<PARENTTREE>Biblioteca SAP|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[2]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[2]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[2]|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[3]</Id>
+										<Text>SAP Service Marketplace</Text>
+										<Type>GuiMenu</Type>
+										<Name>SAP Service Marketplace</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - SAP Service Marketplace</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>SAP Service Marketplace</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>SAP Service Marketplace</PARAMNAME>
+										<PARENTTREE>SAP Service Marketplace|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[4]</Id>
+										<Text>Registrar mensaje de soporte</Text>
+										<Type>GuiMenu</Type>
+										<Name>Registrar mensaje de soporte</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Registrar mensaje de soporte</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Registrar mensaje de soporte</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Registrar mensaje de soporte</PARAMNAME>
+										<PARENTTREE>Registrar mensaje de soporte|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[5]</Id>
+										<Type>GuiMenu</Type>
+										<Name>menu[5]</Name>
+										<Changeable>false</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT />
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>GuiMenu</PARAMNAME>
+										<PARENTTREE>menu[5]|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+								<ITEM>
+									<PROPERTIES>
+										<Id>mbar/menu[4]/menu[6]</Id>
+										<Text>Parametrizaciones...</Text>
+										<Type>GuiMenu</Type>
+										<Name>Parametrizaciones...</Name>
+										<Changeable>true</Changeable>
+										<ContainerType>true</ContainerType>
+										<Deepness>3</Deepness>
+										<TAG>GuiMenu</TAG>
+										<X>-1</X>
+										<Y>-1</Y>
+										<CX>-1</CX>
+										<CY>-1</CY>
+									</PROPERTIES>
+									<CTX_PROPS>
+										<BOUNDINGRECT>7|7|-1|-1</BOUNDINGRECT>
+										<TITLE>GuiMenu - Parametrizaciones...</TITLE>
+										<NAMEKEY>Name</NAMEKEY>
+										<CONTROLTYPE>GuiMenu</CONTROLTYPE>
+										<PREFIX />
+										<TEXT>Parametrizaciones...</TEXT>
+										<TEXTKEY>Text</TEXTKEY>
+										<PARAMNAME>Parametrizaciones...</PARAMNAME>
+										<PARENTTREE>Parametrizaciones...|Ayuda|mbar|wnd[0]</PARENTTREE>
+										<ISVISIBLE>True</ISVISIBLE>
+										<ISPREFERRED>False</ISPREFERRED>
+									</CTX_PROPS>
+								</ITEM>
+							</CHILDREN>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<Id>tbar[0]</Id>
+						<Type>GuiToolbar</Type>
+						<Name>tbar[0]</Name>
+						<Changeable>true</Changeable>
+						<ContainerType>true</ContainerType>
+						<Deepness>1</Deepness>
+						<TAG>GuiToolbar</TAG>
+						<X>8</X>
+						<Y>40</Y>
+						<CX>0</CX>
+						<CY>0</CY>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>16|48|0|0</BOUNDINGRECT>
+						<TITLE>GuiToolbar</TITLE>
+						<NAMEKEY>Name</NAMEKEY>
+						<CONTROLTYPE>GuiToolbar</CONTROLTYPE>
+						<PREFIX>tb</PREFIX>
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME>GuiToolbar</PARAMNAME>
+						<PARENTTREE>tbar[0]|wnd[0]</PARENTTREE>
+						<ISVISIBLE>True</ISVISIBLE>
+						<ISPREFERRED>False</ISPREFERRED>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<Id>tbar[0]/btn[11]</Id>
+								<Text>Grabar como variante...</Text>
+								<Type>GuiButton</Type>
+								<IconName>F_SAVE</IconName>
+								<Name>btn[11]</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiButton</TAG>
+								<X>204</X>
+								<Y>99</Y>
+								<CX>179</CX>
+								<CY>26</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>212|107|179|26</BOUNDINGRECT>
+								<TITLE>GuiButton - Grabar como variante...</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiButton</CONTROLTYPE>
+								<PREFIX>bt</PREFIX>
+								<TEXT>Grabar como variante...</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Grabar como variante...</PARAMNAME>
+								<PARENTTREE>btn[11]|tbar[0]|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>tbar[0]/btn[3]</Id>
+								<Type>GuiButton</Type>
+								<IconName>3</IconName>
+								<Name>btn[3]</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiButton</TAG>
+								<X>32</X>
+								<Y>47</Y>
+								<CX>34</CX>
+								<CY>34</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>40|55|34|34</BOUNDINGRECT>
+								<TITLE>GuiButton</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiButton</CONTROLTYPE>
+								<PREFIX>bt</PREFIX>
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>GuiButton</PARAMNAME>
+								<PARENTTREE>btn[3]|tbar[0]|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>tbar[0]/btn[15]</Id>
+								<Text>i: Finalizar</Text>
+								<Type>GuiButton</Type>
+								<IconName>2</IconName>
+								<Name>btn[15]</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiButton</TAG>
+								<X>1816</X>
+								<Y>99</Y>
+								<CX>72</CX>
+								<CY>26</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>1824|107|72|26</BOUNDINGRECT>
+								<TITLE>GuiButton - i: Finalizar</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiButton</CONTROLTYPE>
+								<PREFIX>bt</PREFIX>
+								<TEXT>i: Finalizar</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>i: Finalizar</PARAMNAME>
+								<PARENTTREE>btn[15]|tbar[0]|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>tbar[0]/okcd</Id>
+								<Type>GuiOkCodeField</Type>
+								<Name>okcd</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiOkCodeField</TAG>
+								<X>32</X>
+								<Y>99</Y>
+								<CX>156</CX>
+								<CY>24</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>40|107|156|24</BOUNDINGRECT>
+								<TITLE>GuiOkCodeField</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiOkCodeField</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>GuiOkCodeField</PARAMNAME>
+								<PARENTTREE>okcd|tbar[0]|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<Id>titl</Id>
+						<Text>Ventas y Facturas masiva</Text>
+						<Type>GuiTitlebar</Type>
+						<Name>titl</Name>
+						<ContainerType>true</ContainerType>
+						<Deepness>1</Deepness>
+						<TAG>GuiTitlebar</TAG>
+						<X>8</X>
+						<Y>40</Y>
+						<CX>1904</CX>
+						<CY>48</CY>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>16|48|1904|48</BOUNDINGRECT>
+						<TITLE>GuiTitlebar - Ventas y Facturas masiva</TITLE>
+						<NAMEKEY>Name</NAMEKEY>
+						<CONTROLTYPE>GuiTitlebar</CONTROLTYPE>
+						<PREFIX />
+						<TEXT>Ventas y Facturas masiva</TEXT>
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME>Ventas y Facturas masiva</PARAMNAME>
+						<PARENTTREE>titl|wnd[0]</PARENTTREE>
+						<ISVISIBLE>True</ISVISIBLE>
+						<ISPREFERRED>False</ISPREFERRED>
+					</CTX_PROPS>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<Id>tbar[1]</Id>
+						<Type>GuiToolbar</Type>
+						<Name>tbar[1]</Name>
+						<Changeable>true</Changeable>
+						<ContainerType>true</ContainerType>
+						<Deepness>1</Deepness>
+						<TAG>GuiToolbar</TAG>
+						<X>8</X>
+						<Y>88</Y>
+						<CX>1904</CX>
+						<CY>48</CY>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>16|96|1904|48</BOUNDINGRECT>
+						<TITLE>GuiToolbar</TITLE>
+						<NAMEKEY>Name</NAMEKEY>
+						<CONTROLTYPE>GuiToolbar</CONTROLTYPE>
+						<PREFIX>tb</PREFIX>
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME>GuiToolbar</PARAMNAME>
+						<PARENTTREE>tbar[1]|wnd[0]</PARENTTREE>
+						<ISVISIBLE>True</ISVISIBLE>
+						<ISPREFERRED>False</ISPREFERRED>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<Id>tbar[1]/btnvhmore</Id>
+								<Text>Más</Text>
+								<Type>GuiButton</Type>
+								<IconName>uniE1EF</IconName>
+								<Name>btnvhmore</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiButton</TAG>
+								<X>399</X>
+								<Y>99</Y>
+								<CX>50</CX>
+								<CY>26</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>407|107|50|26</BOUNDINGRECT>
+								<TITLE>GuiButton - Más</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiButton</CONTROLTYPE>
+								<PREFIX>bt</PREFIX>
+								<TEXT>Más</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Más</PARAMNAME>
+								<PARENTTREE>btnvhmore|tbar[1]|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>tbar[1]/btn[8]</Id>
+								<Text>Ejecutar</Text>
+								<Type>GuiButton</Type>
+								<IconName>B_EXEC</IconName>
+								<Name>btn[8]</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiButton</TAG>
+								<X>1841</X>
+								<Y>999</Y>
+								<CX>63</CX>
+								<CY>26</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>1849|1007|63|26</BOUNDINGRECT>
+								<TITLE>GuiButton - Ejecutar</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiButton</CONTROLTYPE>
+								<PREFIX>bt</PREFIX>
+								<TEXT>Ejecutar</TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Ejecutar</PARAMNAME>
+								<PARENTTREE>btn[8]|tbar[1]|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<Id>usr</Id>
+						<Type>GuiUserArea</Type>
+						<Name>usr</Name>
+						<Changeable>true</Changeable>
+						<ContainerType>true</ContainerType>
+						<Deepness>1</Deepness>
+						<TAG>GuiUserArea</TAG>
+						<X>8</X>
+						<Y>136</Y>
+						<CX>1904</CX>
+						<CY>851</CY>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>16|144|1904|851</BOUNDINGRECT>
+						<TITLE>GuiUserArea</TITLE>
+						<NAMEKEY>Name</NAMEKEY>
+						<CONTROLTYPE>GuiUserArea</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME>GuiUserArea</PARAMNAME>
+						<PARENTTREE>usr|wnd[0]</PARENTTREE>
+						<ISVISIBLE>True</ISVISIBLE>
+						<ISPREFERRED>False</ISPREFERRED>
+					</CTX_PROPS>
+					<CHILDREN>
+						<ITEM>
+							<PROPERTIES>
+								<Id>usr/box%BSL1000_BLOCK_1000</Id>
+								<Type>GuiBox</Type>
+								<Name>%BSL1000_BLOCK_1000</Name>
+								<Changeable>false</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiBox</TAG>
+								<X>12</X>
+								<Y>153</Y>
+								<CX>1189</CX>
+								<CY>79</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>20|161|1189|79</BOUNDINGRECT>
+								<TITLE>GuiBox</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiBox</CONTROLTYPE>
+								<PREFIX />
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>GuiBox</PARAMNAME>
+								<PARENTTREE>%BSL1000_BLOCK_1000|usr|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>usr/txt%_P_PATH_%_APP_%-TEXT</Id>
+								<Text>*Fichero                       </Text>
+								<Type>GuiTextField</Type>
+								<Name>%_P_PATH_%_APP_%-TEXT</Name>
+								<Changeable>false</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiTextField</TAG>
+								<X>32</X>
+								<Y>188</Y>
+								<CX>320</CX>
+								<CY>25</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>40|196|320|25</BOUNDINGRECT>
+								<TITLE>GuiTextField - *Fichero                       </TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiTextField</CONTROLTYPE>
+								<PREFIX>ed</PREFIX>
+								<TEXT>*Fichero                       </TEXT>
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>*Fichero                       </PARAMNAME>
+								<PARENTTREE>%_P_PATH_%_APP_%-TEXT|usr|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>usr/ctxtP_PATH</Id>
+								<Type>GuiCTextField</Type>
+								<LeftLabel>*Fichero                       </LeftLabel>
+								<Name>P_PATH</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiCTextField</TAG>
+								<X>352</X>
+								<Y>188</Y>
+								<CX>459</CX>
+								<CY>25</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>360|196|459|25</BOUNDINGRECT>
+								<TITLE>GuiCTextField</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiCTextField</CONTROLTYPE>
+								<PREFIX>ed</PREFIX>
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>*Fichero                       </PARAMNAME>
+								<PARENTTREE>P_PATH|usr|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+					</CHILDREN>
+				</ITEM>
+				<ITEM>
+					<PROPERTIES>
+						<Id>sbar</Id>
+						<Type>GuiStatusbar</Type>
+						<Name>sbar</Name>
+						<Changeable>false</Changeable>
+						<ContainerType>true</ContainerType>
+						<Deepness>1</Deepness>
+						<TAG>GuiStatusbar</TAG>
+						<X>8</X>
+						<Y>992</Y>
+						<CX>1904</CX>
+						<CY>40</CY>
+					</PROPERTIES>
+					<CTX_PROPS>
+						<BOUNDINGRECT>16|1000|1904|40</BOUNDINGRECT>
+						<TITLE>GuiStatusbar</TITLE>
+						<NAMEKEY>Name</NAMEKEY>
+						<CONTROLTYPE>GuiStatusbar</CONTROLTYPE>
+						<PREFIX />
+						<TEXT />
+						<TEXTKEY>Text</TEXTKEY>
+						<PARAMNAME>GuiStatusbar</PARAMNAME>
+						<PARENTTREE>sbar|wnd[0]</PARENTTREE>
+						<ISVISIBLE>True</ISVISIBLE>
+						<ISPREFERRED>False</ISPREFERRED>
+					</CTX_PROPS>
+				</ITEM>
+			</CHILDREN>
+		</ITEM>
+	</CHILDREN>
+</PAGE>

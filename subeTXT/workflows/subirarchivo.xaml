@@ -1,0 +1,620 @@
+﻿<Flowchart mc:Ignorable="sap sap2010 sads" DisplayName="subirArchivo" sap2010:WorkflowViewState.IdRef="Flowchart_1" StartNode="{x:Reference __ReferenceID14}"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:c="clr-namespace:CxFrameworkWPF;assembly=CxFrameworkWPF"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <FlowStep sap2010:WorkflowViewState.IdRef="FlowStep_13">
+    <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="ed331827-ccff-4506-9596-daeac40b3f00" DisplayName="Declare credential" sap2010:WorkflowViewState.IdRef="SnippetActivity_1">
+      <c:SnippetActivity.CustomData>
+        <x:String x:Key="SnippetId">credential.declare</x:String>
+        <x:String x:Key="Description">Declares a credential</x:String>
+        <x:String x:Key="name">logonQAS</x:String>
+        <x:String x:Key="comment">Login QAS</x:String>
+        <x:String x:Key="server">true</x:String>
+      </c:SnippetActivity.CustomData>
+    </c:SnippetActivity>
+  </FlowStep>
+  <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+    <c:SnippetActivity ActivityType="loop_next" CtxtId="99ceea00-37b1-412a-9b15-43c984b8f164" DisplayName="Loops to the start block" sap2010:WorkflowViewState.IdRef="SnippetActivity_4">
+      <c:SnippetActivity.CustomData>
+        <x:String x:Key="SnippetId">loop_next</x:String>
+        <x:String x:Key="Description">Loops to the start block.</x:String>
+      </c:SnippetActivity.CustomData>
+    </c:SnippetActivity>
+    <FlowStep.Next>
+      <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_18">
+        <c:PageActivity ActivityType="PageActivity" CtxtId="52adbb40-63b2-48a4-aafc-7352686d413a" DisplayName="pPosDocumVisualiza management" sap2010:WorkflowViewState.IdRef="PageActivity_16">
+          <c:PageActivity.CustomData>
+            <x:String x:Key="PageId">d1a4e6af-34fc-42f4-8500-aea38a9e23ed</x:String>
+          </c:PageActivity.CustomData>
+          <Sequence>
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="a2c99fbd-75b9-4388-9708-53f23f048718" DisplayName="Click on 'btAceptar (2)'">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">item_click</x:String>
+                <x:String x:Key="ItemId">b8bb7f2a-6ed6-4a54-a466-e458139f19b6</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+          </Sequence>
+        </c:PageActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_17">
+            <c:PageActivity ActivityType="PageActivity" CtxtId="e800efbb-b1c7-4dc0-bc56-77b5878726e1" DisplayName="pVentasYFacturasMas management" sap2010:WorkflowViewState.IdRef="PageActivity_17">
+              <c:PageActivity.CustomData>
+                <x:String x:Key="PageId">3db02bcf-10c1-4c17-aa52-386d8d8ef90f</x:String>
+              </c:PageActivity.CustomData>
+              <Sequence>
+                <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="b6c4910f-4554-49a9-8393-a7a2ccee3bf2" DisplayName="Click on 'btBack (2)'">
+                  <c:SnippetActivity.CustomData>
+                    <x:String x:Key="SnippetId">item_click</x:String>
+                    <x:String x:Key="ItemId">115e89ef-c714-4199-9a93-1d42a220afaf</x:String>
+                  </c:SnippetActivity.CustomData>
+                </c:SnippetActivity>
+              </Sequence>
+            </c:PageActivity>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_16">
+                <c:PageActivity ActivityType="PageActivity" CtxtId="b0696dac-50b2-4493-ac1a-a4b8898db0a5" DisplayName="pSAPEasyAccess management" sap2010:WorkflowViewState.IdRef="PageActivity_18">
+                  <c:PageActivity.CustomData>
+                    <x:String x:Key="PageId">ca4847e9-fa14-4482-8891-39a4918932da</x:String>
+                  </c:PageActivity.CustomData>
+                  <Sequence>
+                    <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="94cbd933-e3c5-4134-8752-0e2d525a4778" DisplayName="Click on 'btIFinalizar (2)'">
+                      <c:SnippetActivity.CustomData>
+                        <x:String x:Key="SnippetId">item_click</x:String>
+                        <x:String x:Key="ItemId">05935023-732f-47d2-98db-51d09ab89907</x:String>
+                      </c:SnippetActivity.CustomData>
+                    </c:SnippetActivity>
+                  </Sequence>
+                </c:PageActivity>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_15">
+                    <c:PageActivity ActivityType="PageActivity" CtxtId="6f86f536-f156-433b-aeb9-bf1c38bca491" DisplayName="pSalirDelSistema management" sap2010:WorkflowViewState.IdRef="PageActivity_19">
+                      <c:PageActivity.CustomData>
+                        <x:String x:Key="PageId">87a21d74-1e26-443e-b1b3-38fb2e962b80</x:String>
+                      </c:PageActivity.CustomData>
+                      <Sequence>
+                        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="9a8595bb-267b-41e1-a791-c7086469042e" DisplayName="Click on 'btSí (1)'">
+                          <c:SnippetActivity.CustomData>
+                            <x:String x:Key="SnippetId">item_click</x:String>
+                            <x:String x:Key="ItemId">f1a71d0a-a0c9-44ad-9c1c-5bd8714adb9d</x:String>
+                          </c:SnippetActivity.CustomData>
+                        </c:SnippetActivity>
+                      </Sequence>
+                    </c:PageActivity>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </FlowStep.Next>
+  </FlowStep>
+  <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+    <c:SnippetActivity ActivityType="loop_test" CtxtId="ae6385c4-a4a3-466f-8591-70c5c8d2ff87" DisplayName="Exit loop" sap2010:WorkflowViewState.IdRef="SnippetActivity_3">
+      <c:SnippetActivity.CustomData>
+        <x:String x:Key="SnippetId">loop_test_2</x:String>
+        <x:String x:Key="Description">Test block to exit from a loop.</x:String>
+        <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[!$item$.exist()]]&gt;&lt;/EXP&gt;&lt;item&gt;278cf448-c9c8-4176-a280-8ccc7c3a8c73&lt;/item&gt;</x:String>
+      </c:SnippetActivity.CustomData>
+    </c:SnippetActivity>
+    <FlowStep.Next>
+      <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_19">
+        <c:PageActivity ActivityType="PageActivity" CtxtId="30bf3a8c-dcf5-41c5-aae9-40325086bc8a" DisplayName="pPosDocumVisualiza management" sap2010:WorkflowViewState.IdRef="PageActivity_15">
+          <c:PageActivity.CustomData>
+            <x:String x:Key="PageId">d1a4e6af-34fc-42f4-8500-aea38a9e23ed</x:String>
+          </c:PageActivity.CustomData>
+          <Sequence>
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="0de0af97-7f8e-4832-b5d3-814a31f53387" DisplayName="Get 'oTabla (1)' in 'SAPLogon760Data.pPosDocumVisualizaData.oTabla'">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">item_get_2</x:String>
+                <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[$data$]]&gt;&lt;/EXP&gt;&lt;data&gt;278cf448-c9c8-4176-a280-8ccc7c3a8c73&lt;/data&gt;</x:String>
+                <x:String x:Key="ifExist">false</x:String>
+                <x:String x:Key="ItemId">278cf448-c9c8-4176-a280-8ccc7c3a8c73</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+          </Sequence>
+        </c:PageActivity>
+        <FlowStep.Next>
+          <x:Reference>__ReferenceID0</x:Reference>
+        </FlowStep.Next>
+      </FlowStep>
+    </FlowStep.Next>
+  </FlowStep>
+  <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+    <c:SnippetActivity ActivityType="loop_start" CtxtId="57750d03-1ed9-4e3a-b967-d7d20827839e" DisplayName="Start loop" sap2010:WorkflowViewState.IdRef="SnippetActivity_2">
+      <c:SnippetActivity.CustomData>
+        <x:String x:Key="SnippetId">loop_start</x:String>
+        <x:String x:Key="Description">Starting instruction for a loop.</x:String>
+      </c:SnippetActivity.CustomData>
+    </c:SnippetActivity>
+    <FlowStep.Next>
+      <x:Reference>__ReferenceID1</x:Reference>
+    </FlowStep.Next>
+  </FlowStep>
+  <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_23">
+    <c:PageActivity ActivityType="PageActivity" CtxtId="037a1ff3-f979-4c5c-8201-4e61db88d940" DisplayName="pSAPLogin management" sap2010:WorkflowViewState.IdRef="PageActivity_11">
+      <c:PageActivity.CustomData>
+        <x:String x:Key="PageId">15a15d38-1015-4b9f-b894-f91a7dde38e7</x:String>
+      </c:PageActivity.CustomData>
+      <Sequence>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="9f8cefb8-d7a8-4beb-ac2d-f5cbd153f382" DisplayName="Set &quot;300&quot; in 'edMandante (1)'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">item_set_2</x:String>
+            <x:String x:Key="ItemId">ff26882c-81d1-48be-a558-e8c3da57769a</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["300"]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="ifExist">false</x:String>
+            <x:String x:Key="DisplayName">Set "300" in 'edMandante (1)'</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="if_start" CtxtId="bac73312-3dd8-4b7c-8cc5-b78295cdd7a4" DisplayName="If (credential)">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">if_start_2</x:String>
+            <x:String x:Key="Description">Conditionally executes a block of actions if the specified check of an expression evaluates to TRUE.</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[rootData.credencial.uname == ""]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="DisplayName">If (credential)</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="d41ab1ec-a65e-43ab-bdd0-9a40305b2f69" DisplayName="Set &quot;FROJAS&quot; in 'edUsuarios (2)'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">item_set_2</x:String>
+            <x:String x:Key="ItemId">34785334-46a8-4057-b61a-a69e96db7cde</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["FROJAS"]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="ifExist">false</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="ca0ac1b3-303d-46f0-a75e-39a4c258c505" DisplayName="Set &quot;P455w0rd&quot; in 'oClvAcc (3)'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">item_set_2</x:String>
+            <x:String x:Key="ItemId">3ac23515-7b77-4f37-96ce-c5538a27206d</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["P455w0rd"]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="ifExist">false</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="if_else" CtxtId="d058c1c5-86ae-45ef-97af-13d88a4bf29d" DisplayName="If (else)">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">if_else</x:String>
+            <x:String x:Key="Description">Executes a block of code following an IF action that evaluated to false.</x:String>
+            <x:String x:Key="DisplayName">If (else)</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="3cda612f-2a83-4c68-84b8-5203a7e72223" DisplayName="Set rootData.credencial.password in 'edUsuarios (2)'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">item_set_2</x:String>
+            <x:String x:Key="ItemId">34785334-46a8-4057-b61a-a69e96db7cde</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[rootData.credencial.uname]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="ifExist">false</x:String>
+            <x:String x:Key="DisplayName">Set rootData.credencial.password in 'edUsuarios (2)'</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="45216e13-db40-4e81-a692-6569c7d8b315" DisplayName="Set rootData.credencial.password in 'oClvAcc (3)'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">item_set_2</x:String>
+            <x:String x:Key="ItemId">3ac23515-7b77-4f37-96ce-c5538a27206d</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[rootData.credencial.password]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="ifExist">false</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="if_end" CtxtId="3ef0c1a6-fad1-4e9f-ab0f-0b5019d903b2" DisplayName="If (end)">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">if_end</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="fba7ec1a-2f91-42c7-be65-d82366c68652" DisplayName="Set &quot;ES&quot; in 'edIdioma (4)'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">item_set_2</x:String>
+            <x:String x:Key="ItemId">7092a354-68fa-4e99-8196-51cc9703c9e9</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["ES"]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="ifExist">false</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="f4aca364-b81c-402a-a66a-78da8adc645c" DisplayName="Send 'e.SAPScripting.key._Enter_' in 'pSAPLogin'">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">page_keystroke</x:String>
+            <x:String x:Key="PageId">15a15d38-1015-4b9f-b894-f91a7dde38e7</x:String>
+            <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[e.SAPScripting.key._Enter_]]&gt;&lt;/EXP&gt;</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+      </Sequence>
+    </c:PageActivity>
+    <FlowStep.Next>
+      <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_22">
+        <c:PageActivity ActivityType="PageActivity" CtxtId="326cddcc-49e0-4d2c-adca-869e0ee95db4" DisplayName="pSAPEasyAccess management" sap2010:WorkflowViewState.IdRef="PageActivity_12">
+          <c:PageActivity.CustomData>
+            <x:String x:Key="PageId">ca4847e9-fa14-4482-8891-39a4918932da</x:String>
+          </c:PageActivity.CustomData>
+          <Sequence>
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="536d57b5-0c13-4dd3-9763-026620aac0e5" DisplayName="Set &quot;ZSD_0001&quot; in 'oGuiOkCodeField (1)'">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">item_set_2</x:String>
+                <x:String x:Key="ItemId">adc9aa21-8fa3-427d-b93e-706261fd8282</x:String>
+                <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["ZSD_0001"]]&gt;&lt;/EXP&gt;</x:String>
+                <x:String x:Key="ifExist">false</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="a299b947-3267-4534-b6e9-01f4b4deec13" DisplayName="Send 'e.SAPScripting.key._Enter_' in 'pSAPEasyAccess'">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">page_keystroke</x:String>
+                <x:String x:Key="PageId">ca4847e9-fa14-4482-8891-39a4918932da</x:String>
+                <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA[e.SAPScripting.key._Enter_]]&gt;&lt;/EXP&gt;</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+          </Sequence>
+        </c:PageActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_21">
+            <c:PageActivity ActivityType="PageActivity" CtxtId="d336f102-ca74-4d37-878b-b1522716285e" DisplayName="pVentasYFacturasMas management" sap2010:WorkflowViewState.IdRef="PageActivity_13">
+              <c:PageActivity.CustomData>
+                <x:String x:Key="PageId">3db02bcf-10c1-4c17-aa52-386d8d8ef90f</x:String>
+              </c:PageActivity.CustomData>
+              <Sequence>
+                <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="5d0e99b5-2b23-41aa-8e37-712382f44278" DisplayName="Set &quot;C:\\LAYOUT\\LayoutENCO.txt&quot; in 'edFichero (1)'">
+                  <c:SnippetActivity.CustomData>
+                    <x:String x:Key="SnippetId">item_set_2</x:String>
+                    <x:String x:Key="ItemId">dcf7e168-6360-4241-9d23-4c2d8ed7a5b6</x:String>
+                    <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["C:\\LAYOUT\\LayoutENCO.txt"]]&gt;&lt;/EXP&gt;</x:String>
+                    <x:String x:Key="ifExist">false</x:String>
+                  </c:SnippetActivity.CustomData>
+                </c:SnippetActivity>
+                <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="b06b5edc-90a1-4d85-87ef-4aec9c1df25f" DisplayName="Click on 'btEjecutar (3)'">
+                  <c:SnippetActivity.CustomData>
+                    <x:String x:Key="SnippetId">item_click</x:String>
+                    <x:String x:Key="ItemId">4dd693e5-734b-40b6-80a4-14c8809d14da</x:String>
+                  </c:SnippetActivity.CustomData>
+                </c:SnippetActivity>
+              </Sequence>
+            </c:PageActivity>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_20">
+                <c:PageActivity ActivityType="PageActivity" CtxtId="cc46c8d4-ac81-4508-811a-da05e03dcd7b" DisplayName="pPosDocumVisualiza management" sap2010:WorkflowViewState.IdRef="PageActivity_14">
+                  <c:PageActivity.CustomData>
+                    <x:String x:Key="PageId">d1a4e6af-34fc-42f4-8500-aea38a9e23ed</x:String>
+                  </c:PageActivity.CustomData>
+                  <Sequence />
+                </c:PageActivity>
+                <FlowStep.Next>
+                  <x:Reference>__ReferenceID2</x:Reference>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </FlowStep.Next>
+  </FlowStep>
+  <x:Reference>__ReferenceID3</x:Reference>
+  <x:Reference>__ReferenceID4</x:Reference>
+  <x:Reference>__ReferenceID5</x:Reference>
+  <x:Reference>__ReferenceID6</x:Reference>
+  <x:Reference>__ReferenceID7</x:Reference>
+  <x:Reference>__ReferenceID8</x:Reference>
+  <x:Reference>__ReferenceID9</x:Reference>
+  <x:Reference>__ReferenceID10</x:Reference>
+  <FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_25">
+    <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="011d7d47-fca8-4c08-ac8b-6d14ece87d8c" DisplayName="Start 'SAPLogon760'" sap2010:WorkflowViewState.IdRef="SnippetActivity_5">
+      <c:SnippetActivity.CustomData>
+        <x:String x:Key="SnippetId">appli_start_2</x:String>
+        <x:String x:Key="Description">Starts an application.</x:String>
+        <x:String x:Key="bWaitStart">false</x:String>
+        <x:String x:Key="AppliId">c0b258ef-c1cc-4452-ac12-4c9461341e42</x:String>
+      </c:SnippetActivity.CustomData>
+    </c:SnippetActivity>
+    <FlowStep.Next>
+      <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_27">
+        <c:PageActivity ActivityType="PageActivity" CtxtId="daf7af1b-f69b-44af-87ae-22acc2877251" DisplayName="pWindowSAPLogon76 management" sap2010:WorkflowViewState.IdRef="PageActivity_21">
+          <c:PageActivity.CustomData>
+            <x:String x:Key="PageId">64d6c576-dede-4c36-be04-2d9912b67bb6</x:String>
+          </c:PageActivity.CustomData>
+          <Sequence>
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="658d0ec1-8d8f-403c-8305-6f4f3087c859" DisplayName="Click on 'oARTHAQAS (2)'">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">item_click</x:String>
+                <x:String x:Key="ItemId">ee29390f-7edb-401e-8fe4-14792f7b4e50</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="14825d01-d0ae-4d72-9628-544e09f52484" DisplayName="Click on 'btAccederAlSistema (3)'">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">item_click</x:String>
+                <x:String x:Key="ItemId">a39cf239-6205-40fe-95fb-f87ab485b7fe</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+          </Sequence>
+        </c:PageActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_26">
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="b79fe0ce-adcb-4ecd-b919-ee55cde4803b" DisplayName="Get credential" sap2010:WorkflowViewState.IdRef="SnippetActivity_6">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">credential.get_2</x:String>
+                <x:String x:Key="Description">Retrieves credential login and password</x:String>
+                <x:String x:Key="variableUsername">&lt;EXP&gt;&lt;![CDATA[rootData.credencial.uname]]&gt;&lt;/EXP&gt;</x:String>
+                <x:String x:Key="name">logonQAS</x:String>
+                <x:String x:Key="variablePassword">&lt;EXP&gt;&lt;![CDATA[rootData.credencial.password]]&gt;&lt;/EXP&gt;</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+            <FlowStep.Next>
+              <x:Reference>__ReferenceID11</x:Reference>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </FlowStep.Next>
+  </FlowStep>
+  <x:Reference>__ReferenceID12</x:Reference>
+  <x:Reference>__ReferenceID13</x:Reference>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="SnippetActivity_1" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_13">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">733,7</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_4" sap:VirtualizedContainerService.HintSize="162,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_16" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_17" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_18" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_19" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_15">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">211.05,953.3</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_16">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">417.683333333333,946.2</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">417.683333333333,1046.2 387.683333333333,1046.2 387.683333333333,1053.3 361.05,1053.3</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_17">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">421,696.2</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">496,896.2 496,926.2 492.683333333333,926.2 492.683333333333,946.2</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_18">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">221,689.1</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">371,789.1 401,789.1 401,796.2 421,796.2</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">9,769</av:Point>
+            <av:Size x:Key="ShapeSize">162,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">171,782 201,782 201,789.1 221,789.1</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_3" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_15" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_19">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">11.6833333333333,519</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">86.6833333333333,719 86.6833333333333,749 90,749 90,769</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">13,443</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">90,469 90,499 86.6833333333333,499 86.6833333333333,519</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_2" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">13,367</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">90,393 90,443</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_11" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_12" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_13" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_14" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_20">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">429.05,371.3</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">429.05,471.3 399.05,471.3 399.05,380 167,380</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_21">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">635.683333333333,364.2</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">635.683333333333,464.2 605.683333333333,464.2 605.683333333333,471.3 579.05,471.3</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">639,114.2</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">714,314.2 714,344.2 710.683333333333,344.2 710.683333333333,364.2</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_23">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">439,107.1</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">589,207.1 619,207.1 619,214.2 639,214.2</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_5" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="PageActivity_21" sap:VirtualizedContainerService.HintSize="150,200">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_6" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">215,197</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">369,210 399,210 399,207.1 439,207.1</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_27">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">5,110</av:Point>
+            <av:Size x:Key="ShapeSize">150,200</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">155,210 215,210</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_25">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">226,27</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">226,40 80,40 80,110</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="916,1189">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">430,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <x:Double x:Key="Width">902</x:Double>
+            <x:Double x:Key="Height">1153.3000000000002</x:Double>
+            <av:PointCollection x:Key="ConnectorLocation">430,40 380,40</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+  <sads:DebugSymbol.Symbol>d19DOlxVc2Vyc1xyb2dlbFxEb2N1bWVudHNcU0FQXEludGVsbGlnZW50IFJQQVxEZXNrdG9wIFN0dWRpb1xzdWJlVFhUXHdvcmtmbG93c1xzdWJpcmFyY2hpdm8ueGFtbBABAewEDQEBqwIFsgIZARC1AgnHAhoBD8oCDdICIQEOjQEF4AEWAQ3jAQn4ARoBDPsBDY8CHgELkgIRlwIiAQqCAQWHARkBCWMFaRkBCGwJehoBBxcFHBkBBh8JKxoBBS4NOh4BBD0RSSIBA0wVWCYBAg==</sads:DebugSymbol.Symbol>
+</Flowchart>

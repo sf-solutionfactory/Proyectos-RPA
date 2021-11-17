@@ -1,0 +1,6 @@
+﻿<APPLI Techno="UIAutomation" Name="APPLI_CWindowsSysWOW64C_1" ParamName="C:\Windows\SysWOW64\cmd.exe">
+	<PROPERTIES>
+		<EXE>CMD.EXE</EXE>
+		<TITLE>C:\Windows\SysWOW64\cmd.exe</TITLE>
+	</PROPERTIES>
+</APPLI>

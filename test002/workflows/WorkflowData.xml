@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WORKFLOWDATA>
+	<FOLDER Name="ExcelData" CtxtId="8a4cdb2b-9395-4d9f-84a7-081d7ffe9266" IsIndexed="N">
+		<ITEM Name="TableName" CtxtId="604d2e18-0a62-4b89-b3bd-08af333c8219" IsIndexed="N" />
+	</FOLDER>
+	<FOLDER Name="txtFile" CtxtId="922e1f69-9dd2-4623-ba0a-09b591d896c6" IsIndexed="N">
+		<ITEM Name="Line" CtxtId="58dfdde9-7600-406a-b3ad-fcf177966a56" IsIndexed="Y" />
+	</FOLDER>
+	<FOLDER Name="SAPHelpPortalData" CtxtId="0fab8388-2037-452f-9d37-6d7f5f612bac" IsIndexed="N">
+		<FOLDER Name="pSAPHelpPortalData" CtxtId="9fbca501-45a4-4c0b-a665-eb4d91c80d12" IsIndexed="N">
+			<ITEM Name="oSearchKeywords" CtxtId="e0351876-f6af-456c-b676-20eda3899a31" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pSearchResultsSAPData" CtxtId="dedb3524-5518-4e6f-9b06-2a732ad2b0aa" IsIndexed="N">
+			<ITEM Name="btSearchName" CtxtId="7ddbb991-bccc-4b1f-adf4-165de94dda96" IsIndexed="N" />
+		</FOLDER>
+	</FOLDER>
+	<FOLDER Name="searchResult" CtxtId="dd28d4e0-40bf-4a85-8384-7cedcbfb5900" IsIndexed="N">
+		<ITEM Name="searchName" CtxtId="ff728b45-3ce1-40db-8bd2-4e96dc4106a2" IsIndexed="Y" />
+	</FOLDER>
+</WORKFLOWDATA>

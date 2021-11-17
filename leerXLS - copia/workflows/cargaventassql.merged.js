@@ -1,0 +1,394 @@
+﻿
+// ----------------------------------------------------------------
+//   Test menu for scenario cargaVentasSQL 
+// ----------------------------------------------------------------
+GLOBAL.events.START.on(function (ev) {
+	if (ctx.options.isDebug) {
+		// Add item in systray menu.
+		systray.addMenu('', 'cargaVentasSQL', 'Test cargaVentasSQL', '', function (ev) {
+			var rootData = ctx.dataManagers.rootData.create();
+
+			// Initialize your data here.
+			GLOBAL.scenarios.cargaVentasSQL.start(rootData);
+		});
+	}
+});
+
+//---------------------------------------------------
+// Scenario cargaVentasSQL Starter ()
+//---------------------------------------------------
+
+// ----------------------------------------------------------------
+//   Scenario: cargaVentasSQL
+// ----------------------------------------------------------------
+GLOBAL.scenario( {
+	cargaVentasSQL: function (ev, sc) {
+		var rootData = sc.data;
+
+		sc.setMode(e.scenario.mode.clearIfRunning);
+		sc.setScenarioTimeout(21600000); // Default timeout for global scenario.
+		sc.onError(function (sc, st, ex) {
+			sc.endScenario();
+		}); // Default error handler.
+		sc.onTimeout(30000, function (sc, st) {
+			sc.endScenario();
+		}); // Default timeout handler for each step.
+		sc.step(GLOBAL.steps.getFilename_1, GLOBAL.steps.connectSQL);
+		sc.step(GLOBAL.steps.connectSQL, GLOBAL.steps.Read_a_text_file);
+		sc.step(GLOBAL.steps.Read_a_text_file, GLOBAL.steps.formaLista);
+		sc.step(GLOBAL.steps.formaLista, GLOBAL.steps.Write_a_text_file_2);
+		sc.step(GLOBAL.steps.Write_a_text_file_2, GLOBAL.steps.Start_SAPLogon760_1);
+		sc.step(GLOBAL.steps.Start_SAPLogon760_1, GLOBAL.steps.pWindowSAPLogon76_man_1);
+		sc.step(GLOBAL.steps.pWindowSAPLogon76_man_1, GLOBAL.steps.Declare_credential_1);
+		sc.step(GLOBAL.steps.Declare_credential_1, GLOBAL.steps.Get_credential_1);
+		sc.step(GLOBAL.steps.Get_credential_1, GLOBAL.steps.pSAPLogin_management_1);
+		sc.step(GLOBAL.steps.pSAPLogin_management_1, GLOBAL.steps.pSAPEasyAccess_manage_2);
+		sc.step(GLOBAL.steps.pSAPEasyAccess_manage_2, GLOBAL.steps.Disable_step_timeout);
+		sc.step(GLOBAL.steps.Disable_step_timeout, GLOBAL.steps.pVentasYFacturasMas_m_2);
+		sc.step(GLOBAL.steps.pVentasYFacturasMas_m_2, GLOBAL.steps.pPosDocumVisualiza_ma_1);
+		sc.step(GLOBAL.steps.pPosDocumVisualiza_ma_1, GLOBAL.steps.pVentasYFacturasMas_m_1_1);
+		sc.step(GLOBAL.steps.pVentasYFacturasMas_m_1_1, GLOBAL.steps.pSAPEasyAccess_manage_1_1);
+		sc.step(GLOBAL.steps.pSAPEasyAccess_manage_1_1, GLOBAL.steps.pSalirDelSistema_mana_1);
+		sc.step(GLOBAL.steps.pSalirDelSistema_mana_1, null);
+	}
+}, ctx.dataManagers.rootData).setId('37dded21-4ac8-4f09-bc09-a4d0a00b8e05');
+
+// ----------------------------------------------------------------
+//   Step: getFilename_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	getFilename_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '782a1d35-7d0c-48cb-8777-7a90a724fb8e');
+		// Describe functionality to be implemented in JavaScript later in the project.
+		var date = new Date();
+		var mes = date.getMonth() + 1;
+		if (mes < 10) {
+			mes = "0" + mes;
+		}
+		var dia = date.getDate() - 4;
+		if (dia < 10) {
+			dia = "0" + dia;
+		}
+		rootData.datetime = date.getFullYear().toString() + mes + dia;
+		rootData.fechaActual = dia + "/" + mes + "/" + date.getFullYear();
+		rootData.fechaActual = date.getFullYear() + mes + dia;
+		rootData.filename = "C:\\LAYOUT\\LayoutENCO" + rootData.datetime + ".txt";
+		sc.endStep(); // connectSQL
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: connectSQL
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	connectSQL: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '43419eaf-d531-4cbc-a005-bf6ac33d3a6e');
+		// Describe functionality to be implemented in JavaScript later in the project.		
+		var command = 'sqlcmd ' +
+								'-S 104.210.223.37,4785 ' +
+								'-U "UserSp" ' +
+								'-P "Inicio1#" ' +
+								'-d "Pagos" -h-1 ' +
+								'-s "\t" -W ' +
+								'-o ' + rootData.filename + ' ' +
+								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
+		try {
+			ctx.exec(command, 30000, function (res) { // timeout 30 sec
+				// do some stuff once you get the response
+				sc.endStep(); // Read_a_text_file
+				return ;
+			});
+		}catch (ex) {
+			ctx.log(ex.message, e.logIconType.Error);
+			sc.endStep(); // end Scenario
+			return ;
+		}
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Read_a_text_file
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Read_a_text_file: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '4fc5f906-00f5-425d-96d2-36e032e9b220');
+		// Reads the content of a text file.
+		var file = rootData.filename;
+		rootData.Lines = ctx.fso.file.read(file, e.file.encoding.UTF8);
+		sc.endStep(); // formaLista
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: formaLista
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	formaLista: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '4efb6959-9034-4415-9a68-6ec0ee1aed41');
+		// Describe functionality to be implemented in JavaScript later in the project.
+		var lines = rootData.Lines.split('\n');
+		rootData.Lines = "";
+		for (var i = 0; i < lines.length; i++) {
+			//for (var i = 0; i < 11; i++) {
+			var txt = "";
+			var line = lines[i].split('\t');
+			for (var j = 0; j < line.length - 1; j++) {
+				if (line[j] == "NULL") {
+					line[j] = "";
+				}
+				if (line[j] == "2.9999999999999999E-2") {
+					line[j] = Number(line[j]) + " ";
+				}
+				if (line[j] == "8.9999999999999997E-2") {
+					line[j] = Number(line[j]) + " ";
+				}
+				if (j == 27 || j == 28 || j == 26) {
+					//txt = txt + "0002004768\t";
+					line[j] = Number(line[j]) + " ";
+					if (line[j] == "NULL") {
+						line[j] = "";
+					}
+					txt = txt + line[j] + "\t";
+				}else {
+					txt = txt + line[j] + "\t";
+				}
+			}
+			rootData.texto = rootData.texto + txt + "\n";
+		}
+		sc.endStep(); // end Scenario
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Write_a_text_file_2
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Write_a_text_file_2: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'f4ff6bcc-3119-46e0-a8bf-8a4eb3134c8d');
+		// Writes a text file.
+		var file = rootData.filename;
+		var txt = rootData.texto;
+		ctx.fso.file.write(file, txt, e.file.encoding.UTF8);
+		sc.endStep(); // Start_SAPLogon760_1
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Start_SAPLogon760_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Start_SAPLogon760_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'c168e274-3420-4325-8902-ebdf495d54d1');
+		// Starts an application.
+		SAPLogon760.start();
+		sc.endStep(); // pWindowSAPLogon76_man_1
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pWindowSAPLogon76_man_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pWindowSAPLogon76_man_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '89188345-5c95-4b2b-9de0-b6b76307416e');
+		// Wait until the Page loads
+		SAPLogon760.pWindowSAPLogon76.wait(function (ev) {
+			SAPLogon760.pWindowSAPLogon76.stARTHAQAS.clickDouble();
+			sc.endStep(); // Declare_credential_1
+			return ;
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Declare_credential_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Declare_credential_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'd37c8848-55c7-4d25-93e2-16a2b78d3a23');
+		// Declares a credential
+
+		ctx.cryptography.credential( {
+			logonQAS: {
+				comment: "logonQAS",
+				server: true
+			}
+		});
+		sc.endStep(); // Get_credential_1
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Get_credential_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Get_credential_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '70a566fa-eacd-4b51-bc8e-825f997ba6c6');
+		// Retrieves credential login and password
+
+		ctx.cryptography.credentials.logonQAS.get(function (code, label, credential) {
+			if (code == e.error.OK) {
+				// get values for credential
+				rootData.sapgui.uname = credential.userName.get();
+				rootData.sapgui.pass = credential.password.get();
+				sc.endStep(); // pSAPLogin_management_1
+				return ;
+			}
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pSAPLogin_management_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pSAPLogin_management_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '172faa0d-0a1d-4ed3-a1f5-8f22e3ea7b2f');
+		// Wait until the Page loads
+		SAPLogon760.pSAPLogin.wait(function (ev) {
+			SAPLogon760.pSAPLogin.edMandante.set("300");
+			SAPLogon760.pSAPLogin.edUsuarios.set(rootData.sapgui.uname);
+			SAPLogon760.pSAPLogin.oClvAcc.set(rootData.sapgui.pass);
+			SAPLogon760.pSAPLogin.edIdioma.set("ES");
+			SAPLogon760.pSAPLogin.keyStroke(e.SAPScripting.key._Enter_);
+			sc.endStep(); // pSAPEasyAccess_manage_2
+			return ;
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pSAPEasyAccess_manage_2
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pSAPEasyAccess_manage_2: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'b2cc8c5c-60cc-4512-818f-6c4413e44d7e');
+		// Wait until the Page loads
+		SAPLogon760.pSAPEasyAccess.wait(function (ev) {
+			SAPLogon760.pSAPEasyAccess.oGuiOkCodeField.set("YSD_0001");
+			SAPLogon760.pSAPEasyAccess.keyStroke(e.SAPScripting.key._Enter_);
+			sc.endStep(); // Disable_step_timeout
+			return ;
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Disable_step_timeout
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Disable_step_timeout: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '65ed8af5-6898-4581-997a-0b16a6fe6e07');
+		// Used to disable step timeout.
+		st.disableTimeout();
+		sc.endStep(); // pVentasYFacturasMas_m_2
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pVentasYFacturasMas_m_2
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pVentasYFacturasMas_m_2: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'ecdc3f22-3c2e-4cba-b7e4-04c221f78f78');
+		st.disableTimeout();
+		// Wait until the Page loads
+		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
+			SAPLogon760.pVentasYFacturasMas.oVentaPorLínea.set("X");
+			SAPLogon760.pVentasYFacturasMas.edFichero.set(rootData.filename);
+			SAPLogon760.pVentasYFacturasMas.btEjecutar.click();
+			sc.endStep(); // Disable_step_timeout
+			return ;
+		});
+	}
+});
+// ----------------------------------------------------------------
+//   Step: pPosDocumVisualiza_ma_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pPosDocumVisualiza_ma_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '1ca0efb0-7610-40cb-b2be-4758bd568458');
+		// Wait until the Page loads
+		st.disableTimeout();
+		SAPLogon760.pPosDocumVisualiza.wait(function (ev) {
+			// Delays execution for some milliseconds.
+			// This is the standard pause that should be used in normal situations. It simply pauses the execution of the script for the indicated period.
+			// It allows user interaction with Desktop Agent and other programs during the pause.
+			// This can be useful to wait for a process to complete, to avoid going too fast for the operating system, or to give the user time to react.
+			ctx.wait(function (ev) {
+				SAPLogon760.pPosDocumVisualiza.btAceptar.click();
+				sc.endStep(); // pVentasYFacturasMas_m_1_1
+				return ;
+			}, 1000);
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pVentasYFacturasMas_m_1_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pVentasYFacturasMas_m_1_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'dc714fcb-7f93-44d6-8959-16fe045952a6');
+		// Wait until the Page loads
+		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
+			SAPLogon760.pVentasYFacturasMas.btIFinalizar.click();
+			sc.endStep(); // pSAPEasyAccess_manage_1_1
+			return ;
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pSAPEasyAccess_manage_1_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pSAPEasyAccess_manage_1_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', '999ea4a8-cd3c-4132-8142-0206823d0b38');
+		// Wait until the Page loads
+		SAPLogon760.pSAPEasyAccess.wait(function (ev) {
+			SAPLogon760.pSAPEasyAccess.btIFinalizar.click();
+			sc.endStep(); // pSalirDelSistema_mana_1
+			return ;
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: pSalirDelSistema_mana_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	pSalirDelSistema_mana_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasSQL', 'bf39c2a2-7fc4-430e-b0bd-19bc6bb0cd42');
+		// Wait until the Page loads
+		SAPLogon760.pSalirDelSistema.wait(function (ev) {
+			SAPLogon760.pSalirDelSistema.btSí.click();
+			sc.endStep(); // end Scenario
+			return ;
+		});
+	}
+});

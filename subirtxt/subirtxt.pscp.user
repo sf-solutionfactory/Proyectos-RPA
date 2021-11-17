@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<USER>
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="54" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='subirTXT']" Offset="2164" Length="80"><![CDATA[rootData.Excel.row = ctx.excel.sheet.getFullRangeValues(A,2,AK,1000, undefined);]]></BREAKPOINT>
+	</BREAKPOINTS>
+	<BOOKMARKS />
+	<FINDHISTORY />
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="55" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='subirTXT']" Offset="0" Length="0" />
+	</OPENDOCS>
+	<PROPERTIES>
+		<DebugTester><![CDATA[]]></DebugTester>
+		<CurPerspective><![CDATA[1]]></CurPerspective>
+	</PROPERTIES>
+	<WATCHES />
+	<APPLIFILTERS />
+	<EVENTFILTERS />
+	<WORKFLOW_MOSTUSED />
+</USER>

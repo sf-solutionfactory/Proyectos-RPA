@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="SAPLogon760" CtxtId="387e9562-217d-4db6-ac30-4ddf8aa2c424" Nature="UIAUTOMATION" TechnoSDK="V3" Sync="0" PendingDelay="0">
+			<CAPTURE Name="APPLI_SAPLogon760_1" CtxtId="1" Techno="UIAutomation" />
+			<SCRIPTS />
+			<CRITERE>
+				<EXE Scan="Full"><![CDATA[SAPLOGON.EXE]]></EXE>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="SAPLogon760" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pWindowSAPLogon76" Comment="Window - SAP Logon 760" CtxtId="efe79d62-f11c-4acb-99df-7d348e1d0f05" SubpagesType="Multiple" RefreshMode="Window">
+					<CRITERE>
+						<Name Scan="start-with"><![CDATA[SAP Logon 7]]></Name>
+						<EXE Scan="Full"><![CDATA[SAPLOGON.EXE]]></EXE>
+					</CRITERE>
+					<TRACK_EVENTS>
+						<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+					</TRACK_EVENTS>
+					<OBJETS>
+						<OBJET Name="stARTHAQAS" CtxtId="ad504763-c0b9-4f3f-8935-08d5edab0fdb" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="Text" Scope="All" CapturedPos="23.R0R10R0R1R0R0R0R0R0R3R0">
+									<ATT Name="Name">
+										<VALUE Scan="end-with"><![CDATA[QAS]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btAccederAlSistema" CtxtId="022bdfc1-dd24-4913-a302-6026a8d9f213">
+							<CRITERE>
+								<TAG Name="Button" Scope="All" CapturedPos="23.R0R0">
+									<ATT Name="AutomationId">
+										<VALUE Scan="Full"><![CDATA[1068]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WindowSAPLogon76_1850287_1" Comment="Window - SAP Logon 760" CtxtId="23" Techno="UIAutomation" CapturedPos="23.R0" Timestamp="11/10/2021 18:50:30" MaskRectangle="0|0|1936|1056" />
+				</PAGE>
+				<PAGE Name="pSAPLogin" Comment="GuiMainWindow - SAP" CtxtId="23ad662b-fccf-4f56-aaf4-a7c2e67811d5" CustomType="GuiMainWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
+					<CRITERE>
+						<Text Scan="Full"><![CDATA[SAP]]></Text>
+					</CRITERE>
+					<OBJETS>
+						<OBJET Name="edMandante" CtxtId="50bae326-61a9-4d75-9d19-a121139b3f87" CustomType="GuiTextField" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="GuiTextField" Scope="All" CapturedPos="24.R0R4R1">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[RSYST-MANDT]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="edUsuarios" CtxtId="fc800088-4511-4534-9ee6-fa94afd47f78" CustomType="GuiTextField" SpecIndex="2">
+							<CRITERE>
+								<TAG Name="GuiTextField" Scope="All" CapturedPos="24.R0R4R3">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[RSYST-BNAME]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oClvAcc" CtxtId="f1521899-bfc0-41af-8bb9-959ac570b36f" CustomType="GuiPasswordField" SpecIndex="3">
+							<CRITERE>
+								<TAG Name="GuiPasswordField" Scope="All" CapturedPos="24.R0R4R5">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[RSYST-BCODE]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="edIdioma" CtxtId="0adbc56d-9c78-4a2a-b4af-36ac7e6378d2" CustomType="GuiTextField" SpecIndex="4">
+							<CRITERE>
+								<TAG Name="GuiTextField" Scope="All" CapturedPos="24.R0R4R7">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[RSYST-LANGU]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SAP_1310285_1" Comment="GuiMainWindow - SAP" CtxtId="29" Techno="SAPGUI" CapturedPos="29.R0" Timestamp="12/10/2021 13:10:36" MaskRectangle="0|0|1936|1056" />
+				</PAGE>
+				<PAGE Name="pSAPEasyAccess" Comment="GuiMainWindow - SAP Easy Access" CtxtId="1e320d14-d570-426c-9868-c6c41a4702a0" CustomType="GuiMainWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
+					<CRITERE>
+						<Text Scan="Full"><![CDATA[SAP Easy Access]]></Text>
+					</CRITERE>
+					<OBJETS>
+						<OBJET Name="oGuiOkCodeField" CtxtId="e0d2787b-e91c-4f99-b676-fc292dd8dcea" CustomType="GuiOkCodeField" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="GuiOkCodeField" Scope="All" CapturedPos="25.R0R1R4">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[okcd]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btIFinalizar" CtxtId="8ce6edbb-fd43-411e-a261-4f9bb5702dad" CustomType="GuiButton" SpecIndex="2">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="25.R0R1R0">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[btn[15]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SAPEasyAccess_1857188_1" Comment="GuiMainWindow - SAP Easy Access" CtxtId="25" Techno="SAPGUI" CapturedPos="25.R0" Timestamp="11/10/2021 18:57:40" MaskRectangle="0|0|1936|1056" />
+				</PAGE>
+				<PAGE Name="pVentasYFacturasMas" Comment="GuiMainWindow - Ventas y Facturas masiva" CtxtId="e3958b3a-d465-4c3a-9123-0b5324367168" CustomType="GuiMainWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
+					<CRITERE>
+						<Text Scan="Full"><![CDATA[Ventas y Facturas masiva]]></Text>
+					</CRITERE>
+					<OBJETS>
+						<OBJET Name="edFichero" CtxtId="905a4415-ea17-4c97-8f24-b4471ee6f518" CustomType="GuiCTextField" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="GuiCTextField" Scope="All" CapturedPos="26.R0R4R2">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[P_PATH]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btEjecutar" CtxtId="aed814c2-a197-4c2c-bfa6-acd410e80bdb" CustomType="GuiButton" SpecIndex="4">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="26.R0R3R1">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[btn[8]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btIFinalizar" CtxtId="2d100cbc-d4df-4547-845e-c39e717c98ae" CustomType="GuiButton" SpecIndex="5">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="26.R0R1R2">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[btn[15]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oVentaPorLínea" CtxtId="c8f04f61-adab-4c6e-a263-f69fb5c6472f" CustomType="GuiCheckBox" SpecIndex="2">
+							<CRITERE>
+								<TAG Name="GuiCheckBox" Scope="All" CapturedPos="26.R0R4R3">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[P_LINE]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSoloCarga" CtxtId="0faafb88-2cfd-49ed-90a8-e1e2d2ff9ea2" CustomType="GuiCheckBox" SpecIndex="3">
+							<CRITERE>
+								<TAG Name="GuiCheckBox" Scope="All" CapturedPos="26.R0R4R4">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[P_RPA]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_VentasYFacturasMas_1858180_1" Comment="GuiMainWindow - Ventas y Facturas masiva" CtxtId="26" Techno="SAPGUI" CapturedPos="26.R0" Timestamp="11/10/2021 18:58:32" MaskRectangle="0|0|1936|1056" />
+				</PAGE>
+				<PAGE Name="pPosDocumVisualiza" Comment="GuiModalWindow - Pos.docum.: Visualizar mensajes" CtxtId="12399176-749c-4ee5-b525-314fb1f7b2e7" CustomType="GuiModalWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
+					<CRITERE>
+						<Text Scan="Full"><![CDATA[Pos.docum.: Visualizar mensajes]]></Text>
+					</CRITERE>
+					<OBJETS>
+						<OBJET Name="btAceptar" CtxtId="9f4d9ecd-6033-41ef-a9f6-ae43a02d1493" CustomType="GuiButton" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="27.R0R0R0">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[btn[0]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btCancelar" CtxtId="d6646334-21c1-40de-8563-7263bf1114d3" CustomType="GuiButton">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="27.R0R0R19">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[btn[12]]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oTabla" CtxtId="67e5872f-1cd1-45a4-9c58-f1e2ff4ac8c3" CustomType="GuiLabel">
+							<CRITERE>
+								<TAG Name="GuiLabel" Scope="All" CapturedPos="27.R0R1R0" Occurs="Y">
+									<ATT Name="Type">
+										<VALUE Scan="Full"><![CDATA[GuiLabel]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_PosDocumVisualiza_1900294_1" Comment="GuiModalWindow - Pos.docum.: Visualizar mensajes" CtxtId="27" Techno="SAPGUI" CapturedPos="27.R0" Timestamp="11/10/2021 19:00:35" MaskRectangle="0|0|934|309" />
+				</PAGE>
+				<PAGE Name="pSalirDelSistema" Comment="GuiModalWindow - Salir del sistema" CtxtId="c9a031b9-561a-465e-ac40-5fcff9c77f56" CustomType="GuiModalWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
+					<CRITERE>
+						<Text Scan="Full"><![CDATA[Salir del sistema]]></Text>
+					</CRITERE>
+					<OBJETS>
+						<OBJET Name="btSí" CtxtId="d156bc7f-8eb2-40eb-bb09-0ff86cc6c99f" CustomType="GuiButton" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="28.R0R1R3">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[SPOP-OPTION1]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btNo" CtxtId="03c145e4-059e-438a-9585-7085bd52f365" CustomType="GuiButton">
+							<CRITERE>
+								<TAG Name="GuiButton" Scope="All" CapturedPos="28.R0R1R4">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[SPOP-OPTION2]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SalirDelSistema_1904245_1" Comment="GuiModalWindow - Salir del sistema" CtxtId="28" Techno="SAPGUI" CapturedPos="28.R0" Timestamp="11/10/2021 19:04:26" MaskRectangle="0|0|510|234" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[C:\Program Files (x86)\SAP\FrontEnd\SapGui\saplogon.exe]]></PATH>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

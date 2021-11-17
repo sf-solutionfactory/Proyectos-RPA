@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="test002.debug.psc"/>
+		<Property Name="projectVersion" Value="1.0"/>
+		<Property Name="projectName" Value="test002"/>
+		<Property Name="projectId" Value="61c6158e-a0e8-499d-bd2e-3863a3e29430"/>
+		<Property Name="projectDate" Value="25/05/2021"/>
+		<Property Name="projectLabel" Value="test002"/>
+		<Property Name="projectClient" Value="Enco"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value=""/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="1/6/2021"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="newWorkflow" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="d3cb5cd7-fa83-422a-9222-6efd9cd165a2" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<Properties Name="scenario1">
+		<Property Name="appliName" Value="SAPHelpPortal" Type="1"/>
+		<Property Name="scenario" Value="LoopExample" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="b8428264-7837-4473-bce6-fdb06283b348" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario1">
+	</Keys>
+	<Properties Name="scenario2">
+		<Property Name="appliName" Value="SAPHelpPortal" Type="1"/>
+		<Property Name="scenario" Value="waitMultiple" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="2d789720-2595-4ce2-9f00-eaa27d2fc459" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario2">
+	</Keys>
+	<Properties Name="scenario3">
+		<Property Name="appliName" Value="SAPHelpPortal" Type="1"/>
+		<Property Name="scenario" Value="switchOutput" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="e53b5124-dd28-4a6d-8b8c-b160e8ab4c9c" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario3">
+	</Keys>
+	<Properties Name="authentication">
+		<Property Name="result" Value="MIIBJwYJKoZIhvcNAQcCoIIBGDCCARQCAQExDzANBgkqhkiG9w0BAQUFADAvBgkq
+hkiG9w0BBwGgIgQgQwB0AHgAdABEAGUAZgBhAHUAbAB0AE0AYQByAGsAAAAxgcww
+gckCAQEwJDAcMRowGAYDVQQDExFOTyBDRVJUIFNJR05BVFVSRQIEEjRWeDANBgkq
+hkiG9w0BAQUFADAMBggqhkiG9w0DBAUABIGAjGsfamtu6Kt7vm9F293eXavK/2cu
+RvtWmfrQCPU+SnvLEo7RkhS66tt2QkPCIUk+R12iY1txhQKJrsPFAt2Nr9miSXnr
+uVprjlXNPFtFHRwcMpEzZMygaCFGF8vBL/zdyvuv6gDPj2HPVm0crRLKtkDupD3Y
+OQ+urUAhE05sBCs=
+" Type="1"/>
+	</Properties>
+	<Keys Name="authentication">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="" Type="32771"/>
+	<KeyContent Value="" Type="32771"/>
+	<KeyProps Value="bbeb23aba3abaf5deb5f8de713431904" Type="32771"/>
+</doc>

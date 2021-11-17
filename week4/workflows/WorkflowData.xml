@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WORKFLOWDATA>
+	<FOLDER Name="SaplogonData" CtxtId="b70afaad-ecef-4199-ab83-b9c95e7fe517" IsIndexed="N">
+		<FOLDER Name="pSAPLoginData" CtxtId="ac8a0b41-9bae-46bc-90cf-edd345fb7bfd" IsIndexed="N">
+			<ITEM Name="edMandante" CtxtId="6f3a212e-c61d-4357-a956-b369b81be273" IsIndexed="N" />
+			<ITEM Name="edUsuarios" CtxtId="25fdf4fe-980b-4c7e-8c13-1e3cb15efd96" IsIndexed="N" />
+			<ITEM Name="oClvAcc" CtxtId="1d8c6619-59b4-4f17-8e0a-0451d534a413" IsIndexed="N" />
+			<ITEM Name="edIdioma" CtxtId="9b2bf908-54ac-413a-a407-c5accdc36555" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pSAPEasyAccessData" CtxtId="25ea15d9-a8f0-4879-b2f7-3189e3c64168" IsIndexed="N">
+			<ITEM Name="oGuiOkCodeField" CtxtId="357b666e-1cb0-41ab-81d0-97aa41027bf6" IsIndexed="N" />
+		</FOLDER>
+	</FOLDER>
+</WORKFLOWDATA>

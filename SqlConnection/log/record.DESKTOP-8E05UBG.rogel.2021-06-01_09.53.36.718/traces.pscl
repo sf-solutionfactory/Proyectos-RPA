@@ -1,0 +1,21 @@
+﻿{"ts":"09:53:36.721","ctx":"Event","event":"conectar","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"09:53:36.724","ctx":"State","type":"scenario","name":"conectar","id":67,"action":"start","appliName":"GLOBAL","parentId":58,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SqlConnection\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SqlConnection\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SqlConnection\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SqlConnection\\server"}}}
+{"ts":"09:53:36.734","ctx":"State","type":"once","name":"timeout(conectar)","id":68,"action":"set","parentName":"conectar","parentId":67}
+{"ts":"09:53:36.743","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:7",600000],"result":"","verb":"NOTIFY","parentId":67,"appliName":"GLOBAL","appliInst":0}
+{"ts":"09:53:36.752","ctx":"State","type":"step","name":"Custom","id":70,"action":"add","appliName":"GLOBAL","parentName":"conectar","parentId":67}
+{"ts":"09:53:36.760","ctx":"State","type":"step","name":"Custom","id":70,"action":"start","appliName":"GLOBAL","parentName":"conectar","parentId":67}
+{"ts":"09:53:36.769","ctx":"State","type":"once","name":"timeout(Custom)","id":71,"action":"set","parentName":"Custom","parentId":70}
+{"ts":"09:53:36.778","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:8",30000],"result":"","verb":"NOTIFY","parentId":70,"appliName":"GLOBAL","appliInst":0}
+{"ts":"09:53:36.788","ctx":"Action","action":"ctx.workflow","params":["conectar","1c85f989-02cc-4080-9c91-1399feb86345"],"parentId":70}
+{"ts":"09:53:41.154","ctx":"Action","action":"ctx.log","params":["Connection failed: El servidor de Automatizaci\u00f3n no puede crear el objeto",0],"verb":"LOGMESS","parentId":70}
+{"ts":"09:53:45.981","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"09:53:46.63","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"run"}
+{"ts":"09:53:46.80","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"set"}
+{"ts":"09:53:46.123","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"09:53:46.216","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"09:53:46.221","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"09:53:46.236","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"09:53:46.250","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":26,"action":"run"}
+{"ts":"09:53:46.265","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":26,"action":"set"}
+{"ts":"09:53:46.276","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":31,"action":"run"}
+{"ts":"09:53:46.288","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":31,"action":"set"}

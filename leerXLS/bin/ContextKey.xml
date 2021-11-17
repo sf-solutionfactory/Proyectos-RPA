@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="7b08d380-d64a-48a4-9cef-2e7ad04c50a7">
+  <Entities>
+    <Entity Id="6cae1306-e372-4901-85f2-8122f6b4f2b7" Name="length" IsArray="False" />
+    <Entity Id="2911657d-903c-497e-88f5-364863416ea1" Name="datetime" IsArray="False" />
+    <Entity Id="cbb61b13-87f9-4451-9b7c-c528e8e5ea6f" Name="Items" IsArray="False">
+      <Entities>
+        <Entity Id="da6cdd7b-bf98-44b7-8028-2cc4cb1ed87c" Name="FKDAT" IsArray="True" />
+        <Entity Id="e8221be0-e18a-489a-bda5-2662672ecc60" Name="XBLNR" IsArray="True" />
+        <Entity Id="ae82ff83-5a73-4fdf-9d3f-eb4ddd5cbc40" Name="FKART" IsArray="True" />
+        <Entity Id="be3b7537-688a-415f-87b0-a9f74d7435e5" Name="VKORG" IsArray="True" />
+      </Entities>
+    </Entity>
+    <Entity Id="1ac327c5-c545-47cf-ad64-ea0f2d6b0589" Name="fechaActual" IsArray="False" />
+    <Entity Id="0a5b6400-19da-4d9b-ad36-2c4d30302c96" Name="texto" IsArray="False" />
+    <Entity Id="168532f4-ee5a-41a2-8dee-91cda9289e5f" Name="SAPLogon760Data" IsArray="False">
+      <Entities>
+        <Entity Id="04a8eca8-5689-4d83-8c78-b32137de6e41" Name="pSAPLoginData" IsArray="False">
+          <Entities>
+            <Entity Id="46d0a814-33c6-4835-8bf2-7cebe6fc77c7" Name="edMandante" IsArray="False" />
+            <Entity Id="f2674001-d333-474b-89c4-549acaabd4a5" Name="edUsuarios" IsArray="False" />
+            <Entity Id="6d15db1c-2bd6-482e-b98a-08eaa3bfd0a6" Name="oClvAcc" IsArray="False" />
+            <Entity Id="786d0016-aab6-4f68-aac7-3aa748288f65" Name="edIdioma" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="f07459ee-dbb6-40ea-a16b-08dae3f36002" Name="pSAPEasyAccessData" IsArray="False">
+          <Entities>
+            <Entity Id="ab51b75c-e618-47a7-8d26-5b7844064237" Name="oGuiOkCodeField" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="42158740-79f2-4212-9b57-581f6f8d9ff2" Name="pVentasYFacturasMasData" IsArray="False">
+          <Entities>
+            <Entity Id="ae4e8a90-96b6-4c5a-b59e-db23d7563174" Name="edFichero" IsArray="False" />
+            <Entity Id="a318e72e-53f7-4cd5-90d7-4fe9236e9cd4" Name="oVentaPorLínea" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="1238c9c4-c682-47cd-bdc1-89f717da5ad4" Name="filename" IsArray="False" />
+    <Entity Id="432c460f-5ac1-497b-abc7-98119386fa47" Name="sapgui" IsArray="False">
+      <Entities>
+        <Entity Id="dba21ab1-ecf9-405f-9ba0-0ad176c418d1" Name="uname" IsArray="False" />
+        <Entity Id="84b7ed60-dc57-4391-8bbc-2f66ad24352d" Name="pass" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="4eb506bf-fdc8-4ca8-9b21-7497eabb84c4" Name="Lines" IsArray="False" />
+  </Entities>
+</Context>

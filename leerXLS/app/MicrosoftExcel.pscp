@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="MicrosoftExcel" CtxtId="807d9ab1-cd32-47a8-a434-1108498eaef0" Nature="UIAUTOMATION" TechnoSDK="V3" Sync="0" PendingDelay="0">
+			<CAPTURE Name="APPLI_MicrosoftExcelRep_1" CtxtId="1" Techno="UIAutomation" />
+			<SCRIPTS />
+			<CRITERE>
+				<EXE Scan="Full"><![CDATA[EXCEL.EXE]]></EXE>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="MicrosoftExcel" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pWindowMicrosoftEx" Comment="Window - Microsoft Excel - ReporteENCO.xlsm" CtxtId="4db17b23-dae3-4537-9abe-0ff5246b8aa4" SubpagesType="Multiple" RefreshMode="Window">
+					<CRITERE>
+						<EXE Scan="Full"><![CDATA[EXCEL.EXE]]></EXE>
+					</CRITERE>
+					<TRACK_EVENTS>
+						<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+					</TRACK_EVENTS>
+					<OBJETS>
+						<OBJET Name="btMacros" CtxtId="6e6374a1-f6dc-461d-b4da-0cf740a43d21" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="Button" Scope="All" CapturedPos="1.R0R1R0R0R0R0R0R3">
+									<ATT Name="Name">
+										<VALUE Scan="Full"><![CDATA[Macros]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WindowMicrosoftEx_1259545_1" Comment="Window - Microsoft Excel - ReporteENCO.xlsm" CtxtId="1" Techno="UIAutomation" CapturedPos="1.R0" Timestamp="14/06/2021 12:59:57" MaskRectangle="0|0|1936|1056" />
+					<_ECRANS>
+						<PAGE Name="pWindowMacro" Comment="Window - Macro" CtxtId="8a7e7073-c668-4eb2-9a92-cb9a98023a73" SubpagesType="Multiple" RefreshMode="Window">
+							<CRITERE>
+								<Value Scan="Full"><![CDATA[Macro]]></Value>
+							</CRITERE>
+							<TRACK_EVENTS>
+								<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+							</TRACK_EVENTS>
+							<OBJETS>
+								<OBJET Name="oCrearObjetoTabla" CtxtId="82052f14-f520-4f66-bdac-7e540a2b6f7a">
+									<CRITERE>
+										<TAG Name="Pane" Scope="All" CapturedPos="4.R0R0R0">
+											<ATT Name="AutomationId">
+												<VALUE Scan="Full"><![CDATA[17]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+								<OBJET Name="oReporteDetallado" CtxtId="5b0b865d-c46d-4cf7-85fd-de1f7d9909a2" SpecIndex="1">
+									<CRITERE>
+										<TAG Name="ListItem" Scope="All" CapturedPos="4.R0R0R5R6">
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[ReporteDetallado]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+								<OBJET Name="oReporteSap" CtxtId="2e9eeea2-4012-49c3-bba3-065bccbdc4b9">
+									<CRITERE>
+										<TAG Name="ListItem" Scope="All" CapturedPos="17.R0R0R5R10">
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[ReporteSap]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+							</OBJETS>
+							<CAPTURE Name="PAGE_WindowMacro_1848525_1" Comment="Window - Macro" CtxtId="17" Techno="UIAutomation" CapturedPos="17.R0R0" Timestamp="23/06/2021 18:49:18" MaskRectangle="0|0|377|360" />
+						</PAGE>
+						<PAGE Name="pWindowReporteador" Comment="Window - Reporteador" CtxtId="f95bebb7-19c0-4109-9414-79347f7e6ff4" SubpagesType="Multiple" RefreshMode="Window">
+							<CRITERE>
+								<Name Scan="Full"><![CDATA[Reporteador]]></Name>
+								<Value Scan="Full"><![CDATA[Reporteador]]></Value>
+							</CRITERE>
+							<TRACK_EVENTS>
+								<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+							</TRACK_EVENTS>
+							<OBJETS>
+								<OBJET Name="edFechaF" CtxtId="8210a0eb-f724-4b82-bba4-c85f4d4d6cd2">
+									<CRITERE>
+										<TAG Name="Edit" Scope="All" CapturedPos="5.R0R0R0R0R4">
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[Fecha Final]]></VALUE>
+											</ATT>
+											<ATT Name="Range">
+												<VALUE Scan="Full"><![CDATA[R0R0R4]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+								<OBJET Name="edFechaI" CtxtId="ee3ed76a-79b0-4303-b9fa-7ce1ec5410dc">
+									<CRITERE>
+										<TAG Name="Edit" Scope="All" CapturedPos="5.R0R0R0R0R5">
+											<ATT Name="Range">
+												<VALUE Scan="Full"><![CDATA[R0R0R5]]></VALUE>
+											</ATT>
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+								<OBJET Name="btAceptar" CtxtId="42b513b0-1d45-4ffc-98f0-211c99461036">
+									<CRITERE>
+										<TAG Name="Button" Scope="All" CapturedPos="5.R0R0R0R2">
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[Aceptar]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+								<OBJET Name="btCancelar" CtxtId="cce01e4d-8b61-4aa3-903e-f78c5bbd2deb">
+									<CRITERE>
+										<TAG Name="Button" Scope="All" CapturedPos="5.R0R0R0R3">
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[Cancelar]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+							</OBJETS>
+							<CAPTURE Name="PAGE_WindowReporteador_1307033_1" Comment="Window - Reporteador" CtxtId="5" Techno="UIAutomation" CapturedPos="5.R0R0" Timestamp="14/06/2021 13:07:07" MaskRectangle="0|0|398|267" />
+						</PAGE>
+						<PAGE Name="pWindowMessage" Comment="Window - Microsoft Excel" CtxtId="b75ab917-3f9a-47bf-b2ce-4d20eef1d201" SubpagesType="Multiple" RefreshMode="Window">
+							<CRITERE>
+								<Value Scan="Full"><![CDATA[Microsoft Excel]]></Value>
+								<Name Scan="Full"><![CDATA[Microsoft Excel]]></Name>
+								<ClassName Scan="Full"><![CDATA[#32770]]></ClassName>
+								<Deepness Scan="LTOE"><![CDATA[2]]></Deepness>
+							</CRITERE>
+							<TRACK_EVENTS>
+								<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+							</TRACK_EVENTS>
+							<OBJETS>
+								<OBJET Name="btAceptar" CtxtId="6ab4b699-9ba6-495d-9965-6f3d9157cb67" SpecIndex="1">
+									<CRITERE>
+										<TAG Name="Button" Scope="All" CapturedPos="7.R0R0R0R0">
+											<ATT Name="AutomationId">
+												<VALUE Scan="Full"><![CDATA[2]]></VALUE>
+											</ATT>
+											<ATT Name="Name">
+												<VALUE Scan="Full"><![CDATA[Aceptar]]></VALUE>
+											</ATT>
+										</TAG>
+									</CRITERE>
+								</OBJET>
+							</OBJETS>
+							<CAPTURE Name="PAGE_WindowMicrosoftEx_1314023_1" Comment="Window - Microsoft Excel" CtxtId="7" Techno="UIAutomation" CapturedPos="7.R0R0R0" Timestamp="14/06/2021 13:14:02" MaskRectangle="0|0|239|130" />
+						</PAGE>
+					</_ECRANS>
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[C:\Program Files (x86)\Microsoft Office\Office12\EXCEL.EXE]]></PATH>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

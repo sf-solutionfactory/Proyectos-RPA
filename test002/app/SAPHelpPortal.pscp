@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="SAPHelpPortal" CtxtId="0fab8388-2037-452f-9d37-6d7f5f612bac" Nature="WEB3" TechnoSDK="V3" Sync="250">
+			<CAPTURE Name="APPLI_SAPHelpPortal_1" CtxtId="1" Techno="WEB" />
+			<CRITERE>
+				<URL Scan="Full"><![CDATA[https://help.sap.com/viewer/index]]></URL>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="SAPHelpPortal" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pSAPHelpPortal" Comment="SAP Help Portal" CtxtId="9fbca501-45a4-4c0b-a665-eb4d91c80d12">
+					<CRITERE>
+						<TITLE Scan="Full"><![CDATA[SAP Help Portal]]></TITLE>
+						<URL Scan="Full"><![CDATA[https://help.sap.com/viewer/index]]></URL>
+					</CRITERE>
+					<PATH><![CDATA[https://help.sap.com/viewer/index]]></PATH>
+					<OBJETS>
+						<OBJET Name="oSearchKeywords" CtxtId="e0351876-f6af-456c-b676-20eda3899a31" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="4.R0R1R4R0R0R0R0R0R0R2R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[searchKeywords]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSearchButton" CtxtId="a8bcfd3e-920b-42e6-afb0-e8887e15e9ef" SpecIndex="2">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="4.R0R1R4R0R0R0R0R0R0R2R0R2">
+									<ATT Name="type">
+										<VALUE Scan="Full"><![CDATA[submit]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btLogon" CtxtId="258d7415-c34b-458b-a261-77808865b2c9" SpecIndex="3">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="4.R0R1R3R1R0R1R3R0">
+									<ATT Name="Text">
+										<VALUE Scan="Full"><![CDATA[]]></VALUE>
+									</ATT>
+									<ATT Name="title">
+										<VALUE Scan="Full"><![CDATA[Log on]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SAPHelpPortal_1734496_1" Comment="SAP Help Portal" CtxtId="4" Techno="WEB" Timestamp="26/05/2021 17:34:51" />
+				</PAGE>
+				<PAGE Name="pSearchResultsSAP" Comment="Search Results - SAP Help Portal" CtxtId="dedb3524-5518-4e6f-9b06-2a732ad2b0aa">
+					<CRITERE>
+						<TITLE Scan="Full"><![CDATA[Search Results - SAP Help Portal]]></TITLE>
+					</CRITERE>
+					<PATH><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></PATH>
+					<OBJETS>
+						<OBJET Name="oSearchValue_0" CtxtId="64ec1e4a-5068-45e1-9f87-538042eb9be6">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="6.R0R1R2R0R2R0R0R2R2R0R0" Occurs="Y">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[search-result ng-scope]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearchName" CtxtId="7ddbb991-bccc-4b1f-adf4-165de94dda96" Ascendant="oSearchValue_0" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="6.R0R1R2R0R2R0R0R2R2R0R0R1R0R0" Range="0" />
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SearchResultsSAP_0925442_1" Comment="Search Results - SAP Help Portal" CtxtId="6" Techno="WEB" Timestamp="27/05/2021 09:25:47" />
+					<CAPTURE Name="PAGE_SearchResultsSAP_0942134_1" Comment="Search Results - SAP Help Portal" CtxtId="7" Techno="WEB" Timestamp="27/05/2021 09:42:15" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[https://help.sap.com/viewer/index]]></PATH>
+			<SCRIPTS />
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+			<WORKFLOWS>
+				<WORKFLOW Name="LoopExample" Src="%workflows%\LoopExample.xaml" CtxtId="b8428264-7837-4473-bce6-fdb06283b348" DisplayName="LoopExample" StepTimeout="30" ScenarioTimeout="600" GeneratedScenarioName="LoopExample" />
+				<WORKFLOW Name="waitMultiple" Src="%workflows%\waitMultiple.xaml" CtxtId="2d789720-2595-4ce2-9f00-eaa27d2fc459" DisplayName="waitMultiple" StepTimeout="30" ScenarioTimeout="600" GeneratedScenarioName="waitMultiple" />
+				<WORKFLOW Name="switchOutput" Src="%workflows%\switchOutput.xaml" CtxtId="e53b5124-dd28-4a6d-8b8c-b160e8ab4c9c" DisplayName="switchOutput" StepTimeout="30" ScenarioTimeout="600" GeneratedScenarioName="switchOutput" />
+			</WORKFLOWS>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

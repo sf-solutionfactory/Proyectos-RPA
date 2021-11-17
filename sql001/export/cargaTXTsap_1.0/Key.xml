@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="sql001.debug.psc"/>
+		<Property Name="projectVersion" Value="1.0"/>
+		<Property Name="projectName" Value="cargaTXTsap"/>
+		<Property Name="projectId" Value="56fcbb37-5031-4d8c-8d2c-417ab985101b"/>
+		<Property Name="projectDate" Value="02/06/2021"/>
+		<Property Name="projectLabel" Value="Cargar txt en sap gui"/>
+		<Property Name="projectClient" Value="ENCO"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value="cargaTXTsap.zip"/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="7/6/2021"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="subirtxt" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="3659b183-e5eb-4588-870b-ec8098ac1fd5" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<Properties Name="scenario1">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="leerXLS" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="cdc77664-3348-43fc-a739-94e775e7bc3e" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario1">
+	</Keys>
+	<Properties Name="scenario2">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="Run" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="9c3161ab-c810-4100-95c9-479ddf631419" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario2">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="23b4117776ea91e7e4261d6fc66084dd" Type="32771"/>
+	<KeyContent Value="a2a405e8b805a18790ea90cc08de8ef0" Type="32771"/>
+	<KeyProps Value="5b3b72b7a67e41d4ff0d99470810d5d6" Type="32771"/>
+</doc>

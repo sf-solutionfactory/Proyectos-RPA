@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WORKFLOWDATA>
+	<FOLDER Name="credencial" CtxtId="ad4b2f12-471f-4654-97f5-730d1ba5f58e" IsIndexed="N">
+		<ITEM Name="uname" CtxtId="aeb0cae7-98fd-43ff-962d-f77f2092bc64" IsIndexed="N" />
+		<ITEM Name="password" CtxtId="41d82001-ebb1-4e6e-97d8-8ba77249f4ad" IsIndexed="N" />
+	</FOLDER>
+	<FOLDER Name="SAPLogon760Data" CtxtId="c0b258ef-c1cc-4452-ac12-4c9461341e42" IsIndexed="N">
+		<FOLDER Name="pSAPLoginData" CtxtId="15a15d38-1015-4b9f-b894-f91a7dde38e7" IsIndexed="N">
+			<ITEM Name="edMandante" CtxtId="ff26882c-81d1-48be-a558-e8c3da57769a" IsIndexed="N" />
+			<ITEM Name="edUsuarios" CtxtId="34785334-46a8-4057-b61a-a69e96db7cde" IsIndexed="N" />
+			<ITEM Name="oClvAcc" CtxtId="3ac23515-7b77-4f37-96ce-c5538a27206d" IsIndexed="N" />
+			<ITEM Name="edIdioma" CtxtId="7092a354-68fa-4e99-8196-51cc9703c9e9" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pSAPEasyAccessData" CtxtId="ca4847e9-fa14-4482-8891-39a4918932da" IsIndexed="N">
+			<ITEM Name="oGuiOkCodeField" CtxtId="adc9aa21-8fa3-427d-b93e-706261fd8282" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pVentasYFacturasMasData" CtxtId="3db02bcf-10c1-4c17-aa52-386d8d8ef90f" IsIndexed="N">
+			<ITEM Name="edFichero" CtxtId="dcf7e168-6360-4241-9d23-4c2d8ed7a5b6" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="pPosDocumVisualizaData" CtxtId="d1a4e6af-34fc-42f4-8500-aea38a9e23ed" IsIndexed="N">
+			<ITEM Name="oTabla" CtxtId="278cf448-c9c8-4176-a280-8ccc7c3a8c73" IsIndexed="N" />
+		</FOLDER>
+		<FOLDER Name="Item" CtxtId="c03eca43-be95-48f6-854c-39d1930cfeee" IsIndexed="Y">
+			<ITEM Name="Valule" CtxtId="67099740-1a7c-4432-a85c-d2c490cbe2af" IsIndexed="Y" />
+		</FOLDER>
+	</FOLDER>
+</WORKFLOWDATA>

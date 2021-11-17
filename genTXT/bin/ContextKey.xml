@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="8218b267-63ce-48aa-b378-2e810c700456">
+  <Entities>
+    <Entity Id="1f4520b7-e4d3-40ff-a54f-6709cb99c788" Name="Items" IsArray="True">
+      <Entities>
+        <Entity Id="b4079194-8649-4aa9-92b7-2df0897f84f6" Name="Values" IsArray="True" />
+      </Entities>
+    </Entity>
+  </Entities>
+</Context>

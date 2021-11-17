@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<USER>
+	<BREAKPOINTS />
+	<BOOKMARKS />
+	<FINDHISTORY>
+		<FINDWHAT><![CDATA[2001130]]></FINDWHAT>
+		<FINDWHAT><![CDATA[Disable_step_timeout]]></FINDWHAT>
+		<FINDWHAT><![CDATA[pWindowMessage_manage]]></FINDWHAT>
+		<FINDWHAT><![CDATA[leng]]></FINDWHAT>
+	</FINDHISTORY>
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='MicrosoftExcel']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasSQL']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="395" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasSQL']" Offset="0" Length="0" />
+	</OPENDOCS>
+	<PROPERTIES>
+		<CurPerspective><![CDATA[2]]></CurPerspective>
+		<DebugTester><![CDATA[]]></DebugTester>
+	</PROPERTIES>
+	<WATCHES />
+	<APPLIFILTERS />
+	<EVENTFILTERS />
+	<WORKFLOW_MOSTUSED />
+</USER>

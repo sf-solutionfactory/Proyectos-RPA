@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="HelloWorld.debug.psc"/>
+		<Property Name="projectVersion" Value="1.0"/>
+		<Property Name="projectName" Value="HelloWorld"/>
+		<Property Name="projectId" Value="bcd03210-d0ba-4736-a214-3f46af5157c7"/>
+		<Property Name="projectDate" Value="24/05/2021"/>
+		<Property Name="projectLabel" Value="Hola mundo"/>
+		<Property Name="projectClient" Value="Test"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value=""/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="25/5/2021"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="POPUPS" Type="1"/>
+		<Property Name="scenario" Value="newWorkflow" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="2a32c222-ad76-4070-8003-5db13554d599" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<Properties Name="authentication">
+		<Property Name="result" Value="MIIBJwYJKoZIhvcNAQcCoIIBGDCCARQCAQExDzANBgkqhkiG9w0BAQUFADAvBgkq
+hkiG9w0BBwGgIgQgQwB0AHgAdABEAGUAZgBhAHUAbAB0AE0AYQByAGsAAAAxgcww
+gckCAQEwJDAcMRowGAYDVQQDExFOTyBDRVJUIFNJR05BVFVSRQIEEjRWeDANBgkq
+hkiG9w0BAQUFADAMBggqhkiG9w0DBAUABIGAjGsfamtu6Kt7vm9F293eXavK/2cu
+RvtWmfrQCPU+SnvLEo7RkhS66tt2QkPCIUk+R12iY1txhQKJrsPFAt2Nr9miSXnr
+uVprjlXNPFtFHRwcMpEzZMygaCFGF8vBL/zdyvuv6gDPj2HPVm0crRLKtkDupD3Y
+OQ+urUAhE05sBCs=
+" Type="1"/>
+	</Properties>
+	<Keys Name="authentication">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="" Type="32771"/>
+	<KeyContent Value="" Type="32771"/>
+	<KeyProps Value="4261f1827dd6e44530f49eb79dd30181" Type="32771"/>
+</doc>

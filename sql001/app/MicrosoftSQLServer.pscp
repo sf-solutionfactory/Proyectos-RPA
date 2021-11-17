@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="MicrosoftSQLServer" CtxtId="cebfc7eb-76a2-4fa1-933b-0b1f729046c1" Nature="UIAUTOMATION" TechnoSDK="V3" Sync="0" PendingDelay="0">
+			<CAPTURE Name="APPLI_MicrosoftSQLServer_1" CtxtId="1" Techno="UIAutomation" />
+			<SCRIPTS />
+			<CRITERE>
+				<EXE Scan="Full"><![CDATA[SSMS.EXE]]></EXE>
+				<TITLE Scan="Full"><![CDATA[Microsoft SQL Server Management Studio]]></TITLE>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="MicrosoftSQLServer" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pWindowConnectToS" Comment="Window - Connect to Server" CtxtId="90e73486-f940-4300-b281-845b402d7992" SubpagesType="Multiple" RefreshMode="Window">
+					<CRITERE>
+						<Name Scan="Full"><![CDATA[Connect to Server]]></Name>
+						<AutomationId Scan="Full"><![CDATA[ConnectionDialog]]></AutomationId>
+						<TAG Scan="Full"><![CDATA[Window]]></TAG>
+						<Range Scan="Full"><![CDATA[R0]]></Range>
+					</CRITERE>
+					<TRACK_EVENTS>
+						<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+					</TRACK_EVENTS>
+					<OBJETS>
+						<OBJET Name="btConnect" CtxtId="ee2d5c9b-2f48-4639-a4a4-42bb58bf5a9b" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="Button" Scope="All" CapturedPos="5.R0R1">
+									<ATT Name="AutomationId">
+										<VALUE Scan="Full"><![CDATA[connect]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WindowConnectToS_1654156_1" Comment="Window - Connect to Server" CtxtId="5" Techno="UIAutomation" CapturedPos="5.R0" Timestamp="28/06/2021 16:54:17" MaskRectangle="0|0|416|312" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[C:\Program Files (x86)\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\Ssms.exe]]></PATH>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

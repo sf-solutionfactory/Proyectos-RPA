@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="leerXLS.debug.psc"/>
+		<Property Name="projectVersion" Value="1.2"/>
+		<Property Name="projectName" Value="leerXLS"/>
+		<Property Name="projectId" Value="4930ab97-4ac7-4a41-8644-8adf51962c54"/>
+		<Property Name="projectDate" Value="01/06/2021"/>
+		<Property Name="projectLabel" Value="Leer XLS"/>
+		<Property Name="projectClient" Value="ENCO"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value="leerXLS.zip"/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="28/9/2021"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaVentas" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="37dded21-4ac8-4f09-bc09-a4d0a00b8e05" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<Properties Name="scenario1">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaVentasSQL" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="1abe1288-dd5b-4d43-a52d-6e201c1025fd" Type="1"/>
+		<Property Name="timeout" Value="600" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario1">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="6933fcc60bec5cec8efb450886dc9135" Type="32771"/>
+	<KeyContent Value="c9ec63d433cb3e2036f69367549832d9" Type="32771"/>
+	<KeyProps Value="3a6c4146797443768b1f3b9961ce2993" Type="32771"/>
+</doc>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="CWindowsCMD" CtxtId="7aa63fac-1562-410d-a1ca-e160cb673ffd" Nature="UIAUTOMATION" TechnoSDK="V3" Sync="0" PendingDelay="0">
+			<CAPTURE Name="APPLI_CWindowsSysWOW64C_1" CtxtId="6" Techno="UIAutomation" />
+			<SCRIPTS />
+			<CRITERE>
+				<TITLE Scan="Part"><![CDATA[cmd.exe]]></TITLE>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="CWindowsCMD" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pWindowCMD" Comment="Window - C:\Windows\SysWOW64\cmd.exe" CtxtId="ec32f8f7-3d9d-41c2-a37c-f28b7c5e2676" SubpagesType="Single" RefreshMode="Window" MultiInstance="Y">
+					<CRITERE>
+						<Range Scan="Full"><![CDATA[R0]]></Range>
+						<Name Scan="Full"><![CDATA[C:\Windows\SysWOW64\cmd.exe]]></Name>
+					</CRITERE>
+					<TRACK_EVENTS>
+						<TRACK_EVENT Name="REFRESH(WINDOWOPENED(DESCENDANTS))" />
+					</TRACK_EVENTS>
+					<OBJETS>
+						<OBJET Name="oTextArea" CtxtId="9a5b1699-20ca-4e86-a471-913e6cdda95b" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="Document" Scope="All" CapturedPos="9.R0R2">
+									<ATT Name="AutomationId">
+										<VALUE Scan="Full"><![CDATA[Text Area]]></VALUE>
+									</ATT>
+									<ATT Name="Range">
+										<VALUE Scan="Full"><![CDATA[R2]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_WindowCWindowsS_1847107_1" Comment="Window - C:\Windows\SysWOW64\cmd.exe" CtxtId="9" Techno="UIAutomation" CapturedPos="9.R0" Timestamp="28/06/2021 18:47:10" MaskRectangle="0|0|993|519" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[C:\Windows\SysWOW64\cmd.exe]]></PATH>
+			<ACTIONS />
+			<EVENTS />
+			<SCENARII>
+				<Steps />
+			</SCENARII>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

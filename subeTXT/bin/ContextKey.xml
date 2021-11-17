@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="c9380a74-3cf6-4441-b8a2-ff8eedc29718">
+  <Entities>
+    <Entity Id="ad4b2f12-471f-4654-97f5-730d1ba5f58e" Name="credencial" IsArray="False">
+      <Entities>
+        <Entity Id="aeb0cae7-98fd-43ff-962d-f77f2092bc64" Name="uname" IsArray="False" />
+        <Entity Id="41d82001-ebb1-4e6e-97d8-8ba77249f4ad" Name="password" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="c0b258ef-c1cc-4452-ac12-4c9461341e42" Name="SAPLogon760Data" IsArray="False">
+      <Entities>
+        <Entity Id="15a15d38-1015-4b9f-b894-f91a7dde38e7" Name="pSAPLoginData" IsArray="False">
+          <Entities>
+            <Entity Id="ff26882c-81d1-48be-a558-e8c3da57769a" Name="edMandante" IsArray="False" />
+            <Entity Id="34785334-46a8-4057-b61a-a69e96db7cde" Name="edUsuarios" IsArray="False" />
+            <Entity Id="3ac23515-7b77-4f37-96ce-c5538a27206d" Name="oClvAcc" IsArray="False" />
+            <Entity Id="7092a354-68fa-4e99-8196-51cc9703c9e9" Name="edIdioma" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="ca4847e9-fa14-4482-8891-39a4918932da" Name="pSAPEasyAccessData" IsArray="False">
+          <Entities>
+            <Entity Id="adc9aa21-8fa3-427d-b93e-706261fd8282" Name="oGuiOkCodeField" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="3db02bcf-10c1-4c17-aa52-386d8d8ef90f" Name="pVentasYFacturasMasData" IsArray="False">
+          <Entities>
+            <Entity Id="dcf7e168-6360-4241-9d23-4c2d8ed7a5b6" Name="edFichero" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="d1a4e6af-34fc-42f4-8500-aea38a9e23ed" Name="pPosDocumVisualizaData" IsArray="False">
+          <Entities>
+            <Entity Id="278cf448-c9c8-4176-a280-8ccc7c3a8c73" Name="oTabla" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="c03eca43-be95-48f6-854c-39d1930cfeee" Name="Item" IsArray="True">
+          <Entities>
+            <Entity Id="67099740-1a7c-4432-a85c-d2c490cbe2af" Name="Valule" IsArray="True" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+  </Entities>
+</Context>

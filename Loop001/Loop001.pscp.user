@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<USER>
+	<BREAKPOINTS />
+	<BOOKMARKS />
+	<FINDHISTORY>
+		<FINDWHAT><![CDATA[pSearchResultsSAP_man]]></FINDWHAT>
+	</FINDHISTORY>
+	<DEBUGTRACEFINDHISTORY />
+	<OPENDOCS>
+		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SearchResultsSAP']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="87" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Src='workflow.js']" Offset="0" Length="0" />
+	</OPENDOCS>
+	<PROPERTIES>
+		<CurPerspective><![CDATA[2]]></CurPerspective>
+		<DebugTester><![CDATA[]]></DebugTester>
+	</PROPERTIES>
+	<WATCHES />
+	<APPLIFILTERS />
+	<EVENTFILTERS />
+	<WORKFLOW_MOSTUSED />
+</USER>

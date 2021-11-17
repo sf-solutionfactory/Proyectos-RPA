@@ -1,0 +1,6 @@
+﻿<APPLI Techno="UIAutomation" Name="APPLI_MicrosoftSQLServer_1" ParamName="Microsoft SQL Server Management Studio">
+	<PROPERTIES>
+		<EXE>SSMS.EXE</EXE>
+		<TITLE>Microsoft SQL Server Management Studio</TITLE>
+	</PROPERTIES>
+</APPLI>

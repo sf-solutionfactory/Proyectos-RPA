@@ -1,0 +1,116 @@
+﻿{"ts":"14:07:26.306","ctx":"Action","action":"ctx.log","params":["Es decir, el conector Web est\u00e1 activado",0],"verb":"LOGMESS","parentId":12}
+{"ts":"14:07:26.404","ctx":"Action","action":"ctx.log","params":["Hora",6],"verb":"LOGMESS","start":{"date":"2021-05-28","time":"14:07:25.389"},"current":{"date":"2021-05-28","time":"14:07:26.404"}}
+{"ts":"14:07:26.413","ctx":"Action","action":"ctx.log","params":["Opciones",6],"verb":"LOGMESS","anonymous":false,"autoTest":false,"breakException":false,"canonicalName":"","computerName":"DESKTOP-8E05UBG","demoMode":false,"demoTimer":0,"displayName":"","env":"dev","executionTimeout":300000,"frameworkVersion":"2.0.7.54","fullUserName":"DESKTOP-8E05UBG\\rogel","fullyQualifiedDN":"","highlightColor":255,"isDebug":true,"licence":{"id":"","name":"","serial":""},"studioLicence":{"id":"","name":"","serial":""},"path":{"exec":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","bin":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","local":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","log":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\log","resources":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","server":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\server"},"JScriptVersion":{"scriptEngine":"JScript","majorVersion":5,"minorVersion":8,"buildVersion":16384},"optionFiles":[],"productVersion":"2.0.7.54","productVersions":{"XsWrkMng2":"2.0.7.54","CxAppWeb3":"2.0.7.54"},"serverVersion":"","projectClient":"ENCO","projectComment":"","projectDate":"28/05/2021","projectIcon":"","projectLabel":"week3","projectName":"week3","projectUid":"3ccd9194-5a7b-4549-abf1-62e9f47c654c","projectVersion":"1.0","settings":{"ctxType":"ctx.dataClass"},"simulationMode":false,"shutdownConfirmation":true,"timeoutDisabled":false,"unattended":false,"restartConfirmation":false,"updateConfirmation":false,"trace":{"actions":false,"actionsFull":false,"advanced":false,"alternativeTraceFile":"","autoRecording":true,"autoRecordingCode":"OK","autoRecordingStarted":false,"context":false,"debuggerV2":false,"errors":true,"events":false,"extendPilots":false,"frameworkNotify":true,"frameworkTraces":false,"recording":false,"messageBoxes":false,"objects":false,"screenshotTraces":false,"windowsEvents":false},"traceArchive":{"maxDuration":5,"maxCount":10},"traceFolder":"log.DESKTOP-8E05UBG.rogel.2021-05-28_14.07.25.928","traceFolderRecording":"","traceLevel":3,"traceTimestamp":"2021-05-28_14.07.25.928","userName":"rogel","xml":{"traceLevel":3},"json":{"traceLevel":3},"tooltips":{"traceLevel":3,"animation":"fade","arrow":true,"defaultMaxShowCount":3,"defaultAutoShowCount":3,"enabled":true,"library":"opentip","maxWidth":600,"styles":{},"theme":"","zIndex":10000},"systray":{"traceLevel":3},"popup":{"traceLevel":3},"fso":{"traceLevel":3},"wmi":{"traceLevel":3},"wscript":{"traceLevel":3},"diagnostic":{"checkBHO":true,"displayPopup":true,"generateSingleDevelopmentDiagnostic":true,"saveCrashDumps":false,"saveDesktop":true,"saveEventViewer":false,"savePageStatus":true,"savePrograms":true,"saveXMLContext":false,"techTraceFolder":"%localappdata%Low\\SAP\\Intelligent RPA","archiveURL":"","traceLevel":3,"archiveFTP":{"enabled":false,"useFTPS":false,"site":"","remoteFolder":"","credential":null},"archiveCopy":{"enabled":false,"useXCopy":false,"useRobocopy":true,"useExecRun":false,"remoteFolder":""},"outlookSend":{"enabled":false,"destination":""}},"m2m":{"clientId":"","debug":false,"enabled":true,"traceLevel":3,"pingTimer":120000,"pingMarginTimer":30000,"replyTimer":30000,"pageName":"m2m_PSC.htm","root":"","showConsole":false,"showMenu":true,"showProjectSystray":false,"UIUrl":"","url":""},"galaxyAPI":{"recordingEnabled":false,"selfTestMode":false,"showProgress":false,"uploadLocalJobs":false,"progressJobCount":30,"enableStudioRestart":false,"serverProcess":"Supervisor","traceLevel":3,"keys":{"clientEncryption":{"name":"clientEncryption","comment":"Client encryption key","usage":"encryption","type":"container","server":false,"store":"","storeLocation":1,"algorithm":"","publicKey":"","h1":"DESKTOP-8E05UBG","h2":"rogel","alias":"clientEncryption"},"clientSignature":{"name":"clientSignature","comment":"Client signature key","usage":"signature","type":"container","server":false,"store":"","storeLocation":1,"algorithm":"","publicKey":"","h1":"DESKTOP-8E05UBG","h2":"rogel","alias":"clientSignature"},"serverEncryption":{"name":"serverEncryption","comment":"Server encryption key","usage":"encryption","type":"container","server":true,"store":"","storeLocation":2,"algorithm":"","publicKey":"","h1":"DESKTOP-8E05UBG","h2":"","alias":"serverEncryption"},"serverSignature":{"name":"serverSignature","comment":"Server signature key","usage":"signature","type":"container","server":true,"store":"","storeLocation":2,"algorithm":"","publicKey":"","h1":"DESKTOP-8E05UBG","h2":"","alias":"serverSignature"}}},"sapui5":{"traceLevel":3,"useRecordReplayForExecution":false,"useWaitForUI5":true,"ui5MajorVersionSupported":1,"ui5MinorVersionSupported":61,"ui5PatchVersionSupported":0,"timeoutReady":5000,"timeoutReadyRRAPI":15000},"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\week3\\server"}
+{"ts":"14:07:27.475","ctx":"Action","action":"ctx.log","params":["El registro autom\u00e1tico est\u00e1 activado.",0],"verb":"LOGMESS"}
+{"ts":"14:07:50.936","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:50.949","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:0",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:50.964","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $9",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:50.979","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.200","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.214","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:0",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.229","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $9",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.245","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.347","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.361","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:1",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.379","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $19",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.398","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.824","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.840","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:1",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.856","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $19",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.878","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:07:52.964","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.980","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:52.996","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $20",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:07:53.15","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.165","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.183","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:2",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.206","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $20",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.224","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.310","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.326","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:3",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.341","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $30",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.358","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.802","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.814","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.829","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $30",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.844","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:02.926","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.940","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:4",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.951","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $38",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:02.964","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:05.229","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:05.245","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:4",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:05.263","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $38",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:05.280","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:05.372","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:05.383","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:5",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:05.399","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $40",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:05.419","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:13.584","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:13.599","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:5",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:13.617","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $40",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:13.634","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:13.723","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:13.739","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:6",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:13.758","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $48",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:13.776","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:16.34","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:16.45","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:6",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:16.62","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $48",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:16.75","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:16.158","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:16.174","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:7",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:16.192","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $55",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:16.210","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:19.470","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:19.486","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:7",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:19.507","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $55",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:19.525","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:19.617","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:19.632","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:8",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:19.650","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $63",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:19.666","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:21.922","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:21.936","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:8",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:21.951","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $63",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:21.970","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:22.58","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:22.72","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:9",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:22.88","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $68",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:22.102","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:27.405","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:27.419","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:9",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:27.437","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $68",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:27.451","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:27.554","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:27.570","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:10",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:27.585","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $76",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:27.602","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:29.855","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:29.871","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:10",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:29.888","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $76",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:29.902","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:29.983","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:30.1","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:11",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:30.18","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $80",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:30.36","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:36.378","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:36.396","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:11",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:36.415","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $80",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:36.433","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:36.531","ctx":"Action","action":"ctx.log","params":["|__________in step 2",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:36.546","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:12",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:36.563","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $84",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:36.579","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":82}
+{"ts":"14:08:42.869","ctx":"Action","action":"ctx.log","params":["|__________in step 3",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:42.881","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:12",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:42.892","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $84",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:42.904","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":86}
+{"ts":"14:08:42.990","ctx":"Action","action":"ctx.log","params":["|__________in step 4",0],"verb":"LOGMESS","parentId":88}
+{"ts":"14:08:43.9","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:12",0],"verb":"LOGMESS","parentId":88}
+{"ts":"14:08:43.25","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $84",0],"verb":"LOGMESS","parentId":88}
+{"ts":"14:08:43.42","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":88}
+{"ts":"14:08:43.135","ctx":"Action","action":"ctx.log","params":["|__________in step end scenario",0],"verb":"LOGMESS","parentId":90}
+{"ts":"14:08:43.152","ctx":"Action","action":"ctx.log","params":["|__________Iteraciones:12",0],"verb":"LOGMESS","parentId":90}
+{"ts":"14:08:43.173","ctx":"Action","action":"ctx.log","params":["|__________Total Gain: $84",0],"verb":"LOGMESS","parentId":90}
+{"ts":"14:08:43.189","ctx":"Action","action":"ctx.log","params":["|--------------|",0],"verb":"LOGMESS","parentId":90}

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConteXtorStudio Version="StudioReco V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" noNamespaceSchemaLocation="XsdStudio.xsd">
+	<PROCESSUS>
+		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus">
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="GLOBAL" />
+			</_DECLAREVAR>
+			<SCRIPTS />
+			<RESOURCES />
+		</PROCESS>
+	</PROCESSUS>
+	<APPLICATIONS>
+		<APPLI Name="SearchResultsSAP" CtxtId="2da7569e-575b-4655-9900-ab1ce671d6b2" Nature="WEB3" TechnoSDK="V3" Sync="250">
+			<CAPTURE Name="APPLI_SearchResultsSAP_1" CtxtId="8" Techno="WEB" />
+			<SCRIPTS />
+			<CRITERE>
+				<DOMAIN Scan="Full"><![CDATA[help.sap.com]]></DOMAIN>
+			</CRITERE>
+			<_DECLAREVAR>
+				<STRUCTUREDON Name="SearchResultsSAP" />
+			</_DECLAREVAR>
+			<_ECRANS>
+				<PAGE Name="pSearchResultsSAP" Comment="Search Results - SAP Help Portal" CtxtId="65f097d3-4bc2-49f3-b6d6-fe0af73afb20">
+					<CRITERE>
+						<TITLE Scan="Full"><![CDATA[Search Results - SAP Help Portal]]></TITLE>
+						<DOMAIN Scan="Full"><![CDATA[help.sap.com]]></DOMAIN>
+					</CRITERE>
+					<PATH><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></PATH>
+					<OBJETS>
+						<OBJET Name="oSearchKeywords" CtxtId="c0e27381-ba38-4b58-9b54-5f85e0808709" SpecIndex="1">
+							<CRITERE>
+								<TAG Name="INPUT" Scope="All" CapturedPos="24.R0R1R2R0R0R0R1R0R1R0">
+									<ATT Name="name">
+										<VALUE Scan="Full"><![CDATA[searchKeywords]]></VALUE>
+									</ATT>
+									<ATT Name="id">
+										<VALUE Scan="Full"><![CDATA[searchKeywords]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="oSearch_ct_0" CtxtId="adcdfd54-09d6-473c-832d-033cdae32455">
+							<CRITERE>
+								<TAG Name="DIV" Scope="All" CapturedPos="24.R0R1R2R0R2R0R0R2R2R0R0" Occurs="Y">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[search-result ng-scope]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+						<OBJET Name="btSearchName" CtxtId="17da3ddc-c6f2-4f17-88ac-98075e9f110f" Ascendant="oSearch_ct_0" SpecIndex="2">
+							<CRITERE>
+								<TAG Name="A" Scope="All" CapturedPos="24.R0R1R2R0R2R0R0R2R2R0R0R1R0R0" Range="0">
+									<ATT Name="class">
+										<VALUE Scan="Full"><![CDATA[ng-binding]]></VALUE>
+									</ATT>
+								</TAG>
+							</CRITERE>
+						</OBJET>
+					</OBJETS>
+					<CAPTURE Name="PAGE_SearchResultsSAP_1525318_1" Comment="Search Results - SAP Help Portal" CtxtId="24" Techno="WEB" Timestamp="01/06/2021 15:25:33" />
+				</PAGE>
+			</_ECRANS>
+			<PATH><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></PATH>
+		</APPLI>
+	</APPLICATIONS>
+</ConteXtorStudio>

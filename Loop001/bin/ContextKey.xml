@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="5f61fea1-f9a1-40c5-876c-de4fe529606b">
+  <Entities>
+    <Entity Id="5033f889-72a7-4fa9-be7c-1359aea2c840" Name="SAPHelpPortalData" IsArray="False">
+      <Entities>
+        <Entity Id="42ae9176-bfd6-456b-80f5-5db49fea6282" Name="pSAPHelpPortalData" IsArray="False">
+          <Entities>
+            <Entity Id="bbd9c7d3-5b72-4be1-b8c2-3283a2f1fe7c" Name="oSearchKeywords" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="4f7a5f05-75f1-49a7-9f74-649a59e422d8" Name="pSearchResultsSAPData" IsArray="False">
+          <Entities>
+            <Entity Id="7229c4be-d6c6-4821-9d43-4b3944a5e001" Name="btSearchName" IsArray="True" />
+            <Entity Id="3a2da8f7-12f0-4e84-a376-54057b77a502" Name="oSearchKeywords" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="cd84c83e-391c-44d6-a67b-aaf7f2786d20" Name="pSearchResultsData" IsArray="False">
+          <Entities>
+            <Entity Id="27f3390e-0ebe-4a96-84b3-22424922480f" Name="oSearchKeywords" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="ba5f101b-6de7-48d1-a203-225f681970b5" Name="GoogleData" IsArray="False">
+      <Entities>
+        <Entity Id="40a98d69-2421-4f72-88b4-db5de888469c" Name="pGoogleData" IsArray="False">
+          <Entities>
+            <Entity Id="660eb729-3171-4d60-a1e7-f8a085ed322f" Name="oQ" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="6500fa5d-2468-4f75-b517-a4844894aec8" Name="pRPABuscarConGoogData" IsArray="False">
+          <Entities>
+            <Entity Id="ea227840-77dd-4ac5-898d-511114b93819" Name="oQ" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="29075844-d022-4de6-aadb-994d54434686" Name="SAPHelpPortalChromeData" IsArray="False">
+      <Entities>
+        <Entity Id="47d5e1ce-fd74-4fd8-9bab-4d5ef41c4c60" Name="pSearchResultsData" IsArray="False">
+          <Entities>
+            <Entity Id="1c20281c-4911-43a7-909d-07e71fc90b9f" Name="oSearchKeywords" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="c00c11de-7943-47b4-9115-db72e604a880" Name="pSearchResultsSAPData" IsArray="False">
+          <Entities>
+            <Entity Id="293adc47-e6b5-4096-965e-39781f46b21e" Name="oSearchKeywords" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="2ff4e2bd-489e-4ef2-9330-1e039eccfaaa" Name="pLearningJourneyLaData" IsArray="False">
+          <Entities>
+            <Entity Id="4ce8e0cc-6f62-4fd1-9140-9190ed0c5703" Name="oMyInput" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="c693b172-fb81-481f-ae24-8cce66a022c8" Name="MicrosoftSQLServerData" IsArray="False">
+      <Entities>
+        <Entity Id="c7f71839-92b5-4278-96fa-15edd4ae9981" Name="pWindowConnectToSData" IsArray="False">
+          <Entities>
+            <Entity Id="90f620fb-b9c5-4a08-9761-242e766cea88" Name="edDESKTOP8E05UBG" IsArray="False" />
+            <Entity Id="d6999154-d6b7-4e54-98f0-32154fd0ba25" Name="cbComboBoxAuthenticatio" IsArray="False" />
+            <Entity Id="6d0293e0-1d9a-4429-bd25-b375bca51c77" Name="edPagos" IsArray="False" />
+            <Entity Id="c031f6e6-ab07-4746-b95c-a37e755674f6" Name="edPassword" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="2da7569e-575b-4655-9900-ab1ce671d6b2" Name="SearchResultsSAPData" IsArray="False">
+      <Entities>
+        <Entity Id="65f097d3-4bc2-49f3-b6d6-fe0af73afb20" Name="pSearchResultsSAPData" IsArray="False">
+          <Entities>
+            <Entity Id="c0e27381-ba38-4b58-9b54-5f85e0808709" Name="oSearchKeywords" IsArray="False" />
+            <Entity Id="17da3ddc-c6f2-4f17-88ac-98075e9f110f" Name="btSearchName" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+  </Entities>
+</Context>

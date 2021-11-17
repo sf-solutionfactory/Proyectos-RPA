@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="b453a7ea-5273-491f-81be-16dc688b77a8">
+  <Entities>
+    <Entity Id="8a4cdb2b-9395-4d9f-84a7-081d7ffe9266" Name="ExcelData" IsArray="False">
+      <Entities>
+        <Entity Id="604d2e18-0a62-4b89-b3bd-08af333c8219" Name="TableName" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="922e1f69-9dd2-4623-ba0a-09b591d896c6" Name="txtFile" IsArray="False">
+      <Entities>
+        <Entity Id="58dfdde9-7600-406a-b3ad-fcf177966a56" Name="Line" IsArray="True" />
+      </Entities>
+    </Entity>
+    <Entity Id="0fab8388-2037-452f-9d37-6d7f5f612bac" Name="SAPHelpPortalData" IsArray="False">
+      <Entities>
+        <Entity Id="9fbca501-45a4-4c0b-a665-eb4d91c80d12" Name="pSAPHelpPortalData" IsArray="False">
+          <Entities>
+            <Entity Id="e0351876-f6af-456c-b676-20eda3899a31" Name="oSearchKeywords" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="dedb3524-5518-4e6f-9b06-2a732ad2b0aa" Name="pSearchResultsSAPData" IsArray="False">
+          <Entities>
+            <Entity Id="7ddbb991-bccc-4b1f-adf4-165de94dda96" Name="btSearchName" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="dd28d4e0-40bf-4a85-8384-7cedcbfb5900" Name="searchResult" IsArray="False">
+      <Entities>
+        <Entity Id="ff728b45-3ce1-40db-8bd2-4e96dc4106a2" Name="searchName" IsArray="True" />
+      </Entities>
+    </Entity>
+  </Entities>
+</Context>

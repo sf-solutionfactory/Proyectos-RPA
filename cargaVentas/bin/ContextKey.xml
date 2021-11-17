@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="c6525e84-fe0f-4790-bfd4-fa6d7c558dc8">
+  <Entities>
+    <Entity Id="f3dee554-e543-4b13-91e7-aaac3db7b7dc" Name="lines" IsArray="False" />
+    <Entity Id="9abb4c7d-bc48-4ea0-8b52-f95844afdf16" Name="archivoTXT" IsArray="False" />
+    <Entity Id="387e9562-217d-4db6-ac30-4ddf8aa2c424" Name="SAPLogon760Data" IsArray="False">
+      <Entities>
+        <Entity Id="23ad662b-fccf-4f56-aaf4-a7c2e67811d5" Name="pSAPLoginData" IsArray="False">
+          <Entities>
+            <Entity Id="50bae326-61a9-4d75-9d19-a121139b3f87" Name="edMandante" IsArray="False" />
+            <Entity Id="fc800088-4511-4534-9ee6-fa94afd47f78" Name="edUsuarios" IsArray="False" />
+            <Entity Id="f1521899-bfc0-41af-8bb9-959ac570b36f" Name="oClvAcc" IsArray="False" />
+            <Entity Id="0adbc56d-9c78-4a2a-b4af-36ac7e6378d2" Name="edIdioma" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="1e320d14-d570-426c-9868-c6c41a4702a0" Name="pSAPEasyAccessData" IsArray="False">
+          <Entities>
+            <Entity Id="e0d2787b-e91c-4f99-b676-fc292dd8dcea" Name="oGuiOkCodeField" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="e3958b3a-d465-4c3a-9123-0b5324367168" Name="pVentasYFacturasMasData" IsArray="False">
+          <Entities>
+            <Entity Id="905a4415-ea17-4c97-8f24-b4471ee6f518" Name="edFichero" IsArray="False" />
+            <Entity Id="c8f04f61-adab-4c6e-a263-f69fb5c6472f" Name="oVentaPorLínea" IsArray="False" />
+            <Entity Id="0faafb88-2cfd-49ed-90a8-e1e2d2ff9ea2" Name="oSoloCarga" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+    <Entity Id="e18c11a9-93c7-4367-8eed-f44ed895df74" Name="sapgui" IsArray="False">
+      <Entities>
+        <Entity Id="fa523cf8-53e4-4487-9f02-968316a21f9d" Name="uname" IsArray="False" />
+        <Entity Id="7de06cb9-eb2d-44fd-8810-386408e07624" Name="pass" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="e659c979-b737-4bc7-93cc-f7b2a2fbd345" Name="datetime" IsArray="False" />
+    <Entity Id="5c987277-3ada-44aa-8c25-d3ce33db4005" Name="fechaActual" IsArray="False" />
+    <Entity Id="d29a4478-4c0b-42b4-bc02-b1816a9da9e6" Name="length" IsArray="False" />
+  </Entities>
+</Context>

@@ -1,0 +1,33 @@
+﻿{"ts":"14:29:17.809","ctx":"Event","event":"cargarVentas","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"14:29:17.814","ctx":"State","type":"scenario","name":"cargarVentas","id":88,"action":"start","appliName":"GLOBAL","parentId":66,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\server"}}}
+{"ts":"14:29:17.821","ctx":"State","type":"once","name":"timeout(cargarVentas)","id":89,"action":"set","parentName":"cargarVentas","parentId":88}
+{"ts":"14:29:17.831","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:12",600000],"result":"","verb":"NOTIFY","parentId":88,"appliName":"GLOBAL","appliInst":0}
+{"ts":"14:29:17.839","ctx":"State","type":"step","name":"getLines","id":91,"action":"add","appliName":"GLOBAL","parentName":"cargarVentas","parentId":88}
+{"ts":"14:29:17.848","ctx":"State","type":"step","name":"Display_msgbox_fin","id":93,"action":"add","appliName":"GLOBAL","parentName":"cargarVentas","parentId":88}
+{"ts":"14:29:17.857","ctx":"State","type":"step","name":"getLines","id":91,"action":"start","appliName":"GLOBAL","parentName":"cargarVentas","parentId":88}
+{"ts":"14:29:17.865","ctx":"State","type":"once","name":"timeout(getLines)","id":94,"action":"set","parentName":"getLines","parentId":91}
+{"ts":"14:29:17.874","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:13",30000],"result":"","verb":"NOTIFY","parentId":91,"appliName":"GLOBAL","appliInst":0}
+{"ts":"14:29:17.882","ctx":"Action","action":"ctx.workflow","params":["cargarVentas","67ef241a-cf5e-4eaa-a1ca-2a2c84564d8c"],"parentId":91}
+{"ts":"14:33:15.212","ctx":"Action","action":"ctx.exec","params":["sqlcmd -S 104.210.223.37,4785 -U \"UserSp\" -P \"Inicio1#\" -d \"Pagos\"-o C:\\LAYOUT\\sql003.txt -Q \"exec Reportesap @idestacion= null, @Fechaini='20210629', @fechafin ='20210629'\"",30000,null],"parentId":91}
+{"ts":"14:33:15.265","ctx":"Action","action":"ctx.polling","params":[{"delay":1000,"nbMax":30000}],"parentId":91}
+{"ts":"14:33:15.390","ctx":"State","type":"once","name":"timeout(getLines)","id":94,"action":"reset","parentName":"getLines","parentId":91}
+{"ts":"14:33:15.438","ctx":"State","type":"step","name":"getLines","id":91,"action":"end","appliName":"GLOBAL","parentId":91}
+{"ts":"14:33:15.452","ctx":"State","type":"step","name":"Display_msgbox_fin","id":93,"action":"start","appliName":"GLOBAL","parentName":"cargarVentas","parentId":88}
+{"ts":"14:33:15.466","ctx":"State","type":"once","name":"timeout(Display_msgbox_fin)","id":95,"action":"set","parentName":"Display_msgbox_fin","parentId":93}
+{"ts":"14:33:15.480","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:14",30000],"result":"","verb":"NOTIFY","parentId":93,"appliName":"GLOBAL","appliInst":0}
+{"ts":"14:33:15.492","ctx":"Action","action":"ctx.workflow","params":["cargarVentas","f608cd85-1b58-4bc4-8163-e3ca4f06c89b"],"parentId":93}
+{"ts":"14:33:15.508","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\bin\\fin\\popup.html"],"parentId":93}
+{"ts":"14:33:15.521","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\SQL001\\bin\\popup\\popup.html"],"parentId":93}
+{"ts":"14:33:15.662","ctx":"Action","action":"messbox2","params":[{"title":"Base de datos","message":"Datos obtenidos correctamente"}],"result":"","verb":"MESSBOX2","parentId":93,"appliName":"GLOBAL","appliInst":0}
+{"ts":"14:33:15.675","ctx":"State","type":"on","name":"GLOBAL._fin:_Any_","id":96,"action":"set"}
+{"ts":"14:33:40.324","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"14:33:40.427","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"run"}
+{"ts":"14:33:40.436","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"set"}
+{"ts":"14:33:40.448","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"14:33:40.481","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"14:33:40.484","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"14:33:40.493","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"14:33:40.502","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":33,"action":"run"}
+{"ts":"14:33:40.511","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":33,"action":"set"}
+{"ts":"14:33:40.521","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":39,"action":"run"}
+{"ts":"14:33:40.529","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":39,"action":"set"}

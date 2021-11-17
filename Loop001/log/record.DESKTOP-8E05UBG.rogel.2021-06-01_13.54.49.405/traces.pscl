@@ -1,0 +1,95 @@
+﻿{"ts":"13:54:49.405","ctx":"Event","event":"chrome","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"13:54:49.411","ctx":"State","type":"scenario","name":"chrome","id":86,"action":"start","appliName":"GLOBAL","parentId":77,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\server"}}}
+{"ts":"13:54:49.419","ctx":"State","type":"once","name":"timeout(chrome)","id":87,"action":"set","parentName":"chrome","parentId":86}
+{"ts":"13:54:49.428","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:7",600000],"result":"","verb":"NOTIFY","parentId":86,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:54:49.436","ctx":"State","type":"step","name":"pSearchResults_manage_1","id":89,"action":"add","appliName":"GLOBAL","parentName":"chrome","parentId":86}
+{"ts":"13:54:49.444","ctx":"State","type":"step","name":"pSearchResults_manage_1","id":89,"action":"start","appliName":"GLOBAL","parentName":"chrome","parentId":86}
+{"ts":"13:54:49.452","ctx":"State","type":"once","name":"timeout(pSearchResults_manage_1)","id":90,"action":"set","parentName":"pSearchResults_manage_1","parentId":89}
+{"ts":"13:54:49.461","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:8",30000],"result":"","verb":"NOTIFY","parentId":89,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:54:49.469","ctx":"Action","action":"ctx.workflow","params":["chrome","535e1a0b-68b6-4717-bc92-907b48c28055"],"parentId":89}
+{"ts":"13:54:49.477","ctx":"Action","action":"wait","params":[null],"result":"","parentId":89,"appliName":"SAPHelpPortalChrome","appliInst":-1,"pageName":"pSearchResults","pageInst":-1}
+{"ts":"13:54:49.485","ctx":"Action","action":"count","params":[],"result":0,"parentId":89,"appliName":"SAPHelpPortalChrome","appliInst":-1,"pageName":"pSearchResults","pageInst":-1}
+{"ts":"13:54:49.493","ctx":"Action","action":"exist","params":[],"result":false,"parentId":89,"appliName":"SAPHelpPortalChrome","appliInst":-1,"pageName":"pSearchResults","pageInst":-1}
+{"ts":"13:54:49.501","ctx":"State","type":"once","name":"SAPHelpPortalChrome.pSearchResults:LOAD","id":91,"action":"set","parentName":"pSearchResults_manage_1","parentId":89}
+{"ts":"13:54:49.524","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:54:57.796","ctx":"Event","event":"START","appliName":"SAPHelpPortal","appliInst":0}
+{"ts":"13:54:57.854","ctx":"Event","event":"START","appliName":"SAPHelpPortal","appliInst":10001}
+{"ts":"13:54:57.871","ctx":"Event","event":"LOAD","appliName":"SAPHelpPortal","appliInst":10001,"pageName":"pSAPHelpPortal","pageInst":1000,"data":"<_ObjectData_><Name><![CDATA[]]></Name><Title><![CDATA[SAP Help Portal]]></Title><Referrer><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></Referrer><HostName><![CDATA[help.sap.com]]></HostName><Search><![CDATA[]]></Search><URL><![CDATA[https://help.sap.com/viewer/index]]></URL><MainFrame>true</MainFrame><UserAgent><![CDATA[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36]]></UserAgent><CX>1920</CX><CY>969</CY><Visible/><Enabled/><_Items_></_Items_></_ObjectData_>"}
+{"ts":"13:54:57.874","ctx":"State","type":"once","name":"SAPHelpPortal.pSAPHelpPortal:LOAD","id":41,"action":"run"}
+{"ts":"13:54:58.241","ctx":"Action","action":"set","params":["RPA"],"result":"","verb":"SETVALUE","parentId":41,"appliName":"SAPHelpPortal","appliInst":10001,"pageName":"pSAPHelpPortal","pageInst":1000,"itemName":"oSearchKeywords"}
+{"ts":"13:54:58.250","ctx":"Action","action":"click","params":[],"result":"","verb":"FCTBTN","parentId":41,"appliName":"SAPHelpPortal","appliInst":10001,"pageName":"pSAPHelpPortal","pageInst":1000,"itemName":"btINPUT"}
+{"ts":"13:54:58.259","ctx":"State","type":"once","name":"SAPHelpPortal.pSAPHelpPortal:LOAD","id":41,"action":"reset"}
+{"ts":"13:54:58.419","ctx":"Event","event":"UNLOAD","appliName":"SAPHelpPortal","appliInst":10001,"pageName":"pSAPHelpPortal","pageInst":1000,"data":"<_ObjectData_><Name><![CDATA[]]></Name><Title><![CDATA[Search Results - SAP Help Portal]]></Title><Referrer><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></Referrer><HostName><![CDATA[help.sap.com]]></HostName><Search><![CDATA[?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></Search><URL><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></URL><MainFrame>true</MainFrame><UserAgent><![CDATA[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36]]></UserAgent><CX>1920</CX><CY>969</CY><Visible/><Enabled/><_Items_></_Items_></_ObjectData_>"}
+{"ts":"13:54:58.426","ctx":"State","type":"on","name":"SAPHelpPortal.pSAPHelpPortal:UNLOAD","id":27,"action":"run"}
+{"ts":"13:54:58.439","ctx":"State","type":"on","name":"SAPHelpPortal.pSAPHelpPortal:UNLOAD","id":27,"action":"set"}
+{"ts":"13:54:58.797","ctx":"Event","event":"END","appliName":"SAPHelpPortal","appliInst":10001}
+{"ts":"13:55:07.232","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"run"}
+{"ts":"13:55:07.237","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"set"}
+{"ts":"13:55:07.434","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"run"}
+{"ts":"13:55:07.436","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"set"}
+{"ts":"13:55:08.626","ctx":"Event","event":"START","appliName":"SAPHelpPortal","appliInst":10001}
+{"ts":"13:55:08.641","ctx":"Event","event":"LOAD","appliName":"SAPHelpPortal","appliInst":10001,"pageName":"pSAPHelpPortal","pageInst":1001,"data":"<_ObjectData_><Name><![CDATA[]]></Name><Title><![CDATA[SAP Help Portal]]></Title><Referrer><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></Referrer><HostName><![CDATA[help.sap.com]]></HostName><Search><![CDATA[]]></Search><URL><![CDATA[https://help.sap.com/viewer/index]]></URL><MainFrame>true</MainFrame><UserAgent><![CDATA[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36]]></UserAgent><CX>1920</CX><CY>969</CY><Visible/><Enabled/><_Items_></_Items_></_ObjectData_>"}
+{"ts":"13:55:13.766","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:SYSTRAY1","id":69,"action":"run"}
+{"ts":"13:55:13.770","ctx":"Action","action":"count","params":[],"result":1,"parentId":69,"appliName":"POPUPS","appliInst":0,"pageName":"_Systray","pageInst":67911888}
+{"ts":"13:55:13.782","ctx":"Action","action":"exist","params":[],"result":true,"parentId":69,"appliName":"POPUPS","appliInst":0,"pageName":"_Systray","pageInst":67911888}
+{"ts":"13:55:13.791","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin\\Systray\\popup.html"],"parentId":69}
+{"ts":"13:55:13.809","ctx":"Action","action":"messbox2","params":[{"visible":true,"XRelative":"center","YRelative":"center","X":1600,"Y":1018}],"result":"true","verb":"MESSBOX2","parentId":69,"appliName":"POPUPS","appliInst":0}
+{"ts":"13:55:13.814","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:SYSTRAY1","id":69,"action":"set"}
+{"ts":"13:55:15.592","ctx":"Event","event":"CLICK","appliName":"POPUPS","appliInst":0,"pageName":"_Systray","pageInst":67911888,"itemName":"chrome","itemInst":0,"data":"chrome"}
+{"ts":"13:55:15.627","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":84,"action":"run"}
+{"ts":"13:55:15.631","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin\\Systray\\popup.html"],"parentId":84}
+{"ts":"13:55:15.659","ctx":"Action","action":"messbox2","params":[{"visible":false}],"result":"true","verb":"MESSBOX2","parentId":84,"appliName":"POPUPS","appliInst":0}
+{"ts":"13:55:15.667","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"chrome","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!json:{}",0],"result":"","verb":"NOTIFY","parentId":84,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:55:15.675","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":84,"action":"set"}
+{"ts":"13:55:15.728","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":84,"action":"run"}
+{"ts":"13:55:15.731","ctx":"Action","action":"ctx.fso.file.exist","params":["C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin\\Systray\\popup.html"],"parentId":84}
+{"ts":"13:55:15.747","ctx":"Action","action":"messbox2","params":[{"visible":false}],"result":"true","verb":"MESSBOX2","parentId":84,"appliName":"POPUPS","appliInst":0}
+{"ts":"13:55:15.751","ctx":"State","type":"on","name":"POPUPS._Systray:evSystray","id":84,"action":"set"}
+{"ts":"13:55:15.767","ctx":"Event","event":"chrome","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"13:55:15.770","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:chrome","id":77,"action":"run"}
+{"ts":"13:55:15.783","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:9",30000],"result":"","verb":"NOTIFY","parentId":77,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:55:15.802","ctx":"State","type":"on","name":"GLOBAL.SYSTRAY1:chrome","id":77,"action":"set"}
+{"ts":"13:55:15.990","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:55:16.5","ctx":"State","type":"scenario","name":"chrome","id":107,"action":"start","appliName":"GLOBAL","parentId":77,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\log","currentURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\bin","serverURL":"C:\\Users\\rogel\\Documents\\SAP\\Intelligent RPA\\Desktop Studio\\Loop001\\server"}}}
+{"ts":"13:55:16.9","ctx":"State","type":"once","name":"timeout(chrome)","id":108,"action":"set","parentName":"chrome","parentId":107}
+{"ts":"13:55:16.17","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:10",600000],"result":"","verb":"NOTIFY","parentId":107,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:55:16.26","ctx":"State","type":"step","name":"pSearchResults_manage_1","id":110,"action":"add","appliName":"GLOBAL","parentName":"chrome","parentId":107}
+{"ts":"13:55:16.34","ctx":"State","type":"once","name":"timeout(pSearchResults_manage_1)","id":90,"action":"reset","parentName":"pSearchResults_manage_1","parentId":89}
+{"ts":"13:55:16.44","ctx":"State","type":"once","name":"SAPHelpPortalChrome.pSearchResults:LOAD","id":91,"action":"reset","parentName":"pSearchResults_manage_1","parentId":89}
+{"ts":"13:55:16.52","ctx":"State","type":"step","name":"pSearchResults_manage_1","id":89,"action":"end","appliName":"GLOBAL","parentId":77}
+{"ts":"13:55:16.64","ctx":"State","type":"scenario","name":"chrome","id":86,"action":"end","appliName":"GLOBAL","parentId":77,"data":"OK"}
+{"ts":"13:55:16.75","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:11",30000],"result":"","verb":"NOTIFY","parentId":77,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:55:16.103","ctx":"State","type":"step","name":"pSearchResults_manage_1","id":110,"action":"start","appliName":"GLOBAL","parentName":"chrome","parentId":107}
+{"ts":"13:55:16.109","ctx":"State","type":"once","name":"timeout(pSearchResults_manage_1)","id":111,"action":"set","parentName":"pSearchResults_manage_1","parentId":110}
+{"ts":"13:55:16.120","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:12",30000],"result":"","verb":"NOTIFY","parentId":110,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:55:16.129","ctx":"Action","action":"ctx.workflow","params":["chrome","535e1a0b-68b6-4717-bc92-907b48c28055"],"parentId":110}
+{"ts":"13:55:16.138","ctx":"Action","action":"wait","params":[null],"result":"","parentId":110,"appliName":"SAPHelpPortalChrome","appliInst":-1,"pageName":"pSearchResults","pageInst":-1}
+{"ts":"13:55:16.147","ctx":"Action","action":"count","params":[],"result":0,"parentId":110,"appliName":"SAPHelpPortalChrome","appliInst":-1,"pageName":"pSearchResults","pageInst":-1}
+{"ts":"13:55:16.159","ctx":"Action","action":"exist","params":[],"result":false,"parentId":110,"appliName":"SAPHelpPortalChrome","appliInst":-1,"pageName":"pSearchResults","pageInst":-1}
+{"ts":"13:55:16.168","ctx":"State","type":"once","name":"SAPHelpPortalChrome.pSearchResults:LOAD","id":112,"action":"set","parentName":"pSearchResults_manage_1","parentId":110}
+{"ts":"13:55:16.177","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:55:16.466","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:55:16.472","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:55:19.218","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"run"}
+{"ts":"13:55:19.223","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"set"}
+{"ts":"13:55:19.614","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"run"}
+{"ts":"13:55:19.619","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":47,"action":"set"}
+{"ts":"13:55:25.973","ctx":"Event","event":"UNLOAD","appliName":"SAPHelpPortal","appliInst":10001,"pageName":"pSAPHelpPortal","pageInst":1001,"data":"<_ObjectData_><Name><![CDATA[]]></Name><Title><![CDATA[Search Results - SAP Help Portal]]></Title><Referrer><![CDATA[https://help.sap.com/viewer/search?q=RPA&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></Referrer><HostName><![CDATA[help.sap.com]]></HostName><Search><![CDATA[?q=a&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></Search><URL><![CDATA[https://help.sap.com/viewer/search?q=a&language=en-US&state=PRODUCTION&format=standard,html,pdf,others]]></URL><MainFrame>true</MainFrame><UserAgent><![CDATA[Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36]]></UserAgent><CX>1920</CX><CY>969</CY><Visible/><Enabled/><_Items_></_Items_></_ObjectData_>"}
+{"ts":"13:55:25.980","ctx":"State","type":"on","name":"SAPHelpPortal.pSAPHelpPortal:UNLOAD","id":27,"action":"run"}
+{"ts":"13:55:25.997","ctx":"State","type":"on","name":"SAPHelpPortal.pSAPHelpPortal:UNLOAD","id":27,"action":"set"}
+{"ts":"13:55:26.318","ctx":"Event","event":"END","appliName":"SAPHelpPortal","appliInst":10001}
+{"ts":"13:55:32.176","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"13:55:32.254","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"run"}
+{"ts":"13:55:32.265","ctx":"State","type":"on","name":"POPUPS:QUIT","id":24,"action":"set"}
+{"ts":"13:55:32.287","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"13:55:32.305","ctx":"Event","event":"QUIT","appliName":"SAPHelpPortal","appliInst":0}
+{"ts":"13:55:32.309","ctx":"State","type":"on","name":"SAPHelpPortal:QUIT","id":26,"action":"run"}
+{"ts":"13:55:32.322","ctx":"State","type":"on","name":"SAPHelpPortal:QUIT","id":26,"action":"set"}
+{"ts":"13:55:32.366","ctx":"Event","event":"END","appliName":"SAPHelpPortal","appliInst":0}
+{"ts":"13:55:32.453","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"13:55:32.458","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"13:55:32.483","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"13:55:32.513","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":37,"action":"run"}
+{"ts":"13:55:32.525","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":37,"action":"set"}
+{"ts":"13:55:32.534","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":48,"action":"run"}
+{"ts":"13:55:32.542","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":48,"action":"set"}

@@ -1,0 +1,111 @@
+﻿
+// ----------------------------------------------------------------
+//   Test menu for scenario newWorkflow 
+// ----------------------------------------------------------------
+GLOBAL.events.START.on(function (ev) {
+	if (ctx.options.isDebug) {
+		// Add item in systray menu.
+		systray.addMenu('', 'newWorkflow', 'Test newWorkflow', '', function (ev) {
+			var rootData = ctx.dataManagers.rootData.create();
+			
+			// Initialize your data here.
+			GLOBAL.scenarios.newWorkflow.start(rootData);
+		});
+	}
+});
+
+//---------------------------------------------------
+// Scenario newWorkflow Starter ()
+//---------------------------------------------------
+
+// ----------------------------------------------------------------
+//   Scenario: newWorkflow
+// ----------------------------------------------------------------
+GLOBAL.scenario({ newWorkflow: function(ev, sc) {
+	var rootData = sc.data;
+
+	sc.setMode(e.scenario.mode.clearIfRunning);
+	sc.setScenarioTimeout(600000); // Default timeout for global scenario.
+	sc.onError(function(sc, st, ex) { sc.endScenario(); }); // Default error handler.
+	sc.onTimeout(30000, function(sc, st) { sc.endScenario(); }); // Default timeout handler for each step.
+	sc.step(GLOBAL.steps.Initialize_Excel, GLOBAL.steps.Open_existing_Excel_f);
+	sc.step(GLOBAL.steps.Open_existing_Excel_f, GLOBAL.steps.Get_values);
+	sc.step(GLOBAL.steps.Get_values, GLOBAL.steps.Leer_lista);
+	sc.step(GLOBAL.steps.Leer_lista, GLOBAL.steps.Close_Excel_file);
+	sc.step(GLOBAL.steps.Close_Excel_file, GLOBAL.steps.End_Excel);
+	sc.step(GLOBAL.steps.End_Excel, null);
+}}, ctx.dataManagers.rootData).setId('37dded21-4ac8-4f09-bc09-a4d0a00b8e05') ;
+
+// ----------------------------------------------------------------
+//   Step: Initialize_Excel
+// ----------------------------------------------------------------
+GLOBAL.step({ Initialize_Excel: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('newWorkflow', '6516299b-438e-42ff-a637-d3942bac9e4b') ;
+	// Initializes Excel Library with different modes.
+	ctx.options.excel.newXlsInstance = false;
+	ctx.options.excel.visible = true;
+	ctx.options.excel.displayAlerts = false;
+	ctx.excel.initialize();
+	sc.endStep(); // Open_existing_Excel_f
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Open_existing_Excel_f
+// ----------------------------------------------------------------
+GLOBAL.step({ Open_existing_Excel_f: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('newWorkflow', '7276e510-0194-4eb9-bd6a-7a5bff4e997a') ;
+	// Open existing Excel file.
+	ctx.excel.file.open("C:\\LAYOUT\\LayoutENCO2.xlsx");
+	sc.endStep(); // Get_values
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Get_values
+// ----------------------------------------------------------------
+GLOBAL.step({ Get_values: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('newWorkflow', '4fe0274a-cdff-425d-8ec9-7570eaf66535') ;
+	// Get values from range on the active worksheet.
+	rootData.Items = ctx.excel.sheet.getFullRangeValues('A',1,'D',ctx.excel.sheet.getLastRow('A1'), undefined);
+	sc.endStep(); // Leer_lista
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Leer_lista
+// ----------------------------------------------------------------
+GLOBAL.step({ Leer_lista: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('newWorkflow', '20c1fd0f-b8e9-4122-8d1e-33b2f5b65a59') ;
+	// Describe functionality to be implemented in JavaScript later in the project.
+	for (var index = 0; index < ctx.excel.sheet.getLastRow('A1'); index++) {
+		ctx.log(rootData.Items[index][0]);
+		ctx.log(rootData.Items[index].FKDAT);
+	}
+// ----------------------------------------------------------------
+//   Step: Close_Excel_file
+// ----------------------------------------------------------------
+GLOBAL.step({ Close_Excel_file: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('newWorkflow', 'be24a86a-cd9e-4bc7-abc6-b5550e3d60ad') ;
+	// Close Excel file.
+	ctx.excel.file.close();
+	sc.endStep(); // End_Excel
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: End_Excel
+// ----------------------------------------------------------------
+GLOBAL.step({ End_Excel: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('newWorkflow', '6fdf3903-fc75-4f99-85a8-40566db755eb') ;
+	// End Excel.
+	ctx.excel.end();
+	sc.endStep(); // end Scenario
+	return;
+}});
