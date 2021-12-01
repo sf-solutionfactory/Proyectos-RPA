@@ -1,0 +1,50 @@
+﻿{
+	"ctxType": "ctx.jobClass",
+	"id": "61455565-afd2-4e68-bd71-3a875ca7329a",
+	"name": "",
+	"ts": "2021-11-17 12:06:38",
+	"tsRun": "2021-11-17 12:08:02",
+	"attended": false,
+	"nbRun": 1,
+	"appliName": "",
+	"scenarioId": "524713ab-bf57-48d9-9692-7630c30836fd",
+	"groupId": "a87c0190-6165-4e40-ab3f-bdb01d08ec34",
+	"status": "Successful",
+	"code": "OK",
+	"label": "",
+	"duration": 84,
+	"total": 84,
+	"data": {
+		"lines": "Sqlcmd: Error: Microsoft SQL Server Native Client 11.0 : TCP Provider: Se produjo un error durante el intento de conexi\ufffdn ya que la parte conectada no respondi\ufffd adecuadamente tras un periodo de tiempo, o bien se produjo un error en la conexi\ufffdn establecida ya que el host conectado no ha podido responder.\r\n.\r\nSqlcmd: Error: Microsoft SQL Server Native Client 11.0 : Login timeout expired.\r\nSqlcmd: Error: Microsoft SQL Server Native Client 11.0 : A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online..\r\n",
+		"archivoTXT": "\n\n\n\n\n",
+		"SAPLogon760Data": {
+			"pSAPLoginData": {
+				"edMandante": "",
+				"edUsuarios": "",
+				"oClvAcc": "",
+				"edIdioma": ""
+			},
+			"pSAPEasyAccessData": {
+				"oGuiOkCodeField": ""
+			},
+			"pVentasYFacturasMasData": {
+				"edFichero": "",
+				"oVentaPorL\u00ednea": "",
+				"oSoloCarga": ""
+			}
+		},
+		"sapgui": {
+			"uname": "USR-FI",
+			"pass": "Inicio1"
+		},
+		"datetime": "20211117",
+		"fechaActual": 2049,
+		"length": "",
+		"ctxType": "ctx.dataClass",
+		"ctxName": "rootData",
+		"filename": "C:\\LAYOUT\\LayoutENCO20211117_DD.txt",
+		"Lines": ""
+	},
+	"format": "json",
+	"passport": "2a54482a0300e600004952504100000000000000000000000000000000000000000000000000000000000063653133613561623439336434376639623737306366303664333162376265615245535443414c4c0000000000000000000000000000000000000000000000000000000000000000000b49525041000000000000000000000000000000000000000000000000000000003833376234333438303833643439353039346139383738373838663061633134202020002aa87c019061654e40ab3fbdb01d08ec346232336434633564666161663465306300000001000000002a54482a"
+}

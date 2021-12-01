@@ -36,6 +36,12 @@ ctx.dataManager({
 		, datetime : ''
 		, fechaActual : ''
 		, length : ''
+		, Manual : 
+		{
+			fechaIni : ''
+			, fechaFin : ''
+			, soloCarga : ''
+		}
 	}
 });
 var rootData = ctx.dataManagers.rootData.create() ;
@@ -106,6 +112,17 @@ ctx.dataManager({
 	}
 });
 var rootData_sapgui = ctx.dataManagers.rootData_sapgui.create() ;
+
+// ----------- rootData_Manual -------------------
+ctx.dataManager({
+	rootData_Manual :
+	{
+		fechaIni : ''
+		, fechaFin : ''
+		, soloCarga : ''
+	}
+});
+var rootData_Manual = ctx.dataManagers.rootData_Manual.create() ;
 
 
 //---------------------------------------------------

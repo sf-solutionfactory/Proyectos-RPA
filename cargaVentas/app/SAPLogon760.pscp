@@ -96,7 +96,7 @@
 				</PAGE>
 				<PAGE Name="pSAPEasyAccess" Comment="GuiMainWindow - SAP Easy Access" CtxtId="1e320d14-d570-426c-9868-c6c41a4702a0" CustomType="GuiMainWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
 					<CRITERE>
-						<Text Scan="Full"><![CDATA[SAP Easy Access]]></Text>
+						<Text Scan="start-with"><![CDATA[SAP Easy Access]]></Text>
 					</CRITERE>
 					<OBJETS>
 						<OBJET Name="oGuiOkCodeField" CtxtId="e0d2787b-e91c-4f99-b676-fc292dd8dcea" CustomType="GuiOkCodeField" SpecIndex="1">

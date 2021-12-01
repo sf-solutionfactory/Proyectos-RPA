@@ -36,5 +36,12 @@
     <Entity Id="e659c979-b737-4bc7-93cc-f7b2a2fbd345" Name="datetime" IsArray="False" />
     <Entity Id="5c987277-3ada-44aa-8c25-d3ce33db4005" Name="fechaActual" IsArray="False" />
     <Entity Id="d29a4478-4c0b-42b4-bc02-b1816a9da9e6" Name="length" IsArray="False" />
+    <Entity Id="6391ede9-67de-408c-81c2-0b202dbbdda5" Name="Manual" IsArray="False">
+      <Entities>
+        <Entity Id="582322b6-9568-4217-bb64-fc41286e3515" Name="fechaIni" IsArray="False" />
+        <Entity Id="4d0df73c-c0bd-4f77-8a16-9c102378b252" Name="fechaFin" IsArray="False" />
+        <Entity Id="50f745d7-51e6-4729-9799-392a33e96c45" Name="soloCarga" IsArray="False" />
+      </Entities>
+    </Entity>
   </Entities>
 </Context>

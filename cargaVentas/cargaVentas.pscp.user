@@ -2,9 +2,14 @@
 <USER>
 	<BREAKPOINTS>
 		<BREAKPOINT LineNumber="69" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="3134" Length="22"><![CDATA[var date = new Date();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="216" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="7500" Length="25"><![CDATA[var command = 'sqlcmd ' +]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[fechaIni]]></FINDWHAT>
+		<FINDWHAT><![CDATA[setting]]></FINDWHAT>
+		<FINDWHAT><![CDATA[sett]]></FINDWHAT>
+		<FINDWHAT><![CDATA[timeo]]></FINDWHAT>
 		<FINDWHAT><![CDATA[archivoTXT]]></FINDWHAT>
 		<FINDWHAT><![CDATA[rootData.texto]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[rootData.archivoTXT]]></REPLACEWITH>
@@ -12,13 +17,11 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon760']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasD']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
-		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentas48']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="86" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="253" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="223" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
-		<OPENDOC LineNumber="105" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="75" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="330" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon760']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<DebugTester><![CDATA[]]></DebugTester>

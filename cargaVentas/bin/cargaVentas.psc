@@ -9,7 +9,7 @@
 		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus" CtxtId="978a5bc5-d626-4f38-9291-82fb52fd8170">
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="GLOBAL">
-					<OBJDON Name="PrjVersion">1.4</OBJDON>
+					<OBJDON Name="PrjVersion">1.6</OBJDON>
 					<OBJDON Name="PrjClient"><![CDATA[ENCO]]></OBJDON>
 					<OBJDON Name="PrjName">cargaVentas</OBJDON>
 					<OBJDON Name="PrjDate">11/10/2021</OBJDON>
@@ -62,7 +62,7 @@
 			<WORKFLOWS>
 				<WORKFLOW Name="cargaVentasD" Comment="Carga de ventas diario" Src="%workflows%\cargaVentasD.xaml" CtxtId="524713ab-bf57-48d9-9692-7630c30836fd" DisplayName="cargaVentasD" StepTimeout="600" ScenarioTimeout="43200" GeneratedScenarioName="cargaVentasD" />
 				<WORKFLOW Name="cargaVentas48" Comment="Carga ventas diario" Src="%workflows%\cargaVentas48.xaml" CtxtId="4b269498-5e9a-4d00-9b23-62882fde8899" DisplayName="cargaVentas48" StepTimeout="600" ScenarioTimeout="43200" GeneratedScenarioName="cargaVentas48" />
-				<WORKFLOW Name="cargaVentasM" Comment="Carga Ventas Manualmente" Src="%workflows%\cargaVentasM.xaml" CtxtId="eced6a0b-ed93-431f-9bba-59805119fffe" DisplayName="cargaVentasM" StepTimeout="600" ScenarioTimeout="43200" GeneratedScenarioName="cargaVentasM" />
+				<WORKFLOW Name="cargaVentasM" Comment="Carga Ventas Manualmente" Src="%workflows%\cargaVentasM.xaml" CtxtId="eced6a0b-ed93-431f-9bba-59805119fffe" DisplayName="cargaVentasM" StepTimeout="16600" ScenarioTimeout="43200" GeneratedScenarioName="cargaVentasM" />
 			</WORKFLOWS>
 			<ACTIONS />
 			<EVENTS />
@@ -167,7 +167,7 @@
 				</PAGE>
 				<PAGE Name="pSAPEasyAccess" Comment="GuiMainWindow - SAP Easy Access" CtxtId="1e320d14-d570-426c-9868-c6c41a4702a0" CustomType="GuiMainWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
 					<CRITERE>
-						<Text Scan="Full"><![CDATA[SAP Easy Access]]></Text>
+						<Text Scan="start-with"><![CDATA[SAP Easy Access]]></Text>
 					</CRITERE>
 					<OBJETS>
 						<OBJET Name="oGuiOkCodeField" CtxtId="e0d2787b-e91c-4f99-b676-fc292dd8dcea" CustomType="GuiOkCodeField" SpecIndex="1">

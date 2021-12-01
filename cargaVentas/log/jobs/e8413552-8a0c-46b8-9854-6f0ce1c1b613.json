@@ -1,0 +1,54 @@
+﻿{
+	"ctxType": "ctx.jobClass",
+	"id": "e8413552-8a0c-46b8-9854-6f0ce1c1b613",
+	"name": "",
+	"ts": "2021-11-29 16:17:12",
+	"tsRun": "2021-11-29 16:17:58",
+	"attended": false,
+	"nbRun": 1,
+	"appliName": "",
+	"scenarioId": "eced6a0b-ed93-431f-9bba-59805119fffe",
+	"groupId": "4e50c5e3-11bd-4ef7-9c38-16a83c66eadd",
+	"status": "Successful",
+	"code": "OK",
+	"label": "",
+	"duration": 47,
+	"total": 46,
+	"data": {
+		"lines": "",
+		"archivoTXT": "",
+		"SAPLogon760Data": {
+			"pSAPLoginData": {
+				"edMandante": "",
+				"edUsuarios": "",
+				"oClvAcc": "",
+				"edIdioma": ""
+			},
+			"pSAPEasyAccessData": {
+				"oGuiOkCodeField": ""
+			},
+			"pVentasYFacturasMasData": {
+				"edFichero": "",
+				"oVentaPorL\u00ednea": "",
+				"oSoloCarga": ""
+			}
+		},
+		"sapgui": {
+			"uname": "",
+			"pass": ""
+		},
+		"datetime": "20211129",
+		"fechaActual": 2061,
+		"length": "",
+		"Manual": {
+			"fechaIni": "",
+			"fechaFin": "",
+			"soloCarga": ""
+		},
+		"ctxType": "ctx.dataClass",
+		"ctxName": "rootData",
+		"filename": "C:\\LAYOUT\\LayoutENCO20211129_MM.txt"
+	},
+	"format": "json",
+	"passport": "2a54482a0300e600004952504100000000000000000000000000000000000000000000000000000000000063653133613561623439336434376639623737306366303664333162376265615245535443414c4c0000000000000000000000000000000000000000000000000000000000000000000b49525041000000000000000000000000000000000000000000000000000000003637306433396337623464323463383361313062346565363032393066303730202020002a4e50c5e311bd4ef79c3816a83c66eadd3031633838323031373838353432666200000001000000002a54482a"
+}

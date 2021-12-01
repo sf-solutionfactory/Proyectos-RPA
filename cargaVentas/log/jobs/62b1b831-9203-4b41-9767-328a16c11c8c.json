@@ -1,0 +1,56 @@
+﻿{
+	"ctxType": "ctx.jobClass",
+	"id": "62b1b831-9203-4b41-9767-328a16c11c8c",
+	"name": "",
+	"ts": "2021-11-29 14:40:48",
+	"tsRun": "2021-11-29 14:41:45",
+	"attended": false,
+	"nbRun": 1,
+	"appliName": "",
+	"scenarioId": "eced6a0b-ed93-431f-9bba-59805119fffe",
+	"groupId": "26561b87-ba20-4da0-bdf9-2dd0fdf9b2a0",
+	"status": "Failed",
+	"code": "KO",
+	"label": "Step GLOBAL.cargaVentasM.pSAPLogin_management_2: Error, SAPLogon760.pSAPLogin.set: { \"retcode\": -1, \"error\": \"Page pSAPLogin - set_Text(edMandante): Item edMandante couldn't be found [error FWD00021].\" }",
+	"duration": 58,
+	"total": 57,
+	"data": {
+		"lines": "",
+		"archivoTXT": "\n",
+		"SAPLogon760Data": {
+			"pSAPLoginData": {
+				"edMandante": "",
+				"edUsuarios": "",
+				"oClvAcc": "",
+				"edIdioma": ""
+			},
+			"pSAPEasyAccessData": {
+				"oGuiOkCodeField": ""
+			},
+			"pVentasYFacturasMasData": {
+				"edFichero": "",
+				"oVentaPorL\u00ednea": "",
+				"oSoloCarga": ""
+			}
+		},
+		"sapgui": {
+			"uname": "USR-FI",
+			"pass": "Inicio1"
+		},
+		"datetime": "20211129",
+		"fechaActual": 2061,
+		"length": "",
+		"Manual": {
+			"fechaIni": "",
+			"fechaFin": "20211128",
+			"soloCarga": ""
+		},
+		"ctxType": "ctx.dataClass",
+		"ctxName": "rootData",
+		"filename": "C:\\LAYOUT\\LayoutENCO20211129_MM.txt",
+		"Lines": ""
+	},
+	"format": "json",
+	"passport": "2a54482a0300e600004952504100000000000000000000000000000000000000000000000000000000000063653133613561623439336434376639623737306366303664333162376265615245535443414c4c0000000000000000000000000000000000000000000000000000000000000000000b49525041000000000000000000000000000000000000000000000000000000003938626565663664663866323436306238373663393165633538363836343334202020002a26561b87ba204da0bdf92dd0fdf9b2a06663653766616665666466353466343900000001000000002a54482a",
+	"log": "record.DESKTOP-8E05UBG.rogel.2021-11-29_14.32.23.255"
+}

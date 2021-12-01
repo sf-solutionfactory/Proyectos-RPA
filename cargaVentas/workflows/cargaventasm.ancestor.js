@@ -27,8 +27,14 @@ GLOBAL.scenario({ cargaVentasM: function(ev, sc) {
 	sc.setMode(e.scenario.mode.clearIfRunning);
 	sc.setScenarioTimeout(43200000); // Default timeout for global scenario.
 	sc.onError(function(sc, st, ex) { sc.endScenario(); }); // Default error handler.
-	sc.onTimeout(600000, function(sc, st) { sc.endScenario(); }); // Default timeout handler for each step.
-	sc.step(GLOBAL.steps.getFilename_2, GLOBAL.steps.connectSQL_2);
+	sc.onTimeout(16600000, function(sc, st) { sc.endScenario(); }); // Default timeout handler for each step.
+	sc.step(GLOBAL.steps.getFilename_2, GLOBAL.steps.Declare_setting);
+	sc.step(GLOBAL.steps.Declare_setting, GLOBAL.steps.Declare_setting_1);
+	sc.step(GLOBAL.steps.Declare_setting_1, GLOBAL.steps.Declare_setting_2);
+	sc.step(GLOBAL.steps.Declare_setting_2, GLOBAL.steps.Get_setting);
+	sc.step(GLOBAL.steps.Get_setting, GLOBAL.steps.Get_setting_1);
+	sc.step(GLOBAL.steps.Get_setting_1, GLOBAL.steps.Get_setting_2);
+	sc.step(GLOBAL.steps.Get_setting_2, GLOBAL.steps.connectSQL_2);
 	sc.step(GLOBAL.steps.connectSQL_2, GLOBAL.steps.Read_a_text_file_2);
 	sc.step(GLOBAL.steps.Read_a_text_file_2, GLOBAL.steps.setList_2);
 	sc.step(GLOBAL.steps.setList_2, GLOBAL.steps.Write_a_text_file_2);
@@ -54,8 +60,110 @@ GLOBAL.step({ getFilename_2: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaVentasM', 'bd856692-e2a1-4232-89df-162b950f23d6') ;
 	// Get filename
-	sc.endStep(); // connectSQL_2
+	sc.endStep(); // Declare_setting
 	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Declare_setting
+// ----------------------------------------------------------------
+GLOBAL.step({ Declare_setting: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaVentasM', 'dccb90fe-2346-4152-acc1-de63336909fc') ;
+	// Declares a setting
+	
+	ctx.setting({ fechaInicio: {
+		comment: "Fecha inicio",
+		server: true
+	}});
+	sc.endStep(); // Declare_setting_1
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Declare_setting_1
+// ----------------------------------------------------------------
+GLOBAL.step({ Declare_setting_1: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaVentasM', '3b7ae552-18df-4334-a833-57adee8f495b') ;
+	// Declares a setting
+	
+	ctx.setting({ fechaFin: {
+		comment: "Fecha Final",
+		server: true
+	}});
+	sc.endStep(); // Declare_setting_2
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Declare_setting_2
+// ----------------------------------------------------------------
+GLOBAL.step({ Declare_setting_2: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaVentasM', 'd97d2856-8cc3-4254-88fc-32253efd4ad6') ;
+	// Declares a setting
+	
+	ctx.setting({ soloCarga: {
+		comment: "Indicar X en solo carga",
+		server: true
+	}});
+	sc.endStep(); // Get_setting
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Get_setting
+// ----------------------------------------------------------------
+GLOBAL.step({ Get_setting: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaVentasM', 'f2829b3d-d899-46b9-9405-7c69dee1b36a') ;
+	// Retrieves the value of a setting
+	
+	ctx.settings.fechaInicio.get(function(code, label, setting) {
+		if (code == e.error.OK) {
+			// get value from setting.value
+			rootData.Manual.fechaIni = setting.value;
+			sc.endStep(); // Get_setting_1
+			return;
+		}
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: Get_setting_1
+// ----------------------------------------------------------------
+GLOBAL.step({ Get_setting_1: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaVentasM', 'aa0677d3-572b-4e8c-b1f0-a9f073bc0cd4') ;
+	// Retrieves the value of a setting
+	
+	ctx.settings.fechaFin.get(function(code, label, setting) {
+		if (code == e.error.OK) {
+			// get value from setting.value
+			rootData.Manual.fechaFin = setting.value;
+			sc.endStep(); // Get_setting_2
+			return;
+		}
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: Get_setting_2
+// ----------------------------------------------------------------
+GLOBAL.step({ Get_setting_2: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaVentasM', '0d3a9c05-20e3-4261-80d3-a39be7bb622d') ;
+	// Retrieves the value of a setting
+	
+	ctx.settings.soloCarga.get(function(code, label, setting) {
+		if (code == e.error.OK) {
+			// get value from setting.value
+			rootData.Manual.soloCarga = setting.value;
+			sc.endStep(); // connectSQL_2
+			return;
+		}
+	});
 }});
 
 // ----------------------------------------------------------------

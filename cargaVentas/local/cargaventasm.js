@@ -33,7 +33,13 @@ GLOBAL.scenario( {
 		sc.onTimeout(600000, function (sc, st) {
 			sc.endScenario();
 		}); // Default timeout handler for each step.
-		sc.step(GLOBAL.steps.getFilename_2, GLOBAL.steps.connectSQL_2);
+		sc.step(GLOBAL.steps.getFilename_2, GLOBAL.steps.Declare_setting);
+		sc.step(GLOBAL.steps.Declare_setting, GLOBAL.steps.Declare_setting_1);
+		sc.step(GLOBAL.steps.Declare_setting_1, GLOBAL.steps.Declare_setting_2);
+		sc.step(GLOBAL.steps.Declare_setting_2, GLOBAL.steps.Get_setting);
+		sc.step(GLOBAL.steps.Get_setting, GLOBAL.steps.Get_setting_1);
+		sc.step(GLOBAL.steps.Get_setting_1, GLOBAL.steps.Get_setting_2);
+		sc.step(GLOBAL.steps.Get_setting_2, GLOBAL.steps.connectSQL_2);
 		sc.step(GLOBAL.steps.connectSQL_2, GLOBAL.steps.Read_a_text_file_2);
 		sc.step(GLOBAL.steps.Read_a_text_file_2, GLOBAL.steps.setList_2);
 		sc.step(GLOBAL.steps.setList_2, GLOBAL.steps.Write_a_text_file_2);
@@ -61,18 +67,12 @@ GLOBAL.step( {
 		var rootData = sc.data;
 		ctx.workflow('cargaVentasM', 'bd856692-e2a1-4232-89df-162b950f23d6');
 		// Get filename
-		Date.prototype.addDays = function (days) {
-			var date = new Date(this.valueOf());
-			date.setDate(date.getDate() + days);
-			return date;
-		}
 		var date = new Date();
-		date = date.addDays(-3);
 		var mes = date.getMonth() + 1;
 		if (mes < 10) {
 			mes = "0" + mes;
 		}
-		var dia = date.getDate();
+		var dia = date.getDate() - 0;
 		if (dia < 10) {
 			dia = "0" + dia;
 		}
@@ -80,8 +80,128 @@ GLOBAL.step( {
 		rootData.fechaActual = dia + "/" + mes + "/" + date.getFullYear();
 		rootData.fechaActual = date.getFullYear() + mes + dia;
 		rootData.filename = "C:\\LAYOUT\\LayoutENCO" + rootData.datetime + "_MM.txt";
-		sc.endStep(); // connectSQL_2
+		sc.endStep(); // Declare_setting
 		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Declare_setting
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Declare_setting: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasM', 'dccb90fe-2346-4152-acc1-de63336909fc');
+		// Declares a setting
+
+		ctx.setting( {
+			fechaInicio: {
+				comment: "Fecha inicio",
+				server: true
+			}
+		});
+		sc.endStep(); // Declare_setting_1
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Declare_setting_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Declare_setting_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasM', '3b7ae552-18df-4334-a833-57adee8f495b');
+		// Declares a setting
+
+		ctx.setting( {
+			fechaFin: {
+				comment: "Fecha Final",
+				server: true
+			}
+		});
+		sc.endStep(); // Declare_setting_2
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Declare_setting_2
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Declare_setting_2: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasM', 'd97d2856-8cc3-4254-88fc-32253efd4ad6');
+		// Declares a setting
+
+		ctx.setting( {
+			soloCarga: {
+				comment: "Indicar X en solo carga",
+				server: true
+			}
+		});
+		sc.endStep(); // Get_setting
+		return ;
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Get_setting
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Get_setting: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasM', 'f2829b3d-d899-46b9-9405-7c69dee1b36a');
+		// Retrieves the value of a setting
+
+		ctx.settings.fechaInicio.get(function (code, label, setting) {
+			if (code == e.error.OK) {
+				// get value from setting.value
+				rootData.Manual.fechaIni = setting.value;
+				sc.endStep(); // Get_setting_1
+				return ;
+			}
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Get_setting_1
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Get_setting_1: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasM', 'aa0677d3-572b-4e8c-b1f0-a9f073bc0cd4');
+		// Retrieves the value of a setting
+
+		ctx.settings.fechaFin.get(function (code, label, setting) {
+			if (code == e.error.OK) {
+				// get value from setting.value
+				rootData.Manual.fechaFin = setting.value;
+				sc.endStep(); // Get_setting_2
+				return ;
+			}
+		});
+	}
+});
+
+// ----------------------------------------------------------------
+//   Step: Get_setting_2
+// ----------------------------------------------------------------
+GLOBAL.step( {
+	Get_setting_2: function (ev, sc, st) {
+		var rootData = sc.data;
+		ctx.workflow('cargaVentasM', '0d3a9c05-20e3-4261-80d3-a39be7bb622d');
+		// Retrieves the value of a setting
+
+		ctx.settings.soloCarga.get(function (code, label, setting) {
+			if (code == e.error.OK) {
+				// get value from setting.value
+				rootData.Manual.soloCarga = setting.value;
+				sc.endStep(); // connectSQL_2
+				return ;
+			}
+		});
 	}
 });
 
@@ -100,10 +220,18 @@ GLOBAL.step( {
 								'-d "Pagos" -h-1 ' +
 		//'-s "\t" -W ' +
 								'-s ";" -W ' +
-								'-o ' + rootData.filename + ' ' +
-								//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
-								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'20211104\', @fechafin =\'20211104\'"';
+								'-o ' + rootData.filename + ' ';
+		if (rootData.Manual.fechaIni != "") {
+			command = command +
+			//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
+			//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'20211106\', @fechafin =\'20211108\'"';
+								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.Manual.fechaIni + '\', @fechafin =\'' + rootData.Manual.fechaFin + '\'"';
+		}else {
+			command = command +
+								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
+		}
 		try {
+			st.disableTimeout();
 			ctx.exec(command, 30000, function (res) { // timeout 30 sec
 				// do some stuff once you get the response
 				sc.endStep(); // Read_a_text_file
@@ -323,7 +451,7 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
 			SAPLogon760.pVentasYFacturasMas.oVentaPorLínea.set("X");
-			SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("X");
+			SAPLogon760.pVentasYFacturasMas.oSoloCarga.set(rootData.Manual.fechaFin);
 			SAPLogon760.pVentasYFacturasMas.edFichero.set(rootData.filename);
 			SAPLogon760.pVentasYFacturasMas.btEjecutar.click();
 			sc.endStep(); // pPosDocumVisualiza_ma_2

@@ -5,17 +5,17 @@
 	</Identification>
 	<Properties>
 		<Property Name="projectFile" Value="cargaVentas.debug.psc"/>
-		<Property Name="projectVersion" Value="1.6"/>
+		<Property Name="projectVersion" Value="1.5"/>
 		<Property Name="projectName" Value="cargaVentas"/>
 		<Property Name="projectId" Value="978a5bc5-d626-4f38-9291-82fb52fd8170"/>
 		<Property Name="projectDate" Value="11/10/2021"/>
 		<Property Name="projectLabel" Value="Robot de carga de ventas"/>
 		<Property Name="projectClient" Value="ENCO"/>
 		<Property Name="licenceURL" Value=""/>
-		<Property Name="archiveFile" Value=""/>
+		<Property Name="archiveFile" Value="cargaVentas.zip"/>
 		<Property Name="productVersion" Value="2.0.7.54"/>
 		<Property Name="sdkVersion" Value="2.0.7.54"/>
-		<Property Name="exportDate" Value="30/11/2021"/>
+		<Property Name="exportDate" Value="29/11/2021"/>
 		<Property Name="IsTrial" Value="False"/>
 		<Property Name="validity" Value=""/>
 		<Property Name="cyphering" Value="0"/>
@@ -60,21 +60,9 @@
 	</Properties>
 	<Keys Name="scenario2">
 	</Keys>
-	<Properties Name="authentication">
-		<Property Name="result" Value="MIIBJwYJKoZIhvcNAQcCoIIBGDCCARQCAQExDzANBgkqhkiG9w0BAQUFADAvBgkq
-hkiG9w0BBwGgIgQgQwB0AHgAdABEAGUAZgBhAHUAbAB0AE0AYQByAGsAAAAxgcww
-gckCAQEwJDAcMRowGAYDVQQDExFOTyBDRVJUIFNJR05BVFVSRQIEEjRWeDANBgkq
-hkiG9w0BAQUFADAMBggqhkiG9w0DBAUABIGAjGsfamtu6Kt7vm9F293eXavK/2cu
-RvtWmfrQCPU+SnvLEo7RkhS66tt2QkPCIUk+R12iY1txhQKJrsPFAt2Nr9miSXnr
-uVprjlXNPFtFHRwcMpEzZMygaCFGF8vBL/zdyvuv6gDPj2HPVm0crRLKtkDupD3Y
-OQ+urUAhE05sBCs=
-" Type="1"/>
-	</Properties>
-	<Keys Name="authentication">
-	</Keys>
 	<UpdatePackages>
 	</UpdatePackages>
-	<KeyNames Value="" Type="32771"/>
-	<KeyContent Value="" Type="32771"/>
-	<KeyProps Value="f67d4e83909f0ac0d845b2774f92cf4f" Type="32771"/>
+	<KeyNames Value="78454f6a8ecb11b435cfd037e4e792e9" Type="32771"/>
+	<KeyContent Value="ec5e949dda86c437abcf29089152dfd8" Type="32771"/>
+	<KeyProps Value="f184aa02947d612052de57b307c067f4" Type="32771"/>
 </doc>
