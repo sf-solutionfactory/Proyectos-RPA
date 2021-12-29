@@ -198,10 +198,10 @@
                                                             <x:String x:Key="ifExist">false</x:String>
                                                           </c:SnippetActivity.CustomData>
                                                         </c:SnippetActivity>
-                                                        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="de147e50-bb6a-4336-8ccb-7bff7ea60add" DisplayName="Set &quot;X&quot; in 'oSoloCarga (3)'">
+                                                        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="de147e50-bb6a-4336-8ccb-7bff7ea60add" DisplayName="Set &quot;X&quot; in 'oSoloCarga ()'">
                                                           <c:SnippetActivity.CustomData>
                                                             <x:String x:Key="SnippetId">item_set_2</x:String>
-                                                            <x:String x:Key="ItemId">0faafb88-2cfd-49ed-90a8-e1e2d2ff9ea2</x:String>
+                                                            <x:String x:Key="ItemId">28b3588c-dbbd-4151-843c-651976c85c98</x:String>
                                                             <x:String x:Key="expression">&lt;EXP&gt;&lt;![CDATA["X"]]&gt;&lt;/EXP&gt;</x:String>
                                                             <x:String x:Key="ifExist">false</x:String>
                                                           </c:SnippetActivity.CustomData>
@@ -428,7 +428,7 @@ This can be useful to wait for a process to complete, to avoid going too fast fo
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="PageActivity_4" sap:VirtualizedContainerService.HintSize="150,200">
+      <sap2010:ViewStateData Id="PageActivity_4" sap:VirtualizedContainerService.HintSize="1185,818">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -615,7 +615,7 @@ This can be useful to wait for a process to complete, to avoid going too fast fo
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </sap2010:ViewStateData>
-      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="200,36">
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="888,1501">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -629,5 +629,5 @@ This can be useful to wait for a process to complete, to avoid going too fast fo
       </sap2010:ViewStateData>
     </sap2010:ViewStateManager>
   </sap2010:WorkflowViewState.ViewStateManager>
-  <sads:DebugSymbol.Symbol>d2NDOlxVc2Vyc1xyb2dlbFxEb2N1bWVudHNcU0FQXEludGVsbGlnZW50IFJQQVxEZXNrdG9wIFN0dWRpb1xjYXJnYVZlbnRhc1x3b3JrZmxvd3NcY2FyZ2F2ZW50YXNkLnhhbWwSAQH5BA0BAQwFEhkBEhUJGx0BER4NJiEBECkRLyUBDzIVOikBDj0ZRC0BDUcdUy4BDFYhXjUBC2ElaTkBCmwpmQE6AQmcAS2xAT4BCLQBMbkBRQEHvAE14AFGAQbjATn6AUoBBf0BPYkCTgEEjAJBmAJSAQObAkWnAlYBAg==</sads:DebugSymbol.Symbol>
+  <sads:DebugSymbol.Symbol>d1VEOlxVc2Vyc1xyb2dlbFxEb2N1bWVudHNcR2l0SHViXFByb3llY3Rvcy1SUEFcY2FyZ2FWZW50YXNcd29ya2Zsb3dzXGNhcmdhdmVudGFzZC54YW1sEgEB+QQNAQEMBRIZARIVCRsdAREeDSYhARApES8lAQ8yFTopAQ49GUQtAQ1HHVMuAQxWIV41AQthJWk5AQpsKZkBOgEJnAEtsQE+AQi0ATG5AUUBB7wBNeABRgEG4wE5+gFKAQX9AT2JAk4BBIwCQZgCUgEDmwJFpwJWAQI=</sads:DebugSymbol.Symbol>
 </Flowchart>

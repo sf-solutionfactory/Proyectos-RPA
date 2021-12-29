@@ -42,6 +42,7 @@ ctx.dataManager({
 			, fechaFin : ''
 			, soloCarga : ''
 		}
+		, tipoCarga : ''
 	}
 });
 var rootData = ctx.dataManagers.rootData.create() ;

@@ -14,7 +14,7 @@
 		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus" CtxtId="978a5bc5-d626-4f38-9291-82fb52fd8170">
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="GLOBAL">
-					<OBJDON Name="PrjVersion">1.6</OBJDON>
+					<OBJDON Name="PrjVersion">1.10</OBJDON>
 					<OBJDON Name="PrjClient"><![CDATA[ENCO]]></OBJDON>
 					<OBJDON Name="PrjName">cargaVentas</OBJDON>
 					<OBJDON Name="PrjDate">11/10/2021</OBJDON>

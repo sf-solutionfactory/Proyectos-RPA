@@ -2,7 +2,7 @@
 <USER>
 	<BREAKPOINTS>
 		<BREAKPOINT LineNumber="69" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="3134" Length="22"><![CDATA[var date = new Date();]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="216" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="7500" Length="25"><![CDATA[var command = 'sqlcmd ' +]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="454" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="15449" Length="39"><![CDATA[if (rootData.Manual.soloCarga == "C") {]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
@@ -17,11 +17,12 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="86" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="253" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="223" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
 		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon760']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasD']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="336" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="326" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="268" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<DebugTester><![CDATA[]]></DebugTester>

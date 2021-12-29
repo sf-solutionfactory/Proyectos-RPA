@@ -30,4 +30,5 @@
 		<ITEM Name="fechaFin" CtxtId="4d0df73c-c0bd-4f77-8a16-9c102378b252" IsIndexed="N" />
 		<ITEM Name="soloCarga" CtxtId="50f745d7-51e6-4729-9799-392a33e96c45" IsIndexed="N" />
 	</FOLDER>
+	<ITEM Name="tipoCarga" CtxtId="933f6744-be2d-46ca-ac88-b22b0ce72620" IsIndexed="N" />
 </WORKFLOWDATA>

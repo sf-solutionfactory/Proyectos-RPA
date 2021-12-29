@@ -43,5 +43,6 @@
         <Entity Id="50f745d7-51e6-4729-9799-392a33e96c45" Name="soloCarga" IsArray="False" />
       </Entities>
     </Entity>
+    <Entity Id="933f6744-be2d-46ca-ac88-b22b0ce72620" Name="tipoCarga" IsArray="False" />
   </Entities>
 </Context>

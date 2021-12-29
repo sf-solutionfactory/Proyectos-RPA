@@ -1,4 +1,4 @@
-﻿<PAGE Techno="SAPGUI" Name="PAGE_VentasYFacturasMas_1858180_1" ProcessName="SAPLOGON.EXE" ParamName="Ventas y Facturas masiva" ParentTree="wnd[0]">
+﻿<PAGE Techno="SAPGUI" Name="PAGE_VentasYFacturasMas_1642160_1" ProcessName="SAPLOGON.EXE" ParamName="Ventas y Facturas masiva" ParentTree="wnd[0]">
 	<PROPERTIES>
 		<Text>Ventas y Facturas masiva</Text>
 		<Type>GuiMainWindow</Type>
@@ -10,7 +10,7 @@
 		<X>-8</X>
 		<Y>-8</Y>
 		<CX>1936</CX>
-		<CY>1056</CY>
+		<CY>1048</CY>
 		<EXE>SAPLOGON.EXE</EXE>
 	</PROPERTIES>
 	<CHILDREN>
@@ -26,11 +26,11 @@
 				<X>-8</X>
 				<Y>-8</Y>
 				<CX>1936</CX>
-				<CY>1056</CY>
+				<CY>1048</CY>
 				<EXE>SAPLOGON.EXE</EXE>
 			</PROPERTIES>
 			<CTX_PROPS>
-				<BOUNDINGRECT>0|0|1936|1056</BOUNDINGRECT>
+				<BOUNDINGRECT>0|0|1936|1048</BOUNDINGRECT>
 				<TITLE>GuiMainWindow - Ventas y Facturas masiva</TITLE>
 				<NAMEKEY>Name</NAMEKEY>
 				<CONTROLTYPE>GuiMainWindow</CONTROLTYPE>
@@ -2095,12 +2095,12 @@
 								<Deepness>2</Deepness>
 								<TAG>GuiButton</TAG>
 								<X>1841</X>
-								<Y>999</Y>
+								<Y>991</Y>
 								<CX>63</CX>
 								<CY>26</CY>
 							</PROPERTIES>
 							<CTX_PROPS>
-								<BOUNDINGRECT>1849|1007|63|26</BOUNDINGRECT>
+								<BOUNDINGRECT>1849|999|63|26</BOUNDINGRECT>
 								<TITLE>GuiButton - Ejecutar</TITLE>
 								<NAMEKEY>Name</NAMEKEY>
 								<CONTROLTYPE>GuiButton</CONTROLTYPE>
@@ -2127,10 +2127,10 @@
 						<X>8</X>
 						<Y>136</Y>
 						<CX>1904</CX>
-						<CY>851</CY>
+						<CY>843</CY>
 					</PROPERTIES>
 					<CTX_PROPS>
-						<BOUNDINGRECT>16|144|1904|851</BOUNDINGRECT>
+						<BOUNDINGRECT>16|144|1904|843</BOUNDINGRECT>
 						<TITLE>GuiUserArea</TITLE>
 						<NAMEKEY>Name</NAMEKEY>
 						<CONTROLTYPE>GuiUserArea</CONTROLTYPE>
@@ -2231,39 +2231,68 @@
 						</ITEM>
 						<ITEM>
 							<PROPERTIES>
-								<Id>usr/chkP_LINE</Id>
-								<Text>Venta por línea</Text>
-								<Type>GuiCheckBox</Type>
-								<Name>P_LINE</Name>
-								<Changeable>true</Changeable>
+								<Id>usr/txt%_P_RPA_%_APP_%-TEXT</Id>
+								<Text>Solo carga                    </Text>
+								<Type>GuiTextField</Type>
+								<Name>%_P_RPA_%_APP_%-TEXT</Name>
+								<Changeable>false</Changeable>
 								<ContainerType>false</ContainerType>
 								<Deepness>2</Deepness>
-								<TAG>GuiCheckBox</TAG>
-								<X>62</X>
+								<TAG>GuiTextField</TAG>
+								<X>32</X>
 								<Y>220</Y>
-								<CX>299</CX>
+								<CX>320</CX>
 								<CY>25</CY>
 							</PROPERTIES>
 							<CTX_PROPS>
-								<BOUNDINGRECT>70|228|299|25</BOUNDINGRECT>
-								<TITLE>GuiCheckBox - Venta por línea</TITLE>
+								<BOUNDINGRECT>40|228|320|25</BOUNDINGRECT>
+								<TITLE>GuiTextField - Solo carga                    </TITLE>
 								<NAMEKEY>Name</NAMEKEY>
-								<CONTROLTYPE>GuiCheckBox</CONTROLTYPE>
-								<PREFIX />
-								<TEXT>Venta por línea</TEXT>
+								<CONTROLTYPE>GuiTextField</CONTROLTYPE>
+								<PREFIX>ed</PREFIX>
+								<TEXT>Solo carga                    </TEXT>
 								<TEXTKEY>Text</TEXTKEY>
-								<PARAMNAME>Venta por línea</PARAMNAME>
-								<PARENTTREE>P_LINE|usr|wnd[0]</PARENTTREE>
+								<PARAMNAME>Solo carga                    </PARAMNAME>
+								<PARENTTREE>%_P_RPA_%_APP_%-TEXT|usr|wnd[0]</PARENTTREE>
 								<ISVISIBLE>True</ISVISIBLE>
 								<ISPREFERRED>False</ISPREFERRED>
 							</CTX_PROPS>
 						</ITEM>
 						<ITEM>
 							<PROPERTIES>
-								<Id>usr/chkP_RPA</Id>
-								<Text>Solo carga</Text>
-								<Type>GuiCheckBox</Type>
+								<Id>usr/ctxtP_RPA</Id>
+								<Type>GuiCTextField</Type>
+								<LeftLabel>Solo carga                    </LeftLabel>
 								<Name>P_RPA</Name>
+								<Changeable>true</Changeable>
+								<ContainerType>false</ContainerType>
+								<Deepness>2</Deepness>
+								<TAG>GuiCTextField</TAG>
+								<X>352</X>
+								<Y>220</Y>
+								<CX>19</CX>
+								<CY>25</CY>
+							</PROPERTIES>
+							<CTX_PROPS>
+								<BOUNDINGRECT>360|228|19|25</BOUNDINGRECT>
+								<TITLE>GuiCTextField</TITLE>
+								<NAMEKEY>Name</NAMEKEY>
+								<CONTROLTYPE>GuiCTextField</CONTROLTYPE>
+								<PREFIX>ed</PREFIX>
+								<TEXT />
+								<TEXTKEY>Text</TEXTKEY>
+								<PARAMNAME>Solo carga                    </PARAMNAME>
+								<PARENTTREE>P_RPA|usr|wnd[0]</PARENTTREE>
+								<ISVISIBLE>True</ISVISIBLE>
+								<ISPREFERRED>False</ISPREFERRED>
+							</CTX_PROPS>
+						</ITEM>
+						<ITEM>
+							<PROPERTIES>
+								<Id>usr/chkP_LINE</Id>
+								<Text>Venta por línea</Text>
+								<Type>GuiCheckBox</Type>
+								<Name>P_LINE</Name>
 								<Changeable>true</Changeable>
 								<ContainerType>false</ContainerType>
 								<Deepness>2</Deepness>
@@ -2275,14 +2304,14 @@
 							</PROPERTIES>
 							<CTX_PROPS>
 								<BOUNDINGRECT>70|260|299|25</BOUNDINGRECT>
-								<TITLE>GuiCheckBox - Solo carga</TITLE>
+								<TITLE>GuiCheckBox - Venta por línea</TITLE>
 								<NAMEKEY>Name</NAMEKEY>
 								<CONTROLTYPE>GuiCheckBox</CONTROLTYPE>
 								<PREFIX />
-								<TEXT>Solo carga</TEXT>
+								<TEXT>Venta por línea</TEXT>
 								<TEXTKEY>Text</TEXTKEY>
-								<PARAMNAME>Solo carga</PARAMNAME>
-								<PARENTTREE>P_RPA|usr|wnd[0]</PARENTTREE>
+								<PARAMNAME>Venta por línea</PARAMNAME>
+								<PARENTTREE>P_LINE|usr|wnd[0]</PARENTTREE>
 								<ISVISIBLE>True</ISVISIBLE>
 								<ISPREFERRED>False</ISPREFERRED>
 							</CTX_PROPS>
@@ -2299,12 +2328,12 @@
 						<Deepness>1</Deepness>
 						<TAG>GuiStatusbar</TAG>
 						<X>8</X>
-						<Y>992</Y>
+						<Y>984</Y>
 						<CX>1904</CX>
 						<CY>40</CY>
 					</PROPERTIES>
 					<CTX_PROPS>
-						<BOUNDINGRECT>16|1000|1904|40</BOUNDINGRECT>
+						<BOUNDINGRECT>16|992|1904|40</BOUNDINGRECT>
 						<TITLE>GuiStatusbar</TITLE>
 						<NAMEKEY>Name</NAMEKEY>
 						<CONTROLTYPE>GuiStatusbar</CONTROLTYPE>

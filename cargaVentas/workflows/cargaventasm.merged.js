@@ -451,7 +451,15 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
 			SAPLogon760.pVentasYFacturasMas.oVentaPorLínea.set("X");
-			SAPLogon760.pVentasYFacturasMas.oSoloCarga.set(rootData.Manual.fechaFin);
+			if (rootData.Manual.soloCarga == "C") {
+				SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("C");
+			}
+			if (rootData.Manual.soloCarga == "E") {
+				SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("E");
+			}
+			if (rootData.Manual.soloCarga == "P") {
+				SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("P");
+			}
 			SAPLogon760.pVentasYFacturasMas.edFichero.set(rootData.filename);
 			SAPLogon760.pVentasYFacturasMas.btEjecutar.click();
 			sc.endStep(); // pPosDocumVisualiza_ma_2

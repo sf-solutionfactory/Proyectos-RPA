@@ -161,9 +161,9 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oSoloCarga" CtxtId="0faafb88-2cfd-49ed-90a8-e1e2d2ff9ea2" CustomType="GuiCheckBox" SpecIndex="3">
+						<OBJET Name="oSoloCarga" CtxtId="28b3588c-dbbd-4151-843c-651976c85c98" CustomType="GuiCTextField">
 							<CRITERE>
-								<TAG Name="GuiCheckBox" Scope="All" CapturedPos="26.R0R4R4">
+								<TAG Name="GuiCTextField" Scope="All" CapturedPos="31.R0R4R4">
 									<ATT Name="Name">
 										<VALUE Scan="Full"><![CDATA[P_RPA]]></VALUE>
 									</ATT>
@@ -171,7 +171,7 @@
 							</CRITERE>
 						</OBJET>
 					</OBJETS>
-					<CAPTURE Name="PAGE_VentasYFacturasMas_1858180_1" Comment="GuiMainWindow - Ventas y Facturas masiva" CtxtId="26" Techno="SAPGUI" CapturedPos="26.R0" Timestamp="11/10/2021 18:58:32" MaskRectangle="0|0|1936|1056" />
+					<CAPTURE Name="PAGE_VentasYFacturasMas_1642160_1" Comment="GuiMainWindow - Ventas y Facturas masiva" CtxtId="31" Techno="SAPGUI" CapturedPos="31.R0" Timestamp="23/12/2021 16:42:41" MaskRectangle="0|0|1936|1048" />
 				</PAGE>
 				<PAGE Name="pPosDocumVisualiza" Comment="GuiModalWindow - Pos.docum.: Visualizar mensajes" CtxtId="12399176-749c-4ee5-b525-314fb1f7b2e7" CustomType="GuiModalWindow" Nature="SAPGUI" SubpagesType="Multiple" RefreshMode="No">
 					<CRITERE>

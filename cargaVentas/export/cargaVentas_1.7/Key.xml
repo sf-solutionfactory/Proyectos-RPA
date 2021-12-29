@@ -5,7 +5,7 @@
 	</Identification>
 	<Properties>
 		<Property Name="projectFile" Value="cargaVentas.debug.psc"/>
-		<Property Name="projectVersion" Value="1.10"/>
+		<Property Name="projectVersion" Value="1.7"/>
 		<Property Name="projectName" Value="cargaVentas"/>
 		<Property Name="projectId" Value="978a5bc5-d626-4f38-9291-82fb52fd8170"/>
 		<Property Name="projectDate" Value="11/10/2021"/>
@@ -15,7 +15,7 @@
 		<Property Name="archiveFile" Value="cargaVentas.zip"/>
 		<Property Name="productVersion" Value="2.0.7.54"/>
 		<Property Name="sdkVersion" Value="2.0.7.54"/>
-		<Property Name="exportDate" Value="29/12/2021"/>
+		<Property Name="exportDate" Value="15/12/2021"/>
 		<Property Name="IsTrial" Value="False"/>
 		<Property Name="validity" Value=""/>
 		<Property Name="cyphering" Value="0"/>
@@ -63,6 +63,6 @@
 	<UpdatePackages>
 	</UpdatePackages>
 	<KeyNames Value="78454f6a8ecb11b435cfd037e4e792e9" Type="32771"/>
-	<KeyContent Value="9161a8e35ea6a5822efc049144852bce" Type="32771"/>
-	<KeyProps Value="72198fe04c1a279df8b8c3cacd146c44" Type="32771"/>
+	<KeyContent Value="1751a220bb80ee45df8b28da43f49c27" Type="32771"/>
+	<KeyProps Value="a6b55601401682fd3c07727e1d52a018" Type="32771"/>
 </doc>

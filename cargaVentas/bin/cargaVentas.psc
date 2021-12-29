@@ -9,7 +9,7 @@
 		<PROCESS Name="GLOBAL" Key="NoKey" Comment="Global Processus" CtxtId="978a5bc5-d626-4f38-9291-82fb52fd8170">
 			<_DECLAREVAR>
 				<STRUCTUREDON Name="GLOBAL">
-					<OBJDON Name="PrjVersion">1.6</OBJDON>
+					<OBJDON Name="PrjVersion">1.10</OBJDON>
 					<OBJDON Name="PrjClient"><![CDATA[ENCO]]></OBJDON>
 					<OBJDON Name="PrjName">cargaVentas</OBJDON>
 					<OBJDON Name="PrjDate">11/10/2021</OBJDON>
@@ -231,9 +231,9 @@
 								</TAG>
 							</CRITERE>
 						</OBJET>
-						<OBJET Name="oSoloCarga" CtxtId="0faafb88-2cfd-49ed-90a8-e1e2d2ff9ea2" CustomType="GuiCheckBox" SpecIndex="3">
+						<OBJET Name="oSoloCarga" CtxtId="28b3588c-dbbd-4151-843c-651976c85c98" CustomType="GuiCTextField">
 							<CRITERE>
-								<TAG Name="GuiCheckBox" Scope="All" CapturedPos="26.R0R4R4">
+								<TAG Name="GuiCTextField" Scope="All" CapturedPos="31.R0R4R4">
 									<ATT Name="Name">
 										<VALUE Scan="Full"><![CDATA[P_RPA]]></VALUE>
 									</ATT>

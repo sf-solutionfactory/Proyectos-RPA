@@ -66,10 +66,12 @@ GLOBAL.step( {
 			date.setDate(date.getDate() + days);
 			return date;
 		}
+		rootData.tipoCarga = "";
 		var date = new Date();
 		if (date.getHours() == 0) {
 			//dia = date.getDate() - 1;
 			date = date.addDays(-1);
+			rootData.tipoCarga = "E";
 		}
 		var mes = date.getMonth() + 1;
 		if (mes < 10) {
@@ -328,7 +330,11 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
 			SAPLogon760.pVentasYFacturasMas.oVentaPorLínea.set("X");
-			SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("X");
+			if(rootData.tipoCarga == "E"){
+				SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("E");
+			}else{
+				SAPLogon760.pVentasYFacturasMas.oSoloCarga.set("C");
+			}
 			SAPLogon760.pVentasYFacturasMas.edFichero.set(rootData.filename);
 			SAPLogon760.pVentasYFacturasMas.btEjecutar.click();
 			sc.endStep(); // pPosDocumVisualiza_ma

@@ -28,7 +28,7 @@ SAPLogon760.pVentasYFacturasMas.edFichero = SAPLogon760.pVentasYFacturasMas.addI
 SAPLogon760.pVentasYFacturasMas.btEjecutar = SAPLogon760.pVentasYFacturasMas.addItem('btEjecutar', {"customType":"GuiButton"});
 SAPLogon760.pVentasYFacturasMas.btIFinalizar = SAPLogon760.pVentasYFacturasMas.addItem('btIFinalizar', {"customType":"GuiButton"});
 SAPLogon760.pVentasYFacturasMas.oVentaPorLínea = SAPLogon760.pVentasYFacturasMas.addItem('oVentaPorLínea', {"customType":"GuiCheckBox"});
-SAPLogon760.pVentasYFacturasMas.oSoloCarga = SAPLogon760.pVentasYFacturasMas.addItem('oSoloCarga', {"customType":"GuiCheckBox"});
+SAPLogon760.pVentasYFacturasMas.oSoloCarga = SAPLogon760.pVentasYFacturasMas.addItem('oSoloCarga', {"customType":"GuiCTextField"});
 
 SAPLogon760.pPosDocumVisualiza = SAPLogon760.addPage('pPosDocumVisualiza', {"comment":"GuiModalWindow - Pos.docum.: Visualizar mensajes","nature":"SAPGUI","customType":"GuiModalWindow"});
 SAPLogon760.pPosDocumVisualiza.btAceptar = SAPLogon760.pPosDocumVisualiza.addItem('btAceptar', {"customType":"GuiButton"});
