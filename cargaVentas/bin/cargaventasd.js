@@ -68,24 +68,46 @@ GLOBAL.step( {
 		}
 		rootData.tipoCarga = "";
 		var date = new Date();
-		if (date.getHours() == 0) {
-			//dia = date.getDate() - 1;
+		var dateFin;
+		if (date.getHours() == 0) { //Si son las 00 horas, se consulta todo el día anterior
 			date = date.addDays(-1);
+			dateFin = date;
+		}else if (date.getHours() == 13) { //Si son las 13 horas, se hacen las entradas diarias
 			rootData.tipoCarga = "E";
+			dateFin = date.addDays(-2)
+		}else if (date.getHours() == 17) { //Si son las 17 horas, se hacen las entradas de fin de semana
+			rootData.tipoCarga = "E";
+			date = date.addDays(-1);
+			dateFin = date.addDays(-3);
+		}else{
+			dateFin = date;
 		}
-		var mes = date.getMonth() + 1;
+		var mes = dateFin.getMonth() + 1;
 		if (mes < 10) {
 			mes = "0" + mes;
 		}
-		var dia = date.getDate() - 0;
+		var dia = dateFin.getDate() - 0;
+		if (dia < 10) {
+			dia = "0" + dia;
+		}
+		rootData.datetimeFin = dateFin.getFullYear().toString() + mes + dia;
+				
+		mes = date.getMonth() + 1;
+		if (mes < 10) {
+			mes = "0" + mes;
+		}
+		dia = date.getDate() - 0;
 		if (dia < 10) {
 			dia = "0" + dia;
 		}
 		rootData.datetime = date.getFullYear().toString() + mes + dia;
-		//rootData.datetime = "20211001";
 		rootData.fechaActual = dia + "/" + mes + "/" + date.getFullYear();
 		rootData.fechaActual = date.getFullYear() + mes + dia;
-		rootData.filename = "C:\\LAYOUT\\LayoutENCO" + rootData.datetime + "_DD.txt";
+		if(rootData.tipoCarga == "E"){
+			rootData.filename = "C:\\LAYOUT\\LayoutENCO" + rootData.datetime + "_EE.txt";
+		}else{
+			rootData.filename = "C:\\LAYOUT\\LayoutENCO" + rootData.datetime + "_DD.txt";
+		}
 		sc.endStep(); // connectSQL
 		return ;
 	}
@@ -107,7 +129,7 @@ GLOBAL.step( {
 		//'-s "\t" -W ' +
 								'-s ";" -W ' +
 								'-o ' + rootData.filename + ' ' +
-								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
+								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetimeFin + '\'"';
 		//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'20211006\', @fechafin =\'20211010\'"';
 		try {
 			ctx.exec(command, 30000, function (res) { // timeout 30 sec
