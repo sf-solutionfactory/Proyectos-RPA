@@ -41,8 +41,10 @@
         <Entity Id="582322b6-9568-4217-bb64-fc41286e3515" Name="fechaIni" IsArray="False" />
         <Entity Id="4d0df73c-c0bd-4f77-8a16-9c102378b252" Name="fechaFin" IsArray="False" />
         <Entity Id="50f745d7-51e6-4729-9799-392a33e96c45" Name="soloCarga" IsArray="False" />
+        <Entity Id="83f242c3-89bb-445d-a43c-ecff938a2a26" Name="idCentro" IsArray="False" />
       </Entities>
     </Entity>
     <Entity Id="933f6744-be2d-46ca-ac88-b22b0ce72620" Name="tipoCarga" IsArray="False" />
+    <Entity Id="2f35037e-d42c-4cda-8d76-97ea573cbc5b" Name="datetimeIni" IsArray="False" />
   </Entities>
 </Context>

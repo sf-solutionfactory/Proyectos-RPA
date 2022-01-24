@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="72" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="3123" Length="83"><![CDATA[if (date.getHours() == 0) { //Si son las 00 horas, se consulta todo el día anterior]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="69" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="3134" Length="22"><![CDATA[var date = new Date();]]></BREAKPOINT>
-	</BREAKPOINTS>
+	<BREAKPOINTS />
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[idCentro]]></FINDWHAT>
+		<FINDWHAT><![CDATA[idEstacion]]></FINDWHAT>
+		<FINDWHAT><![CDATA[fin]]></FINDWHAT>
+		<FINDWHAT><![CDATA[datetimeFin]]></FINDWHAT>
+		<FINDWHAT><![CDATA[dateFin]]></FINDWHAT>
 		<FINDWHAT><![CDATA[fechaActual]]></FINDWHAT>
 		<FINDWHAT><![CDATA[fechaIni]]></FINDWHAT>
 		<FINDWHAT><![CDATA[setting]]></FINDWHAT>
@@ -13,6 +15,9 @@
 		<FINDWHAT><![CDATA[timeo]]></FINDWHAT>
 		<FINDWHAT><![CDATA[archivoTXT]]></FINDWHAT>
 		<FINDWHAT><![CDATA[rootData.texto]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[idCentro]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[datetimeIni]]></REPLACEWITH>
+		<REPLACEWITH><![CDATA[dateIni]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[rootData.archivoTXT]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[archivoTXT]]></REPLACEWITH>
 	</FINDHISTORY>
@@ -21,9 +26,9 @@
 		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon760']" Offset="0" Length="0" />
 		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
 		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasD']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
-		<OPENDOC LineNumber="454" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="326" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="109" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="535" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="361" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="418" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<DebugTester><![CDATA[]]></DebugTester>

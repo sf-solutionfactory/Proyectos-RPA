@@ -29,6 +29,8 @@
 		<ITEM Name="fechaIni" CtxtId="582322b6-9568-4217-bb64-fc41286e3515" IsIndexed="N" />
 		<ITEM Name="fechaFin" CtxtId="4d0df73c-c0bd-4f77-8a16-9c102378b252" IsIndexed="N" />
 		<ITEM Name="soloCarga" CtxtId="50f745d7-51e6-4729-9799-392a33e96c45" IsIndexed="N" />
+		<ITEM Name="idCentro" CtxtId="83f242c3-89bb-445d-a43c-ecff938a2a26" IsIndexed="N" />
 	</FOLDER>
 	<ITEM Name="tipoCarga" CtxtId="933f6744-be2d-46ca-ac88-b22b0ce72620" IsIndexed="N" />
+	<ITEM Name="datetimeIni" CtxtId="2f35037e-d42c-4cda-8d76-97ea573cbc5b" IsIndexed="N" />
 </WORKFLOWDATA>

@@ -68,29 +68,36 @@ GLOBAL.step( {
 		}
 		rootData.tipoCarga = "";
 		var date = new Date();
-		var dateFin;
+		var dateIni;
+		var hora = date.getHours();
 		if (date.getHours() == 0) { //Si son las 00 horas, se consulta todo el día anterior
 			date = date.addDays(-1);
-			dateFin = date;
+			dateIni = date;
 		}else if (date.getHours() == 13) { //Si son las 13 horas, se hacen las entradas diarias
 			rootData.tipoCarga = "E";
-			dateFin = date.addDays(-2)
+			date = date.addDays(-1);
+			dateIni = date.addDays(-1)
 		}else if (date.getHours() == 17) { //Si son las 17 horas, se hacen las entradas de fin de semana
 			rootData.tipoCarga = "E";
 			date = date.addDays(-1);
-			dateFin = date.addDays(-3);
+			dateIni = date.addDays(-2);
+//		}else if (date.getHours() == 19) { //Si son las 18 horas, se hacen las entradas de Viernes
+//			rootData.tipoCarga = "E";
+//			date = date.addDays(-1);
+//			dateIni = date.addDays(-3);
+//			date = dateIni;
 		}else{
-			dateFin = date;
+			dateIni = date;
 		}
-		var mes = dateFin.getMonth() + 1;
+		var mes = dateIni.getMonth() + 1;
 		if (mes < 10) {
 			mes = "0" + mes;
 		}
-		var dia = dateFin.getDate() - 0;
+		var dia = dateIni.getDate() - 0;
 		if (dia < 10) {
 			dia = "0" + dia;
 		}
-		rootData.datetimeFin = dateFin.getFullYear().toString() + mes + dia;
+		rootData.datetimeIni = dateIni.getFullYear().toString() + mes + dia;
 				
 		mes = date.getMonth() + 1;
 		if (mes < 10) {
@@ -129,10 +136,10 @@ GLOBAL.step( {
 		//'-s "\t" -W ' +
 								'-s ";" -W ' +
 								'-o ' + rootData.filename + ' ' +
-								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetimeFin + '\'"';
-		//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'20211006\', @fechafin =\'20211010\'"';
+								'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'' + rootData.datetimeIni + '\', @fechafin =\'' + rootData.datetime + '\'"';
+		//'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'20211006\', @fechafin =\'20211010\'"';
 		try {
-			ctx.exec(command, 30000, function (res) { // timeout 30 sec
+			ctx.exec(command, 600000, function (res) { // timeout 30 sec
 				// do some stuff once you get the response
 				sc.endStep(); // Read_a_text_file
 				return ;
@@ -178,12 +185,6 @@ GLOBAL.step( {
 			for (var j = 0; j < line.length - 1; j++) {
 				if (line[j] == "NULL") {
 					line[j] = "";
-				}
-				if (line[j] == "2.9999999999999999E-2") {
-					line[j] = Number(line[j]) + " ";
-				}
-				if (line[j] == "8.9999999999999997E-2") {
-					line[j] = Number(line[j]) + " ";
 				}
 				if (j == 27 || j == 28 || j == 26 || j == 34 || j == 35 || j == 36) {
 					//txt = txt + "0002004768\t";
@@ -398,6 +399,7 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
 			SAPLogon760.pVentasYFacturasMas.btIFinalizar.click();
+			SAPLogon760.pVentasYFacturasMas.keyStroke(e.SAPScripting.key._Shift__F3_);
 			sc.endStep(); // pSAPEasyAccess_manage_1
 			return ;
 		});
@@ -414,6 +416,7 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pSAPEasyAccess.wait(function (ev) {
 			SAPLogon760.pSAPEasyAccess.btIFinalizar.click();
+			SAPLogon760.pSAPEasyAccess.keyStroke(e.SAPScripting.key._Shift__F3_);
 			sc.endStep(); // pSalirDelSistema_mana
 			return ;
 		});

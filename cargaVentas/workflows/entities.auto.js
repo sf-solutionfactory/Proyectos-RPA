@@ -41,8 +41,10 @@ ctx.dataManager({
 			fechaIni : ''
 			, fechaFin : ''
 			, soloCarga : ''
+			, idCentro : ''
 		}
 		, tipoCarga : ''
+		, datetimeIni : ''
 	}
 });
 var rootData = ctx.dataManagers.rootData.create() ;
@@ -121,6 +123,7 @@ ctx.dataManager({
 		fechaIni : ''
 		, fechaFin : ''
 		, soloCarga : ''
+		, idCentro : ''
 	}
 });
 var rootData_Manual = ctx.dataManagers.rootData_Manual.create() ;

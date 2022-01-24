@@ -100,6 +100,13 @@ GLOBAL.step( {
 				server: true
 			}
 		});
+		
+		ctx.setting( {
+			idCentro: {
+				comment: "idCentro",
+				server: true
+			}
+		});
 		sc.endStep(); // Declare_setting_1
 		return ;
 	}
@@ -154,6 +161,14 @@ GLOBAL.step( {
 		ctx.workflow('cargaVentasM', 'f2829b3d-d899-46b9-9405-7c69dee1b36a');
 		// Retrieves the value of a setting
 
+		ctx.settings.idCentro.get(function (code, label, setting) {
+			if (code == e.error.OK) {
+				// get value from setting.value
+				rootData.Manual.idCentro = setting.value;
+//				sc.endStep(); // Get_setting_1
+//				return ;
+			}
+		});
 		ctx.settings.fechaInicio.get(function (code, label, setting) {
 			if (code == e.error.OK) {
 				// get value from setting.value
@@ -221,18 +236,19 @@ GLOBAL.step( {
 		//'-s "\t" -W ' +
 								'-s ";" -W ' +
 								'-o ' + rootData.filename + ' ';
+		var Estacion = "null";
 		if (rootData.Manual.fechaIni != "") {
 			command = command +
-			//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
-			//'-Q "exec Reportesap @idestacion= null, @Fechaini=\'20211106\', @fechafin =\'20211108\'"';
-								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.Manual.fechaIni + '\', @fechafin =\'' + rootData.Manual.fechaFin + '\'"';
+			//'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
+			//'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'20211106\', @fechafin =\'20211108\'"';
+								'-Q "exec Reportesap @idEstacion= ' + Estacion + ', @Fechaini=\'' + rootData.Manual.fechaIni + '\', @fechafin =\'' + rootData.Manual.fechaFin + '\'"';
 		}else {
 			command = command +
-								'-Q "exec Reportesap @idestacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
+								'-Q "exec Reportesap @idEstacion= ' + Estacion + ', @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
 		}
 		try {
 			st.disableTimeout();
-			ctx.exec(command, 30000, function (res) { // timeout 30 sec
+			ctx.exec(command, 600000, function (res) { // timeout 30 sec
 				// do some stuff once you get the response
 				sc.endStep(); // Read_a_text_file
 				return ;
@@ -270,33 +286,32 @@ GLOBAL.step( {
 		// Genera archivo final
 		var lines = rootData.lines.split('\n');
 		rootData.Lines = "";
+		var centro = '\'' + rootData.Manual.idCentro + '\'';
+		centro = rootData.Manual.idCentro + "";
+		centro = centro.toUpperCase( );
 		for (var i = 0; i < lines.length; i++) {
 			//for (var i = 0; i < 11; i++) {
 			var txt = "";
 			//var line = lines[i].split('\t');
 			var line = lines[i].split(';');
-			for (var j = 0; j < line.length - 1; j++) {
-				if (line[j] == "NULL") {
-					line[j] = "";
-				}
-				if (line[j] == "2.9999999999999999E-2") {
-					line[j] = Number(line[j]) + " ";
-				}
-				if (line[j] == "8.9999999999999997E-2") {
-					line[j] = Number(line[j]) + " ";
-				}
-				if (j == 27 || j == 28 || j == 26 || j == 34 || j == 35 || j == 36) {
-					//txt = txt + "0002004768\t";
-					line[j] = Number(line[j]) + " ";
+			if(line[31] == centro || centro == "null" || centro == "NULL"){
+				for (var j = 0; j < line.length - 1; j++) {
 					if (line[j] == "NULL") {
 						line[j] = "";
 					}
-					txt = txt + line[j] + "\t";
-				}else {
-					txt = txt + line[j] + "\t";
+					if (j == 27 || j == 28 || j == 26 || j == 34 || j == 35 || j == 36) {
+						//txt = txt + "0002004768\t";
+						line[j] = Number(line[j]) + " ";
+						if (line[j] == "NULL") {
+							line[j] = "";
+						}
+						txt = txt + line[j] + "\t";
+					}else {
+						txt = txt + line[j] + "\t";
+					}
 				}
+				rootData.archivoTXT = rootData.archivoTXT + txt + "\n";
 			}
-			rootData.archivoTXT = rootData.archivoTXT + txt + "\n";
 		}
 		sc.endStep(); // Write_a_text_file_2
 		return ;
@@ -501,6 +516,7 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pVentasYFacturasMas.wait(function (ev) {
 			SAPLogon760.pVentasYFacturasMas.btIFinalizar.click();
+			SAPLogon760.pVentasYFacturasMas.keyStroke(e.SAPScripting.key._Shift__F3_);
 			sc.endStep(); // pSAPEasyAccess_manage_1_2
 			return ;
 		});
@@ -517,6 +533,7 @@ GLOBAL.step( {
 		// Wait until the Page loads
 		SAPLogon760.pSAPEasyAccess.wait(function (ev) {
 			SAPLogon760.pSAPEasyAccess.btIFinalizar.click();
+			SAPLogon760.pSAPEasyAccess.keyStroke(e.SAPScripting.key._Shift__F3_);
 			sc.endStep(); // pSalirDelSistema_mana_2
 			return ;
 		});
