@@ -1,0 +1,42 @@
+﻿{
+	"ctxType": "ctx.jobClass",
+	"id": "6d560a2f-8add-4960-b0b5-e2096d35b584",
+	"name": "",
+	"ts": "2022-02-11 12:54:12",
+	"tsRun": "2022-02-11 17:26:57",
+	"attended": false,
+	"nbRun": 1,
+	"appliName": "",
+	"scenarioId": "eced6a0b-ed93-431f-9bba-59805119fffe",
+	"groupId": "0c69517f-efa7-448a-8c48-57e2e8063d36",
+	"status": "Failed",
+	"code": "TimeOut",
+	"label": "Step GLOBAL.carga_Manual.connectSQL_2: timeout",
+	"duration": 16366,
+	"total": 16365,
+	"data": {
+		"lines": "",
+		"archivoTXT": "",
+		"sapgui": {
+			"uname": "",
+			"pass": ""
+		},
+		"datetime": "20220211",
+		"fechaActual": "20220211",
+		"tipoCarga": "",
+		"Manual": {
+			"fechaIni": "20220201",
+			"fechaFin": "20220201",
+			"soloCarga": "E",
+			"idCentro": "null"
+		},
+		"datetimeIni": "",
+		"tipoConsulta": "A",
+		"ctxType": "ctx.dataClass",
+		"ctxName": "rootData",
+		"filename": "C:\\LAYOUT\\LayoutENCO20220211_MM.txt"
+	},
+	"format": "json",
+	"passport": "2a54482a0300e600004952504100000000000000000000000000000000000000000000000000000000000063653133613561623439336434376639623737306366303664333162376265615245535443414c4c0000000000000000000000000000000000000000000000000000000000000000000b49525041000000000000000000000000000000000000000000000000000000003463613564386337633363313431313762376338396538336439386235326332202020002a0c69517fefa7448a8c4857e2e8063d366462303561623464353931373431353000000001000000002a54482a",
+	"log": "record.WIN-LGQ5SCGER5F.Administrator.2022-02-11_12.47.03.49"
+}

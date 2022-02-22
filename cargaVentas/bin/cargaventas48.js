@@ -94,21 +94,22 @@ GLOBAL.step( {
 		ctx.workflow('cargaVentas48', '8400087e-bd68-4761-a3ed-2fba0a1c91c3');
 		// Ejecutar stored procedure
 		var command = 'sqlcmd ' +
-								'-S 104.210.223.37,4785 ' +
-								'-U "UserSp" ' +
-								'-P "Inicio1#" ' +
-								'-d "Pagos" -h-1 ' +
-		//'-s "\t" -W ' +
-								'-s ";" -W ' +
-								'-o ' + rootData.filename + ' ' +
-								'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
-		//'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'20211006\', @fechafin =\'20211010\'"';
+										'-S 104.210.223.37,4785 ' +
+										'-U "UserSp" ' +
+										'-P "Inicio1#" ' +
+										'-d "Pagos" -h-1 ' +
+										'-s ";" -W ' +
+										'-o ' + rootData.filename + ' -t 500 ' +
+										'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
 		try {
 			ctx.exec(command, 600000, function (res) { // timeout 30 sec
 				// do some stuff once you get the response
 				sc.endStep(); // Read_a_text_file
 				return ;
 			});
+			//					var obj = ctx.exec(command);
+			sc.endStep(); // Read_a_text_file
+			return ;
 		}catch (ex) {
 			ctx.log(ex.message, e.logIconType.Error);
 			sc.endStep(); // end Scenario
@@ -168,6 +169,125 @@ GLOBAL.step( {
 		return ;
 	}
 });
+
+//// ----------------------------------------------------------------
+////   Step: connectSQL_1
+//// ----------------------------------------------------------------
+//GLOBAL.step( {
+//	connectSQL_1: function (ev, sc, st) {
+//		var rootData = sc.data;
+//		ctx.workflow('cargaVentas48', '8400087e-bd68-4761-a3ed-2fba0a1c91c3');
+//		// Ejecutar stored procedure
+//		try {
+//			var cn = new ActiveXObject("ADODB.Connection");
+//			cn.CommandTimeout = 60000;
+//			cn.ConnectionTimeout = 160000;
+//			var strConn = "Provider=SQLOLEDB;Server=104.210.223.37,4785;Database=Pagos;UID=UserSp;PWD=Inicio1#;";
+//			cn.Open(strConn);
+//			var rs = new ActiveXObject("ADODB.Recordset");
+//			var SQL = 'exec Reportesap @idEstacion=null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'';
+
+//			rs.Open(SQL, cn);
+//			var index = 0;
+//			var archivoTXT = "";
+//			while (rs.EOF != true) {
+//				var txt = "";
+//				txt = txt + texto(rs("FECHA DE EMISIÓN DEL DOCUMENTO").value) + "\t";
+//				txt = txt + texto(rs("REFERENCIA FACTURA").value) + "\t";
+//				txt = txt + texto(rs("CLASE DE DOCUMENTO").value) + "\t";
+//				txt = txt + texto(rs("ORGANIZACIÓN DE VENTAS").value) + "\t";
+//				txt = txt + texto(rs("CANAL").value) + "\t";
+//				txt = txt + texto(rs("SECTOR").value) + "\t";
+//				txt = txt + texto(rs("DOCUMENTO REFERENCIA").value) + "\t";
+//				txt = txt + texto(rs("OFICINA DE VENTAS").value) + "\t";
+//				txt = txt + texto(rs("GRUPO DE VENDEDORES").value) + "\t";
+//				txt = txt + texto(rs("MOTIVO DEL PEDIDO").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE01 <CICLO>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE01 <NUM CRÉDITO>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE01 <NUM CLIENTE CONSWARE>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE01 <PLACA>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE02 <SERIE>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE02 <FOLIO>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: ZE02 <UUID>").value) + "\t";
+//				txt = txt + texto(rs("TEXTO LARGO: Z010 <UUID RELACIONADOS>").value) + "\t";
+//				txt = txt + texto(rs("USO CFDI").value) + "\t";
+//				txt = txt + texto(rs("METODO DE PAGO").value) + "\t";
+//				txt = txt + texto(rs("SOLICITANTE").value) + "\t";
+//				txt = txt + texto(rs("CLIENTE").value) + "\t";
+//				txt = txt + texto(rs("NOMBRE_FLOTA").value) + "\t";
+//				txt = txt + texto(rs("POSICION").value) + "\t";
+//				txt = txt + texto(rs("NÚMERO DE MATERIAL").value) + "\t";
+//				txt = txt + texto(rs("codigo_factura").value) + "\t";
+//				txt = txt + numero(rs("LITROS_BONOS").value) + "\t";
+//				txt = txt + numero(rs("LITROS_EFECTIVO").value) + "\t";
+//				txt = txt + numero(rs("CANTIDAD").value) + "\t";
+//				txt = txt + texto(rs("UNIDAD DEL PRODUCTO").value) + "\t";
+//				txt = txt + texto(rs("REFERENCIA DE MATERIAL DEL CLIENTE").value) + "\t";
+//				txt = txt + texto(rs("CENTRO").value) + "\t";
+//				txt = txt + texto(rs("CENTRO BENEFICIO").value) + "\t";
+//				txt = txt + texto(rs("ALMACÉN").value) + "\t";
+//				txt = txt + numero(rs("CLASE DE CONDICIÓN PR00").value) + "\t";
+//				txt = txt + numero(rs("DESCUENTO").value) + "\t";
+//				txt = txt + numero(rs("CLASE DE CONDICIÓN MWST").value) + "\t";
+//				txt = txt + texto(rs("UNIDAD DE PRECIO DE LA CONDICION").value) + "\t";
+//				txt = txt + texto(rs("MONEDA").value) + "\t";
+//				txt = txt + texto(rs("FECHA BASE").value) + "\t";
+//				txt = txt + texto(rs("TÉRMINOS DE PAGO").value) + "\t";
+//				txt = txt + texto(rs("DETALLE SUB CONCEPTO").value) + "\t";
+//				txt = txt + texto(rs("Tipo").value) + "\t";
+//				txt = txt + texto(rs("TIPO").value) + "\t";
+
+//				archivoTXT = archivoTXT + txt + "\n";
+//				//			ctx.log(archivoTXT, e.logIconType.Info);
+
+//				rs.MoveNext();
+//				index++;
+//			}
+//			rs.Close();
+//			cn.Close();
+
+
+
+//			rootData.archivoTXT = archivoTXT;
+
+//			sc.endStep(); // Read_a_text_file
+//			return ;
+//		}catch (ex) {
+//			ctx.log(ex.message, e.logIconType.Error);
+//			sc.endStep(); // end Scenario
+//			return ;
+//		}
+//	}
+//});
+
+//// ----------------------------------------------------------------
+////   Step: Read_a_text_file_1
+//// ----------------------------------------------------------------
+//GLOBAL.step( {
+//	Read_a_text_file_1: function (ev, sc, st) {
+//		var rootData = sc.data;
+//		ctx.workflow('cargaVentas48', '4e01d4e1-7da6-4eee-8cc0-444b8ce7a50f');
+//		// Reads the content of a text file.
+
+//		sc.endStep(); // setList_1
+//		return ;
+//	}
+//});
+
+//// ----------------------------------------------------------------
+////   Step: setList_1
+//// ----------------------------------------------------------------
+//GLOBAL.step( {
+//	setList_1: function (ev, sc, st) {
+//		var rootData = sc.data;
+//		ctx.workflow('cargaVentas48', '0ba54f20-9036-4f63-ad0a-1f457dade938');
+//		// Genera archivo final
+
+//		sc.endStep(); // Write_a_text_file_1
+//		return ;
+//	}
+//});
+
 
 // ----------------------------------------------------------------
 //   Step: Write_a_text_file_1

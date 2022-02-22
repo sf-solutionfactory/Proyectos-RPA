@@ -30,7 +30,7 @@ GLOBAL.scenario( {
 		sc.onError(function (sc, st, ex) {
 			sc.endScenario();
 		}); // Default error handler.
-		sc.onTimeout(600000, function (sc, st) {
+		sc.onTimeout(650000, function (sc, st) {
 			sc.endScenario();
 		}); // Default timeout handler for each step.
 		sc.step(GLOBAL.steps.getFilename_2, GLOBAL.steps.Declare_setting);
@@ -80,6 +80,7 @@ GLOBAL.step( {
 		rootData.fechaActual = dia + "/" + mes + "/" + date.getFullYear();
 		rootData.fechaActual = date.getFullYear() + mes + dia;
 		rootData.filename = "C:\\LAYOUT\\LayoutENCO" + rootData.datetime + "_MM.txt";
+		ctx.fso.file.write(rootData.filename, "", e.file.encoding.UTF8);
 		sc.endStep(); // Declare_setting
 		return ;
 	}
@@ -100,7 +101,7 @@ GLOBAL.step( {
 				server: true
 			}
 		});
-		
+
 		ctx.setting( {
 			idCentro: {
 				comment: "idCentro",
@@ -147,6 +148,13 @@ GLOBAL.step( {
 				server: true
 			}
 		});
+
+		ctx.setting( {
+			tipoConsulta: {
+				comment: "Tipo de carga",
+				server: true
+			}
+		});
 		sc.endStep(); // Get_setting
 		return ;
 	}
@@ -161,12 +169,19 @@ GLOBAL.step( {
 		ctx.workflow('cargaVentasM', 'f2829b3d-d899-46b9-9405-7c69dee1b36a');
 		// Retrieves the value of a setting
 
+		ctx.settings.tipoConsulta.get(function (code, label, setting) {
+			if (code == e.error.OK) {
+				// get value from setting.value
+				rootData.tipoConsulta = setting.value;
+			}
+		});
+
 		ctx.settings.idCentro.get(function (code, label, setting) {
 			if (code == e.error.OK) {
 				// get value from setting.value
 				rootData.Manual.idCentro = setting.value;
-//				sc.endStep(); // Get_setting_1
-//				return ;
+				//				sc.endStep(); // Get_setting_1
+				//				return ;
 			}
 		});
 		ctx.settings.fechaInicio.get(function (code, label, setting) {
@@ -228,35 +243,133 @@ GLOBAL.step( {
 		var rootData = sc.data;
 		ctx.workflow('cargaVentasM', '021aef34-ba77-4bf6-8488-50a0b817edc4');
 		// Ejecutar stored procedure
-		var command = 'sqlcmd ' +
+		//	  st.disableTimeout();
+		var tipoConsulta = rootData.tipoConsulta;
+		if (tipoConsulta == "C" || tipoConsulta == "A") {
+			var command = 'sqlcmd ' +
 								'-S 104.210.223.37,4785 ' +
 								'-U "UserSp" ' +
 								'-P "Inicio1#" ' +
 								'-d "Pagos" -h-1 ' +
-		//'-s "\t" -W ' +
 								'-s ";" -W ' +
-								'-o ' + rootData.filename + ' ';
-		var Estacion = "null";
-		if (rootData.Manual.fechaIni != "") {
-			command = command +
-			//'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
-			//'-Q "exec Reportesap @idEstacion= null, @Fechaini=\'20211106\', @fechafin =\'20211108\'"';
+								'-o ' + rootData.filename + ' -t 500 ';
+			var Estacion = "null";
+			if (rootData.Manual.fechaIni != "") {
+				command = command +
 								'-Q "exec Reportesap @idEstacion= ' + Estacion + ', @Fechaini=\'' + rootData.Manual.fechaIni + '\', @fechafin =\'' + rootData.Manual.fechaFin + '\'"';
-		}else {
-			command = command +
+			}else {
+				command = command +
 								'-Q "exec Reportesap @idEstacion= ' + Estacion + ', @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'"';
-		}
-		try {
-			st.disableTimeout();
-			ctx.exec(command, 600000, function (res) { // timeout 30 sec
-				// do some stuff once you get the response
+			}
+			try {
+				if (tipoConsulta == "C") {
+					ctx.exec(command, 300000, function (res) { // timeout 30 sec
+						// do some stuff once you get the response
+						sc.endStep(); // Read_a_text_file
+						return ;
+					});
+				}else if (tipoConsulta == "A") {
+					var obj = ctx.exec(command);
+				}
 				sc.endStep(); // Read_a_text_file
 				return ;
-			});
-		}catch (ex) {
-			ctx.log(ex.message, e.logIconType.Error);
-			sc.endStep(); // end Scenario
-			return ;
+			}catch (ex) {
+				ctx.log(ex.message, e.logIconType.Error);
+				sc.endStep(); // end Scenario
+				return ;
+			}
+		}else if (tipoConsulta == "S") {
+			try {
+				var centro = '\'' + rootData.Manual.idCentro + '\'';
+				centro = rootData.Manual.idCentro + "";
+				centro = centro.toUpperCase();
+				//			st.disableTimeout();
+
+
+				var cn = new ActiveXObject("ADODB.Connection");
+				cn.CommandTimeout = 60000;
+				cn.ConnectionTimeout = 160000;
+				var strConn = "Provider=SQLOLEDB;Server=104.210.223.37,4785;Database=Pagos;UID=UserSp;PWD=Inicio1#;";
+				cn.Open(strConn);
+				var rs = new ActiveXObject("ADODB.Recordset");
+				if (rootData.Manual.fechaIni != "") {
+					var SQL = 'exec Reportesap @idEstacion=null, @Fechaini=\'' + rootData.Manual.fechaIni + '\', @fechafin =\'' + rootData.Manual.fechaFin + '\'';
+				}else {
+					var SQL = 'exec Reportesap @idEstacion=null, @Fechaini=\'' + rootData.datetime + '\', @fechafin =\'' + rootData.datetime + '\'';
+				}
+
+				rs.Open(SQL, cn);
+				var index = 0;
+				var archivoTXT = "";
+				while (rs.EOF != true) {
+					var txt = "";
+					var temp = texto(rs("CENTRO").value);
+					if (temp == centro || centro == "null" || centro == "NULL") {
+						txt = txt + texto(rs("FECHA DE EMISIÓN DEL DOCUMENTO").value) + "\t";
+						txt = txt + texto(rs("REFERENCIA FACTURA").value) + "\t";
+						txt = txt + texto(rs("CLASE DE DOCUMENTO").value) + "\t";
+						txt = txt + texto(rs("ORGANIZACIÓN DE VENTAS").value) + "\t";
+						txt = txt + texto(rs("CANAL").value) + "\t";
+						txt = txt + texto(rs("SECTOR").value) + "\t";
+						txt = txt + texto(rs("DOCUMENTO REFERENCIA").value) + "\t";
+						txt = txt + texto(rs("OFICINA DE VENTAS").value) + "\t";
+						txt = txt + texto(rs("GRUPO DE VENDEDORES").value) + "\t";
+						txt = txt + texto(rs("MOTIVO DEL PEDIDO").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE01 <CICLO>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE01 <NUM CRÉDITO>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE01 <NUM CLIENTE CONSWARE>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE01 <PLACA>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE02 <SERIE>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE02 <FOLIO>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: ZE02 <UUID>").value) + "\t";
+						txt = txt + texto(rs("TEXTO LARGO: Z010 <UUID RELACIONADOS>").value) + "\t";
+						txt = txt + texto(rs("USO CFDI").value) + "\t";
+						txt = txt + texto(rs("METODO DE PAGO").value) + "\t";
+						txt = txt + texto(rs("SOLICITANTE").value) + "\t";
+						txt = txt + texto(rs("CLIENTE").value) + "\t";
+						txt = txt + texto(rs("NOMBRE_FLOTA").value) + "\t";
+						txt = txt + texto(rs("POSICION").value) + "\t";
+						txt = txt + texto(rs("NÚMERO DE MATERIAL").value) + "\t";
+						txt = txt + texto(rs("codigo_factura").value) + "\t";
+						txt = txt + numero(rs("LITROS_BONOS").value) + "\t";
+						txt = txt + numero(rs("LITROS_EFECTIVO").value) + "\t";
+						txt = txt + numero(rs("CANTIDAD").value) + "\t";
+						txt = txt + texto(rs("UNIDAD DEL PRODUCTO").value) + "\t";
+						txt = txt + texto(rs("REFERENCIA DE MATERIAL DEL CLIENTE").value) + "\t";
+						txt = txt + texto(rs("CENTRO").value) + "\t";
+						txt = txt + texto(rs("CENTRO BENEFICIO").value) + "\t";
+						txt = txt + texto(rs("ALMACÉN").value) + "\t";
+						txt = txt + numero(rs("CLASE DE CONDICIÓN PR00").value) + "\t";
+						txt = txt + numero(rs("DESCUENTO").value) + "\t";
+						txt = txt + numero(rs("CLASE DE CONDICIÓN MWST").value) + "\t";
+						txt = txt + texto(rs("UNIDAD DE PRECIO DE LA CONDICION").value) + "\t";
+						txt = txt + texto(rs("MONEDA").value) + "\t";
+						txt = txt + texto(rs("FECHA BASE").value) + "\t";
+						txt = txt + texto(rs("TÉRMINOS DE PAGO").value) + "\t";
+						txt = txt + texto(rs("DETALLE SUB CONCEPTO").value) + "\t";
+						txt = txt + texto(rs("Tipo").value) + "\t";
+						txt = txt + texto(rs("TIPO").value) + "\t";
+
+						archivoTXT = archivoTXT + txt + "\n";
+					}
+
+					rs.MoveNext();
+					index++;
+				}
+				rs.Close();
+				cn.Close();
+
+
+
+				rootData.archivoTXT = archivoTXT;
+
+				sc.endStep(); // Read_a_text_file
+				return ;
+			}catch (ex) {
+				ctx.log(ex.message, e.logIconType.Error);
+				sc.endStep(); // end Scenario
+				return ;
+			}
 		}
 	}
 });
@@ -269,8 +382,12 @@ GLOBAL.step( {
 		var rootData = sc.data;
 		ctx.workflow('cargaVentasM', 'b43518f7-cb23-4fcd-a490-274859618a7d');
 		// Reads the content of a text file.
-		var file = rootData.filename;
-		rootData.lines = ctx.fso.file.read(file, e.file.encoding.UTF8);
+		if (rootData.tipoConsulta == "S") {
+
+		}else {
+			var file = rootData.filename;
+			rootData.lines = ctx.fso.file.read(file, e.file.encoding.UTF8);
+		}
 		sc.endStep(); // setList_2
 		return ;
 	}
@@ -284,33 +401,35 @@ GLOBAL.step( {
 		var rootData = sc.data;
 		ctx.workflow('cargaVentasM', '14bbe514-5439-4e5d-81e8-55d208e5b654');
 		// Genera archivo final
-		var lines = rootData.lines.split('\n');
-		rootData.Lines = "";
-		var centro = '\'' + rootData.Manual.idCentro + '\'';
-		centro = rootData.Manual.idCentro + "";
-		centro = centro.toUpperCase( );
-		for (var i = 0; i < lines.length; i++) {
-			//for (var i = 0; i < 11; i++) {
-			var txt = "";
-			//var line = lines[i].split('\t');
-			var line = lines[i].split(';');
-			if(line[31] == centro || centro == "null" || centro == "NULL"){
-				for (var j = 0; j < line.length - 1; j++) {
-					if (line[j] == "NULL") {
-						line[j] = "";
-					}
-					if (j == 27 || j == 28 || j == 26 || j == 34 || j == 35 || j == 36) {
-						//txt = txt + "0002004768\t";
-						line[j] = Number(line[j]) + " ";
+		if (rootData.tipoConsulta == "S") {
+
+		}else {
+			var lines = rootData.lines.split('\n');
+			rootData.Lines = "";
+			var centro = '\'' + rootData.Manual.idCentro + '\'';
+			centro = rootData.Manual.idCentro + "";
+			centro = centro.toUpperCase();
+			for (var i = 0; i < lines.length; i++) {
+				var txt = "";
+				//var line = lines[i].split('\t');
+				var line = lines[i].split(';');
+				if (line[31] == centro || centro == "null" || centro == "NULL") {
+					for (var j = 0; j < line.length - 1; j++) {
 						if (line[j] == "NULL") {
 							line[j] = "";
 						}
-						txt = txt + line[j] + "\t";
-					}else {
-						txt = txt + line[j] + "\t";
+						if (j == 27 || j == 28 || j == 26 || j == 34 || j == 35 || j == 36) {
+							line[j] = Number(line[j]) + " ";
+							if (line[j] == "NULL") {
+								line[j] = "";
+							}
+							txt = txt + line[j] + "\t";
+						}else {
+							txt = txt + line[j] + "\t";
+						}
 					}
+					rootData.archivoTXT = rootData.archivoTXT + txt + "\n";
 				}
-				rootData.archivoTXT = rootData.archivoTXT + txt + "\n";
 			}
 		}
 		sc.endStep(); // Write_a_text_file_2
@@ -555,3 +674,26 @@ GLOBAL.step( {
 		});
 	}
 });
+
+
+function texto(text) {
+	var ret = "";
+	if (text == "null" || text == "NULL" || text == null) {
+		ret = "";
+	}else {
+		ret = text;
+	}
+
+	return ret;
+}
+
+function numero(text) {
+	var ret = "";
+	if (text == "null" || text == "NULL") {
+		ret = 0;
+	}else {
+		ret = Number(text);
+	}
+
+	return ret;
+}

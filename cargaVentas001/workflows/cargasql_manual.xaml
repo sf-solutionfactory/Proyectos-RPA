@@ -1,0 +1,291 @@
+﻿<Flowchart mc:Ignorable="sap sap2010 sads" DisplayName="carga_SQL_Manual" sap2010:WorkflowViewState.IdRef="Flowchart_1" StartNode="{x:Reference __ReferenceID5}"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:c="clr-namespace:CxFrameworkWPF;assembly=CxFrameworkWPF"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_19">
+    <c:SequenceContainerActivity ActivityType="SequenceContainerActivity" CtxtId="8575e6cc-1795-44f1-8d9d-d9bf6e6efed9" DisplayName="getSettingsMM" sap2010:WorkflowViewState.IdRef="SequenceContainerActivity_2">
+      <c:SequenceContainerActivity.CustomData>
+        <x:String x:Key="SnippetId">sequence</x:String>
+        <x:String x:Key="Description" xml:space="preserve">Obtener todas las configuraciones
+</x:String>
+        <x:String x:Key="DisplayName">getSettingsMM</x:String>
+      </c:SequenceContainerActivity.CustomData>
+      <Sequence>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="a8ce2116-c81f-4b0b-bf7a-bf042a0e965a" DisplayName="Declare setting fechaInicio">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.declare</x:String>
+            <x:String x:Key="Description">Declares a setting</x:String>
+            <x:String x:Key="name">fechaInicio</x:String>
+            <x:String x:Key="comment">Fecha Inicio</x:String>
+            <x:String x:Key="server">true</x:String>
+            <x:String x:Key="DisplayName">Declare setting fechaInicio</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="1ba16be1-5785-4ba1-8556-1dbc5e478cec" DisplayName="Declare setting fechaFin">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.declare</x:String>
+            <x:String x:Key="Description">Declares a setting</x:String>
+            <x:String x:Key="name">fechaFin</x:String>
+            <x:String x:Key="comment">Fecha fin</x:String>
+            <x:String x:Key="server">true</x:String>
+            <x:String x:Key="DisplayName">Declare setting fechaFin</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="be1de5c7-267e-4193-99ef-06a2bcf95b7d" DisplayName="Declare setting soloCarga">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.declare</x:String>
+            <x:String x:Key="Description">Declares a setting</x:String>
+            <x:String x:Key="name">soloCarga</x:String>
+            <x:String x:Key="comment">solo Carga</x:String>
+            <x:String x:Key="server">true</x:String>
+            <x:String x:Key="DisplayName">Declare setting soloCarga</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="6e9c2d81-f38b-4fc0-8343-2d8854d09329" DisplayName="Declare setting idCentro">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.declare</x:String>
+            <x:String x:Key="Description">Declares a setting</x:String>
+            <x:String x:Key="name">idCentro</x:String>
+            <x:String x:Key="comment">idCentro</x:String>
+            <x:String x:Key="server">true</x:String>
+            <x:String x:Key="DisplayName">Declare setting idCentro</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="c6785cd1-b499-49c4-9636-187e95a9ae54" DisplayName="Declare setting tipoConsulta">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.declare</x:String>
+            <x:String x:Key="Description">Declares a setting</x:String>
+            <x:String x:Key="name">tipoConsulta</x:String>
+            <x:String x:Key="comment">tipoConsulta</x:String>
+            <x:String x:Key="server">true</x:String>
+            <x:String x:Key="DisplayName">Declare setting tipoConsulta</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="12034593-3454-47aa-8b14-06ab12db25cb" DisplayName="Get setting fechaInicio">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.get_2</x:String>
+            <x:String x:Key="Description">Retrieves the value of a setting</x:String>
+            <x:String x:Key="DisplayName">Get setting fechaInicio</x:String>
+            <x:String x:Key="variable">&lt;EXP&gt;&lt;![CDATA[rootData.Manual.fechaIni]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="name">fechaInicio</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="7e4ac10a-8200-41a7-bd02-f22c70d92266" DisplayName="Get setting fechaFin">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.get_2</x:String>
+            <x:String x:Key="Description">Retrieves the value of a setting</x:String>
+            <x:String x:Key="DisplayName">Get setting fechaFin</x:String>
+            <x:String x:Key="variable">&lt;EXP&gt;&lt;![CDATA[rootData.Manual.fechaFin]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="name">fechaFin</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="31391ac3-6a7f-4cce-8633-880d67711422" DisplayName="Get setting soloCarga">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.get_2</x:String>
+            <x:String x:Key="Description">Retrieves the value of a setting</x:String>
+            <x:String x:Key="DisplayName">Get setting soloCarga</x:String>
+            <x:String x:Key="variable">&lt;EXP&gt;&lt;![CDATA[rootData.Manual.soloCarga]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="name">soloCarga</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="a51d59c5-79c3-44c7-8b06-717a738dee01" DisplayName="Get setting idCentro">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.get_2</x:String>
+            <x:String x:Key="Description">Retrieves the value of a setting</x:String>
+            <x:String x:Key="DisplayName">Get setting idCentro</x:String>
+            <x:String x:Key="variable">&lt;EXP&gt;&lt;![CDATA[rootData.Manual.idCentro]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="name">idCentro</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="0ed0b2a1-32ac-491c-b5cb-72c62c7a79ef" DisplayName="Get setting tipoConsulta">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">setting.get_2</x:String>
+            <x:String x:Key="Description">Retrieves the value of a setting</x:String>
+            <x:String x:Key="DisplayName">Get setting tipoConsulta</x:String>
+            <x:String x:Key="variable">&lt;EXP&gt;&lt;![CDATA[rootData.tipoConsulta]]&gt;&lt;/EXP&gt;</x:String>
+            <x:String x:Key="name">tipoConsulta</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+      </Sequence>
+    </c:SequenceContainerActivity>
+    <FlowStep.Next>
+      <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_18">
+        <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="00f184ce-06b7-4bca-849c-972f41d85290" DisplayName="connectSQL_MM" sap2010:WorkflowViewState.IdRef="SnippetActivity_11">
+          <c:SnippetActivity.CustomData>
+            <x:String x:Key="SnippetId">comment_2</x:String>
+            <x:String x:Key="Description">Consulta a SQL</x:String>
+            <x:String x:Key="DisplayName">connectSQL_MM</x:String>
+          </c:SnippetActivity.CustomData>
+        </c:SnippetActivity>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_17">
+            <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="d652eec8-0e35-46d7-9452-2c3c0e8a10d3" DisplayName="Read_txtMM" sap2010:WorkflowViewState.IdRef="SnippetActivity_12">
+              <c:SnippetActivity.CustomData>
+                <x:String x:Key="SnippetId">comment_2</x:String>
+                <x:String x:Key="Description">Leer archivo generado</x:String>
+                <x:String x:Key="DisplayName">Read_txtMM</x:String>
+              </c:SnippetActivity.CustomData>
+            </c:SnippetActivity>
+            <FlowStep.Next>
+              <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_16">
+                <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="38176da5-42f3-426f-90cd-c83d0f43caad" DisplayName="setListMM" sap2010:WorkflowViewState.IdRef="SnippetActivity_13">
+                  <c:SnippetActivity.CustomData>
+                    <x:String x:Key="SnippetId">comment_2</x:String>
+                    <x:String x:Key="Description">Genera aarchivo TXT</x:String>
+                    <x:String x:Key="DisplayName">setListMM</x:String>
+                  </c:SnippetActivity.CustomData>
+                </c:SnippetActivity>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_15">
+                    <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="5002060b-64c9-4ba9-a26d-84121613fedf" DisplayName="Write_txtMM" sap2010:WorkflowViewState.IdRef="SnippetActivity_14">
+                      <c:SnippetActivity.CustomData>
+                        <x:String x:Key="SnippetId">file_write_text</x:String>
+                        <x:String x:Key="Description">Writes a text file.</x:String>
+                        <x:String x:Key="DataId">8c70aa17-dd40-4249-af7a-8748418b42ac</x:String>
+                        <x:String x:Key="file">rootData.filename</x:String>
+                        <x:String x:Key="encoding">e.file.encoding.UTF8</x:String>
+                        <x:String x:Key="DisplayName">Write_txtMM</x:String>
+                      </c:SnippetActivity.CustomData>
+                    </c:SnippetActivity>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </FlowStep.Next>
+  </FlowStep>
+  <x:Reference>__ReferenceID0</x:Reference>
+  <x:Reference>__ReferenceID1</x:Reference>
+  <x:Reference>__ReferenceID2</x:Reference>
+  <x:Reference>__ReferenceID3</x:Reference>
+  <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_20">
+    <c:SnippetActivity ActivityType="SnippetActivity" CtxtId="f2324cf4-681d-45d6-8926-a23a32132a97" DisplayName="getFilenameMM" sap2010:WorkflowViewState.IdRef="SnippetActivity_15">
+      <c:SnippetActivity.CustomData>
+        <x:String x:Key="SnippetId">comment_2</x:String>
+        <x:String x:Key="Description">Describe functionality to be implemented in JavaScript later in the project.</x:String>
+        <x:String x:Key="DisplayName">getFilenameMM</x:String>
+      </c:SnippetActivity.CustomData>
+    </c:SnippetActivity>
+    <FlowStep.Next>
+      <x:Reference>__ReferenceID4</x:Reference>
+    </FlowStep.Next>
+  </FlowStep>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="SequenceContainerActivity_2" sap:VirtualizedContainerService.HintSize="150,50">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_11" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_12" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_13" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_14" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_15">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">223,523</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_16">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">223,447</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,473 300,523</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_17">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">223,371</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,397 300,447</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_18">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">223,295</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,321 300,371</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_19">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">225,195</av:Point>
+            <av:Size x:Key="ShapeSize">150,50</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,245 300,295</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SnippetActivity_15" sap:VirtualizedContainerService.HintSize="154,26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_20">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">223,127.5</av:Point>
+            <av:Size x:Key="ShapeSize">154,26</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,153.5 300,195</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+  <sads:DebugSymbol.Symbol>d1tEOlxVc2Vyc1xyb2dlbFxEb2N1bWVudHNcR2l0SHViXFByb3llY3Rvcy1SUEFcY2FyZ2FWZW50YXMwMDFcd29ya2Zsb3dzXGNhcmdhc3FsX21hbnVhbC54YW1sBwEBowINAQGqAQWwARkBBwwFdCMBBncJfR0BBYABDYYBIQEEiQERjwElAQOSARWbASkBAg==</sads:DebugSymbol.Symbol>
+</Flowchart>

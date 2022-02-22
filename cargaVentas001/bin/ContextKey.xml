@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Context Id="53b73126-cfb6-486f-853e-86b09d4fcc73">
+  <Entities>
+    <Entity Id="04f0094f-0936-4e55-a7f0-db5afc0c663d" Name="lines" IsArray="False" />
+    <Entity Id="8c70aa17-dd40-4249-af7a-8748418b42ac" Name="archivoTXT" IsArray="False" />
+    <Entity Id="c209950f-c12a-4a01-91e9-fe36a1af15bc" Name="sapgui" IsArray="False">
+      <Entities>
+        <Entity Id="54ac5217-2fab-4362-a874-e8efcf2c93aa" Name="uname" IsArray="False" />
+        <Entity Id="62395812-b343-4096-afbe-e6f2abff2a11" Name="pass" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="513a355b-b6f9-4b39-ae7e-6808d41f9a0d" Name="datetime" IsArray="False" />
+    <Entity Id="9dd53b6a-4300-473f-840d-23cc31149435" Name="fechaActual" IsArray="False" />
+    <Entity Id="d88f7b28-8862-47ef-a0e4-d22deeac5053" Name="tipoCarga" IsArray="False" />
+    <Entity Id="98cf2ce7-b59a-4335-920c-ef8eff8d3d83" Name="Manual" IsArray="False">
+      <Entities>
+        <Entity Id="466adbc2-4d33-4ede-bb54-a7c1a2f57078" Name="fechaIni" IsArray="False" />
+        <Entity Id="fb5c2b04-dfa2-4c76-a52e-d0fe1f133e8a" Name="fechaFin" IsArray="False" />
+        <Entity Id="946eee17-8bc1-4dfc-84c7-aa2dfb14a714" Name="soloCarga" IsArray="False" />
+        <Entity Id="0401bc16-338a-44f2-8dc4-d8adc70bae2c" Name="idCentro" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="b00cffd9-0c98-4054-b866-f27a49c491ef" Name="datetimeIni" IsArray="False" />
+    <Entity Id="26c801e3-2e0e-4c67-a659-eb4d302b31cd" Name="tipoConsulta" IsArray="False" />
+    <Entity Id="c3018848-46d4-4301-9cdc-aebf7e4b07d3" Name="rootData" IsArray="False">
+      <Entities>
+        <Entity Id="6f4bb060-ffcf-4824-b9c5-eb1db8cde07b" Name="" IsArray="False" />
+      </Entities>
+    </Entity>
+    <Entity Id="960ec5c1-ad54-45d8-9ed5-3c414000b475" Name="filename" IsArray="False" />
+    <Entity Id="3cffd9ad-93d2-4fd2-8401-cf1ad1b5bf1c" Name="filenameO" IsArray="False" />
+    <Entity Id="95408ecb-e53a-4fff-89db-1b69a4315736" Name="SAPLogon750Data" IsArray="False">
+      <Entities>
+        <Entity Id="9a330cc0-313c-4613-aea2-0a2e7fc476ab" Name="pSAPLoginData" IsArray="False">
+          <Entities>
+            <Entity Id="88839f4c-a899-4e75-ae09-142003c7cc34" Name="edMandante" IsArray="False" />
+            <Entity Id="c7aead83-7141-4cb4-9f68-ac3936ad0beb" Name="edUsuarios" IsArray="False" />
+            <Entity Id="18de99ea-3401-47fc-93dc-a51bac7684da" Name="oClvAcc" IsArray="False" />
+            <Entity Id="96741402-e8c4-4119-8e3a-f750685e5934" Name="edIdioma" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="b510b556-bd2c-46d7-ab63-6f25b8a41a60" Name="pSAPEasyAccessData" IsArray="False">
+          <Entities>
+            <Entity Id="01827a40-22e3-4a34-88ef-1056f0488700" Name="oGuiOkCodeField" IsArray="False" />
+          </Entities>
+        </Entity>
+        <Entity Id="be073dff-d2b2-4da4-953e-6e3b9912db35" Name="pVentasYFacturasMasData" IsArray="False">
+          <Entities>
+            <Entity Id="950997a6-92a7-412d-ab89-f62cec72a4ea" Name="oSoloCarga" IsArray="False" />
+            <Entity Id="b1d2c808-051b-44aa-8970-5a28e1f75e1b" Name="edFichero" IsArray="False" />
+            <Entity Id="ce32b483-1da1-46ac-8306-d1f18c4516d8" Name="oVentaPorLínea" IsArray="False" />
+          </Entities>
+        </Entity>
+      </Entities>
+    </Entity>
+  </Entities>
+</Context>

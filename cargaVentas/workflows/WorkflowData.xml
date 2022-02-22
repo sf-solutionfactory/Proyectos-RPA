@@ -33,4 +33,5 @@
 	</FOLDER>
 	<ITEM Name="tipoCarga" CtxtId="933f6744-be2d-46ca-ac88-b22b0ce72620" IsIndexed="N" />
 	<ITEM Name="datetimeIni" CtxtId="2f35037e-d42c-4cda-8d76-97ea573cbc5b" IsIndexed="N" />
+	<ITEM Name="tipoConsulta" CtxtId="bcac40c3-15f9-4e0b-b1af-0f3d087fc250" IsIndexed="N" />
 </WORKFLOWDATA>

@@ -1,8 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS />
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="330" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Language']" Offset="9556" Length="22"><![CDATA[obj.timeout = timeout;]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="352" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='Ctx Language']" Offset="10394" Length="44"><![CDATA[obj.output += exec.StdOut.ReadLine() + '\n';]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="127" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="4996" Length="70"><![CDATA[ctx.workflow('cargaVentas48', '4e01d4e1-7da6-4eee-8cc0-444b8ce7a50f');]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="105" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="4370" Length="60"><![CDATA[ctx.exec(command, 600000, function (res) { // timeout 30 sec]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="151" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="5960" Length="28"><![CDATA[var obj = ctx.exec(command);]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="152" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="5994" Length="33"><![CDATA[sc.endStep(); // Read_a_text_file]]></BREAKPOINT>
+	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[Number]]></FINDWHAT>
+		<FINDWHAT><![CDATA[log]]></FINDWHAT>
 		<FINDWHAT><![CDATA[idCentro]]></FINDWHAT>
 		<FINDWHAT><![CDATA[idEstacion]]></FINDWHAT>
 		<FINDWHAT><![CDATA[fin]]></FINDWHAT>
@@ -24,11 +33,11 @@
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
 		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon760']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
 		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasD']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
-		<OPENDOC LineNumber="535" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="361" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="418" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaVentasM']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="140" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasD']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="456" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentas48']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="638" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargaVentasM']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<DebugTester><![CDATA[]]></DebugTester>

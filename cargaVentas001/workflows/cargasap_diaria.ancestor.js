@@ -1,0 +1,353 @@
+﻿
+// ----------------------------------------------------------------
+//   Test menu for scenario carga_SAP_Diaria 
+// ----------------------------------------------------------------
+GLOBAL.events.START.on(function (ev) {
+	if (ctx.options.isDebug) {
+		// Add item in systray menu.
+		systray.addMenu('', 'carga_SAP_Diaria', 'Test carga_SAP_Diaria', '', function (ev) {
+			var rootData = ctx.dataManagers.rootData.create();
+			
+			// Initialize your data here.
+			GLOBAL.scenarios.carga_SAP_Diaria.start(rootData);
+		});
+	}
+});
+
+//---------------------------------------------------
+// Scenario carga_SAP_Diaria Starter ()
+//---------------------------------------------------
+
+// ----------------------------------------------------------------
+//   Scenario: carga_SAP_Diaria
+// ----------------------------------------------------------------
+GLOBAL.scenario({ carga_SAP_Diaria: function(ev, sc) {
+	var rootData = sc.data;
+
+	sc.setMode(e.scenario.mode.clearIfRunning);
+	sc.setScenarioTimeout(12000000); // Default timeout for global scenario.
+	sc.onError(function(sc, st, ex) { sc.endScenario(); }); // Default error handler.
+	sc.onTimeout(600000, function(sc, st) { sc.endScenario(); }); // Default timeout handler for each step.
+	sc.step(GLOBAL.steps.getSettingsDD, GLOBAL.steps.getFilenameDD);
+	sc.step(GLOBAL.steps.getFilenameDD, GLOBAL.steps.Read_txtDD);
+	sc.step(GLOBAL.steps.Read_txtDD, GLOBAL.steps.setListDD);
+	sc.step(GLOBAL.steps.setListDD, GLOBAL.steps.Write_txtDD);
+	sc.step(GLOBAL.steps.Write_txtDD, GLOBAL.steps.Start_SAPLogon750DD);
+	sc.step(GLOBAL.steps.Start_SAPLogon750DD, GLOBAL.steps.pWindowSAPLogon75_man);
+	sc.step(GLOBAL.steps.pWindowSAPLogon75_man, GLOBAL.steps.Declare_credentialDD);
+	sc.step(GLOBAL.steps.Declare_credentialDD, GLOBAL.steps.Get_credentialDD);
+	sc.step(GLOBAL.steps.Get_credentialDD, GLOBAL.steps.pSAPLogin_managementD);
+	sc.step(GLOBAL.steps.pSAPLogin_managementD, GLOBAL.steps.pSAPEasyAccess_manage);
+	sc.step(GLOBAL.steps.pSAPEasyAccess_manage, GLOBAL.steps.Disable_step_timeoutD);
+	sc.step(GLOBAL.steps.Disable_step_timeoutD, GLOBAL.steps.pVentasYFacturasMas_m);
+	sc.step(GLOBAL.steps.pVentasYFacturasMas_m, GLOBAL.steps.pPosDocumVisualiza_ma);
+	sc.step(GLOBAL.steps.pPosDocumVisualiza_ma, GLOBAL.steps.pVentasYFacturasMas_m_1);
+	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_1, GLOBAL.steps.pSAPEasyAccess_manage_1);
+	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_1, GLOBAL.steps.pSalirDelSistema_mana);
+	sc.step(GLOBAL.steps.pSalirDelSistema_mana, null);
+}}, ctx.dataManagers.rootData).setId('319e5962-781d-4355-9796-80cfd5ce652b') ;
+
+// ----------------------------------------------------------------
+//   Step: getSettingsDD
+// ----------------------------------------------------------------
+GLOBAL.step({ getSettingsDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	// Declares a setting
+	
+	ctx.setting({ fechaInicio: {
+		comment: "Fecha Inicio",
+		server: true
+	}});
+	// Declares a setting
+	
+	ctx.setting({ fechaFin: {
+		comment: "Fecha fin",
+		server: true
+	}});
+	// Declares a setting
+	
+	ctx.setting({ soloCarga: {
+		comment: "solo Carga",
+		server: false
+	}});
+	// Declares a setting
+	
+	ctx.setting({ MySetting: {
+		comment: "My setting",
+		server: false
+	}});
+	// Declares a setting
+	
+	ctx.setting({ MySetting: {
+		comment: "My setting",
+		server: false
+	}});
+	// Retrieves the value of a setting
+	
+	ctx.settings.fechaInicio.get(function(code, label, setting) {
+		if (code == e.error.OK) {
+			// get value from setting.value
+			rootData.Manual.fechaIni = setting.value;
+			// Retrieves the value of a setting
+			
+			ctx.settings.fechaFin.get(function(code, label, setting) {
+				if (code == e.error.OK) {
+					// get value from setting.value
+					rootData.Manual.fechaFin = setting.value;
+					// Retrieves the value of a setting
+					
+					ctx.settings.soloCarga.get(function(code, label, setting) {
+						if (code == e.error.OK) {
+							// get value from setting.value
+							rootData.Manual.soloCarga = setting.value;
+							// Retrieves the value of a setting
+							
+							ctx.settings.idCentro.get(function(code, label, setting) {
+								if (code == e.error.OK) {
+									// get value from setting.value
+									rootData.Manual.idCentro = setting.value;
+									// Retrieves the value of a setting
+									
+									ctx.settings.tipoConsulta.get(function(code, label, setting) {
+										if (code == e.error.OK) {
+											// get value from setting.value
+											rootData.tipoConsulta = setting.value;
+											sc.endStep(); // getFilenameDD
+											return;
+										}
+									});
+								}
+							});
+						}
+					});
+				}
+			});
+		}
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: getFilenameDD
+// ----------------------------------------------------------------
+GLOBAL.step({ getFilenameDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'ced5e406-1496-4cb9-a23c-a7ce77b9ee09') ;
+	// Describe functionality to be implemented in JavaScript later in the project.
+	sc.endStep(); // Read_txtDD
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Read_txtDD
+// ----------------------------------------------------------------
+GLOBAL.step({ Read_txtDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'c6368b44-2ade-4089-a406-8187f6e57551') ;
+	// Leer archivo generado
+	sc.endStep(); // setListDD
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: setListDD
+// ----------------------------------------------------------------
+GLOBAL.step({ setListDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '7c21c118-4e60-4de9-9f2a-d65be3394d77') ;
+	// Genera aarchivo TXT
+	sc.endStep(); // Write_txtDD
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Write_txtDD
+// ----------------------------------------------------------------
+GLOBAL.step({ Write_txtDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '5e57caf6-bd3c-4a7d-9593-d4b39704ee80') ;
+	// Writes a text file.
+	var file = rootData.filename;
+	var txt = rootData.archivoTXT;
+	ctx.fso.file.write(file, txt, e.file.encoding.UTF8);
+	sc.endStep(); // Start_SAPLogon750DD
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Start_SAPLogon750DD
+// ----------------------------------------------------------------
+GLOBAL.step({ Start_SAPLogon750DD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'ed0c99c3-cbca-45db-a5a7-fb6d4c083c66') ;
+	// Starts an application.
+	SAPLogon750.start();
+	sc.endStep(); // pWindowSAPLogon75_man
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: pWindowSAPLogon75_man
+// ----------------------------------------------------------------
+GLOBAL.step({ pWindowSAPLogon75_man: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'c27f0497-38de-46a5-a295-187c26fa3117') ;
+	// Wait until the Page loads
+	SAPLogon750.pWindowSAPLogon75.wait(function(ev) {
+		SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+		sc.endStep(); // Declare_credentialDD
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: Declare_credentialDD
+// ----------------------------------------------------------------
+GLOBAL.step({ Declare_credentialDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'f49d5f10-ab8d-4d0b-b844-748946f65c7f') ;
+	// Declares a credential
+	
+	ctx.cryptography.credential({ logonQAS: {
+		comment: "logonQAS",
+		server: true
+	}});
+	sc.endStep(); // Get_credentialDD
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: Get_credentialDD
+// ----------------------------------------------------------------
+GLOBAL.step({ Get_credentialDD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'aed26429-107b-4eb8-be6c-772f03e4f04e') ;
+	// Retrieves credential login and password
+	
+	ctx.cryptography.credentials.logonQAS.get(function(code, label, credential) {
+		if (code == e.error.OK) {
+			// get values for credential
+			rootData.sapgui.uname = credential.userName.get();
+			rootData.sapgui.pass = credential.password.get();
+			sc.endStep(); // pSAPLogin_managementD
+			return;
+		}
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: pSAPLogin_managementD
+// ----------------------------------------------------------------
+GLOBAL.step({ pSAPLogin_managementD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'b442a1a6-201b-45cd-b666-0b7b3c8cbcee') ;
+	// Wait until the Page loads
+	SAPLogon750.pSAPLogin.wait(function(ev) {
+		SAPLogon750.pSAPLogin.edMandante.set("300");
+		SAPLogon750.pSAPLogin.edUsuarios.set(rootData.sapgui.uname, true);
+		SAPLogon750.pSAPLogin.oClvAcc.set(rootData.sapgui.pass, true);
+		SAPLogon750.pSAPLogin.edIdioma.set("ES");
+		SAPLogon750.pSAPLogin.keyStroke(e.SAPScripting.key._Enter_);
+		sc.endStep(); // pSAPEasyAccess_manage
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: pSAPEasyAccess_manage
+// ----------------------------------------------------------------
+GLOBAL.step({ pSAPEasyAccess_manage: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '4a8daf1a-dbfa-42d4-bdab-deb5318714fa') ;
+	// Wait until the Page loads
+	SAPLogon750.pSAPEasyAccess.wait(function(ev) {
+		SAPLogon750.pSAPEasyAccess.oGuiOkCodeField.set("YSD_0001");
+		SAPLogon750.pSAPEasyAccess.keyStroke(e.SAPScripting.key._Enter_);
+		sc.endStep(); // Disable_step_timeoutD
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: Disable_step_timeoutD
+// ----------------------------------------------------------------
+GLOBAL.step({ Disable_step_timeoutD: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'd4dbcf8a-fd69-4192-b515-12ea619d9d58') ;
+	// Used to disable step timeout.
+	st.disableTimeout();
+	sc.endStep(); // pVentasYFacturasMas_m
+	return;
+}});
+
+// ----------------------------------------------------------------
+//   Step: pVentasYFacturasMas_m
+// ----------------------------------------------------------------
+GLOBAL.step({ pVentasYFacturasMas_m: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '27f42bef-35f7-4025-8305-e7578d1c40f1') ;
+	// Wait until the Page loads
+	SAPLogon750.pVentasYFacturasMas.wait(function(ev) {
+		SAPLogon750.pVentasYFacturasMas.oSoloCarga.set(rootData.Manual.soloCarga);
+		SAPLogon750.pVentasYFacturasMas.oVentaPorLínea.set("X");
+		SAPLogon750.pVentasYFacturasMas.edFichero.set(rootData.filename);
+		SAPLogon750.pVentasYFacturasMas.btEjecutar.click();
+		sc.endStep(); // pPosDocumVisualiza_ma
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: pPosDocumVisualiza_ma
+// ----------------------------------------------------------------
+GLOBAL.step({ pPosDocumVisualiza_ma: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', 'f50d42ab-1909-4e79-b337-6f83578063f3') ;
+	// Wait until the Page loads
+	SAPLogon750.pPosDocumVisualiza.wait(function(ev) {
+		SAPLogon750.pPosDocumVisualiza.btAceptar.click();
+		sc.endStep(); // pVentasYFacturasMas_m_1
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: pVentasYFacturasMas_m_1
+// ----------------------------------------------------------------
+GLOBAL.step({ pVentasYFacturasMas_m_1: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '7dff674f-49b5-4b98-9c55-06dfddb6427a') ;
+	// Wait until the Page loads
+	SAPLogon750.pVentasYFacturasMas.wait(function(ev) {
+		SAPLogon750.pVentasYFacturasMas.btIFinalizar.click();
+		sc.endStep(); // pSAPEasyAccess_manage_1
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: pSAPEasyAccess_manage_1
+// ----------------------------------------------------------------
+GLOBAL.step({ pSAPEasyAccess_manage_1: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '7127f1de-09ce-4605-b12c-03513763c614') ;
+	// Wait until the Page loads
+	SAPLogon750.pSAPEasyAccess.wait(function(ev) {
+		SAPLogon750.pSAPEasyAccess.btIFinalizar.click();
+		sc.endStep(); // pSalirDelSistema_mana
+		return;
+	});
+}});
+
+// ----------------------------------------------------------------
+//   Step: pSalirDelSistema_mana
+// ----------------------------------------------------------------
+GLOBAL.step({ pSalirDelSistema_mana: function(ev, sc, st) {
+	var rootData = sc.data;
+	ctx.workflow('cargaSAP_Diaria', '1cca97a6-8aeb-437e-9f6a-00753d54e627') ;
+	// Wait until the Page loads
+	SAPLogon750.pSalirDelSistema.wait(function(ev) {
+		SAPLogon750.pSalirDelSistema.btSí.click();
+		sc.endStep(); // end Scenario
+		return;
+	});
+}});

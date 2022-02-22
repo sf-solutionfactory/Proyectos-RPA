@@ -45,6 +45,7 @@ ctx.dataManager({
 		}
 		, tipoCarga : ''
 		, datetimeIni : ''
+		, tipoConsulta : ''
 	}
 });
 var rootData = ctx.dataManagers.rootData.create() ;

@@ -46,5 +46,6 @@
     </Entity>
     <Entity Id="933f6744-be2d-46ca-ac88-b22b0ce72620" Name="tipoCarga" IsArray="False" />
     <Entity Id="2f35037e-d42c-4cda-8d76-97ea573cbc5b" Name="datetimeIni" IsArray="False" />
+    <Entity Id="bcac40c3-15f9-4e0b-b1af-0f3d087fc250" Name="tipoConsulta" IsArray="False" />
   </Entities>
 </Context>

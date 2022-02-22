@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="cargaVentas.debug.psc"/>
+		<Property Name="projectVersion" Value="1.24"/>
+		<Property Name="projectName" Value="cargaVentas"/>
+		<Property Name="projectId" Value="978a5bc5-d626-4f38-9291-82fb52fd8170"/>
+		<Property Name="projectDate" Value="11/10/2021"/>
+		<Property Name="projectLabel" Value="Robot de carga de ventas"/>
+		<Property Name="projectClient" Value="ENCO"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value="cargaVentas.zip"/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="27/1/2022"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaVentasD" Type="1"/>
+		<Property Name="name" Value="Carga de ventas diario" Type="1"/>
+		<Property Name="id" Value="524713ab-bf57-48d9-9692-7630c30836fd" Type="1"/>
+		<Property Name="timeout" Value="43200" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<Properties Name="scenario1">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaVentas48" Type="1"/>
+		<Property Name="name" Value="Carga ventas diario" Type="1"/>
+		<Property Name="id" Value="4b269498-5e9a-4d00-9b23-62882fde8899" Type="1"/>
+		<Property Name="timeout" Value="43200" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario1">
+	</Keys>
+	<Properties Name="scenario2">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaVentasM" Type="1"/>
+		<Property Name="name" Value="Carga Ventas Manualmente" Type="1"/>
+		<Property Name="id" Value="eced6a0b-ed93-431f-9bba-59805119fffe" Type="1"/>
+		<Property Name="timeout" Value="43200" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario2">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="78454f6a8ecb11b435cfd037e4e792e9" Type="32771"/>
+	<KeyContent Value="5e0844ffea3d839bf45f03f575cbf6bc" Type="32771"/>
+	<KeyProps Value="72ad901944fd0fcd2ed71d8a15d6de63" Type="32771"/>
+</doc>
