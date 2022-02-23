@@ -33,18 +33,18 @@ GLOBAL.scenario({ carga_SAP_EntradaDiaria: function(ev, sc) {
 	sc.step(GLOBAL.steps.Read_txtEE, GLOBAL.steps.setListEE);
 	sc.step(GLOBAL.steps.setListEE, GLOBAL.steps.Write_txtEE);
 	sc.step(GLOBAL.steps.Write_txtEE, GLOBAL.steps.Start_SAPLogon750EE);
-	sc.step(GLOBAL.steps.Start_SAPLogon750EE, GLOBAL.steps.pWindowSAPLogon75_man_2);
-	sc.step(GLOBAL.steps.pWindowSAPLogon75_man_2, GLOBAL.steps.Declare_credentiaLEE);
+	sc.step(GLOBAL.steps.Start_SAPLogon750EE, GLOBAL.steps.pWindowSAPLogon75_man_3);
+	sc.step(GLOBAL.steps.pWindowSAPLogon75_man_3, GLOBAL.steps.Declare_credentiaLEE);
 	sc.step(GLOBAL.steps.Declare_credentiaLEE, GLOBAL.steps.Get_credentialEE);
 	sc.step(GLOBAL.steps.Get_credentialEE, GLOBAL.steps.pSAPLogin_managementE);
-	sc.step(GLOBAL.steps.pSAPLogin_managementE, GLOBAL.steps.pSAPEasyAccess_manage_3);
-	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_3, GLOBAL.steps.Disable_step_timeoutE);
-	sc.step(GLOBAL.steps.Disable_step_timeoutE, GLOBAL.steps.pVentasYFacturasMas_m_3);
-	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_3, GLOBAL.steps.pPosDocumVisualiza_ma_2);
-	sc.step(GLOBAL.steps.pPosDocumVisualiza_ma_2, GLOBAL.steps.pVentasYFacturasMas_m_1_2);
-	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_1_2, GLOBAL.steps.pSAPEasyAccess_manage_1_2);
-	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_1_2, GLOBAL.steps.pSalirDelSistema_mana_2);
-	sc.step(GLOBAL.steps.pSalirDelSistema_mana_2, null);
+	sc.step(GLOBAL.steps.pSAPLogin_managementE, GLOBAL.steps.pSAPEasyAccess_manage_4);
+	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_4, GLOBAL.steps.Disable_step_timeoutE);
+	sc.step(GLOBAL.steps.Disable_step_timeoutE, GLOBAL.steps.pVentasYFacturasMas_m_4);
+	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_4, GLOBAL.steps.pPosDocumVisualiza_ma_3);
+	sc.step(GLOBAL.steps.pPosDocumVisualiza_ma_3, GLOBAL.steps.pVentasYFacturasMas_m_1_3);
+	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_1_3, GLOBAL.steps.pSAPEasyAccess_manage_1_3);
+	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_1_3, GLOBAL.steps.pSalirDelSistema_mana_3);
+	sc.step(GLOBAL.steps.pSalirDelSistema_mana_3, null);
 }}, ctx.dataManagers.rootData).setId('ccb5342f-7efd-4166-9770-e3c685bc102a') ;
 
 // ----------------------------------------------------------------
@@ -181,14 +181,14 @@ GLOBAL.step({ Start_SAPLogon750EE: function(ev, sc, st) {
 	ctx.workflow('cargaSAP_EntradaDiaria', '0956c907-05a1-4e47-bf67-9d022847a23a') ;
 	// Starts an application.
 	SAPLogon750.start();
-	sc.endStep(); // pWindowSAPLogon75_man_2
+	sc.endStep(); // pWindowSAPLogon75_man_3
 	return;
 }});
 
 // ----------------------------------------------------------------
-//   Step: pWindowSAPLogon75_man_2
+//   Step: pWindowSAPLogon75_man_3
 // ----------------------------------------------------------------
-GLOBAL.step({ pWindowSAPLogon75_man_2: function(ev, sc, st) {
+GLOBAL.step({ pWindowSAPLogon75_man_3: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', 'b71aae60-e988-466a-8308-a16c8587f6b5') ;
 	// Wait until the Page loads
@@ -247,15 +247,15 @@ GLOBAL.step({ pSAPLogin_managementE: function(ev, sc, st) {
 		SAPLogon750.pSAPLogin.oClvAcc.set(rootData.sapgui.pass, true);
 		SAPLogon750.pSAPLogin.edIdioma.set("ES");
 		SAPLogon750.pSAPLogin.keyStroke(e.SAPScripting.key._Enter_);
-		sc.endStep(); // pSAPEasyAccess_manage_3
+		sc.endStep(); // pSAPEasyAccess_manage_4
 		return;
 	});
 }});
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_3
+//   Step: pSAPEasyAccess_manage_4
 // ----------------------------------------------------------------
-GLOBAL.step({ pSAPEasyAccess_manage_3: function(ev, sc, st) {
+GLOBAL.step({ pSAPEasyAccess_manage_4: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', 'c413ab8f-74c8-42a6-96fe-924d39eb4603') ;
 	// Wait until the Page loads
@@ -275,14 +275,14 @@ GLOBAL.step({ Disable_step_timeoutE: function(ev, sc, st) {
 	ctx.workflow('cargaSAP_EntradaDiaria', '508bd110-daec-4b8d-90b9-ed327eb7e772') ;
 	// Used to disable step timeout.
 	st.disableTimeout();
-	sc.endStep(); // pVentasYFacturasMas_m_3
+	sc.endStep(); // pVentasYFacturasMas_m_4
 	return;
 }});
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_3
+//   Step: pVentasYFacturasMas_m_4
 // ----------------------------------------------------------------
-GLOBAL.step({ pVentasYFacturasMas_m_3: function(ev, sc, st) {
+GLOBAL.step({ pVentasYFacturasMas_m_4: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', '2606d826-7f75-4117-8b31-b6ca3b6a54f5') ;
 	// Wait until the Page loads
@@ -291,57 +291,57 @@ GLOBAL.step({ pVentasYFacturasMas_m_3: function(ev, sc, st) {
 		SAPLogon750.pVentasYFacturasMas.oVentaPorLínea.set("X");
 		SAPLogon750.pVentasYFacturasMas.edFichero.set(rootData.filename);
 		SAPLogon750.pVentasYFacturasMas.btEjecutar.click();
-		sc.endStep(); // pPosDocumVisualiza_ma_2
+		sc.endStep(); // pPosDocumVisualiza_ma_3
 		return;
 	});
 }});
 
 // ----------------------------------------------------------------
-//   Step: pPosDocumVisualiza_ma_2
+//   Step: pPosDocumVisualiza_ma_3
 // ----------------------------------------------------------------
-GLOBAL.step({ pPosDocumVisualiza_ma_2: function(ev, sc, st) {
+GLOBAL.step({ pPosDocumVisualiza_ma_3: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', '33d711eb-a589-454a-be33-d02273db6875') ;
 	// Wait until the Page loads
 	SAPLogon750.pPosDocumVisualiza.wait(function(ev) {
 		SAPLogon750.pPosDocumVisualiza.btAceptar.click();
-		sc.endStep(); // pVentasYFacturasMas_m_1_2
+		sc.endStep(); // pVentasYFacturasMas_m_1_3
 		return;
 	});
 }});
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_1_2
+//   Step: pVentasYFacturasMas_m_1_3
 // ----------------------------------------------------------------
-GLOBAL.step({ pVentasYFacturasMas_m_1_2: function(ev, sc, st) {
+GLOBAL.step({ pVentasYFacturasMas_m_1_3: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', '852f8855-eae5-4076-86ea-e2d4d74694e5') ;
 	// Wait until the Page loads
 	SAPLogon750.pVentasYFacturasMas.wait(function(ev) {
 		SAPLogon750.pVentasYFacturasMas.btIFinalizar.click();
-		sc.endStep(); // pSAPEasyAccess_manage_1_2
+		sc.endStep(); // pSAPEasyAccess_manage_1_3
 		return;
 	});
 }});
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_1_2
+//   Step: pSAPEasyAccess_manage_1_3
 // ----------------------------------------------------------------
-GLOBAL.step({ pSAPEasyAccess_manage_1_2: function(ev, sc, st) {
+GLOBAL.step({ pSAPEasyAccess_manage_1_3: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', 'eb55f4c0-b8e9-4a3e-9016-9efa80a27511') ;
 	// Wait until the Page loads
 	SAPLogon750.pSAPEasyAccess.wait(function(ev) {
 		SAPLogon750.pSAPEasyAccess.btIFinalizar.click();
-		sc.endStep(); // pSalirDelSistema_mana_2
+		sc.endStep(); // pSalirDelSistema_mana_3
 		return;
 	});
 }});
 
 // ----------------------------------------------------------------
-//   Step: pSalirDelSistema_mana_2
+//   Step: pSalirDelSistema_mana_3
 // ----------------------------------------------------------------
-GLOBAL.step({ pSalirDelSistema_mana_2: function(ev, sc, st) {
+GLOBAL.step({ pSalirDelSistema_mana_3: function(ev, sc, st) {
 	var rootData = sc.data;
 	ctx.workflow('cargaSAP_EntradaDiaria', 'fd8d7677-aaf2-41a0-9bce-8a0f620e4d8e') ;
 	// Wait until the Page loads

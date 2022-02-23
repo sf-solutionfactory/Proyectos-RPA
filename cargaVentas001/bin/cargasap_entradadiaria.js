@@ -295,7 +295,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pWindowSAPLogon75_man_2
+//   Step: pWindowSAPLogon75_man_3
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pWindowSAPLogon75_man_3: function (ev, sc, st) {
@@ -303,8 +303,8 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_EntradaDiaria', 'b71aae60-e988-466a-8308-a16c8587f6b5');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.click();
-			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
+			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+//			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentiaLEE
 			return ;
 		});
@@ -373,7 +373,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_3
+//   Step: pSAPEasyAccess_manage_4
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pSAPEasyAccess_manage_4: function (ev, sc, st) {
@@ -404,7 +404,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_3
+//   Step: pVentasYFacturasMas_m_4
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pVentasYFacturasMas_m_4: function (ev, sc, st) {
@@ -423,7 +423,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pPosDocumVisualiza_ma_2
+//   Step: pPosDocumVisualiza_ma_3
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pPosDocumVisualiza_ma_3: function (ev, sc, st) {
@@ -439,7 +439,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_1_2
+//   Step: pVentasYFacturasMas_m_1_3
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pVentasYFacturasMas_m_1_3: function (ev, sc, st) {
@@ -456,7 +456,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_1_2
+//   Step: pSAPEasyAccess_manage_1_3
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pSAPEasyAccess_manage_1_3: function (ev, sc, st) {
@@ -473,7 +473,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSalirDelSistema_mana_2
+//   Step: pSalirDelSistema_mana_3
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pSalirDelSistema_mana_3: function (ev, sc, st) {

@@ -295,7 +295,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pWindowSAPLogon75_man_1
+//   Step: pWindowSAPLogon75_man_2
 // ----------------------------------------------------------------
 GLOBAL.step({ //pWindowSAPLogon75_man_2: function(ev, sc, st) {
 	pWindowSAPLogon75_man_2: function (ev, sc, st) {
@@ -303,8 +303,8 @@ GLOBAL.step({ //pWindowSAPLogon75_man_2: function(ev, sc, st) {
 		ctx.workflow('cargaSAP_Lunes', '23c42312-c00a-485d-9d7d-39814caa5dfc');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.click();
-			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
+			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+//			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentialLL
 			return ;
 		});
@@ -373,7 +373,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_2
+//   Step: pSAPEasyAccess_manage_3
 // ----------------------------------------------------------------
 GLOBAL.step({ //pSAPEasyAccess_manage_3: function(ev, sc, st) {
 	pSAPEasyAccess_manage_3: function (ev, sc, st) {
@@ -404,7 +404,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_2
+//   Step: pVentasYFacturasMas_m_3
 // ----------------------------------------------------------------
 GLOBAL.step({ pVentasYFacturasMas_m_3: function(ev, sc, st) {
 		var rootData = sc.data;
@@ -422,7 +422,7 @@ GLOBAL.step({ pVentasYFacturasMas_m_3: function(ev, sc, st) {
 });
 
 // ----------------------------------------------------------------
-//   Step: pPosDocumVisualiza_ma_1
+//   Step: pPosDocumVisualiza_ma_2
 // ----------------------------------------------------------------
 GLOBAL.step({ pPosDocumVisualiza_ma_2: function(ev, sc, st) {
 		var rootData = sc.data;
@@ -437,7 +437,7 @@ GLOBAL.step({ pPosDocumVisualiza_ma_2: function(ev, sc, st) {
 });
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_1_1
+//   Step: pVentasYFacturasMas_m_1_2
 // ----------------------------------------------------------------
 GLOBAL.step({ pVentasYFacturasMas_m_1_2: function(ev, sc, st) {
 		var rootData = sc.data;
@@ -452,7 +452,7 @@ GLOBAL.step({ pVentasYFacturasMas_m_1_2: function(ev, sc, st) {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_1_1
+//   Step: pSAPEasyAccess_manage_1_2
 // ----------------------------------------------------------------
 GLOBAL.step({ pSAPEasyAccess_manage_1_2: function(ev, sc, st) {
 		var rootData = sc.data;
@@ -467,7 +467,7 @@ GLOBAL.step({ pSAPEasyAccess_manage_1_2: function(ev, sc, st) {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSalirDelSistema_mana_1
+//   Step: pSalirDelSistema_mana_2
 // ----------------------------------------------------------------
 GLOBAL.step({ pSalirDelSistema_mana_2: function(ev, sc, st) {
 		var rootData = sc.data;

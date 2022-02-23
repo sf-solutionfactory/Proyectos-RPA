@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc>
+	<Identification>
+		<Version Value="2.0.7.54"/>
+	</Identification>
+	<Properties>
+		<Property Name="projectFile" Value="cargaVentas001.debug.psc"/>
+		<Property Name="projectVersion" Value="1.8"/>
+		<Property Name="projectName" Value="cargaVentas001"/>
+		<Property Name="projectId" Value="5c3e8e40-73ba-4b1a-b7e0-0e4dad3b858b"/>
+		<Property Name="projectDate" Value="08/02/2022"/>
+		<Property Name="projectLabel" Value="Carga de ventas Server"/>
+		<Property Name="projectClient" Value="ENCO"/>
+		<Property Name="licenceURL" Value=""/>
+		<Property Name="archiveFile" Value="cargaVentas001.zip"/>
+		<Property Name="productVersion" Value="2.0.7.54"/>
+		<Property Name="sdkVersion" Value="2.0.7.54"/>
+		<Property Name="exportDate" Value="22/2/2022"/>
+		<Property Name="IsTrial" Value="False"/>
+		<Property Name="validity" Value=""/>
+		<Property Name="cyphering" Value="0"/>
+		<Property Name="compression" Value="1"/>
+	</Properties>
+	<Properties Name="scenario0">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSQL_PG" Type="1"/>
+		<Property Name="name" Value="Público general para 48 horas pasadas" Type="1"/>
+		<Property Name="id" Value="de0b4542-caed-4885-a0e0-bb30ad0e818a" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario0">
+	</Keys>
+	<Properties Name="scenario1">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSQL_Manual" Type="1"/>
+		<Property Name="name" Value="Carga por parámetros configurables" Type="1"/>
+		<Property Name="id" Value="1a4d8ad1-450e-49b1-aea0-f7377233c85d" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario1">
+	</Keys>
+	<Properties Name="scenario2">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSQL_Diaria" Type="1"/>
+		<Property Name="name" Value="Carga cada 3 horas - Solo a tabla Z" Type="1"/>
+		<Property Name="id" Value="ea6bf57f-91f9-490a-a1f2-6c9705133ecc" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario2">
+	</Keys>
+	<Properties Name="scenario3">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSQL_Lunes" Type="1"/>
+		<Property Name="name" Value="Carga de entradas de fin de semana" Type="1"/>
+		<Property Name="id" Value="abb643a7-c0c2-435c-9d53-4fd314515183" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario3">
+	</Keys>
+	<Properties Name="scenario4">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSQL_EntradaDiaria" Type="1"/>
+		<Property Name="name" Value="Carga de entrada de mercancías crédito" Type="1"/>
+		<Property Name="id" Value="1211ae62-343f-499f-becc-78f859ced3d7" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario4">
+	</Keys>
+	<Properties Name="scenario5">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSAP_Manual" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="bf1c73c4-710f-4aee-b105-6e37a74ac704" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario5">
+	</Keys>
+	<Properties Name="scenario6">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSAP_Diaria" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="319e5962-781d-4355-9796-80cfd5ce652b" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario6">
+	</Keys>
+	<Properties Name="scenario7">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSAP_Lunes" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="7257e4ef-f4d4-4b8c-b13e-b326ee089a6a" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario7">
+	</Keys>
+	<Properties Name="scenario8">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSAP_EntradaDiaria" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="ccb5342f-7efd-4166-9770-e3c685bc102a" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario8">
+	</Keys>
+	<Properties Name="scenario9">
+		<Property Name="appliName" Value="GLOBAL" Type="1"/>
+		<Property Name="scenario" Value="cargaSAP_PG" Type="1"/>
+		<Property Name="name" Value="" Type="1"/>
+		<Property Name="id" Value="876a344b-0c1e-4e57-a970-6807d084df32" Type="1"/>
+		<Property Name="timeout" Value="12000" Type="1"/>
+		<Property Name="task" Value="1" Type="1"/>
+		<Property Name="contextRoot" Value="" Type="1"/>
+		<Property Name="input" Value="" Type="1"/>
+		<Property Name="output" Value="" Type="1"/>
+	</Properties>
+	<Keys Name="scenario9">
+	</Keys>
+	<UpdatePackages>
+	</UpdatePackages>
+	<KeyNames Value="8bd66892e4b6876df87ea74d2b722c98" Type="32771"/>
+	<KeyContent Value="a15eea8ea71362dbe892eeb7d4144320" Type="32771"/>
+	<KeyProps Value="bed2f404d6f00ca53097db8dd6f9821c" Type="32771"/>
+</doc>

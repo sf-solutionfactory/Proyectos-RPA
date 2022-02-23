@@ -38,8 +38,8 @@ GLOBAL.scenario( {
 		sc.step(GLOBAL.steps.Read_txtDD, GLOBAL.steps.setListDD);
 		sc.step(GLOBAL.steps.setListDD, GLOBAL.steps.Write_txtDD);
 		sc.step(GLOBAL.steps.Write_txtDD, GLOBAL.steps.Start_SAPLogon750DD);
-		sc.step(GLOBAL.steps.Start_SAPLogon750DD, GLOBAL.steps.pWindowSAPLogon75_man_1);
-		sc.step(GLOBAL.steps.pWindowSAPLogon75_man_1, GLOBAL.steps.Declare_credentialDD);
+	sc.step(GLOBAL.steps.Start_SAPLogon750DD, GLOBAL.steps.pWindowSAPLogon75_man_1);
+	sc.step(GLOBAL.steps.pWindowSAPLogon75_man_1, GLOBAL.steps.Declare_credentialDD);
 		sc.step(GLOBAL.steps.Declare_credentialDD, GLOBAL.steps.Get_credentialDD);
 		sc.step(GLOBAL.steps.Get_credentialDD, GLOBAL.steps.pSAPLogin_managementD);
 		sc.step(GLOBAL.steps.pSAPLogin_managementD, GLOBAL.steps.pSAPEasyAccess_manage_2);
@@ -294,7 +294,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pWindowSAPLogon75_man
+//   Step: pWindowSAPLogon75_man_1
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pWindowSAPLogon75_man_1: function (ev, sc, st) {
@@ -302,8 +302,8 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_Diaria', 'c27f0497-38de-46a5-a295-187c26fa3117');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.click();
-			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
+			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+//			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentialDD
 			return ;
 		});
@@ -372,7 +372,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage
+//   Step: pSAPEasyAccess_manage_2
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pSAPEasyAccess_manage_2: function (ev, sc, st) {
@@ -403,7 +403,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m
+//   Step: pVentasYFacturasMas_m_2
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pVentasYFacturasMas_m_2: function (ev, sc, st) {
@@ -422,7 +422,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pPosDocumVisualiza_ma
+//   Step: pPosDocumVisualiza_ma_1
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pPosDocumVisualiza_ma_1: function (ev, sc, st) {
@@ -438,7 +438,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pVentasYFacturasMas_m_1
+//   Step: pVentasYFacturasMas_m_1_1
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pVentasYFacturasMas_m_1_1: function (ev, sc, st) {
@@ -455,7 +455,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSAPEasyAccess_manage_1
+//   Step: pSAPEasyAccess_manage_1_1
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pSAPEasyAccess_manage_1_1: function (ev, sc, st) {
@@ -472,7 +472,7 @@ GLOBAL.step( {
 });
 
 // ----------------------------------------------------------------
-//   Step: pSalirDelSistema_mana
+//   Step: pSalirDelSistema_mana_1
 // ----------------------------------------------------------------
 GLOBAL.step( {
 	pSalirDelSistema_mana_1: function (ev, sc, st) {

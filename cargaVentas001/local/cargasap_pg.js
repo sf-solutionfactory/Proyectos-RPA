@@ -282,8 +282,8 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_PG', 'c951921f-7adc-4dd9-889b-d08cb466123b');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.click();
-			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
+			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+//			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentialPG
 			return ;
 		});
