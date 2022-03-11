@@ -25,7 +25,7 @@ GLOBAL.scenario({ carga_SAP_Manual: function(ev, sc) {
 	var rootData = sc.data;
 
 	sc.setMode(e.scenario.mode.clearIfRunning);
-	sc.setScenarioTimeout(12000000); // Default timeout for global scenario.
+	sc.setScenarioTimeout(120000000); // Default timeout for global scenario.
 	sc.onError(function(sc, st, ex) { sc.endScenario(); }); // Default error handler.
 	sc.onTimeout(60000, function(sc, st) { sc.endScenario(); }); // Default timeout handler for each step.
 	sc.step(GLOBAL.steps.getSettingsM, GLOBAL.steps.getFilenameM);

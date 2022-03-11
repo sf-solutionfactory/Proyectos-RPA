@@ -26,7 +26,7 @@ GLOBAL.scenario( {
 		var rootData = sc.data;
 
 		sc.setMode(e.scenario.mode.clearIfRunning);
-		sc.setScenarioTimeout(12000000); // Default timeout for global scenario.
+		sc.setScenarioTimeout(120000000); // Default timeout for global scenario.
 		sc.onError(function (sc, st, ex) {
 			sc.endScenario();
 		}); // Default error handler.
