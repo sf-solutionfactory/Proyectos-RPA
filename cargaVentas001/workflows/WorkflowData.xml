@@ -38,4 +38,5 @@
 			<ITEM Name="oVentaPorLínea" CtxtId="ce32b483-1da1-46ac-8306-d1f18c4516d8" IsIndexed="N" />
 		</FOLDER>
 	</FOLDER>
+	<ITEM Name="environmentType" CtxtId="57b989d9-0209-4b17-9cd9-bb774d08f45f" IsIndexed="N" />
 </WORKFLOWDATA>

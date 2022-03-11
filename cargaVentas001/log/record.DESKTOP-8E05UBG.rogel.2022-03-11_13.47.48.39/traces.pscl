@@ -1,0 +1,83 @@
+﻿{"ts":"13:47:48.40","ctx":"Event","event":"carga_SAP_Manual","appliName":"GLOBAL","appliInst":0,"pageName":"SYSTRAY1","pageInst":0,"data":{}}
+{"ts":"13:47:48.196","ctx":"State","type":"scenario","name":"carga_SAP_Manual","id":252,"action":"start","appliName":"GLOBAL","parentId":201,"data":{"ctxType":"ctx.application","name":"GLOBAL","instance":0,"data":{"ctxType":"ctx.dataClass","appliName":"GLOBAL","appliInst":0,"currentDir":"D:\\Users\\rogel\\Documents\\GitHub\\Proyectos-RPA\\cargaVentas001\\log","currentURL":"D:\\Users\\rogel\\Documents\\GitHub\\Proyectos-RPA\\cargaVentas001\\bin","execDir":"D:\\Program Files (x86)\\SAP\\Intelligent RPA\\Desktop Agent\\","resourceURL":"D:\\Users\\rogel\\Documents\\GitHub\\Proyectos-RPA\\cargaVentas001\\bin","serverURL":"D:\\Users\\rogel\\Documents\\GitHub\\Proyectos-RPA\\cargaVentas001\\server"}}}
+{"ts":"13:47:48.208","ctx":"State","type":"once","name":"timeout(carga_SAP_Manual)","id":253,"action":"set","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.219","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:21",120000000],"result":"","verb":"NOTIFY","parentId":252,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:48.229","ctx":"State","type":"step","name":"getSettingsM","id":255,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.240","ctx":"State","type":"step","name":"getFilenameM","id":257,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.255","ctx":"State","type":"step","name":"Read_txtM","id":259,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.265","ctx":"State","type":"step","name":"setListM","id":261,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.277","ctx":"State","type":"step","name":"Write_txtM","id":263,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.288","ctx":"State","type":"step","name":"Start_SAPLogon750M","id":265,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.299","ctx":"State","type":"step","name":"pWindowSAPLogon75_man","id":267,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.309","ctx":"State","type":"step","name":"Declare_credentialM","id":269,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.320","ctx":"State","type":"step","name":"Get_credentialM","id":271,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.330","ctx":"State","type":"step","name":"pSAPLogin_managementM","id":273,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.341","ctx":"State","type":"step","name":"pSAPEasyAccess_manage","id":275,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.351","ctx":"State","type":"step","name":"Disable_step_timeoutM","id":277,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.362","ctx":"State","type":"step","name":"pVentasYFacturasMas_m","id":279,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.373","ctx":"State","type":"step","name":"pPosDocumVisualiza_ma","id":281,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.383","ctx":"State","type":"step","name":"pVentasYFacturasMas_m_1","id":283,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.398","ctx":"State","type":"step","name":"pSAPEasyAccess_manage_1","id":285,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.406","ctx":"State","type":"step","name":"pSalirDelSistema_mana","id":287,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.417","ctx":"State","type":"step","name":"deleteFileMM","id":289,"action":"add","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.427","ctx":"State","type":"step","name":"getSettingsM","id":255,"action":"start","appliName":"GLOBAL","parentName":"carga_SAP_Manual","parentId":252}
+{"ts":"13:47:48.438","ctx":"State","type":"once","name":"timeout(getSettingsM)","id":290,"action":"set","parentName":"getSettingsM","parentId":255}
+{"ts":"13:47:48.450","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:22",60000],"result":"","verb":"NOTIFY","parentId":255,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:48.461","ctx":"Action","action":"ctx.settingClass.get","params":[null],"parentId":255}
+{"ts":"13:47:48.471","ctx":"Action","action":"ctx.settingClass.reset","params":[],"parentId":255}
+{"ts":"13:47:48.482","ctx":"Action","action":"ctx.registry.get","params":["Software\\SAP\\Intelligent RPA\\Desktop Agent\\CurrentEnvironment","HKCU"],"parentId":255}
+{"ts":"13:47:48.505","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:23",30000],"result":"","verb":"NOTIFY","parentId":255,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:48.507","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:47:48.622","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:47:48.629","ctx":"Action","action":"ctx.settingClass.get","params":[null],"parentId":13}
+{"ts":"13:47:48.644","ctx":"Action","action":"ctx.settingClass.reset","params":[],"parentId":13}
+{"ts":"13:47:48.655","ctx":"Action","action":"ctx.registry.get","params":["Software\\SAP\\Intelligent RPA\\Desktop Agent\\CurrentEnvironment","HKCU"],"parentId":13}
+{"ts":"13:47:48.673","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:24",30000],"result":"","verb":"NOTIFY","parentId":13,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:48.677","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:47:48.761","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:47:48.769","ctx":"Action","action":"ctx.settingClass.get","params":[null],"parentId":13}
+{"ts":"13:47:48.786","ctx":"Action","action":"ctx.settingClass.reset","params":[],"parentId":13}
+{"ts":"13:47:48.798","ctx":"Action","action":"ctx.registry.get","params":["Software\\SAP\\Intelligent RPA\\Desktop Agent\\CurrentEnvironment","HKCU"],"parentId":13}
+{"ts":"13:47:48.818","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:25",30000],"result":"","verb":"NOTIFY","parentId":13,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:48.821","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:47:48.900","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:47:48.904","ctx":"Action","action":"ctx.settingClass.get","params":[null],"parentId":13}
+{"ts":"13:47:48.917","ctx":"Action","action":"ctx.settingClass.reset","params":[],"parentId":13}
+{"ts":"13:47:48.928","ctx":"Action","action":"ctx.registry.get","params":["Software\\SAP\\Intelligent RPA\\Desktop Agent\\CurrentEnvironment","HKCU"],"parentId":13}
+{"ts":"13:47:48.946","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:26",30000],"result":"","verb":"NOTIFY","parentId":13,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:48.951","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:47:49.40","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:47:49.45","ctx":"Action","action":"ctx.settingClass.get","params":[null],"parentId":13}
+{"ts":"13:47:49.56","ctx":"Action","action":"ctx.settingClass.reset","params":[],"parentId":13}
+{"ts":"13:47:49.67","ctx":"Action","action":"ctx.registry.get","params":["Software\\SAP\\Intelligent RPA\\Desktop Agent\\CurrentEnvironment","HKCU"],"parentId":13}
+{"ts":"13:47:49.86","ctx":"Action","action":"notify","params":[{"ctxType":"ctx.event","name":"evCtxtTimer","appliName":"GLOBAL","appliInst":0,"pageName":"","pageInst":-1,"itemName":"","itemInst":0,"itemIndex":0,"itemOccurs":0,"nbInst":0,"data":{},"reqAppliName":"","reqAppliInst":0,"reqEventName":"","reqItemName":""},"!number:27",30000],"result":"","verb":"NOTIFY","parentId":13,"appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:49.94","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"set"}
+{"ts":"13:47:49.164","ctx":"State","type":"on","name":"GLOBAL:evReceiveMessage","id":13,"action":"run"}
+{"ts":"13:47:49.170","ctx":"Action","action":"ctx.log","params":["'ctx.settings.environmentType' es nulo o no es un objeto",1],"verb":"LOGMESS","parentId":13,"name":"TypeError","message":"'ctx.settings.environmentType' es nulo o no es un objeto","number":-2146823281,"description":"'ctx.settings.environmentType' es nulo o no es un objeto"}
+{"ts":"13:47:53.535","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"run"}
+{"ts":"13:47:53.539","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"set"}
+{"ts":"13:47:54.378","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"run"}
+{"ts":"13:47:54.385","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"set"}
+{"ts":"13:47:54.767","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"run"}
+{"ts":"13:47:54.775","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"set"}
+{"ts":"13:47:54.986","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"run"}
+{"ts":"13:47:54.993","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"set"}
+{"ts":"13:47:55.190","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"run"}
+{"ts":"13:47:55.198","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"set"}
+{"ts":"13:47:55.223","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"run"}
+{"ts":"13:47:55.226","ctx":"State","type":"on","name":"GLOBAL:evCtxtTimer","id":168,"action":"set"}
+{"ts":"13:47:59.659","ctx":"Event","event":"QUIT","appliName":"POPUPS","appliInst":0}
+{"ts":"13:47:59.752","ctx":"State","type":"on","name":"POPUPS:QUIT","id":25,"action":"run"}
+{"ts":"13:47:59.769","ctx":"State","type":"on","name":"POPUPS:QUIT","id":25,"action":"set"}
+{"ts":"13:47:59.797","ctx":"Event","event":"END","appliName":"POPUPS","appliInst":0}
+{"ts":"13:47:59.845","ctx":"Event","event":"QUIT","appliName":"SAPLogon750","appliInst":0}
+{"ts":"13:47:59.849","ctx":"State","type":"on","name":"SAPLogon750:QUIT","id":27,"action":"run"}
+{"ts":"13:47:59.864","ctx":"State","type":"on","name":"SAPLogon750:QUIT","id":27,"action":"set"}
+{"ts":"13:47:59.892","ctx":"Event","event":"END","appliName":"SAPLogon750","appliInst":0}
+{"ts":"13:47:59.915","ctx":"Event","event":"QUIT","appliName":"GLOBAL","appliInst":0}
+{"ts":"13:47:59.920","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"run"}
+{"ts":"13:47:59.943","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":0,"action":"set"}
+{"ts":"13:47:59.958","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":36,"action":"run"}
+{"ts":"13:47:59.969","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":36,"action":"set"}
+{"ts":"13:47:59.982","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":169,"action":"run"}
+{"ts":"13:47:59.993","ctx":"State","type":"on","name":"GLOBAL:QUIT","id":169,"action":"set"}

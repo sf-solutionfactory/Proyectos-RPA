@@ -100,6 +100,13 @@ GLOBAL.step( {
 				server: true
 			}
 		});
+
+		ctx.setting( {
+			environmentType: {
+				comment: "environmentType",
+				server: true
+			}
+		});
 		// Retrieves the value of a setting
 
 		ctx.settings.fechaInicio.get(function (code, label, setting) {
@@ -130,8 +137,16 @@ GLOBAL.step( {
 											if (code == e.error.OK) {
 												// get value from setting.value
 												rootData.tipoConsulta = setting.value;
-												sc.endStep(); // getFilenamePG
-												return ;
+
+												ctx.settings.environmentType.get(function (code, label, setting) {
+													if (code == e.error.OK) {
+														// get value from setting.value
+														rootData.environmentType = setting.value;
+
+														sc.endStep(); // getFilenameEE
+														return ;
+													}
+												});
 											}
 										});
 									}
@@ -282,7 +297,11 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_PG', 'c951921f-7adc-4dd9-889b-d08cb466123b');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+			if (rootData.environmentType == "QAS") {
+				SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+			}else {
+				SAPLogon750.pWindowSAPLogon75.stPRD.clickDouble();
+			}
 //			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentialPG
 			return ;
@@ -300,8 +319,8 @@ GLOBAL.step( {
 		// Declares a credential
 
 		ctx.cryptography.credential( {
-			logonQAS: {
-				comment: "logonQAS",
+			logonSAP: {
+				comment: "logonSAP",
 				server: true
 			}
 		});
@@ -319,7 +338,7 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_PG', '6ef13de0-f87b-4583-aae6-88d7912431af');
 		// Retrieves credential login and password
 
-		ctx.cryptography.credentials.logonQAS.get(function (code, label, credential) {
+		ctx.cryptography.credentials.logonSAP.get(function (code, label, credential) {
 			if (code == e.error.OK) {
 				// get values for credential
 				rootData.sapgui.uname = credential.userName.get();

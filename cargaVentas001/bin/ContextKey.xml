@@ -53,5 +53,6 @@
         </Entity>
       </Entities>
     </Entity>
+    <Entity Id="57b989d9-0209-4b17-9cd9-bb774d08f45f" Name="environmentType" IsArray="False" />
   </Entities>
 </Context>

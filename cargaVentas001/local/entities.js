@@ -47,6 +47,7 @@ ctx.dataManager({
 				, oVentaPorLínea : ''
 			}
 		}
+		, environmentType : ''
 	}
 });
 var rootData = ctx.dataManagers.rootData.create() ;
