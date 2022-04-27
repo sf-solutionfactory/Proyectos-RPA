@@ -38,17 +38,17 @@ GLOBAL.scenario( {
 		sc.step(GLOBAL.steps.Read_txtEE, GLOBAL.steps.setListEE);
 		sc.step(GLOBAL.steps.setListEE, GLOBAL.steps.Write_txtEE);
 		sc.step(GLOBAL.steps.Write_txtEE, GLOBAL.steps.Start_SAPLogon750EE);
-	sc.step(GLOBAL.steps.Start_SAPLogon750EE, GLOBAL.steps.pWindowSAPLogon75_man_3);
-	sc.step(GLOBAL.steps.pWindowSAPLogon75_man_3, GLOBAL.steps.Declare_credentiaLEE);
+		sc.step(GLOBAL.steps.Start_SAPLogon750EE, GLOBAL.steps.pWindowSAPLogon75_man_3);
+		sc.step(GLOBAL.steps.pWindowSAPLogon75_man_3, GLOBAL.steps.Declare_credentiaLEE);
 		sc.step(GLOBAL.steps.Declare_credentiaLEE, GLOBAL.steps.Get_credentialEE);
 		sc.step(GLOBAL.steps.Get_credentialEE, GLOBAL.steps.pSAPLogin_managementE);
-	sc.step(GLOBAL.steps.pSAPLogin_managementE, GLOBAL.steps.pSAPEasyAccess_manage_4);
-	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_4, GLOBAL.steps.Disable_step_timeoutE);
-	sc.step(GLOBAL.steps.Disable_step_timeoutE, GLOBAL.steps.pVentasYFacturasMas_m_4);
-	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_4, GLOBAL.steps.pPosDocumVisualiza_ma_3);
-	sc.step(GLOBAL.steps.pPosDocumVisualiza_ma_3, GLOBAL.steps.pVentasYFacturasMas_m_1_3);
-	sc.step(GLOBAL.steps.pVentasYFacturasMas_m_1_3, GLOBAL.steps.pSAPEasyAccess_manage_1_3);
-	sc.step(GLOBAL.steps.pSAPEasyAccess_manage_1_3, GLOBAL.steps.pSalirDelSistema_mana_3);
+		sc.step(GLOBAL.steps.pSAPLogin_managementE, GLOBAL.steps.pSAPEasyAccess_manage_4);
+		sc.step(GLOBAL.steps.pSAPEasyAccess_manage_4, GLOBAL.steps.Disable_step_timeoutE);
+		sc.step(GLOBAL.steps.Disable_step_timeoutE, GLOBAL.steps.pVentasYFacturasMas_m_4);
+		sc.step(GLOBAL.steps.pVentasYFacturasMas_m_4, GLOBAL.steps.pPosDocumVisualiza_ma_3);
+		sc.step(GLOBAL.steps.pPosDocumVisualiza_ma_3, GLOBAL.steps.pVentasYFacturasMas_m_1_3);
+		sc.step(GLOBAL.steps.pVentasYFacturasMas_m_1_3, GLOBAL.steps.pSAPEasyAccess_manage_1_3);
+		sc.step(GLOBAL.steps.pSAPEasyAccess_manage_1_3, GLOBAL.steps.pSalirDelSistema_mana_3);
 		sc.step(GLOBAL.steps.pSalirDelSistema_mana_3, GLOBAL.steps.deleteFileEE);
 		sc.step(GLOBAL.steps.deleteFileEE, null);
 	}
@@ -100,6 +100,13 @@ GLOBAL.step( {
 				server: true
 			}
 		});
+
+		ctx.setting( {
+			environmentType: {
+				comment: "environmentType",
+				server: true
+			}
+		});
 		// Retrieves the value of a setting
 
 		ctx.settings.fechaInicio.get(function (code, label, setting) {
@@ -130,8 +137,16 @@ GLOBAL.step( {
 											if (code == e.error.OK) {
 												// get value from setting.value
 												rootData.tipoConsulta = setting.value;
-												sc.endStep(); // getFilenameEE
-												return ;
+
+												ctx.settings.environmentType.get(function (code, label, setting) {
+													if (code == e.error.OK) {
+														// get value from setting.value
+														rootData.environmentType = setting.value;
+
+														sc.endStep(); // getFilenameEE
+														return ;
+													}
+												});
 											}
 										});
 									}
@@ -303,8 +318,12 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_EntradaDiaria', 'b71aae60-e988-466a-8308-a16c8587f6b5');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
-//			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
+			if (rootData.environmentType == "QAS") {
+				SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+			}else {
+				SAPLogon750.pWindowSAPLogon75.stPRD.clickDouble();
+			}
+			//			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentiaLEE
 			return ;
 		});
@@ -321,8 +340,8 @@ GLOBAL.step( {
 		// Declares a credential
 
 		ctx.cryptography.credential( {
-			logonQAS: {
-				comment: "logonQAS",
+			logonSAP: {
+				comment: "logonSAP",
 				server: true
 			}
 		});
@@ -340,7 +359,7 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_EntradaDiaria', '41c00fb4-cc28-4be6-85cb-3bc171a5fe66');
 		// Retrieves credential login and password
 
-		ctx.cryptography.credentials.logonQAS.get(function (code, label, credential) {
+		ctx.cryptography.credentials.logonSAP.get(function (code, label, credential) {
 			if (code == e.error.OK) {
 				// get values for credential
 				rootData.sapgui.uname = credential.userName.get();
@@ -361,10 +380,10 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_EntradaDiaria', 'b8669f22-c8c4-4c08-8b73-0e634c17e8bb');
 		// Wait until the Page loads
 		SAPLogon750.pSAPLogin.wait(function (ev) {
-//			SAPLogon750.pSAPLogin.edMandante.set("300");
+			//			//SAPLogon750.pSAPLogin.edMandante.set("300");
 			SAPLogon750.pSAPLogin.edUsuarios.set(rootData.sapgui.uname, true);
 			SAPLogon750.pSAPLogin.oClvAcc.set(rootData.sapgui.pass, true);
-//			SAPLogon750.pSAPLogin.edIdioma.set("ES");
+			//			SAPLogon750.pSAPLogin.edIdioma.set("ES");
 			SAPLogon750.pSAPLogin.keyStroke(e.SAPScripting.key._Enter_);
 			sc.endStep(); // pSAPEasyAccess_manage_4
 			return ;

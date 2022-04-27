@@ -100,6 +100,13 @@ GLOBAL.step( {
 				server: true
 			}
 		});
+
+		ctx.setting( {
+			environmentType: {
+				comment: "environmentType",
+				server: true
+			}
+		});
 		// Retrieves the value of a setting
 
 		ctx.settings.fechaInicio.get(function (code, label, setting) {
@@ -130,8 +137,16 @@ GLOBAL.step( {
 											if (code == e.error.OK) {
 												// get value from setting.value
 												rootData.tipoConsulta = setting.value;
-												sc.endStep(); // getFilenameLL
-												return ;
+
+												ctx.settings.environmentType.get(function (code, label, setting) {
+													if (code == e.error.OK) {
+														// get value from setting.value
+														rootData.environmentType = setting.value;
+
+														sc.endStep(); // getFilenameEE
+														return ;
+													}
+												});
 											}
 										});
 									}
@@ -303,7 +318,11 @@ GLOBAL.step({ //pWindowSAPLogon75_man_2: function(ev, sc, st) {
 		ctx.workflow('cargaSAP_Lunes', '23c42312-c00a-485d-9d7d-39814caa5dfc');
 		// Wait until the Page loads
 		SAPLogon750.pWindowSAPLogon75.wait(function (ev) {
-			SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+			if (rootData.environmentType == "QAS") {
+				SAPLogon750.pWindowSAPLogon75.stQAS.clickDouble();
+			}else {
+				SAPLogon750.pWindowSAPLogon75.stPRD.clickDouble();
+			}
 //			SAPLogon750.pWindowSAPLogon75.btAccederAlSistema.click();
 			sc.endStep(); // Declare_credentialLL
 			return ;
@@ -321,8 +340,8 @@ GLOBAL.step( {
 		// Declares a credential
 
 		ctx.cryptography.credential( {
-			logonQAS: {
-				comment: "logonQAS",
+			logonSAP: {
+				comment: "logonSAP",
 				server: true
 			}
 		});
@@ -340,7 +359,7 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_Lunes', '784c67c7-5bad-486c-b878-fe3147a1ff2a');
 		// Retrieves credential login and password
 
-		ctx.cryptography.credentials.logonQAS.get(function (code, label, credential) {
+		ctx.cryptography.credentials.logonSAP.get(function (code, label, credential) {
 			if (code == e.error.OK) {
 				// get values for credential
 				rootData.sapgui.uname = credential.userName.get();
@@ -361,7 +380,7 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_Lunes', 'a493b92d-0c7b-464b-b3f0-d3a38f301a1f');
 		// Wait until the Page loads
 		SAPLogon750.pSAPLogin.wait(function (ev) {
-			SAPLogon750.pSAPLogin.edMandante.set("300");
+			//SAPLogon750.pSAPLogin.edMandante.set("300");
 			SAPLogon750.pSAPLogin.edUsuarios.set(rootData.sapgui.uname, true);
 			SAPLogon750.pSAPLogin.oClvAcc.set(rootData.sapgui.pass, true);
 			SAPLogon750.pSAPLogin.edIdioma.set("ES");
@@ -445,6 +464,7 @@ GLOBAL.step({ pVentasYFacturasMas_m_1_2: function(ev, sc, st) {
 		// Wait until the Page loads
 		SAPLogon750.pVentasYFacturasMas.wait(function (ev) {
 			SAPLogon750.pVentasYFacturasMas.btIFinalizar.click();
+			SAPLogon750.pVentasYFacturasMas.keyStroke(e.SAPScripting.key._Shift__F3_);
 		sc.endStep(); // pSAPEasyAccess_manage_1_2
 			return ;
 		});
@@ -460,6 +480,7 @@ GLOBAL.step({ pSAPEasyAccess_manage_1_2: function(ev, sc, st) {
 		// Wait until the Page loads
 		SAPLogon750.pSAPEasyAccess.wait(function (ev) {
 			SAPLogon750.pSAPEasyAccess.btIFinalizar.click();
+			SAPLogon750.pSAPEasyAccess.keyStroke(e.SAPScripting.key._Shift__F3_);
 		sc.endStep(); // pSalirDelSistema_mana_2
 			return ;
 		});

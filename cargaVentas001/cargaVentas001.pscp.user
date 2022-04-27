@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
-	<BREAKPOINTS />
+	<BREAKPOINTS>
+		<BREAKPOINT LineNumber="300" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_pg']" Offset="9525" Length="40"><![CDATA[if (rootData.environmentType == "QAS") {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="271" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_manual']" Offset="9456" Length="40"><![CDATA[if (rootData.environmentType == "QAS") {]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="274" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_manual']" Offset="9567" Length="50"><![CDATA[SAPLogon750.pWindowSAPLogon75.stPRD.clickDouble();]]></BREAKPOINT>
+	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
+		<FINDWHAT><![CDATA[SAPLogon750.pSAPLogin.edMandante.set("300");]]></FINDWHAT>
 		<FINDWHAT><![CDATA[logonQAS]]></FINDWHAT>
 		<FINDWHAT><![CDATA[filenameO = ruta]]></FINDWHAT>
 		<FINDWHAT><![CDATA[rootData.filenameO = ruta + "LayoutENCO" + rootData.datetime + "]]></FINDWHAT>
@@ -22,7 +27,7 @@
 		<FINDWHAT><![CDATA[pWindowSAPLogon75_man_4]]></FINDWHAT>
 		<FINDWHAT><![CDATA[deleteFileEE]]></FINDWHAT>
 		<FINDWHAT><![CDATA[pSalirDelSistema_mana_3]]></FINDWHAT>
-		<FINDWHAT><![CDATA[pSAPEasyAccess_manage_1_3]]></FINDWHAT>
+		<REPLACEWITH><![CDATA[//SAPLogon750.pSAPLogin.edMandante.set("300");]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[logonSAP]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[filenameO = rutao]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[rootData.filenameO = ruta + "LayoutENCO" + rootData.datetime + date.getHours() + date.getMinutes() + "]]></REPLACEWITH>
@@ -35,12 +40,11 @@
 	</FINDHISTORY>
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
-		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon750']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="117" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_entradadiaria']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="109" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_lunes']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="109" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_diaria']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="109" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_pg']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="92" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_manual']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="362" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_pg']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="383" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_entradadiaria']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="383" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_lunes']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="382" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_diaria']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="325" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_manual']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[2]]></CurPerspective>

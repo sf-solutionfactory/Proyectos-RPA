@@ -359,7 +359,7 @@ GLOBAL.step( {
 		ctx.workflow('cargaSAP_PG', '3abc5289-b692-4beb-8d39-7219f5e51ebb');
 		// Wait until the Page loads
 		SAPLogon750.pSAPLogin.wait(function (ev) {
-			SAPLogon750.pSAPLogin.edMandante.set("300");
+			//SAPLogon750.pSAPLogin.edMandante.set("300");
 			SAPLogon750.pSAPLogin.edUsuarios.set(rootData.sapgui.uname, true);
 			SAPLogon750.pSAPLogin.oClvAcc.set(rootData.sapgui.pass, true);
 			SAPLogon750.pSAPLogin.edIdioma.set("ES");
