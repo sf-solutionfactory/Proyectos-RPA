@@ -54,7 +54,7 @@ GLOBAL.scenario({ carga_SAP_Manual: function(ev, sc) {
 GLOBAL.step({ getSettingsM: function(ev, sc, st) {
 	var rootData = sc.data;
 	// Declares a setting
-	
+	try{
 	ctx.setting({ fechaInicio: {
 		comment: "Fecha Inicio",
 		server: true
@@ -140,6 +140,11 @@ GLOBAL.step({ getSettingsM: function(ev, sc, st) {
 			});
 		}
 	});
+		}catch (ex) {
+			ctx.log(ex.message);
+			sc.endStep(); // getFilenameEE
+			return ;
+		}
 }});
 
 // ----------------------------------------------------------------

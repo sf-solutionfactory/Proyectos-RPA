@@ -78,7 +78,7 @@ GLOBAL.step( {
 	getSettingsMM: function (ev, sc, st) {
 		var rootData = sc.data;
 		// Declares a setting
-
+try{
 		ctx.setting( {
 			fechaInicio: {
 				comment: "Fecha Inicio",
@@ -159,6 +159,11 @@ GLOBAL.step( {
 				});
 			}
 		});
+		}catch (ex) {
+			ctx.log(ex.message);
+			sc.endStep(); // getFilenameEE
+			return ;
+		}
 	}
 });
 

@@ -83,87 +83,92 @@ GLOBAL.step( {
 	getSettingsP: function (ev, sc, st) {
 		var rootData = sc.data;
 		// Declares a setting
+		try {
+			ctx.setting( {
+				fechaInicio: {
+					comment: "Fecha Inicio",
+					server: true
+				}
+			});
+			// Declares a setting
 
-		ctx.setting( {
-			fechaInicio: {
-				comment: "Fecha Inicio",
-				server: true
-			}
-		});
-		// Declares a setting
+			ctx.setting( {
+				fechaFin: {
+					comment: "Fecha fin",
+					server: true
+				}
+			});
+			// Declares a setting
 
-		ctx.setting( {
-			fechaFin: {
-				comment: "Fecha fin",
-				server: true
-			}
-		});
-		// Declares a setting
+			ctx.setting( {
+				soloCarga: {
+					comment: "solo Carga",
+					server: true
+				}
+			});
+			// Declares a setting
 
-		ctx.setting( {
-			soloCarga: {
-				comment: "solo Carga",
-				server: true
-			}
-		});
-		// Declares a setting
+			ctx.setting( {
+				idCentro: {
+					comment: "idCentro",
+					server: true
+				}
+			});
+			// Declares a setting
 
-		ctx.setting( {
-			idCentro: {
-				comment: "idCentro",
-				server: true
-			}
-		});
-		// Declares a setting
+			ctx.setting( {
+				tipoConsulta: {
+					comment: "tipoConsulta",
+					server: true
+				}
+			});
+			// Retrieves the value of a setting
 
-		ctx.setting( {
-			tipoConsulta: {
-				comment: "tipoConsulta",
-				server: true
-			}
-		});
-		// Retrieves the value of a setting
+			ctx.settings.fechaInicio.get(function (code, label, setting) {
+				if (code == e.error.OK) {
+					// get value from setting.value
+					rootData.Manual.fechaIni = setting.value;
+					// Retrieves the value of a setting
 
-		ctx.settings.fechaInicio.get(function (code, label, setting) {
-			if (code == e.error.OK) {
-				// get value from setting.value
-				rootData.Manual.fechaIni = setting.value;
-				// Retrieves the value of a setting
+					ctx.settings.fechaFin.get(function (code, label, setting) {
+						if (code == e.error.OK) {
+							// get value from setting.value
+							rootData.Manual.fechaFin = setting.value;
+							// Retrieves the value of a setting
 
-				ctx.settings.fechaFin.get(function (code, label, setting) {
-					if (code == e.error.OK) {
-						// get value from setting.value
-						rootData.Manual.fechaFin = setting.value;
-						// Retrieves the value of a setting
+							ctx.settings.soloCarga.get(function (code, label, setting) {
+								if (code == e.error.OK) {
+									// get value from setting.value
+									rootData.Manual.soloCarga = setting.value;
+									// Retrieves the value of a setting
 
-						ctx.settings.soloCarga.get(function (code, label, setting) {
-							if (code == e.error.OK) {
-								// get value from setting.value
-								rootData.Manual.soloCarga = setting.value;
-								// Retrieves the value of a setting
+									ctx.settings.idCentro.get(function (code, label, setting) {
+										if (code == e.error.OK) {
+											// get value from setting.value
+											rootData.Manual.idCentro = setting.value;
+											// Retrieves the value of a setting
 
-								ctx.settings.idCentro.get(function (code, label, setting) {
-									if (code == e.error.OK) {
-										// get value from setting.value
-										rootData.Manual.idCentro = setting.value;
-										// Retrieves the value of a setting
-
-										ctx.settings.tipoConsulta.get(function (code, label, setting) {
-											if (code == e.error.OK) {
-												// get value from setting.value
-												rootData.tipoConsulta = setting.value;
-												sc.endStep(); // connectSQL_P
-												return ;
-											}
-										});
-									}
-								});
-							}
-						});
-					}
-				});
-			}
-		});
+											ctx.settings.tipoConsulta.get(function (code, label, setting) {
+												if (code == e.error.OK) {
+													// get value from setting.value
+													rootData.tipoConsulta = setting.value;
+													sc.endStep(); // connectSQL_P
+													return ;
+												}
+											});
+										}
+									});
+								}
+							});
+						}
+					});
+				}
+			});
+		}catch (ex) {
+			ctx.log(ex.message);
+			sc.endStep(); // getFilenameEE
+			return ;
+		}
 	}
 });
 

@@ -5,7 +5,7 @@
 	</Identification>
 	<Properties>
 		<Property Name="projectFile" Value="cargaVentas001.debug.psc"/>
-		<Property Name="projectVersion" Value="1.14"/>
+		<Property Name="projectVersion" Value="1.13"/>
 		<Property Name="projectName" Value="cargaVentas001"/>
 		<Property Name="projectId" Value="5c3e8e40-73ba-4b1a-b7e0-0e4dad3b858b"/>
 		<Property Name="projectDate" Value="08/02/2022"/>
@@ -154,6 +154,6 @@
 	<UpdatePackages>
 	</UpdatePackages>
 	<KeyNames Value="8bd66892e4b6876df87ea74d2b722c98" Type="32771"/>
-	<KeyContent Value="a8f2e7aad01a1ed1d7e8da721288c1ba" Type="32771"/>
-	<KeyProps Value="b0b2716adcc8125367e718a257a4acc3" Type="32771"/>
+	<KeyContent Value="97175543494ff58a6dab781bd582e6bd" Type="32771"/>
+	<KeyProps Value="672d092d0cbefa0b9fe2be59ef2fd606" Type="32771"/>
 </doc>
