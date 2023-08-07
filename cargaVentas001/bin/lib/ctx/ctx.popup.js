@@ -90,6 +90,8 @@ For a general overview about 'Using Popups', see [[:pg:gui.popup2|Development Gu
 *   titleVisible: (boolean|undefined),
 *   toolWindow: (boolean|undefined),
 *   IEHost: (boolean|undefined),
+*   ChromiumHost: (boolean|undefined),
+*	debugMode: (boolean|undefined),
 *   modal: (boolean|undefined),
 *   maximize: (boolean|undefined),
 *   minimize: (boolean|undefined),
@@ -151,6 +153,10 @@ ctx.popupParams = {
 //  /** @type {string} */ url: '',
 //  /** embedding mode
 //	* @type {boolean} */ IEHost: false, 
+//  /** Chromium Host
+//	* @type {boolean} */ ChromiumHost: true, 
+//  /** debug Mode
+//	* @type {boolean} */ debugMode: false, 
 //  /** @type {boolean} */ modal: false, // modal / modeless mode
 //  // *** title bar ***
 //  /** popup title 
@@ -267,6 +273,8 @@ var _containerMapping = {
   url: 'Args',
   Args: 'Args',
   IEHost: 'IEHost',
+  ChromiumHost: 'ChromiumHost',
+  debugMode: 'debugMode',
   modal: 'Modal',
   Modal: 'Modal',
   // *** title bar ***
@@ -983,7 +991,7 @@ MyAppli.MyPage.edName = MyAppli.MyPage.item({ row1: { ... }});
 	}
 
 /**
- 	* TBD
+ 	* Defines the function to be called when popup is displayed
 	* @description
  	* __Ex.:__
 <code javascript>
@@ -1001,7 +1009,7 @@ MyAppli.MyPage.edName = MyAppli.MyPage.item({ row1: { ... }});
 	}
 
 	/**
- 	* TBD
+ 	* Defines the function to be called when popup is displayed in Test (Design) mode
 	* @description
  	* __Ex.:__
 <code javascript>
@@ -1019,7 +1027,7 @@ MyAppli.MyPage.edName = MyAppli.MyPage.item({ row1: { ... }});
 	}
 
 	/**
- 	* TBD
+ 	* Updates the popup in Test (Design) mode
 	* @description
  	* __Ex.:__
 <code javascript>
@@ -1397,6 +1405,7 @@ popup.waitResult(function(ev) {
 		 	Args: undefined,
 		 	Icon: undefined,
 		 	IEHost: undefined,
+			ChromiumHost: undefined,
 		 	ToolWindow: undefined,
 		 	TopMost: undefined,
 		 	X: undefined,
@@ -1578,6 +1587,11 @@ initialize({"message": "<br>dummy message</br>",  "title": "Dummy title"});
 		if ((this.mergedParams['Container'] === false) && (!this.mergedParams.IEHost)) {
 			this.mergedParams.IEHost = true;
 		}
+		
+		if ((this.mergedParams['Container'] === false) && (!this.mergedParams.ChromiumHost)) {
+			this.mergedParams.ChromiumHost = true;
+		}
+
 		// *** merge local params ***
 		this.mergedLocalParams = {
 			highlight: undefined,
@@ -1719,6 +1733,7 @@ ctx.popup('pClose', e.popup.template.YesNo).messbox2({
 		
 		this.mergeParams();
 
+
 		// promise integration			
 		callback = callback || this.mergedLocalParams.callback;
 		if (!callback || (typeof callback !== 'function')) {
@@ -1757,6 +1772,11 @@ ctx.popup('pClose', e.popup.template.YesNo).messbox2({
 				}
 				this.mergedParams.Args = Args;
 			}
+			
+			if(this.mergedParams.ChromiumHost === undefined && !this.mergedParams.IEHost)
+					this.mergedParams.ChromiumHost = true;
+
+
 			var res = ctx.verbExec(desc, _actionLanguage, _action, this.mergedParams, _subCommand, true);
 			if (this.containerParams.ForceShow) {
 				this.containerParams.ForceShow = false; // reset 'forceShow' tag

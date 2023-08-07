@@ -217,6 +217,11 @@ ctx.jWorkflow = (function () {
               if (_runningStep) {
                 ctx.notifyState('step', _runningStep.name , _runningStep.id, 'start', '', (_runningStep.sc ? _runningStep.sc.name : ''), (_runningStep.sc ? _runningStep.sc.id : ''), _runningStep.parent);
                 ctx.currentParentId = _runningStep.id;
+								
+				//calculate new tick for se=tep
+				var date = new Date();
+				_runningStep.timeoutTick = date.getTime();
+								
                 result = _runningStep.stepFunc.apply(_runningStep, [result, _baton]);
 
                 if (!_taken) {
@@ -567,17 +572,18 @@ ctx.scenarioManager = function (parent) {
   * @method clearAll
   * @path ctx.scenarioManager.clearAll
   */
-  this.clearAll = function () {
+  this.clearAll = function (cancel) {
     ctx.notifyAction('ctx.scenarioManager.clearAll');
     for (var i in ctx.runningScenarios.map) {
       var sc = ctx.runningScenarios.map[i];
       if (_parent && sc.parent) {
         if (_parent.name == sc.parent.name) {
-          sc.endScenario();
+					
+          sc.endScenario(cancel);
           delete ctx.runningScenarios.map[i];
         }
       } else {
-        sc.endScenario();
+        sc.endScenario(cancel);
         delete ctx.runningScenarios.map[i];
       }
     }
@@ -991,7 +997,7 @@ ctx.scenarioClass = function (name, func, parent, model, dataModel) {
 	
   /** definitions for object copy
   * @ignore
-  * @type {Array<string>} */ var _copyData = ['scenarioId', 'comment', 'timeoutCallback', 'errorCallback', 'sourceEvent', 'scenarioTimeoutDelay', 'timeoutDelay'];
+  * @type {Array<string>} */ var _copyData = ['scenarioId', 'comment', 'timeoutCallback', 'errorCallback', 'sourceEvent', 'scenarioTimeoutDelay', 'timeoutDelay', 'timeoutTick', 'timeoutAlreadySent'];
   var _workflow = null;
   /** @type {Date} */ var _startDate;
   /** @type {Date} */ var _endDate;
@@ -1120,6 +1126,12 @@ ctx.scenarioClass = function (name, func, parent, model, dataModel) {
   * @path ctx.scenarioClass.timeoutDelay
   * @advanced
   * @property {number} */ this.timeoutDelay = 0;
+	
+	 /** timeout ticck for each step
+  * @path ctx.scenarioClass.timeoutTick
+  * @advanced
+  * @property {number} */ this.timeoutTick = 0;
+
 
   /** timeout handler function for each step
   * @path ctx.scenarioClass.timeoutCallback
@@ -1134,9 +1146,21 @@ ctx.scenarioClass = function (name, func, parent, model, dataModel) {
   * @path ctx.scenarioClass.scenarioTimeoutDelay
   * @advanced
   * @property {number} */ this.scenarioTimeoutDelay = 0;
+	
+	
+	
+	/** timeout tick for the global scenario
+  * @path ctx.scenarioClass.scenarioTick
+  * @advanced
+  * @property {number} */ this.scenarioTick = 0;
+	
+		/** timeout has been done
+  * @path ctx.scenarioClass.timeoutAlreadySent
+  * @advanced
+  * @property {number} */ this.timeoutAlreadySent = false;
 
-  var _startScenarioTimer = function (clear) {
-    if (_scn.running) {
+  var _runScenarioTimeout = function (clear) {
+		 if (_scn.running && !_scn.timeoutAlreadySent) {
       // clear potential running timer
       if (clear) {
         _stopScenarioTimer();
@@ -1145,7 +1169,18 @@ ctx.scenarioClass = function (name, func, parent, model, dataModel) {
         _scn.timeoutIndex = ctx.objectIndex++;
         var strTimeoutName = 'timeout(' + _scn.name + ')' ;
         ctx.notifyState('once', strTimeoutName, _scn.timeoutIndex, 'set', '', _scn.name, _scn.id);
-        _scn.scenarioTimeoutObject = setTimeout( function(scn) { return function() {
+				
+				_timeoutScenarioFunc(_scn,strTimeoutName)();
+				
+      }
+    }
+	}
+	
+	
+	
+	var _timeoutScenarioFunc = function(scn, strTimeoutName) { return function() {
+		
+          scn.timeoutAlreadySent = true;
           if (ctx.options.autoTest) {
             // TODO 2JM : manage timeout
             var todo = 0;
@@ -1181,7 +1216,25 @@ ctx.scenarioClass = function (name, func, parent, model, dataModel) {
           }
           ctx.currentParentId = prevParentId;
           ctx.notifyState('once', strTimeoutName, scn.timeoutIndex, 'reset', '', scn.name, scn.id);
-        }; }(_scn), _scn.scenarioTimeoutDelay);
+        }; 
+	}
+	
+	/** timeout tick for the global scenario
+  * @path ctx.scenarioClass.scenarioTick
+  * @advanced
+  * @property {number} */ this.scenarioTick = 0;
+
+  var _startScenarioTimer = function (clear) {
+    if (_scn.running) {
+      // clear potential running timer
+      if (clear) {
+        _stopScenarioTimer();
+      }
+      if ((!_scn.scenarioTimeoutObject) && (_scn.scenarioTimeoutDelay) && (!ctx.options.timeoutDisabled)) {
+        _scn.timeoutIndex = ctx.objectIndex++;
+        var strTimeoutName = 'timeout(' + _scn.name + ')' ;
+        ctx.notifyState('once', strTimeoutName, _scn.timeoutIndex, 'set', '', _scn.name, _scn.id);
+        _scn.scenarioTimeoutObject = setTimeout( _timeoutScenarioFunc(_scn, strTimeoutName), _scn.scenarioTimeoutDelay);
       }
     }
   }
@@ -1426,7 +1479,7 @@ sc.clear();
           ctx.options.trace.autoRecordingStarted = false;
           ctx.options.trace.autoRecordingCode = e.error.OK;
         }
-
+				
         if (ctx.shutdownOnIdle) {
           // shutdown on idle
           ctx.shutdownAgent(ctx.restartAgent, false);
@@ -1463,7 +1516,7 @@ var sc2 = sc.cloneScenario();
   * Returns the short description for serialization
   * @ignore
   * @method ctxShort
-  * @path ctx.<.ctxShort
+  * @path ctx.scenarioClass.ctxShort
   */
   this.ctxShort = function() {
     return ['ctxType', 'id', 'name', 'parent', 'job'];
@@ -1530,12 +1583,31 @@ MyAppli.data.MyScenario.endScenario();
     * @return {ctx.scenarioClass} scenario object
     */
     this.endScenario = function (cancel) {
-
+			
+			
+			//check timeout of scnenario or last step
+			//check end of scenario timeout
+			
+			if( this.scenarioTimeoutDelay != 0)
+			{
+				//get tick for scenarion
+				var date = new Date();
+				var timeNow = date.getTime();
+						
+				var limitTimeout = timeNow - _scn.scenarioTick ; 
+				if(limitTimeout >= _scn.scenarioTimeoutDelay)
+					_runScenarioTimeout(true);
+			}
+			
+				
+				
+			
 			// in case there are sub scenarios, cancel them
 			var bFound = false;
 			for (var i in ctx.runningScenarios.map) {
 	      var sc = ctx.runningScenarios.map[i];
 	      if (sc.running && sc.parentId == _scn.id) {
+				
 					// Cancel the running scenario
 					sc.endScenario(cancel);
 					bFound = true;
@@ -1547,6 +1619,17 @@ MyAppli.data.MyScenario.endScenario();
       if (_workflow) {
         var st = _workflow.activeStep();
         if (st) {
+					//check timeout for step
+			    if( this.timeoutDelay != 0)
+					{
+						//get tick for scenarion
+						var date = new Date();
+						var timeNow = date.getTime();
+								
+						var limitTimeout = timeNow - st.timeoutTick ; 
+						if(limitTimeout >= this.timeoutDelay)
+							st.runStepTimeout(true);
+					}
           st.endStep(null, true);
         }
       }
@@ -1578,7 +1661,33 @@ MyAppli.step({stGetData: function(ev, sc, st) {
     * @return {ctx.scenarioClass} scenario object
     */
     this.endStep = function (result) {
-      var st = this.currentStep();
+     var st = this.currentStep();
+			
+	//check end of scenario timeout
+			
+	if ((this.scenarioTimeoutObject != 0) && (this.scenarioTimeoutDelay > 0))
+	{
+		//get tick for scenarion
+		var date = new Date();
+		var timeNow = date.getTime();
+				
+		var limitTimeout = timeNow - this.scenarioTick ; 
+		if(limitTimeout >= this.scenarioTimeoutDelay)
+			_runScenarioTimeout(true);
+	}
+	
+	//check end of step timeout
+	if (st && (st.timeoutObject != 0) && ((st.timeoutDelay > 0) || (this.timeoutDelay > 0)))
+	{
+		//get tick for scenarion
+		var date = new Date();
+		var timeNow = date.getTime();
+				
+		var limitTimeout = timeNow - st.timeoutTick ; 
+		if(limitTimeout >= this.timeoutDelay)
+			st.runStepTimeout(true);
+	}
+			
       if (st) {
         st.endStep(result);
       }
@@ -1964,6 +2073,11 @@ var sc = MyAppli.scenarios.scCRMGetData.start( data );
     this.start = function (data, sourceEvent, job) {
       // never instanciate the model, create a clone
       /** @type {ctx.scenarioClass} */ var sc = this.cloneScenario();
+
+      //get tick for scenarion
+      var date = new Date();
+      sc.scenarioTick = date.getTime();
+
       if (sourceEvent && (sourceEvent instanceof ctx.jobClass)) {
         job = sourceEvent;
         sourceEvent = undefined;
@@ -1998,6 +2112,12 @@ var sc = MyAppli.scenarios.scCRMGetData.start( data );
 							if (sc.main && ('undefined' !== typeof systray)) {
 								systray.updateRunningStatus(true, sc.job);
 							}
+
+            if (ctx.options.needPlanTimer && ctx.options.planTimer) {
+		  				clearTimeout(ctx.options.planTimer);
+	  					ctx.options.planTimer = null;
+  					}
+
 							sc.startClone(data);
 						} else {
 							ctx.log("Scenario '"+ sc.name + "' could not be started", e.logIconType.Error);
@@ -2011,6 +2131,10 @@ var sc = MyAppli.scenarios.scCRMGetData.start( data );
 						if (sc.main && ('undefined' !== typeof systray)) {
 							systray.updateRunningStatus(true, sc.job);
 						}
+            if (ctx.options.needPlanTimer && ctx.options.planTimer) {
+		  				clearTimeout(ctx.options.planTimer);
+	  					ctx.options.planTimer = null;
+  					}
 						sc.startClone(data);
 		      });
 				}
@@ -2373,8 +2497,18 @@ ctx.stepClass = function (name, func, parent, sc) {
   * @path ctx.stepClass.timeoutCallback
   * @property {function(ctx.scenarioClass,ctx.stepClass)} timeoutCallback  */ this.timeoutCallback = null;
 
-  var _startStepTimer = function (clear) {
-    if (_step.running) {
+	
+	
+	 /**
+  * Run step timeout
+  * @description
+  * Possibility to run function on timeout step
+  *
+  * @method runStepTimeout
+  * @path ctx.stepClass.runStepTimeout
+  */
+	this.runStepTimeout = function (clear) {
+    if (_step.running && !_step.timeoutAlreadySent) {
       // clear potential running timer
       if (clear) {
         _stopStepTimer();
@@ -2393,8 +2527,17 @@ ctx.stepClass = function (name, func, parent, sc) {
         _step.timeoutIndex = ctx.objectIndex++;
         // Name the timer for debugging
         var strTimeoutName = 'timeout(' + _step.name + ')' ;
-        ctx.notifyState('once', strTimeoutName, _step.timeoutIndex, 'set', '', _step.name, _step.id);
-        _step.timeoutObject = setTimeout( function(step, timeoutCallback) { return function() {
+        ctx.notifyState('once', strTimeoutName, _step.timeoutIndex, 'set', '', _step.name, _step.id);	
+				_timeoutStepFunc(_step, timeoutCallback, strTimeoutName)();
+  
+      }
+    }
+  }
+	
+	
+	var _timeoutStepFunc = function(step, timeoutCallback, strTimeoutName) { return function() {
+		
+          step.timeoutAlreadySent = true;
           if (ctx.options.autoTest) {
             // TODO 2JM : manage timeout
             var todo = 0;
@@ -2417,7 +2560,32 @@ ctx.stepClass = function (name, func, parent, sc) {
           timeoutCallback(step.sc, step);
           ctx.currentParentId = prevParentId;
           ctx.notifyState('once', strTimeoutName, step.timeoutIndex, 'reset', '', step.name, step.id);
-        }; }(_step, timeoutCallback), timeoutDelay);
+        }; 
+ }
+	
+	
+  var _startStepTimer = function (clear) {
+    if (_step.running) {
+      // clear potential running timer
+      if (clear) {
+        _stopStepTimer();
+      }
+      var timeoutCallback, timeoutDelay;
+      if ((_step.timeoutCallback) && (_step.timeoutDelay)) {
+        // set a step timeout handler
+        timeoutCallback = _step.timeoutCallback;
+        timeoutDelay = _step.timeoutDelay;
+      } else if ((_step.sc.timeoutCallback) && (_step.sc.timeoutDelay)) {
+        // set the scenario timeout handler
+        timeoutCallback = _step.sc.timeoutCallback;
+        timeoutDelay = _step.sc.timeoutDelay;
+      }
+      if ((!_step.timeoutObject) && timeoutCallback && timeoutDelay && (!ctx.options.timeoutDisabled)) {
+        _step.timeoutIndex = ctx.objectIndex++;
+        // Name the timer for debugging
+        var strTimeoutName = 'timeout(' + _step.name + ')' ;
+        ctx.notifyState('once', strTimeoutName, _step.timeoutIndex, 'set', '', _step.name, _step.id);
+        _step.timeoutObject = setTimeout( _timeoutStepFunc(_step, timeoutCallback, strTimeoutName), timeoutDelay);
       }
     }
   }
@@ -2576,35 +2744,30 @@ MyAppli.step({ MyStep: function(ev, sc, st) {
   */
   this.endStep = function (result, bNoPass) {
     ctx.addPendingFunction(function () {
-      _step.running = false;
-      _stopStepTimer();
-      // unsubscribe all handlers for this step
-      ctx.amplify.unsubscribeStep(_step);
+			if (_step.running) {
+	      _step.running = false;
+	      _stopStepTimer();
+	      // unsubscribe all handlers for this step
+	      ctx.amplify.unsubscribeStep(_step);
 
-      ctx.notifyState('step', _step.name , _step.id, 'end', '', '', ctx.currentParentId, _step.parent);
-      //ctx.notifyState('step', step.name , step.id, 'end', '', (step.sc ? step.sc.name : ''), (step.sc ? step.sc.id : -1), step.parent);
+	      ctx.notifyState('step', _step.name , _step.id, 'end', '', '', ctx.currentParentId, _step.parent);
 
-			ctx._stepPath.pop();
-			if (ctx._stepPath.length == 0)
-				ctx.currentStep = null;
+				ctx._stepPath.pop();
+				if (ctx._stepPath.length == 0)
+					ctx.currentStep = null;
 
-/*
-			if (ctx.currentStep == _step) {
+				if ((ctx.currentParentId == _step.id) && ctx.currentSubscription)
+	        ctx.currentParentId = ctx.currentSubscription.id;
 
+	      //GLOBAL.notify(GLOBAL.events.$evNextStep);
+	      // move to next step
+	      if (_step.baton && !bNoPass) {
+	        if (result instanceof ctx.stepClass)
+	          _step.baton.pass(result);
+	        else
+	          _step.baton.pass(undefined, result);
+	      }
 			}
-*/
-
-			if ((ctx.currentParentId == _step.id) && ctx.currentSubscription)
-        ctx.currentParentId = ctx.currentSubscription.id;
-
-      //GLOBAL.notify(GLOBAL.events.$evNextStep);
-      // move to next step
-      if (_step.baton && !bNoPass) {
-        if (result instanceof ctx.stepClass)
-          _step.baton.pass(result);
-        else
-          _step.baton.pass(undefined, result);
-      }
     });
   }
 

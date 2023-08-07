@@ -261,7 +261,7 @@ ctx.item = function (name, parent, obj, instance, dynamic) {
 				else {
 					obj = xmlObj;
 				}
-      } else if ((this._is(e.nature.WIN) || this._is(e.nature.UIAUTOMATION) || this._is(e.nature.NSDK)) && xmlObj && xmlObj['GetList']) {
+      } else if ((this._is(e.nature.WIN) || this._is(e.nature.UIAUTOMATION, e.nature.JAVA) || this._is(e.nature.NSDK)) && xmlObj && xmlObj['GetList']) {
         obj = { items: {}, selected: [] };
         if (xmlObj['GetList']['ITEM']) {
           _buildMenu(obj.items, obj.selected, xmlObj['GetList']['ITEM']);
@@ -346,7 +346,7 @@ this.btSearch.addEvent(e.event.item.UPDATE);
     }
   }
 
-  if ((this.occurs == 0) && (!this.check) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.check) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Checks or unchecks a radio button, check box or a tree view
     * @description
@@ -396,7 +396,7 @@ MyAppli.MyPage.oNAS.check(true);
     }
   }
 
-  if ((this.occurs == 0) && (!this.click) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.WINDOWLESS, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.click) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA, e.nature.WINDOWLESS, e.nature.OCR))) {
     /**
     * Executes a 'click' action on the item
     * @description
@@ -428,7 +428,7 @@ MyAppli.MyPage.btSearch.click(true);
     }
   }
 
-  if ((this.occurs == 0) && (!this.clickDouble) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.UIAUTOMATION, e.nature.SWG, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.clickDouble) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.UIAUTOMATION, e.nature.SWG, e.nature.OCR, e.nature.JAVA))) {
     /**
     * Executes a 'double click' action on the item\\
     * @description
@@ -459,7 +459,7 @@ MyAppli.MyPage.btSearch.clickDouble(30, 20);
     }
   }
 
-  if ((this.occurs == 0) && (!this.clickMouse) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.WINDOWLESS, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.clickMouse) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.WINDOWLESS, e.nature.OCR, e.nature.JAVA))) {
     /**
     * Executes a 'click' action on the item, using mouse simulation\\
     * @description
@@ -480,7 +480,7 @@ MyAppli.MyPage.btSearch.clickMouse();
     }
   }
 
-  if ((this.occurs == 0) && (!this.clickRight) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.UIAUTOMATION, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.clickRight) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))) {
     /**
     * Executes a 'right click' action on the item\\
     * @description
@@ -511,7 +511,7 @@ MyAppli.MyPage.btSearch.clickRight(30, 20);
         if ('string' === typeof Y) Y = parseInt(Y, 10) || 0;
         var pos = undefined;
         if (('undefined' !== typeof X) && ('undefined' !== typeof Y)) pos = X + Y * 65536;
-        if ( this._is(e.nature.UIAUTOMATION )) {
+        if ( this._is(e.nature.UIAUTOMATION, e.nature.JAVA )) {
           bMouse = true; // RFCTBTN not impl. in UIA
         }
         return ctx.action(desc, 'clickRight', (bMouse ? 'RFCTBTNM' : 'RFCTBTN'), pos);
@@ -662,6 +662,8 @@ var res = MyJavaAppli.MyPage.oTable.execMethod('getValueAt', 1, 2);
   if ((this.occurs == 0) && (!this.execScript) && (this._is(e.nature.WEB, e.nature.WEB3))) {
     /**
     * Calls a function on an item
+    * @deprecated As of January 1st, 2023, script injection will no longer work in pages from web sites implementing new stricter Content Security Policy (CSP) from Chrome / Edge.
+    * For more information, see the Chrome Developers documentation: https://developer.chrome.com/blog/mv2-transition/
     * @description
     * __Note__ : This function is complementary to 'ctx.item.scriptItem', it extends the possibilities
     *
@@ -672,15 +674,6 @@ var res = MyJavaAppli.MyPage.oTable.execMethod('getValueAt', 1, 2);
     *
     * __Ex.:__
 <code javascript>
-// create a function to change attributes
-// - 'element' is the html object associated with item
-// - 'obj' is an extra parameter (a javascript object containing attributes to be updates)
-function changeObject(element, obj) {
-  if (element) {
-    for (var id in obj) { element[id] = obj[id]; }
-  }
-}
-// inject function in the page
 MyWebAppli.MyPage.injectFunction(changeObject);
 // call the function
 res = MyWebAppli.MyPage.oLogo.execScript('changeObject', {src: ..., alt : ...});
@@ -701,6 +694,7 @@ res = MyWebAppli.MyPage.oLogo.execScript('changeObject', {src: ..., alt : ...});
       if (args.length > 0) {
         func = args[0];
         if ('function' === typeof func) {
+          ctx.log('irpa_core.item.execScript: script injection no longer works in pages from web sites implementing strict Content Security Policy (CSP) from Chrome / Edge', e.logIconType.Warning);
           // inject function before execution
           ctx.noNotify = true;
           desc.page.injectFunction(func);
@@ -906,31 +900,23 @@ var att = MyWebAppli.MyPage.oLogo.getAttributes();
       // create an injected function to list attributes
       /** @param {HTMLElement} element*/
       function ctxtGetAttributes(element) {
-        var txt = '';
-        try {
-          var jsonFunc = ((typeof JSON !== 'undefined') && JSON.stringify ? JSON.stringify :
-            ((typeof jQuery !== 'undefined') && jQuery.parseJSON ? jQuery.parseJSON :
-            ((typeof jQuery !== 'undefined') && jQuery.toJSON ? jQuery.toJSON : null )));
-          if (jsonFunc) {
-            var obj = {};
-            if (element) {
-              for (var id in element.attributes) {
-                obj[element.attributes[id].name] = element.attributes[id].value;
-              }
+        if (element) {
+          try {
+            var obj = {}, attrs = Object.values(element.attributes);
+            for (var i = 0; i < attrs.length; ++i) {
+            	obj[attrs[i].name] = attrs[i].value;
             }
-            return e.prefix.json + jsonFunc(obj);
-          }
-        } catch (ex) {}
-          return txt;
+            return '!json:' + JSON.stringify(obj);
+          } catch (ex) {}
+        }
+        return '';
       }
 
       var obj = null;
       try {
         // inject function
-        //ctx.noNotify = true;
-        //desc.page.injectFunction(ctxtGetAttributes);
         ctx.noNotify = true;
-        var txt = desc.item.execScript(ctxtGetAttributes);
+        var txt = this.execScript(ctxtGetAttributes);
         obj = ctx.unserialize(txt);
       } catch (ex) { }
       ctx.notifyAction('getAttributes', obj, desc);
@@ -1021,7 +1007,7 @@ var map = MyAppli.MyPage.oCells.getCol(1);
 //    }
 //  }
 
-  if ((this.occurs == 0) && (!this.getList) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.getList) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Gets the list of values of a tree view or list view, as an XML string
     * @description
@@ -1110,7 +1096,7 @@ var desc = this.btSearch.getObjectDescriptor();
     }
   }
 
-  if ((this.occurs == 0) && (!this.getProperty) && (this._is(e.nature.UIAUTOMATION, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.getProperty) && (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))) {
     /**
     * Gets a given property
     * @description
@@ -1131,7 +1117,7 @@ var name = MyAppli.MyPage.tvList.getProperty('Name');
     }
   }
 
-  if ((this.occurs == 0) && (!this.getRect) && (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.SAPGUI))) {
+  if ((this.occurs == 0) && (!this.getRect) && (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.SAPGUI, e.nature.JAVA))) {
     /**
     * Gets the position and bounding of the item
     * @description
@@ -1197,7 +1183,7 @@ var map = MyAppli.MyPage.oCells.getRow(2);
     }
   }
 
-  if ((!this.highlight) && (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.SAPGUI))) {
+  if ((!this.highlight) && (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.SAPGUI, e.nature.JAVA))) {
     if (this.occurs > 0) {
       /**
       * Highlights occursed items
@@ -1381,7 +1367,7 @@ if ( MyAppli.MyPage.MyItem.is(e.nature.WEB, e.nature.WEB3)) {...}
     return this._is(arg);
   }
 
-  if ((this.occurs == 0) && (!this.isEnabled) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.isEnabled) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Checks if item is enabled
     * @description
@@ -1401,7 +1387,7 @@ if (MyAppli.MyPage.btSearch.isEnabled()) { ... }
     }
   }
 
-  if ((this.occurs == 0) && (!this.isVisible) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.isVisible) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Checks if item is visible
     * @description
@@ -1421,7 +1407,7 @@ if (MyAppli.MyPage.btSearch.isVisible()) { ... }
     }
   }
 
-  if ((this.occurs == 0) && (!this.keyStroke) && (this._is(e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.keyStroke) && (this._is(e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))) {
     /**
     * Sends a sequence of keys to the item
     * @description
@@ -1443,7 +1429,7 @@ MyAppli.MyPage.edSearch.keyStroke(e.key.Enter);
     this.keyStroke = function (command) {
       var desc = this.getObjectDescriptor();
       var prefix = '_KeyStroke_';
-      if (this._is(e.nature.UIAUTOMATION, e.nature.OCR))
+      if (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))
         command = ctx.keyStrokeMapping(command); // specific mapping
       if (this._is(e.nature.SWG))
         prefix = '_Key_';
@@ -1451,7 +1437,7 @@ MyAppli.MyPage.edSearch.keyStroke(e.key.Enter);
     }
   }
 
-  if ((this.occurs == 0) && (!this.keyStroke2) && (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.SWG,e.nature.WIN))) {
+  if ((this.occurs == 0) && (!this.keyStroke2) && (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.SWG,e.nature.WIN, e.nature.JAVA))) {
     /**
     * Sends a sequence of keys to the item (alternative method compared to ctx.item.keyStroke)
     * @description
@@ -1471,14 +1457,14 @@ MyAppli.MyPage.edSearch.keyStroke2('John');
     */
     this.keyStroke2 = function (command) {
       var desc = this.getObjectDescriptor();
-      if (this._is(e.nature.UIAUTOMATION))
+      if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA))
         command = ctx.keyStrokeMapping(command); // UIAutomaion has a specific mapping
       return ctx.action(desc, 'keyStroke2', 'SETVALUE', command, '_KeyStroke2_');
     }
   }
 
 
-  if ((this.occurs == 0) && (!this.refresh) && (this._is(e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.refresh) && (this._is(e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Refreshes the cache of the item
     * @description
@@ -1571,7 +1557,7 @@ res = MyWebAppli.MyPage.oLogo.scriptItem( obj ); // returned 'obj' contains : {s
     }
   }
 
-  if ((this.occurs == 0) && (!this.select) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.select) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Selects or unselects a value in a tree view
     * @description
@@ -1594,7 +1580,7 @@ MyAppli.MyPage.tvList.select(true, 'Network');
     }
   }
 
-  if ((this.occurs == 0) && (!this.selected) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION))) {
+  if ((this.occurs == 0) && (!this.selected) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA))) {
     /**
     * Gets the selected value for a tree view or list view
     * @description
@@ -2088,7 +2074,7 @@ MyAppli.MyPage.MyItem.wait(function(ev) {
     }
   }
 
-  if ((this.occurs == 0) && (!this.xml) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.OCR))) {
+  if ((this.occurs == 0) && (!this.xml) && (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))) {
     /**
     * Gets a value, formatted in XML format
     * @description
@@ -2124,7 +2110,7 @@ var strXml = MyAppli.MyPage.edName.xml();
   //    this.addEvent({ CLICK: '', COMMAND: '', SETFOCUS: '', KILLFOCUS: '', ENABLE: '', DISABLE: '', SHOW: '', HIDE: '' });
   //  } else if (this._is(e.nature.WEB, e.nature.WEB3)) {
   //    this.addEvent({ CLICK: '', COMMAND: '', SETFOCUS: '', KILLFOCUS: '', CHANGE: '' });
-  //  } else if (this._is(e.nature.UIAUTOMATION)) {
+  //  } else if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
   //    this.addEvent({ COMMAND: '', SETFOCUS: '', KILLFOCUS: '', ENABLE: '', DISABLE: '', SHOW: '', HIDE: '', CHANGE: '' });
   //  } else if (this._is(e.nature.HLLAPI)) {
   //  } else if (this._is(e.nature.SWG)) {

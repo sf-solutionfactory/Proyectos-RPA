@@ -156,7 +156,7 @@ function _removeDialogBoxOnButton(sBtnId) {
 	$("#" + sBtnId + "_modal_OK").unbind('click');
 }
 
-const jQueryInsertTypes = {
+var jQueryInsertTypes = {
 	AFTER: "after",
 	APPEND: "append"
 }
@@ -209,9 +209,9 @@ function _getConfirmationDialogBoxHTML(sBtnId, sDialogText, sOKButtonText, sCanc
 						' + sDialogText + '\
 					</div>\
 					<div class="modal-footer">\
-						<button type="button" class="btn btn-info btn-sm agent-systray-modal-btn-ok" id="' + sBtnId + '_modal_OK">' + sOKButtonText + '</button>\
-						<button type="button" class="btn agent-systray-transparent-btn btn-sm" data-dismiss="modal" id="' + sBtnId + '_modal_Cancel">' + sCancelButtonText + '</button>\
-					</div>\
+						<button type="button" class="btn btn-info btn-sm agent-systray-modal-btn-ok" id="' + sBtnId + '_modal_OK">' + sOKButtonText + '</button>' +
+						(sCancelButtonText ? '<button type="button" class="btn agent-systray-transparent-btn btn-sm" data-dismiss="modal" id="' + sBtnId + '_modal_Cancel">' + sCancelButtonText + '</button>' : '') +
+					'</div>\
 				</div>\
 			</div>\
   	</div>\
@@ -221,4 +221,12 @@ function _getConfirmationDialogBoxHTML(sBtnId, sDialogText, sOKButtonText, sCanc
 
 function _removeInterrogationPoint(sText) {
 	return sText.endsWith('?') || sText.endsWith('\uFF1F') ? sText.substring(0, sText.length - 1).trim() : sText;
+}
+
+function _editParameterInLabel(sText) {//'(sText, ...params)' notation is not possible in IE. This is a workaround to use an unknown number of parameters.
+	var _str = sText;
+	for (var i = 1; i < arguments.length; i++) {
+		_str = _str.replace('{' + (i-1) + '}' , arguments[i]);
+	}
+	return _str;
 }

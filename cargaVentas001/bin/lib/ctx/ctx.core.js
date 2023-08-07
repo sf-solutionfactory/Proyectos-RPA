@@ -57,6 +57,17 @@ if (!String.prototype.startsWith) {
 if (!String.prototype.endsWith) {
   String.prototype.endsWith = function(suffix) { return (this.indexOf(suffix, this.length - suffix.length) !== -1); };
 }
+if (!String.prototype.includes) {
+  String.prototype.includes = function(search, start) {
+    'use strict';
+
+    /*if (search instanceof RegExp) {
+      throw TypeError('first argument must not be a RegExp');
+    }*/
+    if (start === undefined) { start = 0; }
+    return this.indexOf(search, start) !== -1;
+  };
+}
 if (!String.prototype.format) {
   String.prototype.format = function() {
     var args = arguments;
@@ -103,12 +114,14 @@ if (typeof Object.keys !== 'function') {
 
     Object.keys = function(object) {
       var keys = getKeys(object);
-      for (var ii = 0, il = dontEnumProperties.length; ii < il; ii++) {
-        var property = dontEnumProperties[ii];
-        if (object.hasOwnProperty(property)) {
-          keys.push(property);
-        }
-      }
+			if (object.hasOwnProperty) {
+	      for (var ii = 0, il = dontEnumProperties.length; ii < il; ii++) {
+	        var property = dontEnumProperties[ii];
+	        if (object.hasOwnProperty(property)) {
+	          keys.push(property);
+	        }
+	      }
+			}
       return keys;
     };
   } else {
@@ -148,7 +161,7 @@ var ctx = ( function () {
   * @const
   * @type {string}
   */
-	 var _coreVersion = "2.0.7.54";
+	 var _coreVersion = "2.0.37.65";
 
   // verbs saved anyway
   var _forceSave = {
@@ -239,6 +252,54 @@ var ctx = ( function () {
     } catch (ex) {}
   }
 
+  var _limitStr = function (str, max) {
+		var i = str.length - 1;
+		switch (str[0]) {
+			case '{':
+				if (str[i] === '}')
+					return '{}';
+				break;
+			case '[':
+				if (str[i] === ']')
+					return '[]';
+				break;
+			case '"':
+				if (str[i] === '"')
+					return '"' + str.substr(1, max - 5) + '..."';
+				break;
+			default:
+				break;
+		}
+		return str.substr(0, max - 3) + '...';
+	}
+
+  var _getSize = function(value, max, size) {
+		switch (typeof value) {
+			case 'string':
+				size += value.length + 2;
+				break;
+			case 'object':
+				if (value) {
+					var keys = typeof value.ctxShort === 'function' ? value.ctxShort() : Object.keys(value);
+					if (keys && Array.isArray(keys)) {
+						for (var i = 0; i < keys.length; i++) {
+							if (keys[i].startsWith('$_'))
+								continue;
+							size = _getSize(value[keys[i]], max, size + keys[i].length + 4);
+							if (size >= max)
+								break;
+						}
+					}
+				} else
+					size += 4;
+				break;
+			default:
+				size += 4;
+				break;
+		}
+		return size;
+	}
+
   //var _htmlDoc = null;
   var _timerObj = {};
   var _timerIndex = 0;
@@ -257,6 +318,12 @@ var ctx = ( function () {
   * @const
   * @path ctx.ctxType
   * @property {string} */ ctxType: 'ctx',
+
+  /** enumeration object
+  * @ignore
+  * @const
+  * @path ctx.enums
+  * @property {Object} */ enums: e,
 
   /** root object
   * @ignore
@@ -531,8 +598,14 @@ ctx.clearTraceFolder();
       ctx.noNotify = true;
       targets.files = ctx.fso.folder.getFileCollection(ctx.options.path.log, true),
       ctx.noNotify = true;
+			var computerName = ctx.options.computerName;
+			var userName = ctx.options.userName;
+			if(ctx.options.isAnonymous){
+				computerName = computerName.substring(0, 14);
+				userName = computerName.substring(0, 14);
+			}
       targets.folders = ctx.fso.folder.getFolderCollection(ctx.options.path.log, true)
-      var prefix = ctx.options.computerName + '.' + ctx.options.userName + '.';
+      var prefix = computerName + '.' + userName + '.';
       var pos, pos2;
       var sDate;
       var oldFileArray = []; // archives to be deleted
@@ -675,6 +748,7 @@ if (ctx.compareVersion('3.0.6.5') < 0)
             // workaround following KB4088775 : reallocate htmlfile at each call
             _timerIndex ++;
             _timerObj[_timerIndex] = callback;
+						ctx.noNotify = true;
 						GLOBAL.notify(GLOBAL.events.evCtxtTimer, _timerIndex, delay);
             return _timerIndex;
           };
@@ -901,6 +975,186 @@ var obj = ctx.getEngineVersion();
   return res;
 },
 
+
+	/**
+	* @description Returns whether agent is in default mode, trial mode, or try2buy mode.
+	* @method  GetPlanState
+  * @path    ctx.getPlanState
+	* @return  {number} 0,1 or 2 if agent is in default mode, trial mode, or try2buy mode.
+	*/
+	getPlanState : function () {
+		ctx.notifyAction('ctx.getPlanState');
+    try{
+      var planState = ctx.wkMng.GetPlanState();
+			if(planState === "trial")
+				return 1;
+			else if(planState === "free")
+				return 2;
+			else return 0;
+
+		} catch (ex) { }
+		return 0;
+	},
+
+  /**
+  * Returns whether agent is in trial mode.
+  * @description  
+  * @method  setProxyPassword
+  * @path    ctx.setProxyPassword
+  * @return  {boolean} true if agent succeded to create proxy password on credential
+  */
+
+setProxyPassword : function (user, password) {
+  ctx.notifyAction('ctx.setProxyPassword');
+  var res= false;
+  try {
+    res = ctx.wkMng.RegisterProxy(user, password) ;
+  } catch(ex) {
+    return false;
+  }  
+  return res;
+	
+},
+
+ /**
+  * Returns whether agent is in default , trial or try2Buy mode.
+  * @description  
+  * @method  GetPlanState
+  * @path    ctx.GetPlanState
+  * @return  {number} 0 for default value, 1 for trial mode, 2 for try2buy mode
+  */
+GetPlanState : function () {
+
+			var planState = 0
+      try {
+      planState = ctx.wkMng.GetPlanState();
+      } catch(ex) {
+        return 0;
+      }
+			return planState;
+},
+
+
+
+  /**
+	* @description Returns whether windows password has been set
+	* @method  setWindowsPassword
+	* @return  {boolean} true if setWindowsPassword works
+	*/
+	setWindowsPassword : function (domain, userName, password) {
+		ctx.notifyAction('ctx.setWindowsPassword');
+		var res = false;
+		try {
+			res = ctx.wkMng.RegisterCredentials(domain, userName, password);
+		} catch (ex) {
+			return false;
+		 }
+		return res;
+	},
+
+
+  /**
+	* @description Check if proxy credential has already been set
+	* @method  hasProxyCredentials
+	* @return  {string} user is returned if exist, else '' string
+	*/
+	hasProxyCredentials : function () {
+    ctx.notifyAction('ctx.hasProxyCredentials');
+		var res = '';
+		try {
+			res = ctx.wkMng.HasProxyCredentials();
+		} catch (ex) {
+			return '';
+		}
+		return res;
+	},
+
+
+	/**
+	* @description Check if windows password has already been set
+	* @method  hasWindowsCredentials
+	* @return  {boolean} true if windows password has already been set
+	*/
+	hasWindowsCredentials : function (domain, userName) {
+		ctx.notifyAction('ctx.hasWindowsCredentials');
+		var res = false;
+		try {
+			res = ctx.wkMng.HasCredentials(domain, userName);
+		} catch (ex) {
+			return false;
+		 }
+		return res;
+	},
+
+	validPath: function(path) {
+		if (path.includes('*') || path.includes('?') || path.includes('"')
+			|| path.includes('<') || path.includes('>') || path.includes('|'))
+		{
+			return false;
+		}
+		var i = path.indexOf(':');
+		var firstValid = i < 0;
+		var secondValid = ((i === 1) && (path.indexOf(':', 2) < 0));
+		var valid = firstValid || secondValid;
+		return valid;
+	},
+/**
+		 * @method checkPath
+		 * @description The activity has to check if the path is not too long (according to supportLongPath) and if it does not contain specific invalid characters like below: \ / : * ? " < > |.
+         * @example
+	        const isValid = ctx.checkPath('path', irpa_core.enums.checkPathRules.None, true)
+         * @param {string} path The path to validate.
+		 * @param {e.checkPathRules} [rule] {None} Additionnal rule to validate the path.
+		 * @param {boolean} [supportLongPath] {false} Extend the support to a long path (If false, the path can have 256 characters, otherwise the path is limited to 32000).
+		 * @param {boolean} [checkIfAbsolute] {false} Check if the path is absolute (If true, the path must to be a absolute path).
+		 * @return {boolean} isValid Is a valid path.
+		 */
+		checkPath: function (path, rule, supportLongPath, checkIfAbsolute) {
+			ctx.notifyAction('ctx.checkPath');
+    	var maxPathLenght = supportLongPath ? 32000 : 256;
+			path = ctx.resolvePath(path);
+			var testAbsoluteIsOk = checkIfAbsolute ? ctx.fso.isPathAbsolute(path) : true;
+			if (!ctx.validPath(path) || path.length > maxPathLenght || !testAbsoluteIsOk)
+			{
+				return false;
+			}
+			var result = true;
+			switch (rule) {
+				case e.checkPathRules.WorkFolder:
+					result = path.startsWith(ctx.options.path.log);
+					break;
+				default:
+			}
+			return result;
+		},
+		/**
+		 * @method escapeCharacters
+		 * @description The activity has to check if the path is not too long (according to supportLongPath) and if it does not contain specific invalid characters like below: \ / : * ? " < > |.
+         * @example
+	        const escapedText = ctx.escapeCharacters('text', enums.escapingType.HTML)
+         * @param {string} text The source text to escape.
+		 * @param {e.escapingType} [escapingType] {HTML} Escaping Type.
+		 * @return {string} escapedText Escaped Text.
+		 */
+		escapeCharacters: function (text, escapingType) {
+			ctx.notifyAction('ctx.escapeCharacters');
+			var escapedText = '';
+			switch (escapingType) {
+				case e.escapingType.HTML:
+					escapedText = text
+						.replace(/&/g, '&amp;')
+						.replace(/</g, '&lt;')
+						.replace(/>/g, '&gt;')
+						.replace(/"/g, '&quot;')
+						.replace(/'/g, '&#039;');
+					break;
+				case e.escapingType.URL:
+					escapedText = encodeURIComponent(text);
+					break;
+				default:
+			}
+			return escapedText;
+		},
  /**
   * Returns enumerated key from a value.
   * @description
@@ -1098,6 +1352,76 @@ ctx.map(source, dest, {
   },
 
   /**
+  * Function used to limit value size
+  * @method limit
+  * @path ctx.limit
+  * @param {Object|string} value source object
+  * @param {number} [max] max size
+  * @return {Object|string} destination object
+  */
+  limit : function (value, max) {
+		max = max || ctx.options.maxIODebug;
+		switch (typeof value) {
+			case 'string':
+				return value.length > max ? _limitStr(value, max) : value;
+			case 'object':
+				if (value) {
+					var size = 2;
+					if (Array.isArray(value)) {
+						var newArray = [];
+						for (var i = 0; i < value.length; i++) {
+							size = _getSize(value[i], max, size + 2);
+							if (size < max)
+								newArray.push(value[i]);
+							else {
+								newArray.push('...');
+								break;
+							}
+						}
+						return newArray;
+					}
+
+					var allKeys = typeof value.ctxShort === 'function' ? value.ctxShort() : Object.keys(value);
+					if (allKeys && allKeys.length) { //if value is a date, keys.length === 0
+						var newValue = {};
+						for (var i = 0; i < allKeys.length; i++) {
+							var val = value[allKeys[i]];
+							if (typeof val === 'function')
+								continue;
+							size = _getSize(val, max, size + allKeys[i].length + 4);
+							if (size < max)
+							  newValue[allKeys[i]] = val;
+              else {
+								newValue[allKeys[i]] = '...';
+								break;
+							}
+						}
+						return newValue;
+					}
+				}
+				break;
+			default:
+		}
+		return value;
+	},
+
+  limits : function(values) {
+	var res;
+	try {
+		if (Array.isArray(values)) {
+			res = [];
+			for (var i = 0; i < values.length; i++) {
+				res.push(ctx.limit(values[i]));
+			}
+		} else {
+			res = ctx.limit(values);
+		}
+	} catch (ex) { res = {}; }
+	return res;
+    //return Array.isArray(values) ? values.map(function(value) {return ctx.limit(value)}) : ctx.limit(values);
+  },
+
+  /**
   * Function used to trace function calls
   * @description
   * __Ex.:__
@@ -1134,6 +1458,8 @@ ctx.notifyAction('excel.file.open');
         params = params || (arguments.callee.caller.arguments ? Array.prototype.slice.call(arguments.callee.caller.arguments) : null);
       }
       var shortParams = ctx.ctxShort(params);
+      shortParams = ctx.limits(shortParams);
+      res = ctx.limits(res);
 //      var toto = params.length;
 //      var titi = shortParams.length;
 //      var txt = '';
@@ -1181,7 +1507,8 @@ ctx.notifyAction('excel.file.open');
       }
       try {
         if (attributes && ('object' === typeof attributes)) {
-          var shortAttributes = ctx.ctxShort(attributes);
+		      var shortAttributes = ctx.limits(attributes);
+          shortAttributes = ctx.ctxShort(shortAttributes);
           for (var id in shortAttributes) {
             obj[id] = shortAttributes[id];
           }
@@ -1221,6 +1548,9 @@ ctx.notifyDebug(obj);
         obj.ts = ctx.getTime();
       var txt = ctx.serialize(obj, false, false, undefined, true);
       // *** send notifications to Studio Debugger ***
+			if (txt.length > (2 * ctx.options.maxIODebug)) {
+				ctx.log("ctx.notifyDebug: notification exceeding max size", e.logIconType.Warning);
+			}
       if (ctx.options.trace.frameworkNotify && (typeof Host !== 'undefined') && (Host.Debug) && (!fileOnly)) {
         Host.Debug.write(txt);
       }
@@ -1408,9 +1738,13 @@ onEnginePrestart : function () {
   * @path ctx.options.serverURL */ ctx.options.serverURL = ctx.options.path.server;
 
   // machine and user infos
+  ctx.options.isAnonymous = ctx.context.get('//WkMng_Info/Anonymous');
   ctx.options.computerName = ctx.context.get('//WkMng_Info/ComputerName');
+  ctx.options.computerNameReal = ctx.context.get('//WkMng_Info/RealComputerName');
   ctx.options.userName = ctx.context.get('//WkMng_Info/UserCode');
+  ctx.options.userNameReal = ctx.context.get('//WkMng_Info/RealUserCode');
   ctx.options.fullUserName = ctx.context.get('//WkMng_Info/FullUserCode');
+  ctx.options.fullUserNameReal = ctx.context.get('//WkMng_Info/RealFullUserCode');
   ctx.options.canonicalName = ctx.context.get('//WkMng_Info/CanonicalName');
   ctx.options.displayName = ctx.context.get("//GLOBAL/WkMng_Info/DisplayName");
   ctx.options.fullyQualifiedDN = ctx.context.get("//GLOBAL/WkMng_Info/FullyQualifiedDN");
@@ -1549,6 +1883,7 @@ onEngineStart : function () {
 
   // By default using a timeout of 5 minutes. If we have a breakpoint, the timeout is not set
   ctx.setExecutionTimeout();
+	ctx.setBusyTimeout();
   
   ctx.lockNoNotify = false;
 
@@ -1586,8 +1921,53 @@ onEngineStart : function () {
 	  ctx.execVBS(vbscriptCode);
     }
   },
+    /** Browse file to get fullpath \
+  * @method BrowseFile
+  * @path ctx.BrowseFile
+	* @param {number} [hwnd] handle of parent window
+  * @param {string} [title] title of browse dialog box
+	* @param {string} [rootFolder] root folder 
+	* @param {string} [filter] exemple '.TXT' or '.TXT;.DOC;.BAK'
+	* @param {boolean} [selectFile] selectFile is not used yet, true by default
+  */
+  BrowseFile : function (hwnd, title, rootFolder, filter, selectFile) {
+   
+    try{
+			if (ctxHost && ('undefined' !== typeof ctxHost.BrowseFile)) {
+	      return ctxHost.BrowseFile(hwnd, title,rootFolder ,filter,'', selectFile);
+	    }
+			
+			if (ctxHost && ('undefined' !== typeof ctxHost.CsFileDlg)) {
+	      return ctxHost.CsFileDlg(title, filter ,'');
+	    }
+		}
+		catch(e)
+		{
+			//if user cancel the dialog box for exemple
+		}
+		
+    return '';
+  },
 
 
+	 /** Sets or resets busy timeout 
+  * @method setBusyTimeout
+  * @path ctx.setBusyTimeout
+  * @param {number} [timeout] new timeout in ms. It omitted, 'ctx.options.busyTimeout' is used. 
+  */
+  setBusyTimeout : function (timeout) {
+    if (timeout === undefined) {
+      timeout = ctx.options.busyTimeout;
+    } 
+   
+		if (ctx.compareVersion('2.0.13.41') >= 0)
+			ctx.wkMng.SetBusyTimeout(timeout);
+		else
+			ctx.log("SetBusyTimeout is not accessible with this agent version");
+	
+  },
+	
+	
   /**
   * creates / reinits trace folder and triggers archiving
   * @description
@@ -1615,7 +1995,13 @@ ctx.reinitTraceFolder(false, true);
         ctx._fso = ctx._fso || new ActiveXObject("Scripting.FileSystemObject");
         var ts = ctx.getTimestamp(null, true);
         if (!recording) { ctx.options.traceTimestamp = ts; }
-        traceFolder = prefix + '.' + ctx.options.computerName + '.' + ctx.options.userName + '.' + ts;
+        var computerName = ctx.options.computerName;
+		var userName = ctx.options.userName;
+		if(ctx.options.isAnonymous){
+			computerName = computerName.substring(0, 14);
+			userName = computerName.substring(0, 14);
+		}
+        traceFolder = prefix + '.' + computerName + '.' + userName + '.' + ts;        
         if(recording)
           ctx.options.traceFolderRecording = traceFolder;
         else
@@ -1731,7 +2117,7 @@ var vers = ctx.version(); // '3.0.1'
     return _coreVersion;
   },
 
-	restartOnProject : function(packageUid, packageVersionUid) {
+	restartOnProject : function(packageUid, packageVersionUid, environmentUid) {
 		if (ctx.compareVersion('1.0.5.0') < 0) {
 			// Agent  < 1.0.5 
 				// Write packageVersionUid in registry
@@ -1742,7 +2128,7 @@ var vers = ctx.version(); // '3.0.1'
 		else {
 			// Agent >= 1.0.5
 				// New restart method : call workmanager
-			ctx.wkMng.SwitchProject(packageUid, packageVersionUid);
+        ctx.wkMng.SwitchProjectWithEnv(packageUid, packageVersionUid, environmentUid);
 		}
 	},
 	
@@ -1762,6 +2148,11 @@ var vers = ctx.version(); // '3.0.1'
       } else {
         ctx.restartAgent = restart;
       }
+
+      if (typeof ctx.galaxyAPI !== 'undefined') {
+				ctx.galaxyAPI.notifyShutdown(function () { });
+			}
+
       if (waitIdle && !ctx.isEmpty(ctx.runningScenarios.map)) {
         ctx.shutdownOnIdle = true;
         if (typeof ctx.galaxyAPI !== 'undefined') {
@@ -5448,7 +5839,12 @@ ctx.options = {
   /** Javascript antiloop mechanism (ms): minimum value is 10 000 ms, default is 300 000 ms (5 min)
   * @property {boolean} executionTimeout
   * @path ctx.options.executionTimeout */ executionTimeout: 300000,
+		
+		/** Javascript busy message mechanism (ms):  default is 300 000 ms (5 min)
+  * @property {boolean} busyTimeout
+  * @path ctx.options.busyTimeout */ busyTimeout: 300000,
 
+		
   /** Language framework version
   * @property {string} frameworkVersion
   * @readonly
@@ -5471,6 +5867,11 @@ ctx.options = {
   /** Debug mode enabled
   * @path ctx.options.isDebug
   * @property {boolean} isDebug */ isDebug : false,
+
+  /** size limitation (in bytes)
+  * @property {number} maxIODebug
+  * @path ctx.options.maxIODebug */ 
+	maxIODebug: 20480,
 
   licence: {
   /** Licence identifier
@@ -5550,6 +5951,18 @@ ctx.options = {
   * @property {Object} optionFiles
   * @readonly
   * @path ctx.options.optionFiles */ optionFiles: [],
+
+  /** Timer for plan (for trial or try2buy mode)
+		* @ignore
+		* @property {number} timer id
+		* @path ctx.options.planTimer */
+		planTimer: null,
+
+		/** need a timer for inactivity (on trial or try2buy mode)
+		* @ignore
+		* @property {boolean} true if we are on trial or try2buy mode
+		* @path ctx.options.needPlanTimer */ 
+		needPlanTimer: false,
 
   /** Product version
   * @property {string} productVersion
@@ -6166,7 +6579,15 @@ ctx.execMethod = function (desc, method, params) {
 }
 
 ctx.onScriptTimeOut = function(appliName, pageName, itemName, itemIndex, event, data, appliInst, pageInst, itemInst, reqAppliName, reqEventName, reqItemName, reqAppliInst) {
-  ctx.log('Execution timeout in event: ' + appliName + '.' + pageName + (itemName ? '.' + itemName : '') + ':' + event, e.logIconType.Error);
+	
+	ctx.log('Execution timeout in event: ' + appliName + '.' + pageName + (itemName ? '.' + itemName : '') + ':' + event, e.logIconType.Error);
+	 for (var i in ctx.runningScenarios.map) {
+      var sc = ctx.runningScenarios.map[i];
+      if (sc.main && sc.running) {
+				sc.setError(e.error.TimeOut, "Timeout with infinite loop");
+				sc.endStep();
+      } 
+    }
 };
 
 // ******************************
@@ -6588,7 +7009,7 @@ var setLockTimer = function () {
       ctx.wkMng.PreventScreenLock(false);
       ctx.wkMng.LockWorkStation();
       lockTimer = null;
-    }, 10000);
+    }, ctx.options.workstation.timeBeforeRelocking*1000);
 
 }
 
@@ -6597,6 +7018,7 @@ ctx.workstation =  { };
 
 ctx.workstation.ensureUnlocked = function () {
   var coreValue = ctx.wkMng.WorkStationLockStatus();
+  
   switch ( getStatus(coreValue) )	{
     case lockStatus.lockstatusLockedButCannotUnlock:
       ctx.wkMng.PreventScreenLock(false);
@@ -6604,7 +7026,7 @@ ctx.workstation.ensureUnlocked = function () {
     case lockStatus.lockstatusLocked:   
       ctx.wkMng.UnLockWorkStation();
 
-      for (var i = 0; i < 10; ++i) {
+      for (var i = 0; i < ctx.options.workstation.unlockTimeout*4; ++i) {
         if (getStatus(ctx.wkMng.WorkStationLockStatus()) === lockStatus.lockstatusUnlocked) {
           setLockTimer();
           break;
@@ -6621,5 +7043,3 @@ ctx.workstation.ensureUnlocked = function () {
       break;
     }
 };
-
-

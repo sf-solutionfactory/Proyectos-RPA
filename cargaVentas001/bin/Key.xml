@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doc>
 	<Identification>
-		<Version Value="2.0.7.54"/>
+		<Version Value="2.0.37.65"/>
 	</Identification>
 	<Properties>
 		<Property Name="projectFile" Value="cargaVentas001.debug.psc"/>
@@ -12,10 +12,10 @@
 		<Property Name="projectLabel" Value="Carga de ventas Server"/>
 		<Property Name="projectClient" Value="ENCO"/>
 		<Property Name="licenceURL" Value=""/>
-		<Property Name="archiveFile" Value="cargaVentas001.zip"/>
-		<Property Name="productVersion" Value="2.0.7.54"/>
-		<Property Name="sdkVersion" Value="2.0.7.54"/>
-		<Property Name="exportDate" Value="20/5/2022"/>
+		<Property Name="archiveFile" Value=""/>
+		<Property Name="productVersion" Value="2.0.37.65"/>
+		<Property Name="sdkVersion" Value="2.0.37.65"/>
+		<Property Name="exportDate" Value="16/5/2023"/>
 		<Property Name="IsTrial" Value="False"/>
 		<Property Name="validity" Value=""/>
 		<Property Name="cyphering" Value="0"/>
@@ -151,9 +151,21 @@
 	</Properties>
 	<Keys Name="scenario9">
 	</Keys>
+	<Properties Name="authentication">
+		<Property Name="result" Value="MIIBJwYJKoZIhvcNAQcCoIIBGDCCARQCAQExDzANBgkqhkiG9w0BAQUFADAvBgkq
+hkiG9w0BBwGgIgQgQwB0AHgAdABEAGUAZgBhAHUAbAB0AE0AYQByAGsAAAAxgcww
+gckCAQEwJDAcMRowGAYDVQQDExFOTyBDRVJUIFNJR05BVFVSRQIEEjRWeDANBgkq
+hkiG9w0BAQUFADAMBggqhkiG9w0DBAUABIGASgDfEVoRmQSf+CpEUJgd2/tpzpOT
+p0882gvt8CTRp40wFWowptYDSwyT2hRGit6z2jUU5Qd1E5VkktWcdg0cOGZ+bZ8t
+0uelDQJqnpWy0vHTcSba13yDEBAmZuczy/ozn+vFZs+cAXxVJjjtuWmuaBk21LmH
+hAcBgPfuk7t1a3k=
+" Type="1"/>
+	</Properties>
+	<Keys Name="authentication">
+	</Keys>
 	<UpdatePackages>
 	</UpdatePackages>
-	<KeyNames Value="8bd66892e4b6876df87ea74d2b722c98" Type="32771"/>
-	<KeyContent Value="a8f2e7aad01a1ed1d7e8da721288c1ba" Type="32771"/>
-	<KeyProps Value="b0b2716adcc8125367e718a257a4acc3" Type="32771"/>
+	<KeyNames Value="" Type="32771"/>
+	<KeyContent Value="" Type="32771"/>
+	<KeyProps Value="1529ed96171b5152c30381c334b9df1b" Type="32771"/>
 </doc>

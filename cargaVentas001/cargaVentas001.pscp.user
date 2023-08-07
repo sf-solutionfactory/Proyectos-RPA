@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <USER>
 	<BREAKPOINTS>
-		<BREAKPOINT LineNumber="300" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_pg']" Offset="9525" Length="40"><![CDATA[if (rootData.environmentType == "QAS") {]]></BREAKPOINT>
-		<BREAKPOINT LineNumber="62" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_entradadiaria']" Offset="2266" Length="27"><![CDATA[var hora = date.getHours();]]></BREAKPOINT>
 		<BREAKPOINT LineNumber="201" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_entradadiaria']" Offset="5880" Length="25"><![CDATA[var command = 'sqlcmd ' +]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="62" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_entradadiaria']" Offset="2266" Length="27"><![CDATA[var hora = date.getHours();]]></BREAKPOINT>
+		<BREAKPOINT LineNumber="300" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_pg']" Offset="9525" Length="40"><![CDATA[if (rootData.environmentType == "QAS") {]]></BREAKPOINT>
 	</BREAKPOINTS>
 	<BOOKMARKS />
 	<FINDHISTORY>
 		<FINDWHAT><![CDATA[getRuta]]></FINDWHAT>
+		<FINDWHAT><![CDATA[input]]></FINDWHAT>
 		<FINDWHAT><![CDATA[SAPLogon750.pSAPLogin.edMandante.set("300");]]></FINDWHAT>
 		<FINDWHAT><![CDATA[logonQAS]]></FINDWHAT>
 		<FINDWHAT><![CDATA[filenameO = ruta]]></FINDWHAT>
@@ -26,7 +27,6 @@
 		<FINDWHAT><![CDATA[Disable_step_timeoutP]]></FINDWHAT>
 		<FINDWHAT><![CDATA[pSAPEasyAccess_manage_5]]></FINDWHAT>
 		<FINDWHAT><![CDATA[pWindowSAPLogon75_man_4]]></FINDWHAT>
-		<FINDWHAT><![CDATA[deleteFileEE]]></FINDWHAT>
 		<REPLACEWITH><![CDATA[//SAPLogon750.pSAPLogin.edMandante.set("300");]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[logonSAP]]></REPLACEWITH>
 		<REPLACEWITH><![CDATA[filenameO = rutao]]></REPLACEWITH>
@@ -41,9 +41,16 @@
 	<DEBUGTRACEFINDHISTORY />
 	<OPENDOCS>
 		<OPENDOC LineNumber="-1" SearchPath="APPLI[@Name='SAPLogon750']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="36" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_manual']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="147" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_manual']" Offset="0" Length="0" />
-		<OPENDOC LineNumber="171" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_pg']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaSQL_PG']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="-1" SearchPath="PROCESS[@Name='GLOBAL']/WORKFLOWS/WORKFLOW[@Name='cargaSAP_Diaria']" Offset="0" Length="0"><![CDATA[madata]]></OPENDOC>
+		<OPENDOC LineNumber="250" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_pg']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="208" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_lunes']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="94" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_entradadiaria']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="225" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_pg']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="364" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasql_manual']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="236" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_manual']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="214" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_entradadiaria']" Offset="0" Length="0" />
+		<OPENDOC LineNumber="275" SearchPath="PROCESS[@Name='GLOBAL']/SCRIPTS/SCRIPT[@Name='cargasap_lunes']" Offset="0" Length="0" />
 	</OPENDOCS>
 	<PROPERTIES>
 		<CurPerspective><![CDATA[2]]></CurPerspective>

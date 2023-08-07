@@ -1857,6 +1857,7 @@ ctx.writeFile('c:\\temp\\files.txt', result, true);
 *   contentType: (e.ajax.content|string|undefined),
 *   context: (Object|undefined),
 *   data : (Object|string|undefined),
+*   searchParams : (Object|string|undefined),
 *   formData : (Object|undefined),
 *   dataType: (e.ajax.content|undefined),
 *   desc: (ctx.descriptor|undefined),
@@ -1883,6 +1884,7 @@ ctx.ajaxParams = {
   contentType: undefined,
   context: undefined,
   data : undefined,
+  searchParams : undefined,
   formData : undefined,
   dataType: undefined,
   desc: undefined,
@@ -2196,6 +2198,7 @@ ctx.ajax = (function _CtxAjax() {
       context: null,
       crossDomain: false,
       data : undefined,
+      searchParams : undefined,
       formData: undefined,
       dataType: undefined,
       desc: undefined,
@@ -2210,14 +2213,15 @@ ctx.ajax = (function _CtxAjax() {
       requestType: e.ajax.requestType.server,
       responseType: e.ajax.responseType.none,
       success: undefined,
-      timeout: undefined,
+      timeout: 30000,
       url: '',
       username: undefined,
       xhr:undefined,
 			usePassport : false,
 			ignoreClientCertificate: false,
 			resultInBase64: false,
-			clientCertificate: undefined
+			clientCertificate: undefined,
+			noCache: false
     };
 		if (params.header && params.header.length) {
 			for (var id = 0; id < params.header.length; id++) {
@@ -2307,10 +2311,10 @@ ctx.ajax = (function _CtxAjax() {
   * @return {ctx.ajaxParams}
   */
   var _sendRequest = function (options) {
-		var _timeoutTimer = 0;	
+		//var _timeoutTimer = 0;	
     try {
       // create HttpRequest
-      options.xhr = _createXHR(options);
+      var xhr = _createXHR(options);
 
       var isHttp = (String(options.url).toLowerCase().indexOf('http') >= 0);
 
@@ -2328,66 +2332,77 @@ ctx.ajax = (function _CtxAjax() {
       };
       var query; // query : url?...&...
 
-      // if (options.method == e.ajax.method.post) {
-        // var parts = options.url.split("\?");
-        // if (parts[0]) { options.url = parts[0]; }
-        // if (parts[1]) { values = parts[1]; }
-      // }
+			if (options.data && (!options.searchParams) && 
+						((!options.contentType) || (options.formData) || 
+						((options.contentType == e.ajax.content.form) && (options.method == e.ajax.method.get)))) {
+				options.searchParams = options.data;
+				options.data = undefined;
+			}
+		
+			if (options.searchParams) {
+        if (typeof(options.searchParams) === 'object') {
+          query = _buildQuery(options.searchParams);
+        } else if (typeof options.searchParams === 'string') {
+          query = options.searchParams;
+				}
+			}
 
-      if (options.data) {
-        if (((!options.contentType) || (options.formData) || (options.contentType == e.ajax.content.form))
-                  && options.method == e.ajax.method.get) {
-          if (typeof(options.data) === 'object') {
-            query = _buildQuery(options.data);
-          } else if (typeof options.data === 'string') {
-            query = options.data;
-          }
-        } else {
-          if (typeof(options.data) === 'object') {
-            body.data = ctx.json.stringify(options.data);
-            body.size = body.data.length;
-          } else if (typeof options.data === 'string') {
-            body.data = options.data;
-            body.size = body.data.length;
-          }
+			if (options.data) {
+        if (typeof(options.data) === 'object') {
+          body.data = ctx.json.stringify(options.data);
+          body.size = body.data.length;
+        } else if (typeof options.data === 'string') {
+          body.data = options.data;
+          body.size = body.data.length;
         }
       }
 
       var url = options.url;
-      if (query) {
+			if (query) {
         url = url + '?' + query;
       }
+			if(options.noCache)
+			{
+				if(url.indexOf('?', 0) !== -1)
+				{
+					url = url + '&irpa_ts=' + new Date().getTime();
+				}
+				else
+				{
+					url = url + '?irpa_ts=' + new Date().getTime();
+				}
+			}
       url = encodeURI(url);
-
+			  
       // open request
       // Set credentials for server. HttpRequest SetCredentials flags. SERVER = 0, PROXY = 1;
-      //if (options.xhr.setCredentials) { options.xhr.setCredentials( options.username || '', options.password || '', 0); }
+      //if (xhr.setCredentials) { xhr.setCredentials( options.username || '', options.password || '', 0); }
       if (options.username || options.password) {
-        options.xhr.open(options.method, url, options.async, options.username || '', options.password || '');
+        xhr.open(options.method, url, options.async, options.username || '', options.password || '');
       } else {
-        options.xhr.open(options.method, url, options.async);
+        xhr.open(options.method, url, options.async);
       }
 
 			if (options.clientCertificate) {
-				options.xhr.setOption(3, options.clientCertificate);
+				xhr.setOption(3, options.clientCertificate);
 			}
 
 			// Apply custom fields if provided
       if ( options.xhrFields ) {
         for ( var i in options.xhrFields ) {
-          if (undefined !== typeof(options.xhr[ i ]))
-            options.xhr[ i ] = options.xhrFields[ i ];
+          if (undefined !== typeof(xhr[ i ]))
+            xhr[ i ] = options.xhrFields[ i ];
         }
       }
 
       // Override mime type if needed
-      if ( options.mimeType && options.xhr.overrideMimeType ) {
-        options.xhr.overrideMimeType( options.mimeType );
+      if ( options.mimeType && xhr.overrideMimeType ) {
+        xhr.overrideMimeType( options.mimeType );
       }
 
       try {
-        if ((options.xhr.responseType !== undefined) && options.responseType) {
-          options.xhr.responseType = options.responseType;
+        if ((xhr.responseType !== undefined) && options.responseType) {
+          xhr.responseType = options.responseType;
         }
 //          else if (options.responseType) {
 //            switch (options.responseType) {
@@ -2396,10 +2411,10 @@ ctx.ajax = (function _CtxAjax() {
 //              case e.ajax.responseType.MSStream:
 //              case e.ajax.responseType.document:
 //              {
-//                if (options.xhr.overrideMimeType) {
-//                  options.xhr.overrideMimeType('text/plain; charset=x-user-defined');
+//                if (xhr.overrideMimeType) {
+//                  xhr.overrideMimeType('text/plain; charset=x-user-defined');
 //                } else {
-//                  options.xhr.setRequestHeader('Accept-Charset', 'x-user-defined');
+//                  xhr.setRequestHeader('Accept-Charset', 'x-user-defined');
 //                }
 //                break;
 //              }
@@ -2414,61 +2429,75 @@ ctx.ajax = (function _CtxAjax() {
         var boundary = _generateBoundary();
         body = _createMultipartData( options.formData, boundary );
         options.contentType = 'multipart/form-data; boundary=' + boundary;
-        //options.xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
-        //options.xhr.setRequestHeader('Content-Length', res.size);
+				//xhr.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
+        //xhr.setRequestHeader('Content-Length', res.size);
       }
-
-      // manage state change
-      options.xhr.onreadystatechange = function () {
+			
+			xhr.onreadystatechange = function () {
         var _opt = options;
-        if (options.xhr.readyState == 4) {
+        if (xhr.readyState == 4) {
           // Clear timeout if it exists
-          if ( _timeoutTimer ) {
+          /*if ( _timeoutTimer ) {
             clearTimeout( _timeoutTimer );
-          }
+          }*/
 
           // normal case : status == 2xx, or status == 0 for a localhost HTTP request
-          if (((options.xhr.status >= 200) && (options.xhr.status < 300)) || ((!isHttp) && (options.xhr.status == 0))) {
-            _getResult(options);
+          if (((xhr.status >= 200) && (xhr.status < 300)) || ((!isHttp) && (xhr.status == 0))) {
+            _getResult(options, xhr);
+	    			// SAPMLIPA-17353 : delete xhr object to avoid potential memory leaks
+	    			xhr = undefined;
           } else {
             // call error callback
-            //ctx.log(options.xhr, e.logIconType.Error, 'ctx.ajax.call "' + options.url + '" failed : ' + options.xhr.status);
-            if (typeof options.error === 'function') {
-              options.error.apply(options.context, [options.xhr, e.ajax.error.error, options.xhr.statusText]);
+            //ctx.log(xhr, e.logIconType.Error, 'ctx.ajax.call "' + options.url + '" failed : ' + xhr.status);
+            if (options.error && (typeof options.error === 'function') && (!(options.step && !options.step.running))) {
+							ctx.wait(function() {
+								if(xhr)
+								{
+									options.error.apply(options.context, [xhr, e.ajax.error.error, xhr.statusText]);
+									// SAPMLIPA-17353 : delete xhr object to avoid potential memory leaks
+									xhr = undefined;
+								}
+							}, 100);
             }
           }
+					// SAPMLIPA-17353 : delete xhr object to avoid potential memory leaks
+					//xhr = undefined;
         }
       }
-
-      if (options.contentType) {
+			if (options.contentType) {
         options.headers[e.ajax.header.contentType] = options.contentType;
       }
       if (body.size) {
         options.headers[e.ajax.header.contentLength] = body.size;
       }
       for (var id in options.headers) {
-        options.xhr.setRequestHeader(id, options.headers[id]);
+        xhr.setRequestHeader(id, options.headers[id]);
       };
-
+			  
       // Timeout
       if ( options.async && options.timeout && options.timeout > 0 ) {
-        _timeoutTimer = window.setTimeout( function() {
-          options.xhr.abort( e.ajax.error.error );
-          //ctx.log(options.xhr, e.logIconType.Error, 'ctx.ajax.call "' + options.url + '" failed (timeout): ' + options.xhr.status);
+        ctx.wait( function() {
           // call error callback
-          if (typeof options.error === 'function') {
-            options.error.apply(options.context, [options.xhr, e.ajax.error.timeout, options.xhr.statusText]);
+          if (options.error && (typeof options.error === 'function') && (!(options.step && !options.step.running))) {
+						ctx.wait(function() {
+							options.error.apply(options.context, [xhr, e.ajax.error.timeout,'error timeout']);
+							// SAPMLIPA-17353 : delete xhr object to avoid potential memory leaks
+							xhr.abort();
+	            xhr = undefined;
+						}, 100);
           }
-        }, options.timeout );
+				}, options.timeout );
       }
 
       // send the request
-      options.xhr.send(body.data);
+      xhr.send(body.data);
 
     } catch (ex) {
       // call error callback
-      if (options.error && (typeof options.error === 'function')) {
-        options.error.apply(options.context, [options.xhr, e.ajax.error.error, options.xhr.statusText]);
+      if (options.error && (typeof options.error === 'function') && (!(options.step && !options.step.running))) {
+				ctx.wait(function() {
+	        options.error.apply(options.context, [xhr, e.ajax.error.error, xhr.statusText]);
+				}, 100);
       }
     }
     return options;
@@ -2523,7 +2552,8 @@ ctx.ajax = (function _CtxAjax() {
 				Data: data,
 				LocalFile: options.localFile,
 				EventOk: "evAjaxExOK",
-				EventKo: "evAjaxExKO" 
+				EventKo: "evAjaxExKO",
+				TimeOut: options.timeout
 			};
 			if (options.contentType)
 				Parms.Headers.push("Content-Type: " + options.contentType);
@@ -2547,19 +2577,19 @@ ctx.ajax = (function _CtxAjax() {
     return options;
 	}
 	
-  var _getResult = function(options) {
+  var _getResult = function(options, xhr) {
     try {
       var result = "";
       if (options.desc) {
         var res = {};
         res.url = options.url;
-        res.status = options.xhr.status;
+        res.status = xhr.status;
         res.isBinary = false;
-        res.statusText = options.xhr.statusText;
+        res.statusText = xhr.statusText;
         if (options.localFile)
           res.localFile = options.localFile;
         res.headers = {};
-        var sHeaders = options.xhr.getAllResponseHeaders();
+        var sHeaders = xhr.getAllResponseHeaders();
         var headers = sHeaders.split('\r\n');
         for (var i = 0, len = headers.length; i < len; i++) {
           var value = headers[i];
@@ -2578,28 +2608,28 @@ ctx.ajax = (function _CtxAjax() {
           var content;
           if (options.responseType === e.ajax.responseType.arrayBuffer) {
             res.isBinary = true;
-            if ('undefined' !==  typeof options.xhr.responseBody) {
-              var arr = new VBArray(options.xhr.responseBody).toArray();
-              //var arr = options.xhr.responseBody;
+            if ('undefined' !==  typeof xhr.responseBody) {
+              var arr = new VBArray(xhr.responseBody).toArray();
+              //var arr = xhr.responseBody;
               content = ctx.base64.encode(arr, res.isBinary);
               //content = ctx.base64.encodeArrayBuffer(arr);
-            } else if (options.xhr.response) {
-              var arr = options.xhr.response;
-              //var arr = new Uint8Array(options.xhr.response)
+            } else if (xhr.response) {
+              var arr = xhr.response;
+              //var arr = new Uint8Array(xhr.response)
               //content = ctx.base64.encode(arr, res.isBinary);
               //content = btoa(String.fromCharCode.apply(null, arr));
               content = ctx.base64.encodeArrayBuffer(arr);
-            } else if (options.xhr.responseStream) {
-              var arr = options.xhr.responseStream;
+            } else if (xhr.responseStream) {
+              var arr = xhr.responseStream;
               content = ctx.base64.encodeStream(arr);
-            } else if (options.xhr.responseText) {
-              content = encodeURIComponent(options.xhr.responseText);
+            } else if (xhr.responseText) {
+              content = encodeURIComponent(xhr.responseText);
               content = unescape(content);
               content = btoa (content);
-              //content = ctx.base64.encode(options.xhr.responseText, res.isBinary);
+              //content = ctx.base64.encode(xhr.responseText, res.isBinary);
             }
-          } else if (options.xhr.responseText) {
-            content = options.xhr.responseText;
+          } else if (xhr.responseText) {
+            content = xhr.responseText;
           }
           var sRes = '';
           if ((typeof JSON !== 'undefined') && (typeof JSON.stringify === 'function')) {
@@ -2614,18 +2644,18 @@ ctx.ajax = (function _CtxAjax() {
         }
       } else if (options.localFile) {
         // *** if a local filename is provided, save data in this file ***
-        if (typeof (options.xhr.responseBody) != "undefined") {
-          ctx.fso.file.write(options.localFile, options.xhr.responseBody, e.file.encoding.Binary);
-        } else if ((options.xhr.responseType === e.ajax.responseType.arrayBuffer) && (options.xhr.response)) {
-          ctx.fso.file.write(options.localFile, options.xhr.response, e.file.encoding.Binary);
+        if (typeof (xhr.responseBody) != "undefined") {
+          ctx.fso.file.write(options.localFile, xhr.responseBody, e.file.encoding.Binary);
+        } else if ((xhr.responseType === e.ajax.responseType.arrayBuffer) && (xhr.response)) {
+          ctx.fso.file.write(options.localFile, xhr.response, e.file.encoding.Binary);
         } else {
-          ctx.fso.file.write(options.localFile, options.xhr.responseText, e.file.encoding.ASCII); // encoding management ?
+          ctx.fso.file.write(options.localFile, xhr.responseText, e.file.encoding.ASCII); // encoding management ?
         }
         result = options.localFile; // result is the file name
       } else {
         // get content type from the answer
         var dataType = '';
-        var dataTypes = options.xhr.getResponseHeader(e.ajax.header.contentType);
+        var dataTypes = xhr.getResponseHeader(e.ajax.header.contentType);
         if (dataTypes) {
           dataType = dataTypes.split(";")[0];
           if (dataType) {
@@ -2636,7 +2666,7 @@ ctx.ajax = (function _CtxAjax() {
         switch (dataType) {
           case e.ajax.content.xml:
           case e.ajax.content.xmlText:
-            result = options.xhr.responseXML;
+            result = xhr.responseXML;
             break;
           case e.ajax.content.json:
           case e.ajax.content.jsonText:
@@ -2645,26 +2675,30 @@ ctx.ajax = (function _CtxAjax() {
           case e.ajax.content.javascriptX:
             //if JSON format, try to parse the result
             try {
-              result = ctx.json.parse(options.xhr.responseText);
-              if (result == null) { result = options.xhr.responseText; }
+              result = ctx.json.parse(xhr.responseText);
+              if (result == null) { result = xhr.responseText; }
             } catch (ex) {
-              result = options.xhr.responseText;
+              result = xhr.responseText;
             }
             break;
           default:
-            result = options.xhr.responseText;
+            result = xhr.responseText;
             break;
         }
       }
 
       // call success callback
-      if (typeof options.success === 'function') {
-        options.success.apply(options.context, [result, options.xhr.statusText, options.xhr]);
+      if (options.success && (typeof options.success === 'function') && (!(options.step && !options.step.running))) {				
+				ctx.wait(function() {
+	        options.success.apply(options.context, [result, xhr.statusText, xhr]);
+				}, 100);
       }
     } catch (ex) {
       // call error callback
-      if (typeof options.error === 'function') {
-        options.error.apply(options.context, [options.xhr, e.ajax.error.error, options.xhr.statusText]);
+      if (options.error && (typeof options.error === 'function') && (!(options.step && !options.step.running))) {
+				ctx.wait(function() {
+	        options.error.apply(options.context, [xhr, e.ajax.error.error, xhr.statusText]);
+				}, 100);
       }
       if (Contextor && options.desc && options.id) {
           var sRes = e.prefix.json + '{"errorMessage":"' + ex.message + '"}';
@@ -2705,7 +2739,8 @@ ctx.ajax = (function _CtxAjax() {
 
   function _createMultipartData( formData, boundary ) {
     var  adTypeBinary = 1;
-    var chrset = "windows-1252"; // "utf-8";
+    //var chrset = "windows-1252"; // "utf-8";
+    var chrset = "utf-8";
     var crlf = "\r\n";
     var data = "";
     var first = true;
@@ -2880,6 +2915,9 @@ ctx.ajax.call({
 			if(!options.url)
 				return options; // no url provided
 
+			if (!options.step)
+				options.step = ctx.currentStep;
+			
 			if (options.ignoreClientCertificate) {
 	      _sendRequestEx(options);
 			} else {
@@ -2948,7 +2986,7 @@ ctx.ajax.call({
 			}
 			if (!options)
 				return;
-			if (success && ('function' === typeof(options.success))) {
+			if (success && options.success && (typeof options.success === 'function') && (!(options.step && !options.step.running))) {
 				// uuid|status|status text|content type|data
 				pos = data.indexOf('|');
 				if (pos > 0) {
@@ -3017,14 +3055,18 @@ ctx.ajax.call({
 									}
 									break;
 								}
-								options.success(result, statusText, xhr);
-							} else if ('function' === typeof(options.error)) {
-								options.error(xhr, status, statusText); 
+								ctx.wait(function() {
+					        options.success.apply(options.context, [result, statusText, xhr]);
+								}, 100);
+							} else if (options.error && (typeof options.error === 'function') && (!(options.step && !options.step.running))) {
+								ctx.wait(function() {
+									options.error.apply(options.context, [xhr, status, statusText]); 
+								}, 100);
 							}
 						}
 					}
 				}
-			} else if (!success && ('function' === typeof(options.error))) {
+			} else if (!success && options.error && (typeof options.error === 'function') && (!(options.step && !options.step.running))) {
 				// uuid|failed API|error code|error message
 				pos = data.indexOf('|');
 				if (pos > 0) {
@@ -3034,12 +3076,14 @@ ctx.ajax.call({
 					if (pos > 0) {
 						var status = parseInt(data.slice(0, pos), 0);
 						data = data.slice(pos + 1);
-							var xhr = {
-								status: status,
-								statusText: data,
-								responseText: data
-							}
-						options.error(xhr, status, data); 
+						var xhr = {
+							status: status,
+							statusText: data,
+							responseText: data
+						}
+						ctx.wait(function() {
+							options.error.apply(options.context, [xhr, status, data]); 
+						}, 100);
 					}
 				}
 			}
@@ -3154,6 +3198,7 @@ ctx.clipboard.enableTrack(true, 'evClipboard');
       /**
       * Adds a context node
       * @method addCtx
+			* @ignore
       * @path ctx.context.addCtx
       * @param {string} variable variable name (can contain a relative or absolute xPath)
       * @param {string} model XML string as a model
@@ -3360,6 +3405,7 @@ ctx.context.set('//GLOBAL/Name', 'Ford');
 <code javascript>
 var obj = ctx.context.setCtx('//GLOBAL/User', 'XML', '<User><Name></Name><Firstname></Firstname></User>');
 </code>
+      * @ignore
       * @method setCtx
       * @path ctx.context.setCtx
       * @param {string} variable variable name (can contain a relative or absolute xPath)
@@ -5106,7 +5152,6 @@ ctx.mouse.click(pos, 0, true);
           Y : (pos.y + pos.cy / 2 || 0)
         };
         if (doubleClick) { params.Double = 'Y' };
-        //return ctx.verbExec(desc, 'ctx.mouse.clickMiddle', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.clickMiddle', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5135,7 +5180,6 @@ ctx.mouse.clickRight(pos);
           Y : (pos.y + pos.cy / 2 || 0)
         };
         if (doubleClick) { params.Double = 'Y' };
-        //return ctx.verbExec(desc, 'ctx.mouse.clickRight', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.clickRight', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5155,7 +5199,6 @@ ctx.mouse.clickXButton1();
         var params = {
           XButton : '1'
         };
-        //return ctx.verbExec(desc, 'ctx.mouse.clickXButton1', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.clickXButton1', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5175,7 +5218,6 @@ ctx.mouse.clickXButton2();
         var params = {
           XButton : '2'
         };
-        //return ctx.verbExec(desc, 'ctx.mouse.clickXButton2', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.clickXButton2', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5206,7 +5248,6 @@ ctx.mouse.dragAndDrop(pos, pos2);
           X2 : (pos2.x + pos2.cx / 2 || 0),
           Y2 : (pos2.y + pos2.cy / 2 || 0)
         };
-        //return ctx.verbExec(desc, 'ctx.mouse.dragAndDrop', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.dragAndDrop', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5238,7 +5279,6 @@ ctx.mouse.dragAndDrop(pos, pos2);
           X2 : (pos2.x + pos2.cx / 2 || 0),
           Y2 : (pos2.y + pos2.cy / 2 || 0)
         };
-        //return ctx.verbExec(desc, 'ctx.mouse.dragAndDrop', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.dragAndDrop', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5264,7 +5304,6 @@ ctx.mouse.move(pos);
           X : (pos.x + pos.cx / 2 || 0),
           Y : (pos.y + pos.cy / 2 || 0)
         };
-        //return ctx.verbExec(desc, 'ctx.mouse.dragAndDrop', 'CLICKMOUSE', params, '', false, '3.2.3.0');
         return ctx.verbExec(desc, 'ctx.mouse.dragAndDrop', 'CLICKMOUSE', params, '', false);
       },
 
@@ -5285,7 +5324,7 @@ ctx.mouse.scrollWheel(-200);
         var params = {
           Wheel : offset
         };
-        return ctx.verbExec(desc, 'ctx.mouse.scrollWheel', 'CLICKMOUSE', params, '', false, '3.2.3.0');
+        return ctx.verbExec(desc, 'ctx.mouse.scrollWheel', 'CLICKMOUSE', params, '', false);
       }
     }
     return self;

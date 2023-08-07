@@ -1004,7 +1004,7 @@ var path = MyAppli.getPath();
     return this.pathList[env] || this.path;
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.JAVA)) {
     /**
     * Highlights the items in all active pages
     * @description
@@ -1437,7 +1437,7 @@ MyAppli.start();
     return res; // already started
   }
 
-  if (this._is(e.nature.UIAUTOMATION)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
     /**
     * Enables asynchronous mode
     * @description
@@ -1660,7 +1660,7 @@ MyAppli.step({MyStep: function(ev, sc, st) {
     return st;
   }
 
-  if (this._is(e.nature.UIAUTOMATION)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
     /**
     * Disables asynchronous mode
     * @description
@@ -1680,7 +1680,7 @@ MyUIAAppli.stopAsyncMode();
     }
   }
 
-  if (this._is(e.nature.UIAUTOMATION)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
     /**
     * Forces application cache synchronization for UIAutomation
     * @description

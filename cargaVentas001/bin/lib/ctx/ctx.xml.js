@@ -92,7 +92,7 @@ ctx.xml = (function () {
 				}
 				if (!isParent) {
 					xmlResult += "/>\n";
-				} else
+				} else {
 					xmlResult += ">";
 					var doCR = true;
 					for (var member in nodeValue) {
@@ -109,7 +109,7 @@ ctx.xml = (function () {
 						}
 					}
 					xmlResult += (xmlResult.charAt(xmlResult.length - 1) == "\n" ? index : "") + "</" + nodeName + ">\n";
-
+				}
 			}
 			return xmlResult;
 		}

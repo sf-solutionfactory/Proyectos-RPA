@@ -570,6 +570,47 @@ body {
 	color: #0854a0;
 }
 
+/*** Setting marging windows password ***/
+.agent-systray-radio-button-password {
+  padding-top : -10px;
+  margin-top: -10px;
+  margin-left: 15px;
+  font-size: 12px;
+}
+
+.agent-systray-windows-password {
+  padding-top : -5px;
+  margin-top: -5px;
+  margin-left: 40px;
+  font-size: 12px;
+}
+
+.agent-systray-windows-user
+{
+  padding-top : -10px;
+  margin-top: -10px;
+  margin-left: 40px;
+  font-size: 12px;
+}
+
+/*** Setting marging proxy password ***/
+
+
+.agent-systray-proxy-password {
+  padding-top : 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.agent-systray-proxy-user
+{
+  padding-top : 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
 /*** Modal Dialog Boxes ***/
 .agent-systray-modal {
 	margin-left: 8px;
@@ -1017,4 +1058,11 @@ div#tableJobProgress_content, div#tableJobDetails_content {
 
 .alert-danger .alert-link {
     color: #7b190f
+}
+
+#containerSettings .agent-systray-content-container {
+max-height: 374px;
+margin-top: 0px !important;
+margin-right: 0px !important;
+overflow-y: auto;
 }

@@ -394,7 +394,13 @@ ctx.diagnostic.generateLocalDiagnostic();
     * @param       {boolean} [ifNotExist] generates only if the diagnostic doesn't exist yet
     */
     generateLocalDiagnostic : function (ifNotExist) {
-      var diagName = ctx.options.computerName + '.' + ctx.options.userName + '.diagnostic.pscl';
+      var computerName = ctx.options.computerName;
+	  var userName = ctx.options.userName;
+	  if(ctx.options.isAnonymous){
+			computerName = computerName.substring(0, 14);
+			userName = computerName.substring(0, 14);
+	  }
+      var diagName = computerName + '.' + userName + '.diagnostic.pscl';      
       var diagFile = ctx.options.path.log + '\\' + diagName;
       if ((!ifNotExist) && ctx.fso.file.exist(diagFile)) {
         ctx.fso.file.remove(diagFile);
@@ -1317,16 +1323,18 @@ ctx.onStartTraceCallback = function(folder) {
 * @path ctx.onStopTraceCallback
 * @param {string} folder trace folder
 * @param {boolean} [copyArchive] copy or send archive
-* @return {string} trace archive (ZIP file)
+* @return {string|undefined} trace archive (ZIP file)
 */
 ctx.onStopTraceCallback = function(folder, copyArchive) {
-  // save archive
-  var zipFile = ctx.diagnostic.zipArchiveFolder(folder);
-  if(zipFile) ctx.log('ctx.diagnostic: an archive was generated: ' + zipFile, e.logIconType.Warning);
-  if (zipFile && copyArchive) {
+  if (copyArchive) {
     // call callback after save
     if (typeof ctx.diagnostic.saveCallback === 'function') {
-      ctx.diagnostic.saveCallback(zipFile);
+			// save archive
+			var zipFile = ctx.diagnostic.zipArchiveFolder(folder);
+  		if(zipFile) {
+				ctx.log('ctx.diagnostic: an archive was generated: ' + zipFile, e.logIconType.Warning);
+        ctx.diagnostic.saveCallback(zipFile);
+			}
     }
   }
   return zipFile;

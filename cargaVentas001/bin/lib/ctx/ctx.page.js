@@ -1041,7 +1041,7 @@ MyWinAppli.MyPage.clickMenuItem('45'); // 45 is the menu numeric identifier
 
   if (this._is(e.nature.EXEWIN, e.nature.WIN)) {
     /**
-    * Sends a low level WM_COMMAND message (advanced usage) : Selects a menu in a page TBC
+    * Sends a low level WM_COMMAND message (advanced usage) to select a menu in a page
     * @description
     * :!: __Technology specific:__ **WIN**
     *
@@ -1141,7 +1141,7 @@ MyAppli.MyPage.cleanUp();
     }
   }
 
-  if (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.NSDK, e.nature.MESSBOX, e.nature.MESSBOX2, e.nature.MESSBOXALERT)) {
+  if (this._is(e.nature.EXEWIN, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.UIAUTOMATION, e.nature.JAVA, e.nature.NSDK, e.nature.MESSBOX, e.nature.MESSBOX2, e.nature.MESSBOXALERT)) {
     /**
     * Closes the page
     * @description
@@ -1650,6 +1650,8 @@ var title = MyAppli.MyPage.evalScript('document.title');
   if (this._is(e.nature.WEB, e.nature.WEB3, e.nature.MESSBOX, e.nature.MESSBOX2)) {
     /**
     * Executes javascript code in the page
+    * @deprecated As of January 1st, 2023, script injection will no longer work in pages from web sites implementing new stricter Content Security Policy (CSP) from Chrome / Edge.
+    * For more information, see the Chrome Developers documentation: https://developer.chrome.com/blog/mv2-transition/
     * @description
     * :!: __Technology specific:__ **WEB, WEB3, MESSBOX**
     *
@@ -1674,6 +1676,10 @@ MyWebAppli.MyPage.execScript('SendAnswerToHub', req.info.destination.id, req.ev)
     this.execScript = function (list) {
       var args = Array.prototype.slice.call(arguments);
       var res = '';
+      var f = Array.isArray(list) ? list[0] : list;
+      if (typeof f === 'function') {
+        ctx.log('irpa_core.item.execScript: script injection no longer works in pages from web sites implementing strict Content Security Policy (CSP) from Chrome / Edge', e.logIconType.Warning);
+	    }
       var code = ctx.formatFunction(args);
       if (code) {
         var desc = this.getObjectDescriptor();
@@ -2111,7 +2117,7 @@ var path = MyAppli.MyPage.getPath();
     return this.pathList[env] || this.path;
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.JAVA)) {
     /**
     * Gets the position and bounding of the item
     * @description
@@ -2214,7 +2220,7 @@ var txt = MyWinAppli.MyPage.getTitle();
     }
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.JAVA)) {
     /**
     * Highlights the page
     * @description
@@ -2247,7 +2253,7 @@ MyAppli.MyPage.highlight();
     }
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.SAPGUI)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.SWG, e.nature.OCR, e.nature.SAPGUI, e.nature.JAVA)) {
     /**
     * Highlights the items in the page
     * @description
@@ -2459,15 +2465,15 @@ MyWebAppli.MyPage.execScript('create_iframe();');
       var code = '';
       for (var i in args) {
         var func = args[i];
-				var funcContent;
-				var funcName;
+        var funcContent;
+        var funcName;
         if ((typeof func === 'function') && (func.toString)) {
           funcContent = func.toString();
           funcName = funcContent.match(/function\s+([^\s\(]+)/)[1];
           if (funcName) {
             if (!desc.page.injectedFunctions[funcName]) {
               desc.page.injectedFunctions[funcName] = true;
-              code = code + "if ('undefined' === typeof(" + funcName + ")) { " + funcContent + " };\n";
+              code += "if ('undefined' === typeof(" + funcName + ")) { " + funcContent + " };\n";
             }
           }
         } else if ((typeof func === 'object') && (typeof func.name === 'string') && (typeof func.func === 'function')) {
@@ -2476,11 +2482,11 @@ MyWebAppli.MyPage.execScript('create_iframe();');
           if (funcName) {
             if (!desc.page.injectedFunctions[funcName]) {
               desc.page.injectedFunctions[funcName] = true;
-							if ( func.execute ) {
-								code = code + "(" + funcContent + ")();\n";
-							} else {
-              	code = code + "if ('undefined' === typeof(" + funcName + ")) { " + funcContent + " };\n";
-							}
+              if (func.execute) {
+                code += "(" + funcContent + ")();\n";
+              } else {
+              	code += "if ('undefined' === typeof(" + funcName + ")) { " + funcContent + " };\n";
+              }
             }
           }
         } else {
@@ -2625,12 +2631,12 @@ MyWebAppli.MyPage.insertImageButton('btNewButton',
     */
     this.insertImageButton = function (id, adjacentItem, image, label, parameters, position, event, disableTimer) {
       if (typeof parameters !== 'object') { parameters = {}; }
-      parameters.src = image;
-      parameters.alt = parameters.alt || label;
-      parameters.title = parameters.title || label;
+      parameters['@src'] = image;
+      parameters['@alt'] = parameters['@alt'] || label;
+      parameters['@title'] = parameters['@title'] || label;
       var params = {
-        id: id,
-        href: 'javascript:void(0)',
+        '@id': id,
+        '@href': 'javascript:void(0)',
         img: parameters
       };
       var res = this.insertObject('a', adjacentItem, params, position, event, disableTimer);
@@ -2674,10 +2680,10 @@ MyWebAppli.MyPage.insertLink('btNewLink_2', MyWebAppli.MyPage.MyItem, '', 'anoth
     this.insertLink = function (id, adjacentItem, href, label, parameters, position, event, disableTimer) {
       if (typeof parameters !== 'object') { parameters = {}; }
       var params = {
-        id: id,
-        //name: id,
-        href: href || 'javascript:void(0)',
-        //alt: label,
+        '@id': id,
+        //'@name': id,
+        '@href': href || 'javascript:void(0)',
+        //'@alt': label,
         '#text': label
       };
       var res = this.insertObject('a', adjacentItem, params, position, event, disableTimer);
@@ -2712,37 +2718,67 @@ res = MyWebAppli.MyPage.insertHtml(code, MyAppli.MyPage.MyItem);
     * @param {string|ctx.item} adjacentItem Item object or identifier (id, name or tag) after which the button should be inserted
     * @param {e.html.position} [position] insert position relative to 'adjacentItem' (default is 'e.html.position.afterEnd'). See [[:lib:common:ctx.enum#enumeration_ehtmlposition|e.html.position]]
     * @param {string} [id] optional identifier of the object to be inserted
+    * @param {string} [event] optionalevent
+    * @param {number} [disableTimer] optional disable timer
     * @return {string} result value
     */
-     this.insertHtml = function (htmlCode, adjacentItem, position, id) {
+    this.insertHtml = function (htmlCode, adjacentItem, position, id, event, disableTimer) {
       var res = '';
 
       // function to be injected
-      function ctxtInsertCode(htmlCode, adjacentItem, position, id) {
-        Contextor.Log(0, 'ctxtInsertCode: entering');
-        if ( (!id) || (document.getElementById(id) == null )) {
+      function ctxtInsertCode(htmlCode, adjacentId, position, id, ev, disableTimer) {
+        if (!id || !document.getElementById(id)) {
           try {
             var el = [];
-            el[0] = document.getElementById(adjacentItem);
+            el[0] = document.getElementById(adjacentId);
             if (!(el && el[0])) {
-              el = document.getElementsByName(adjacentItem);
+              el = document.getElementsByName(adjacentId);
             }
             if (!(el && el[0])) {
-              el = document.getElementsByTagName(adjacentItem);
+              el = document.getElementsByTagName(adjacentId);
             }
             if (!(el && el[0])) {
               el = document.getElementsByClassName(id);
             }
             if (el && el[0]) {
               el[0].insertAdjacentHTML(position, htmlCode);
+              if (ev) {
+                var elt = document.getElementById(id);
+                elt.addEventListener('click', function() { 
+                  Contextor.Event(ev.name, ev.appliName, ev.pageName, ev.itemName, ev.appliInst, ev.pageInst, '');
+                  if (disableTimer > 0) {
+                    elt.disabled = true; setTimeout(function() { elt.disabled = false; }, disableTimer);
+                  }
+                });
+              }
             } else {
-              Contextor.Log(0, 'ctxtInsertCode: could not find "' + adjacentItem + '"');
+              Contextor.Log(0, 'ctxtInsertCode: could not find "' + adjacentId + '"');
             }
-          } catch ( ex ) {
+          } catch (ex) {
             Contextor.Log(0, ex.message);
           }
         }
       }
+
+      function ctxtInsertElementCode(item, htmlCode, position, id, ev, disableTimer) {
+        if (!id || !document.getElementById(id)) {
+          try {
+            item.insertAdjacentHTML(position, htmlCode);
+            if (ev) {
+              var elt = document.getElementById(id);
+              elt.addEventListener('click', function() { 
+                Contextor.Event(ev.name, ev.appliName, ev.pageName, ev.itemName, ev.appliInst, ev.pageInst, '');
+                if (disableTimer > 0) {
+                  elt.disabled = true; setTimeout(function() { elt.disabled = false; }, disableTimer);
+                }
+              });
+            }
+          } catch (ex) {
+            Contextor.Log(0, ex.message);
+          }
+        }
+      }
+
       position = position || e.html.position.afterEnd;
       var desc = this.getObjectDescriptor();
       var page = desc.page; // real used page
@@ -2754,13 +2790,20 @@ res = MyWebAppli.MyPage.insertHtml(code, MyAppli.MyPage.MyItem);
           this.deleteObject(id);
         }
       }
+      var ev = event && {
+        name: event.name,
+        appliName: event.appliName,
+        pageName: event.pageName || '_Empty_',
+        itemName: event.pageName ? id : '',
+        appliInst: event.appliInst > 0 ? event.appliInst : (event.appliName === this.appli.name ? -1 : 0),
+        pageInst: event.pageInst > 0 ? event.pageInst : (event.appliName === this.appli.name && event.pageName === this.name ? -1 : 0)
+      };
+      if (disableTimer === undefined) { disableTimer = 2000; }
       if (adjacentItem instanceof ctx.item) {
         /** @type {ctx.item} */ var el = adjacentItem;
         if (el && el.exist()) {
           try {
-            el.wait(function(ev) {
-              res = el.scriptItem("insertAdjacentHTML", position, htmlCode);
-            }, 0);
+            res = el.execScript(ctxtInsertElementCode, htmlCode, position, id, ev, disableTimer);
           } catch ( ex ) {
             throw new Error(e.error.InvalidArgument, 'ctx.page.insertHtml: ' + ex.message);
           }
@@ -2771,7 +2814,7 @@ res = MyWebAppli.MyPage.insertHtml(code, MyAppli.MyPage.MyItem);
         // insert function, then call it
         res = page.injectFunction(ctxtInsertCode);
         if (res == '') {
-          res = page.execScript('ctxtInsertCode', htmlCode, adjacentItem, position, id);
+          res = page.execScript('ctxtInsertCode', htmlCode, adjacentItem, position, id, ev, disableTimer);
         }
       }
 
@@ -2816,18 +2859,16 @@ res = MyWebAppli.MyPage.insertObject('input', MyWebAppli.MyPage.MyItem, {
     * @param {number} [disableTimer] disable duration after click (default is 2 s)
     * @return {string} result value
     */
-     this.insertObject = function (tag, adjacentItem, parameters, position, event, disableTimer) {
+    this.insertObject = function (tag, adjacentItem, parameters, position, event, disableTimer) {
       var res = '';
       if (this.exist())
-      {
+	  {
         parameters = parameters || {};
         var id = (parameters['@id'] || parameters.id || parameters.name);
         if (!id) { id = parameters.id = tag + ctx.uuid(); }
         //if (!id) { throw new Error(e.error.InvalidArgument, 'ctx.page.insertObject: no \'id\' or \'name\' was provided'); }
-        if (!(event && (event instanceof ctx.event))) {
-          event = this.events['CLICK'];
-        }
-        if (event && (event instanceof ctx.event)) {
+        event = event || this.events['CLICK'];
+        /*if (event) {
           var appliName = event.appliName;
           var pageName = event.pageName || '_Empty_';
           var itemName = (event.pageName ? id : '');
@@ -2843,16 +2884,15 @@ res = MyWebAppli.MyPage.insertObject('input', MyWebAppli.MyPage.MyItem, {
             pageInst = (event.pageInst > 0 ? event.pageInst : 0);
           }
           if( disableTimer === undefined) { disableTimer = 2000; }
-          	parameters['@onclick'] = "Contextor.Event( '" + event.name + "', '" + appliName + "', '" + pageName + "', '" + itemName + "', " + appliInst + ", " + pageInst + ", '');";
+          parameters['@onclick'] = "Contextor.Event( \"" + event.name + "\", \"" + appliName + "\", \"" + pageName + "\", \"" + itemName + "\", " + appliInst + ", " + pageInst + ", \"\");";
           if (disableTimer > 0) {
             parameters['@onclick'] += "var el = this; el.disabled=true; setTimeout( function(el) { return function() { el.disabled=false; }; }(el), " + disableTimer + ");"
           }
-        }
+        }*/
         var obj = {};
         obj[tag] = parameters;
-        //var htmlCode = buildCode(tag, parameters);
         var htmlCode = ctx.xml.json2xml(obj, '');
-        this.insertHtml(htmlCode, adjacentItem, position, id);
+        this.insertHtml(htmlCode, adjacentItem, position, id, event, disableTimer);
         if (res) {
           ctx.log('ctx.page.insertObject failed with error : ' + res, e.logIconType.Error);
         }
@@ -3219,7 +3259,7 @@ if (MyWinAppli.MyPage.isVisible()) { ... }
     }
   }
 
-  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.HLLAPI)) {
+  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.HLLAPI, e.nature.JAVA)) {
     /**
     * Sends a sequence of keys to the page
     * @description
@@ -3239,13 +3279,13 @@ MyAppli.MyPage.keyStroke(e.key.Alt + e.key.F7);
     */
     this.keyStroke = function (command) {
       var desc = this.getObjectDescriptor();
-      if (this._is(e.nature.UIAUTOMATION, e.nature.OCR))
+      if (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))
         command = ctx.keyStrokeMapping(command); // UIAutomaion has a specific mapping
       return ctx.action(desc, 'keyStroke', 'SETVALUE', command, '_KeyStroke_');
     }
   }
 
-  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.SWG)) {
+  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.UIAUTOMATION, e.nature.OCR, e.nature.SWG, e.nature.JAVA)) {
     /**
     * Sends a sequence of keys to the page (alternative method compared to ctx.item.keyStroke)
     * @description
@@ -3265,7 +3305,7 @@ MyAppli.MyPage.keyStroke2(e.key.Alt + e.key.F7);
     */
     this.keyStroke2 = function (command) {
       var desc = this.getObjectDescriptor();
-      if (this._is(e.nature.UIAUTOMATION, e.nature.OCR))
+      if (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.JAVA))
         command = ctx.keyStrokeMapping(command); // UIAutomaion has a specific mapping
       return ctx.action(desc, 'keyStroke2', 'SETVALUE', command, '_KeyStroke2_');
     }
@@ -3294,7 +3334,7 @@ var name = MyUIAAppli.MyPage.listenWinEvents();
       }
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.SAPGUI)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.SAPGUI, e.nature.JAVA)) {
     /**
     * Disable polling refresh on this page
     * @description
@@ -3314,7 +3354,7 @@ MyUIAAppli.MyPage.lockRefresh();
     }
   }
 
-  if (this._is(e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.UIAUTOMATION)) {
+  if (this._is(e.nature.WIN, e.nature.WEB, e.nature.WEB3, e.nature.UIAUTOMATION, e.nature.JAVA)) {
     /**
     * Maximizes the page
     * @description
@@ -3335,14 +3375,14 @@ MyAppli.MyPage.maximize();
         res = ctx.actionApp(desc, 'maximize', 'SETSTYLE', 'WS_MAXIMIZE');
       } else if (this._is(e.nature.WEB, e.nature.WEB3)) {
         res = ctx.actionApp(desc, 'maximize', 'SETSTYLEWIN', 'WS_MAXIMIZE');
-      } else if (this._is(e.nature.UIAUTOMATION)) {
+      } else if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
         res = ctx.actionApp(desc, 'maximize', 'MAXIMIZE');
       }
       return res;
     }
   }
 
-  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.WEB, e.nature.WEB3, e.nature.UIAUTOMATION)) {
+  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.WEB, e.nature.WEB3, e.nature.UIAUTOMATION, e.nature.JAVA)) {
     /**
     * Minimizes the page
     * @description
@@ -3363,7 +3403,7 @@ MyAppli.MyPage.minimize();
         res = ctx.actionApp(desc, 'minimize', 'SETSTYLE', 'WS_MINIMIZE');
       } else if (this._is(e.nature.WEB, e.nature.WEB3)) {
         res = ctx.actionApp(desc, 'minimize', 'SETSTYLEWIN', 'WS_MINIMIZE');
-      } else if (this._is(e.nature.UIAUTOMATION)) {
+      } else if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
         res = ctx.actionApp(desc, 'minimize', 'MINIMIZE');
       }
       return res;
@@ -3534,18 +3574,18 @@ MyAppli.MyPage.notify('evLogin');
           }
         } catch (ex) { }
       }
-			// inject custom methods if any
-			if (!ctx.isEmpty(this.customMethods)) {
-				this.injectFunction(this.customMethods);
+      // inject custom methods if any
+      if (!ctx.isEmpty(this.customMethods)) {
+        this.injectFunction(this.customMethods);
         ctx.sleep(100); // wait 100 ms
-			}
+      }
     } catch(ex) {
       return false;
     }
     return true;
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.SAPGUI)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.OCR, e.nature.SAPGUI, e.nature.JAVA)) {
     /**
     * Refreshes the page cache from the running application
     * @description
@@ -3587,7 +3627,7 @@ MyUIAAppli.MyPage.refreshAsync();
     }
   }
 
-  if (this._is(e.nature.OCR, e.nature.SAPGUI, e.nature.UIAUTOMATION))
+  if (this._is(e.nature.OCR, e.nature.SAPGUI, e.nature.UIAUTOMATION, e.nature.JAVA))
   {
     /**
     * Activate Pages recognition when polling occurs
@@ -3669,7 +3709,7 @@ MyWebAppli.MyPage.reload();
     }
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.WIN, e.nature.JAVA)) {
     /**
     * Description TODO
     * @description
@@ -3686,7 +3726,7 @@ MyAppli.MyPage.restore();
     this.restore = function () {
       var desc = this.getObjectDescriptor();
       var res = '';
-      if (this._is(e.nature.UIAUTOMATION)) {
+      if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
         res = ctx.actionApp(desc, 'restore', 'RESTORE');
       } else if (this._is(e.nature.WIN)) {
         res = ctx.actionApp(desc, 'restore', 'SETSTYLE', 'SW_RESTORE');
@@ -4082,7 +4122,7 @@ MyAppli.MyPage.start("http://www.dokuwiki.org/");
 //    }
 //  }
 
-  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.WEB, e.nature.WEB3, e.nature.UIAUTOMATION)) {
+  if (this._is(e.nature.WIN, e.nature.EXEWIN, e.nature.WEB, e.nature.WEB3, e.nature.UIAUTOMATION, e.nature.JAVA)) {
     /**
     * Enables or disables the 'top most' position of the page
     * @description
@@ -4103,7 +4143,7 @@ MyAppli.MyPage.topMost(true);
     }
   }
 
-  if (this._is(e.nature.UIAUTOMATION, e.nature.SAPGUI)) {
+  if (this._is(e.nature.UIAUTOMATION, e.nature.SAPGUI, e.nature.JAVA)) {
     /**
     * Description TODO
     * @description
@@ -4288,7 +4328,7 @@ MyAppli.MyPage.wait(function(ev) {
     this.addEvent({ ENABLE: '', DISABLE: '', SHOW: '', HIDE: '', MENUPOPUP: '', SCROLL: '', SIZE: '' }, true, true);
   } else if (this._is(e.nature.WEB, e.nature.WEB3)) {
     this.addEvent({ RESIZE: '' }, true, true);
-  } else if (this._is(e.nature.UIAUTOMATION)) {
+  } else if (this._is(e.nature.UIAUTOMATION, e.nature.JAVA)) {
   } else if (this._is(e.nature.HLLAPI)) {
     this.addEvent({ UPDATE: '' }, true, true);
   } else if (this._is(e.nature.SWG)) {

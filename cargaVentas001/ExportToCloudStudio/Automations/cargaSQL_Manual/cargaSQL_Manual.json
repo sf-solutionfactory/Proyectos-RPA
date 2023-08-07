@@ -1,0 +1,491 @@
+{
+  "name": "Carga por parámetros configurables",
+  "do": [
+    {
+      "id": "0",
+      "name": "Start",
+      "type": "start"
+    },
+    {
+      "id": "1",
+      "name": "getFilenameMM",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Describe functionality to be implemented in JavaScript later in the project.\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "comment_2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Declare setting fechaInicio",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Declares a setting\r\n\r\nctx.setting({ fechaInicio: {\r\n\tcomment: \"Fecha Inicio\",\r\n\tserver: true\r\n}});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.declare"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "fechaInicio"
+          },
+          {
+            "name": "comment",
+            "type": "expression",
+            "value": "Fecha Inicio"
+          },
+          {
+            "name": "server",
+            "type": "expression",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Declare setting fechaFin",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Declares a setting\r\n\r\nctx.setting({ fechaFin: {\r\n\tcomment: \"Fecha fin\",\r\n\tserver: true\r\n}});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.declare"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "fechaFin"
+          },
+          {
+            "name": "comment",
+            "type": "expression",
+            "value": "Fecha fin"
+          },
+          {
+            "name": "server",
+            "type": "expression",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "name": "Declare setting soloCarga",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Declares a setting\r\n\r\nctx.setting({ soloCarga: {\r\n\tcomment: \"solo Carga\",\r\n\tserver: true\r\n}});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.declare"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "soloCarga"
+          },
+          {
+            "name": "comment",
+            "type": "expression",
+            "value": "solo Carga"
+          },
+          {
+            "name": "server",
+            "type": "expression",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "name": "Declare setting idCentro",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Declares a setting\r\n\r\nctx.setting({ idCentro: {\r\n\tcomment: \"idCentro\",\r\n\tserver: true\r\n}});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.declare"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "idCentro"
+          },
+          {
+            "name": "comment",
+            "type": "expression",
+            "value": "idCentro"
+          },
+          {
+            "name": "server",
+            "type": "expression",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "name": "Declare setting tipoConsulta",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Declares a setting\r\n\r\nctx.setting({ tipoConsulta: {\r\n\tcomment: \"tipoConsulta\",\r\n\tserver: true\r\n}});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.declare"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "tipoConsulta"
+          },
+          {
+            "name": "comment",
+            "type": "expression",
+            "value": "tipoConsulta"
+          },
+          {
+            "name": "server",
+            "type": "expression",
+            "value": "true"
+          }
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "name": "Get setting fechaInicio",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Retrieves the value of a setting\r\n\r\nctx.settings.fechaInicio.get(function(code, label, setting) {\r\n\tif (code == e.error.OK) {\r\n\t\t// get value from setting.value\r\n\t\trootData.Manual.fechaIni = setting.value;\r\n\t}\r\n});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.get_2"
+          },
+          {
+            "name": "variable",
+            "type": "expression",
+            "value": "Step0.InputData.Manual.fechaIni"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "fechaInicio"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "name": "Get setting fechaFin",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Retrieves the value of a setting\r\n\r\nctx.settings.fechaFin.get(function(code, label, setting) {\r\n\tif (code == e.error.OK) {\r\n\t\t// get value from setting.value\r\n\t\trootData.Manual.fechaFin = setting.value;\r\n\t}\r\n});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.get_2"
+          },
+          {
+            "name": "variable",
+            "type": "expression",
+            "value": "Step0.InputData.Manual.fechaFin"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "fechaFin"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "name": "Get setting soloCarga",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Retrieves the value of a setting\r\n\r\nctx.settings.soloCarga.get(function(code, label, setting) {\r\n\tif (code == e.error.OK) {\r\n\t\t// get value from setting.value\r\n\t\trootData.Manual.soloCarga = setting.value;\r\n\t}\r\n});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.get_2"
+          },
+          {
+            "name": "variable",
+            "type": "expression",
+            "value": "Step0.InputData.Manual.soloCarga"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "soloCarga"
+          }
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "name": "Get setting idCentro",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Retrieves the value of a setting\r\n\r\nctx.settings.idCentro.get(function(code, label, setting) {\r\n\tif (code == e.error.OK) {\r\n\t\t// get value from setting.value\r\n\t\trootData.Manual.idCentro = setting.value;\r\n\t}\r\n});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.get_2"
+          },
+          {
+            "name": "variable",
+            "type": "expression",
+            "value": "Step0.InputData.Manual.idCentro"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "idCentro"
+          }
+        ]
+      }
+    },
+    {
+      "id": "11",
+      "name": "Get setting tipoConsulta",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Retrieves the value of a setting\r\n\r\nctx.settings.tipoConsulta.get(function(code, label, setting) {\r\n\tif (code == e.error.OK) {\r\n\t\t// get value from setting.value\r\n\t\trootData.tipoConsulta = setting.value;\r\n\t}\r\n});\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "setting.get_2"
+          },
+          {
+            "name": "variable",
+            "type": "expression",
+            "value": "Step0.InputData.tipoConsulta"
+          },
+          {
+            "name": "name",
+            "type": "expression",
+            "value": "tipoConsulta"
+          }
+        ]
+      }
+    },
+    {
+      "id": "12",
+      "name": "connectSQL_MM",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Consulta a SQL\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "comment_2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "13",
+      "name": "Read_txtMM",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Leer archivo generado\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "comment_2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "14",
+      "name": "setListMM",
+      "activity": {
+        "activityId": "placeHolder",
+        "className": null,
+        "module": {
+          "containerId": "",
+          "id": ""
+        },
+        "generatedScript": "/*\n// Genera aarchivo TXT\r\n\n*/"
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "SnippetId",
+            "type": "expression",
+            "value": "comment_2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "15",
+      "name": "Write_txtMM",
+      "type": "call",
+      "activity": {
+        "activityId": "file.write",
+        "className": "",
+        "module": {
+          "containerId": "irpa_core",
+          "id": "fs"
+        }
+      },
+      "inputMapping": {
+        "arguments": [
+          {
+            "name": "filePath",
+            "type": "expression",
+            "value": "Step0.InputData.filename"
+          },
+          {
+            "name": "content",
+            "type": "expression",
+            "value": "Step0.InputData.archivoTXT"
+          },
+          {
+            "name": "encoding",
+            "type": "enum",
+            "value": "UTF8",
+            "enum": "file.encoding",
+            "module": {
+              "containerId": "irpa_core",
+              "id": "enums"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "16",
+      "name": "End",
+      "type": "end",
+      "outputMapping": {
+        "OutputData": {
+          "type": "expression",
+          "value": "Step0.InputData"
+        }
+      }
+    }
+  ]
+}

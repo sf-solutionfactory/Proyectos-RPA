@@ -12,17 +12,20 @@
 * function _addDialogBoxOnButton(sBtnId, sDialogText, sOKButtonText, sCancelButtonText, sOKButtonFunction)
 * function _getConfirmationDialogBoxHTML(sBtnId, sDialogText, sOKButtonText, sCancelButtonText)
 * function _removeInterrogationPoint(sText)
+* function _editParameterInLabel(sText, ...params)
 */
 
 //$(document).ready(initializeSystray); //uncomment only in \samplesV3\demoNewSystray\local\Systray\systray.js
 
 var _aboutList = [];
+var _aboutTableIds = {};
 var _aAboutListProjectSpecificLines = [];
 var _initialMenuList;
 var _currentSubMenuList;
 var _currentMenuId;
 var _projectList;
 var _currentProjectUid;
+var _currentEnvironmenttUid;
 var _previousSwitchProjectMode;
 var _newSwitchProjectMode;
 var _tenantList;
@@ -43,14 +46,19 @@ var _currentSwitchAutoProjectValue = false;
 var _isStudioMode = false;
 var _isTrialMode = false;
 var _isDefaultMode = false;
+var _isAnonymous = false;
+var _hasProxy = false;
+var _userNameAnonymous;
+var _machineNameAnonymous;
 var _currentPageId = "";
 var _environmentList;
-const MAX_TENANT_LIST_ITEM_STRING_LENTH = 35;
-const MAX_MAIN_MENU_LIST_ITEM_STRING_LENTH = 60;
-const MAX_PROJECT_LIST_ITEM_STRING_LENTH = 40;
-const MAX_JOB_PROGRESS_TABLE_ROW_NUMBER = 50;
+var _proxyUsernameHasChanged = false;
+var MAX_TENANT_LIST_ITEM_STRING_LENTH = 35;
+var MAX_MAIN_MENU_LIST_ITEM_STRING_LENTH = 60;
+var MAX_PROJECT_LIST_ITEM_STRING_LENTH = 40;
+var MAX_JOB_PROGRESS_TABLE_ROW_NUMBER = 50;
 var _iconMap = {};
-const AGENT_STATUS_ICON_MAP = {
+var AGENT_STATUS_ICON_MAP = {
 	"Warning": "agent-systray-status-icon-warning",
 	"Idle": "agent-systray-status-icon-idle",
 	"Error": "agent-systray-status-icon-error",
@@ -58,19 +66,69 @@ const AGENT_STATUS_ICON_MAP = {
 	"Running": "agent-systray-status-icon-running",
 	"Paused": "agent-systray-status-icon-paused"
 }
-const settingTypes = {
+var settingTypes = {
 	COMBOBOX: "combobox",
-	CHECKBOX: "checkbox"
+	CHECKBOX: "checkbox",
+	RADIO: 'radio',
+	INPUT: 'input',
+	PASSWORD: 'password',
 }
 //When adding a new component in the Settings page, add it to this map to implement behavior
-const _oSettingsMap = {
+var _oSettingsMap = {
 	"autoRestart": {
 		"settingType": settingTypes.CHECKBOX, /* Setting type */
 		"settingID": "chAutoRestart", /* UIDesigner Component ID */
 		"settingValue": false, /* Actual value of the setting (different from UI value if setting has not been saved) */
 		"sdkEventName": "AUTO_RESTART_AGENT", /* Name of the event sent to the SDK */
 		"sdkEventDataName": 'isAutoRestartEnabled', /* Name of the data sent to the SDK */
-		"settingInStudioModeOnly": false /* if true, the setting will only be functional in studio mode */
+		"settingInStudioModeOnly": false, /* if true, the setting will only be functional in studio mode */
+		"waitNoError" : false,
+		"listIdToGreyOut" : ['itemPasswordRestartAgent','itemRadioButtonWindowsPassword']
+	},
+	"windowsPassword": {
+		"settingType": settingTypes.PASSWORD, /* Setting type */
+		"settingID": 'itemPasswordRestartAgent', /* UIDesigner Component ID */
+		"settingValue": '', /* Actual value of the setting (different from UI value if setting has not been saved) */
+		"sdkEventName": 'SET_WINDOWS_PASSWORD', /* Name of the event sent to the SDK */
+		"sdkEventDataName": 'windowsPassword', /* Name of the data sent to the SDK */
+		"settingInStudioModeOnly": false ,/* if true, the setting will only be functional in studio mode */
+		"waitNoError" : true
+	},
+	"radioWindowsPassword": {
+		"settingType": settingTypes.RADIO, /* Setting type */
+		"settingID": 'rdPutPassword', /* UIDesigner Component ID */
+		"settingValue": false, /* Actual value of the setting (different from UI value if setting has not been saved) */
+		"settingInStudioModeOnly": false ,/* if true, the setting will only be functional in studio mode */
+		"listIdToGreyOut" : ['itemPasswordRestartAgent'],
+		"waitNoError" : false
+	},
+	"itemcheckBoxProxy": {
+		"settingType": settingTypes.CHECKBOX, /* Setting type */
+		"settingID": 'chItemcheckBoxProxy', /* UIDesigner Component ID */
+		"settingValue": false, /* Actual value of the setting (different from UI value if setting has not been saved) */
+		"sdkEventName": 'PROXY_STORE', /* Name of the event sent to the SDK */
+		"sdkEventDataName": 'isProxyChecked', /* Name of the data sent to the SDK */
+		"settingInStudioModeOnly": false, /* if true, the setting will only be functional in studio mode */
+		"waitNoError": false,
+		"listIdToPutNotVisible": ['itemProxyUserName', 'itemProxyPassword']
+	},
+	"itemProxyUserName": {
+		"settingType": settingTypes.INPUT, /* Setting type */
+		"settingID": 'itemProxyUserName', /* UIDesigner Component ID */
+		"settingValue": '', /* Actual value of the setting (different from UI value if setting has not been saved) */
+		"sdkEventName": '', /* Name of the event sent to the SDK */ //SAPMLIPA-18514: In this case, event sending is treated separately
+		"sdkEventDataName": '', /* Name of the data sent to the SDK */
+		"settingInStudioModeOnly": false ,/* if true, the setting will only be functional in studio mode */
+		"waitNoError": false
+	},
+	"itemProxyPassword": {
+		"settingType": settingTypes.PASSWORD, /* Setting type */
+		"settingID": 'itemProxyPassword', /* UIDesigner Component ID */
+		"settingValue": '', /* Actual value of the setting (different from UI value if setting has not been saved) */
+		"sdkEventName": '', /* Name of the event sent to the SDK */ //SAPMLIPA-18514: In this case, event sending is treated separately
+		"sdkEventDataName": '', /* Name of the data sent to the SDK */
+		"settingInStudioModeOnly": false ,/* if true, the setting will only be functional in studio mode */
+		"waitNoError": true
 	},
 	"language": {
 		"settingType": settingTypes.COMBOBOX,
@@ -78,7 +136,8 @@ const _oSettingsMap = {
 		"settingValue": 'en',
 		"sdkEventName": "SET_LANGUAGE",
 		"sdkEventDataName": 'language',
-		"settingInStudioModeOnly": false
+		"settingInStudioModeOnly": false,
+		"waitNoError" : false
 	},
 	"environment": {
 		"settingType": settingTypes.COMBOBOX,
@@ -86,17 +145,19 @@ const _oSettingsMap = {
 		"settingValue": '',
 		"sdkEventName": "SET_ENVIRONMENT",
 		"sdkEventDataName": 'envUid',
-		"settingInStudioModeOnly": true
+		"settingInStudioModeOnly": true,
+		"waitNoError" : false
 	}
 }
 
 
 function initializeSystray() {
 	// force 100% zoom on systray
-	document.body.style.zoom = 1.0
+	document.body.style.zoom = 1.0;
+	if (!window.chrome || !window.chrome.webview) $("html").css('border-right-width', '4px');
+	$(".dropdown-menu>li>a").removeAttr('href');//SAPMLIPA-22089 : remove 'javascript:void(0)' in bottom-left corner in chromiumhost=true
 	$(window).trigger("focus");
 	_disableBrowserActions();
-	_initTrialModeAlert();
 	_fixButtonStyles();
 	_initHelpButtons();
 	_addDialogBoxes();
@@ -134,17 +195,25 @@ function _disableBrowserActions() {
 	$(document).on("keydown", disableZoom);
 }
 
-function _initTrialModeAlert() {
-	$(".trial-mode-alert > div").html('&nbsp;' + GLOBAL.labels.systray.trialVersion + '&nbsp;');
-	$(".trial-mode-alert > div").prepend('<i class="glyphicon glyphicon-info-sign"></i>');
-	$(".trial-mode-alert > div").append('<a>' + GLOBAL.labels.systray.moreInfoOnProduct + '</a>');
+function _initPlanModeAlert() {
+	if (_planMode !==0) {
+
+		if (_planMode == 1) {
+			$(".trial-mode-alert > div").html('&nbsp;' + GLOBAL.labels.systray.trialVersion + '&nbsp;');
+
+		}
+		else if (_planMode == 2) {
+			$(".trial-mode-alert > div").html('&nbsp;' + GLOBAL.labels.systray.evaluationVersion + '&nbsp;');
+		}
+
+		$(".trial-mode-alert > div").prepend('<i class="glyphicon glyphicon-info-sign"></i>');
+		$(".trial-mode-alert > div").append('<a>' + GLOBAL.labels.systray.moreInfoOnProduct + '</a><br/>');
+		$(".trial-mode-alert > div").append( GLOBAL.labels.systray.shutdownOnEvaluation );
+		$(".trial-mode-alert > div > a").click(_onTrialLinkClick);
+	}
 }
 
-function _initHelpButtons() {
-	$("#btHelpProjectMode").attr('data-toggle', 'popover').attr('data-content', GLOBAL.labels.systray.projectSwitchModeHelp);
-	$("#btHelpIncludeScreenshots").attr('data-toggle', 'popover').attr('data-content', GLOBAL.labels.systray.includeScreenshotsHelp);
-	$("#btHelpDiagnosticComment").attr('data-toggle', 'popover').attr('data-content', GLOBAL.labels.systray.diagnosticCommentHelp);
-	$("#btHelpAboutStatus").attr('data-toggle', 'popover');
+function _refreshHelpButtons() {
 	$(".agent-systray-help-button,.agent-systray-help-button-no-margin-left").popover({
 		placement: 'auto top',
 		trigger: 'focus',
@@ -168,6 +237,13 @@ function _initHelpButtons() {
 	});
 }
 
+function _initHelpButtons() {
+	$("#btHelpProjectMode").attr('data-toggle', 'popover').attr('data-content', GLOBAL.labels.systray.projectSwitchModeHelp);
+	$("#btHelpIncludeScreenshots").attr('data-toggle', 'popover').attr('data-content', GLOBAL.labels.systray.includeScreenshotsHelp);
+	$("#btHelpAboutStatus").attr('data-toggle', 'popover');
+	_refreshHelpButtons();
+}
+
 function _addDialogBoxes() {
 	_addDialogBoxOnButton("btTenantRestart", GLOBAL.labels.systray.switchTenantText, GLOBAL.labels.buttons.ok, GLOBAL.labels.systray.cancel, _onRestartTenant);
 	_addDialogBoxOnButton("btTenantDelete", GLOBAL.labels.systray.deleteTenantText, GLOBAL.labels.buttons.ok, GLOBAL.labels.systray.cancel, _onDeleteTenant);
@@ -187,7 +263,7 @@ function _addDialogBoxes() {
 * Add a custom dialog box on "Shutdown/Restart" button
 */
 function _initButtonQuitDialogBox() {
-	$("#btQuit>a").attr('data-toggle', 'modal').attr('data-target', '#btQuit_modal').attr('href', '#');
+	$("#btQuit>a").attr('data-toggle', 'modal').attr('data-target', '#btQuit_modal');
 	$("#btMoreActions").after('<div id="btQuit_modal" class="modal fade in agent-systray-modal" role="dialog">\
     <div class="modal-dialog" style="">\
 			<div class="modal-dialog" style="">\
@@ -236,7 +312,6 @@ function _initEventHandlers() {
 	$("#btAbout").click({ sPageId: "pgAbout" }, _collapseAndCloseOthers);
 	$("#btTenants").click(_onBtTenantClick);
 	$("#btSettings").click({ sPageId: "pgSettings" }, _collapseAndCloseOthers);
-	$("#btDiagnostic").click({ sPageId: "pgDiagnostic" }, _collapseAndCloseOthers);
 	$("#btJobProgress").click({ sPageId: "pgJobProgress" }, _collapseAndCloseOthers);
 	$("#btMoreActions").click(_removeDisplayedTooltips);
 	//About page
@@ -259,22 +334,35 @@ function _initEventHandlers() {
 	$("#tenantDomain").on('input', function () { _validateInputNotEmpty("tenantDomain") });
 	$("#btCancel_NoTenantFile").click(_onShutdownAgentButton);
 	$("#btTenantSave").click(_onAddTenantSave);//to handle case of "no tenant at startup"
-	//Diagnostics page
-	$("#btDiagnosticCancel").click(_toMainPage);
-	$("#btDiagnosticRecordTraces").click(_onRecordTraces);
-	$("#btMainStopRecordingTraces").click(_onRecordTraces);
-	$("#btDiagnosticInsertComment").click(_onInsertDiagnosticComment);
 	//Job Progress page
 	$("#btJobProgressCancel").click(_toMainPage);
 	$("#btJobProgressDetailsCancel").click({ sPageId: "pgJobProgress" }, _collapseAndCloseOthers);
 	//Settings page
-	$("#pgSettings div[ctxtype='ctx.popup.bootstrap.type.checkbox']>div,#pgSettings select").unbind('change');
-	$("#language").on("change", function () { POPUPS.Systray.alertSettingsChange.update({ visible: true }) });
+	$("#pgSettings div[ctxtype='ctx.popup.bootstrap.type.checkbox']>div,#pgSettings select,#pgSettings div[ctxtype='ctx.popup.bootstrap.type.password'],#pgSettings div[ctxtype='ctx.popup.bootstrap.type.text']").unbind('change');
+	$("#language").on("change", function () { POPUPS.Systray.alertSettingsChange.update({ visible: true });
+											  POPUPS.Systray.alertBadPassword.update({ visible: false }); });
 	$("#pgSettings div[ctxtype='ctx.popup.bootstrap.type.checkbox']>div,#pgSettings select").on("change", _onChangeInSettingsPage);
+	$("#pgSettings div[ctxtype='ctx.popup.bootstrap.type.password'],#pgSettings div[ctxtype='ctx.popup.bootstrap.type.text']").on('keyup', _onChangeInSettingsPage);
+	
 	$("#btSettingsSave").click(_onSaveSettings);
 	$("#btSettingsBack").click(_toMainPage);
+	$("#chItemcheckBoxProxy").click(_onCheckProxyCheckbox);
+	$("#itemProxyUserName").on('keyup', _onChangeProxyUsername);
 	//to cancel default action when clicking on a 'a' tag, so as not to lose popup methods when clicking on a 'a' tag in mode IEHost=false
 	$(".dropdown-menu a").click(function (ev) { ev.preventDefault(); });
+	$("#itemPasswordRestartAgent").on("change", function () {POPUPS.Systray.alertBadPassword.update({ visible: false });
+															if(!$("#chAutoRestart").prop('checked'))
+																$("#itemPasswordRestartAgent").val("-1");
+															_onChangeInSettingsPage()});
+	$("#itemRadioButtonWindowsPassword").on("change", function () {POPUPS.Systray.alertBadPassword.update({ visible: false });
+															if($("#rdRemoveWindowsPassword").prop('checked'))
+															{
+																$("#itemPasswordRestartAgent").val("");
+																$("#itemPasswordRestartAgent").prop("disabled",true);
+															}
+															_onChangeInSettingsPage();});
+
+														
 }
 
 function _bindBlurEvent() {
@@ -382,6 +470,7 @@ function _showMenu(aMenuList, sMenuId) {
 	POPUPS.Systray.projectMenuList.update({ items: null });
 	POPUPS.Systray.projectMenuList.update({ items: sMenuId ? _menuJSONToArray(menuToShow.content) : _menuJSONToArray(aMenuList) });
 	$("#projectMenuList a").click({ flatMenuList: aFlatMenuList }, _onClickMenuItem);
+	$("#projectMenuList a").removeAttr('href');
 	_currentSubMenuList = sMenuId ? menuToShow.content : aMenuList;
 	_addAllIcons();
 	if (sMenuId && menuToShow.parent) {
@@ -422,7 +511,8 @@ function _addAllIcons() {
 function _addCustomLoadedImages(subMenuItem) {
 	var iconId = subMenuItem.icon;
 	if (iconId && _iconMap[iconId]) {
-		$("#" + subMenuItem.id + ">.agent-systray-scenario-list-custom-icon").css('background', 'url("' + _iconMap[iconId] + '")');
+		$("#" + subMenuItem.id + ">span.agent-systray-scenario-list-custom-icon").append('<img class="agent-systray-scenario-list-custom-icon">');
+		$("#" + subMenuItem.id + " img.agent-systray-scenario-list-custom-icon").attr('src', _iconMap[iconId]);
 	}
 }
 
@@ -486,7 +576,18 @@ function _hideProjectSpecificLinesAboutTable(bDefaultMode) {
 }
 
 function _onTrialLinkClick() {
-	sendEventToSDK("OPEN_HELP_PORTAL", {});
+	sendEventToSDK("OPEN_HELP_PORTAL", { mode: _planMode});
+}
+
+function _addHelpButtonOnAboutTableRow(id, popoverContent) {
+	var jqCell = $("#tableAbout td#" + id);
+	if (jqCell.length > 0) {
+		var htmlButton = '<button class="ctxlink btn btn-sm agent-systray-help-button" id="' + id + '_infoBtn" ctxtype="ctx.popup.bootstrap.type.button" type="button" data-toggle="popover" style="" data-original-title="" title="" data-content="' + popoverContent + '">'
+		+ '<i class="glyphicon glyphicon-question-sign"></i>'
+		+ '</button>';//needs to be done in jquery because we cannot add a button to a table cell through settings.js
+		jqCell.append(htmlButton);
+		_refreshHelpButtons();		
+	}
 }
 
 //--------------------------------Project List Event Handlers
@@ -497,8 +598,8 @@ function _onTrialLinkClick() {
 function _onClickProject(ev) {
 	ev.preventDefault();//to cancel default action when clicking on a 'a' tag, so as not to lose popup methods when clicking on a 'a' tag in mode IEHost=false
 	_selectedProjectId = this.id;
-	var sProjectName = _findObjectInArrayById(_projectList, _selectedProjectId, "packageVersionUid").name;
-	$("#restartOnProject_modal .modal-body").text(_removeInterrogationPoint(GLOBAL.labels.systray.switchProjectText) + ' "' + sProjectName + '" ?');
+	var sProjectName = _findObjectInArrayById(_projectList, _selectedProjectId, "packageUniqueId").name;
+	$("#restartOnProject_modal .modal-body").text(_editParameterInLabel(GLOBAL.labels.systray.switchProjectText, sProjectName));
 	$(".agent-systray-project-list .agent-systray-list-group-item-clicked").removeClass('agent-systray-list-group-item-clicked');
 	$(this).addClass('agent-systray-list-group-item-clicked');
 }
@@ -506,7 +607,7 @@ function _onClickProject(ev) {
 function _addButtonsOnProjectListGroupItems() {
 	$("#projectList a").each(function (index, value) {
 		var projectId = this.id;
-		if (projectId === _currentProjectUid) {
+		if (projectId === _currentProjectUid + '_' + _currentEnvironmenttUid) {
 			_addStopButtonOnProjectRow($(this));
 		} else {
 			_addStartButtonOnProjectRow($(this));
@@ -535,7 +636,7 @@ function _addStopButtonOnProjectRow(projectJQObj) {
 * Sends an event to SDK to switch on the project
 */
 function _onSwitchProject() {
-	var selectedProject = _findObjectInArrayById(_projectList, _selectedProjectId, "packageVersionUid");
+	var selectedProject = _findObjectInArrayById(_projectList, _selectedProjectId, "packageUniqueId");
 	var sProjectPackageUid = selectedProject.packageUid;
 
 	var sEnvironmentUid = '';
@@ -543,7 +644,7 @@ function _onSwitchProject() {
 	else sEnvironmentUid = selectedProject.environmentClassifier;
 
 	sendEventToSDK("RESTART_ON_PROJECT", {
-		packageVersionUid: _selectedProjectId,
+		packageVersionUid: selectedProject.packageVersionUid,
 		packageUid: sProjectPackageUid,
 		environmentUid: sEnvironmentUid
 	});
@@ -660,8 +761,8 @@ function _onClickTenant(ev) {
 	var selectedTenant = _findObjectInArrayById(_tenantList, _selectedTenantId, "id");
 	_selectedTenantName = selectedTenant.name;
 	_selectedTenantUrl = selectedTenant.url;
-	$("#btTenantRestart_modal .modal-body").text(_removeInterrogationPoint(GLOBAL.labels.systray.switchTenantText) + ' "' + _selectedTenantName + '" ?');
-	$("#btTenantDelete_modal .modal-body").text(_removeInterrogationPoint(GLOBAL.labels.systray.deleteTenantText) + ' "' + _selectedTenantName + '" ?');
+	$("#btTenantRestart_modal .modal-body").text(_editParameterInLabel(GLOBAL.labels.systray.switchTenantText, _selectedTenantName));
+	$("#btTenantDelete_modal .modal-body").text(_editParameterInLabel(GLOBAL.labels.systray.deleteTenantText,_selectedTenantName));
 	if (!selectedTenant.active) {
 		$("#btTenantRestart").prop('disabled', false);
 		$("#btTenantDelete").prop('disabled', false);
@@ -757,7 +858,24 @@ function onSuccessAddEditTenant(sTenantId, sTenantName, sTenantUrl) {
 			url: sTenantUrl,
 			active: foundTenant.active
 		});
+		if (foundTenant.active) {
+			sendEventToSDK("RESTART_ON_TENANT", {
+				tenantId: sTenantId,
+				firstTenantRegistration: false
+			});
+		}
 	}
+	_tenantList.sort(function (a, b) {
+		var nameA = a.name.toUpperCase();
+		var nameB = b.name.toUpperCase();
+		if (nameA < nameB) {
+			return -1;
+		}
+		if (nameA > nameB) {
+			return 1;
+		}
+		return 0;
+	});
 	_updateTenantListAndLeaveTenantSaveForm();
 }
 
@@ -824,48 +942,6 @@ function onNoSelectTenantFile() {
 	}
 }
 
-//--------------------------------Diagnostic page methods
-function _onRecordTraces() {
-	if (!_isRecordingTraces) {
-		$("#btDiagnosticInsertComment").prop('disabled', false);
-		$("#btDiagnosticRecordTraces").text(GLOBAL.labels.systray.diagnostic.stop);
-		$("#btDiagnosticRecordTraces").removeClass('btn-info').addClass('agent-systray-btn-red');
-		POPUPS.Systray.itemDiagnosticText.set(GLOBAL.labels.systray.diagnostic.recordingTitle);
-		var bIncludeScreenshots = $("#chIncludeScreenshotsItem").prop('checked');
-		sendEventToSDK("START_RECORD_TRACES", {
-			includeScreenshots: bIncludeScreenshots
-		});
-		_isRecordingTraces = true;
-		$("#chIncludeScreenshots input[type='checkbox']").prop('disabled', true);
-		$("#btDiagnostic>a>i").append('<span class="agent-systray-red-dot"/>');
-		$("#btMainStopRecordingTraces").show();
-		$("#btMainStopRecordingTraces").attr('data-toggle', 'tooltip').attr('title', GLOBAL.labels.systray.diagnostic.stop);//add tooltip in js, UIDesigner 'tooltipPlacement' not working
-		$("#btMainStopRecordingTraces").tooltip({
-			placement: 'left',
-			container: 'body'
-		});
-	} else {
-		$("#btDiagnosticInsertComment").prop('disabled', true)
-		POPUPS.Systray.diagnosticComment.set('');
-		$("#btDiagnosticRecordTraces").text(GLOBAL.labels.systray.diagnostic.start);
-		$("#btDiagnosticRecordTraces").removeClass('agent-systray-btn-red').addClass('btn-info');
-		POPUPS.Systray.itemDiagnosticText.set(GLOBAL.labels.systray.diagnostic.initRecording);
-		sendEventToSDK("STOP_RECORD_TRACES", {});
-		_isRecordingTraces = false;
-		$("#chIncludeScreenshots input[type='checkbox']").prop('disabled', false);
-		$("#btDiagnostic>a>i>.agent-systray-red-dot").remove();
-		$("#btMainStopRecordingTraces").hide();
-	}
-	_removeDisplayedTooltips();
-}
-
-function _onInsertDiagnosticComment() {
-	sendEventToSDK("INSERT_DIAGNOSTIC_COMMENT", {
-		diagnosticComment: POPUPS.Systray.diagnosticComment.get()
-	});
-	POPUPS.Systray.diagnosticComment.set('');
-}
-
 //--------------------------------Job Progress Page Methods
 function _onClickTableJobProgressRow() {
 	var job = _oJobListMap[this.id];
@@ -887,16 +963,45 @@ function _onClickTableJobProgressRow() {
 * Callback when click on 'save settings' in settings page
 */
 function _onSaveSettings() {
+	var passwordWindowsUIValue = '';
+	var bWaitErrorToLeavePage = false;
 	for (var key in _oSettingsMap) {
 		var setting = _oSettingsMap[key];
 		var oDataToSendToSDK = {};
 		if (_isSettingHasChanged(setting)) {
-			setting.settingValue = _getUISettingValue(setting);
+			if (!$("#rdRemoveWindowsPassword").prop('checked') && setting.settingID === 'itemPasswordRestartAgent') {
+				passwordWindowsUIValue = _getUISettingValue(setting);
+			} else if (!$("#rdRemoveWindowsPassword").prop('checked') && setting.settingID === 'rdPutPassword') {
+				//nothing
+			} else {
+				setting.settingValue = _getUISettingValue(setting);
+			}			
+			if (setting.waitNoError) {
+				bWaitErrorToLeavePage = $("#rdRemoveWindowsPassword").prop('checked') && setting.settingID === 'itemPasswordRestartAgent' ? false : true;				
+			}
+		}
+		if ('undefined' !== typeof setting.settingValue) {
+			if (setting.sdkEventDataName) {
+				if (setting.sdkEventDataName === 'windowsPassword') {
+					oDataToSendToSDK['windowsPassword'] = !$("#rdRemoveWindowsPassword").prop('checked') ? passwordWindowsUIValue : '-1';
+				} else {
+					oDataToSendToSDK[setting.sdkEventDataName] = setting.settingValue;
+				}				
+				sendEventToSDK(setting.sdkEventName, oDataToSendToSDK);
+			}
+		}
+	}	
+	if ($("#chItemcheckBoxProxy").prop('checked')) {
+		var oDataToSendToSDK = {};
+		oDataToSendToSDK['proxyPassword'] = $("#itemProxyPassword").val();
+		oDataToSendToSDK['proxyUser'] = $("#itemProxyUserName").val();
+		sendEventToSDK('SET_PROXY', oDataToSendToSDK);
 	}
-		oDataToSendToSDK[setting.sdkEventDataName] = setting.settingValue;
-		sendEventToSDK(setting.sdkEventName, oDataToSendToSDK);
+	if(!bWaitErrorToLeavePage && !POPUPS.Systray.alertBadPassword.visible)
+	{
+		_leaveSettingsPage();
 	}
-	_leaveSettingsPage();
+		
 }
 
 /**
@@ -904,6 +1009,7 @@ function _onSaveSettings() {
 * If there is a change in the Settings page, add a confirmation dialog box to the "Back" button
 */
 function _onChangeInSettingsPage() {
+	_EnableOrDisableOnChangedSetting();
 	var bIsSettingsHaveChanged = _isSettingsHaveChanged();
 	$("#btSettingsSave").prop('disabled', !bIsSettingsHaveChanged);
 	if (!_isAlreadyChangeInSettingsPage) {
@@ -934,6 +1040,8 @@ function _onClickSettingsBackDialogBoxOKButton() {
 function _leaveSettingsPage() {
 	$("#btSettingsSave").prop('disabled', true);
 	POPUPS.Systray.alertSettingsChange.update({ visible: false });
+	POPUPS.Systray.alertBadPassword.update({ visible: false });
+
 	_removeDialogBoxOnButton("btSettingsBack");
 	$("#btSettingsBack").click(_toMainPage);
 	_isAlreadyChangeInSettingsPage = false;
@@ -951,6 +1059,34 @@ function _isSettingsHaveChanged() {
 	return bIsSettingsHaveChanged;
 }
 
+function _EnableOrDisableOnChangedSetting() {
+	
+	for (var key in _oSettingsMap) {
+		var oSetting = _oSettingsMap[key];
+		switch (oSetting.settingType) {
+			case settingTypes.RADIO:
+			case settingTypes.CHECKBOX:
+				var isChecked = $("#" + oSetting.settingID).prop('checked');
+				var listIdToGreyOut = oSetting.listIdToGreyOut?oSetting.listIdToGreyOut:[];
+				listIdToGreyOut.forEach(function(element){ 
+					$("#" + element).prop('disabled',!isChecked); });
+				//handle specific case when autoRestart is unchecked and rdPutPassword is checked
+				if (!$("#chAutoRestart").prop('checked') && $("#rdPutPassword").prop('checked'))
+					$("#itemPasswordRestartAgent").prop('disabled', true);
+				const listIdToPutNotVisible = oSetting.listIdToPutNotVisible?oSetting.listIdToPutNotVisible:[];
+				listIdToPutNotVisible.forEach(function(element){ 
+					$("#" + element).prop('disabled',!isChecked);
+					if(isChecked)
+						$("#" + element + "_content").show();
+					else
+						$("#" + element + "_content").hide();
+				});
+				break;
+	
+		}
+	}
+}
+
 function _isSettingHasChanged(oSetting) {
 	return oSetting.settingValue !== _getUISettingValue(oSetting) && (oSetting.settingInStudioModeOnly ? _isStudioMode : true);
 }
@@ -961,6 +1097,11 @@ function _getUISettingValue(oSetting) {
 			return POPUPS.Systray[oSetting.settingID].get();
 		case settingTypes.CHECKBOX:
 			return $("#" + oSetting.settingID).prop('checked');
+		case settingTypes.RADIO:
+			return $("#" + oSetting.settingID).prop('checked');
+		case settingTypes.PASSWORD:
+		case settingTypes.INPUT:
+			return $("#" + oSetting.settingID).val();
 	}
 }
 
@@ -973,9 +1114,41 @@ function _resetSettings() {
 				break;
 			case settingTypes.CHECKBOX:
 				$("#" + setting.settingID).prop('checked', setting.settingValue);
+				//SAPMLIPA-18514 : special case for proxy password and username input displaying
+				if (setting.settingID === 'chItemcheckBoxProxy' && $("#" + setting.settingID).prop('checked')) {
+					POPUPS.Systray.itemProxyUserName.show(true);
+					$("#itemProxyUserName").prop('disabled', false);
+					POPUPS.Systray.itemProxyPassword.show(true);
+					$("#itemProxyPassword").prop('disabled', false);
+				}
+				break;
+			case settingTypes.PASSWORD:
+			case settingTypes.INPUT:
+			    $("#" + setting.settingID).val(setting.settingValue);
+				break;
+			case settingTypes.RADIO:
+				if (setting.settingID === 'rdPutPassword') {
+					$("#rdPutPassword").prop('checked', setting.settingValue);
+					$("#rdRemoveWindowsPassword").prop('checked', !setting.settingValue);
+					$("#itemPasswordRestartAgent").prop("disabled", !setting.settingValue);
+				}
 				break;
 		}
 	}
+}
+
+function _onCheckProxyCheckbox() {
+	if ($("#chItemcheckBoxProxy").prop('checked') === false) {
+		$("#itemProxyUserName").val('');
+		$("#itemProxyPassword").val('');
+	}
+}
+
+function _onChangeProxyUsername() {
+	if (!_proxyUsernameHasChanged) {
+		_proxyUsernameHasChanged = true;
+		$("#itemProxyPassword").val('');
+	}	
 }
 
 //--------------------------------Shutdown/Restart Methods
@@ -1014,11 +1187,13 @@ function updateMainMenu(aMenuList) {
 * To update project list based on an array
 * @param {Array} aInputProjectList Projects Array
 * @param {string} sCurrentProjectUid PackageVersionUid of current project; if undefined, then default mode
+* @param {string} sCurrentEnvironmentUid EnvironmentUid of current project
 */
-function updateProjectList(aInputProjectList, sCurrentProjectUid) {
+function updateProjectList(aInputProjectList, sCurrentProjectUid, sCurrentEnvironmentUid) {
 	if (!Array.isArray(aInputProjectList)) return;
 	_projectList = aInputProjectList;
 	_currentProjectUid = sCurrentProjectUid;
+	_currentEnvironmenttUid = sCurrentEnvironmentUid;
 	POPUPS.Systray.projectList.update({ items: null });
 	$("#projectList").show();
 	$("#itemEmptyProjectListLabel").hide();
@@ -1027,15 +1202,17 @@ function updateProjectList(aInputProjectList, sCurrentProjectUid) {
 	if (inputProjectListLength > 0) {
 		for (let i = 0; i < inputProjectListLength; i++) {
 			var bIsProjectActive = aInputProjectList[i].packageVersionUid === sCurrentProjectUid;
+			_projectList[i].packageUniqueId = aInputProjectList[i].packageVersionUid + '_' + aInputProjectList[i].environmentUid;
 			aProjectArray.push({
-				id: aInputProjectList[i].packageVersionUid,
-				value: "<b>" + _truncateTextIfOverLength(aInputProjectList[i].name, MAX_PROJECT_LIST_ITEM_STRING_LENTH) + "</b><br/>" + _truncateTextIfOverLength(aInputProjectList[i].environmentClassifier + ' - ' + aInputProjectList[i].version, MAX_PROJECT_LIST_ITEM_STRING_LENTH),
+				id: _projectList[i].packageUniqueId,
+				value: "<b>" + _truncateTextIfOverLength(aInputProjectList[i].name, MAX_PROJECT_LIST_ITEM_STRING_LENTH) + "</b><br/>" + _truncateTextIfOverLength(aInputProjectList[i].environmentName + ' (' + aInputProjectList[i].environmentClassifier + ')' + ' - ' + aInputProjectList[i].version, MAX_PROJECT_LIST_ITEM_STRING_LENTH),
 				myClass: bIsProjectActive ? 'agent-systray-list-group-item-clicked' : '',
 				badge: bIsProjectActive ? GLOBAL.labels.systray.active : null
 			});
 		}
 		POPUPS.Systray.projectList.update({ items: aProjectArray });
 		$("#projectList a").click(_onClickProject);
+		$("#projectList a").removeAttr('href');
 		_addButtonsOnProjectListGroupItems();
 	} else {
 		$("#projectList").hide();
@@ -1058,7 +1235,8 @@ function updateEnvironmentList(aInputEnvironmentList, sCurrentEnvUid) {
 	var envListLength = aInputEnvironmentList.length;
 	if (envListLength > 0) {
 		for (let i = 0; i < envListLength; i++) {
-			$("#envList").append('<option value="' + aInputEnvironmentList[i].environmentUid + '">' + aInputEnvironmentList[i].name + '</option>');
+			var envNameWithClassifier = aInputEnvironmentList[i].classifier? aInputEnvironmentList[i].name + ' - ' +aInputEnvironmentList[i].classifier : aInputEnvironmentList[i].name;
+			$("#envList").append('<option value="' + aInputEnvironmentList[i].environmentUid + '">' + envNameWithClassifier+ '</option>');
 		}
 		POPUPS.Systray.envList.set(_oSettingsMap.environment.settingValue);
 	}
@@ -1086,6 +1264,7 @@ function updateTenantList(aInputTenantList) {
 	}
 	POPUPS.Systray.tenantList.update({ items: aTenantArray });
 	$("#tenantList a").click(_onClickTenant);
+	$("#tenantList a").removeAttr('href');
 }
 
 /**
@@ -1094,15 +1273,22 @@ function updateTenantList(aInputTenantList) {
 */
 function updateAbout(aAboutList) {
 	if (!Array.isArray(aAboutList)) return;
+	_aboutList = [];
 	for (let i = 0; i < aAboutList.length; i++) {
 		if (aAboutList[i].labelValuePair) {
 			_aboutList.push(aAboutList[i].labelValuePair);
+			_aboutTableIds[i] = aAboutList[i].id;
 			if (aAboutList[i].isProjectSpecific) {
 				_aAboutListProjectSpecificLines.push(i);
 			}
 		}
 	}
 	POPUPS.Systray.tableAbout.set(_aboutList);
+	//Add an ID to value column cells
+	var aboutTableValueColumnCells = $("#tableAbout tr td.text-default");
+	aboutTableValueColumnCells.each(function(j) {aboutTableValueColumnCells[j].id = _aboutTableIds[j]});
+	//Add Renderer field
+	$("#tableAbout #renderer").text((window.chrome && window.chrome.webview ? 'Chromium-Edge' : 'IE11'));
 }
 
 /**
@@ -1148,6 +1334,48 @@ function updateLanguageList(aLanguageList) {
 	}
 }
 
+/** 
+ *  Call from SDK to know if SET_WINDOWSPASSWORD is failed or not
+*/
+function setPasswordFailed(hasFailed) {
+	if(hasFailed)
+	{
+		POPUPS.Systray.alertSettingsChange.update({ visible: false });
+		POPUPS.Systray.alertBadPassword.update({ visible: true });
+	}
+	else{
+		_oSettingsMap.radioWindowsPassword.settingValue = _getUISettingValue(_oSettingsMap.radioWindowsPassword);
+		_oSettingsMap.windowsPassword.settingValue = _getUISettingValue(_oSettingsMap.windowsPassword);
+		_leaveSettingsPage();
+	}
+	
+}
+
+/**
+* Enable windows password
+*/
+function enableWindowsPassword(enable, fullUserName) {
+	POPUPS.Systray.itemPasswordRestartAgent.show(enable);	
+	POPUPS.Systray.itemRadioButtonWindowsPassword.show(enable);
+	POPUPS.Systray.itemUserNameRestartAgent.show(enable);
+
+	//put username
+	$("#itemUserNameRestartAgent").prop('disabled', true);
+	$("#itemUserNameRestartAgent").val(fullUserName);
+}
+
+/**
+* Enable proxy password
+*/
+function enableProxyPassword(enable, hasProxy, userName) {
+	POPUPS.Systray.itemProxyUserName.show(enable);	
+	POPUPS.Systray.itemcheckBoxProxy.show(enable);
+	POPUPS.Systray.itemProxyPassword.show(enable);
+	$("#itemcheckBoxProxy").prop('disabled', false);
+
+	checkEnableProxy(hasProxy,userName);
+}
+
 /**
 * To add a job to the job list in "Job Progress" page
 * If the "Job Progress" table row count exceeds MAX_JOB_PROGRESS_TABLE_ROW_NUMBER, the first job added is removed from the list.
@@ -1181,13 +1409,15 @@ function setIsStudioMode(isStudioMode) {
 }
 
 /**
-* To set variable _isTrialMode in popup
-* Show Trial Mode ribbon in trial mode
-* @param {boolean} isTrialMode
+* To set variable _planMode to 2 if is FreeMode in popup
+* Show Free Mode ribbon in try2buy Mode or tial mode
+* @param {number} 0 for default, 1 for trial mode, 2 for try2buy mode
 */
-function setIsTrialMode(isTrialMode) {
-	_isTrialMode = isTrialMode;
-	POPUPS.Systray.alertTrialMode.show(_isTrialMode);
+function setPlanMode(planMode) {
+		_planMode = planMode;
+		_initPlanModeAlert();
+
+	POPUPS.Systray.alertTrialMode.show(_planMode!==0);
 }
 
 /**
@@ -1217,6 +1447,34 @@ function setIsAutoSwitchEnabled(isAutoSwitchEnabled) {
 }
 
 /**
+* To set variable _isAnonymous in popup
+* @param {boolean} isAnonymous
+*/
+function setIsAnonymous(isAnonymous) {
+	_isAnonymous = isAnonymous;
+}
+
+
+/**
+* To set variable _hasProxy in popup
+* @param {boolean} hasProxy
+*/
+function setHasProxySetting(hasProxy) {
+	_oSettingsMap.itemcheckBoxProxy.settingValue = hasProxy;
+	$("#chItemcheckBoxProxy").prop('checked', _oSettingsMap.itemcheckBoxProxy.settingValue);
+}
+
+
+/** SAPMLIPA-18361 : Display full anonymized username and machinename in tooltip on about page */
+function setUserNameAnonymized(username) {
+	_userNameAnonymous = username;
+}
+
+function setMachineNameAnonymized(machinename) {
+	_machineNameAnonymous = machinename;
+}
+
+/**
  * To update UI elements based on variable values
  * To be called after variables have been set and after all dynamic elements have been updated
  */
@@ -1233,6 +1491,30 @@ function postUpdate() {
 	if (_isStudioMode) {		
 		POPUPS.Systray.itemAboutTitle.set(GLOBAL.labels.systray.about + " - " + GLOBAL.labels.systray.testMode);
 		POPUPS.Systray.itemProjectsTitle.set(GLOBAL.labels.systray.projects + " - " + GLOBAL.labels.systray.testMode);
+	}
+	//SAPMLIPA-18075 : Display anonymized username and computername
+	if (_isAnonymous) {
+		_addHelpButtonOnAboutTableRow("userName", GLOBAL.labels.systray.anonymousField + '<br><a>' + GLOBAL.labels.systray.fullAnonymousUserName + '</a>');
+		_addHelpButtonOnAboutTableRow("machineName", GLOBAL.labels.systray.anonymousField + '<br><a>' + GLOBAL.labels.systray.fullAnonymousMachineName + '</a>');
+		//SAPMLIPA-18361: Dialog box in anonymized user/machine name popover
+		_createConfirmationDialogBox('anonymizedUsername', _userNameAnonymous, GLOBAL.labels.buttons.ok, '', function() {$("#anonymizedUsername_modal").modal('hide');}, jQueryInsertTypes.APPEND, "containerAbout");
+		$("#anonymizedUsername_modal .modal-body").css('word-break', 'break-all');
+		$("#userName_infoBtn").click( function () {
+			$(".popover a").css('cursor', 'pointer');
+			$(".popover a").click(function(ev) {
+				ev.preventDefault();
+				$("#anonymizedUsername_modal").modal('show');
+			});
+		});
+		_createConfirmationDialogBox('anonymizedMachineName', _machineNameAnonymous, GLOBAL.labels.buttons.ok, '', function() {$("#anonymizedMachineName_modal").modal('hide');}, jQueryInsertTypes.APPEND, "containerAbout");
+		$("#anonymizedMachineName_modal .modal-body").css('word-break', 'break-all');
+		$("#machineName_infoBtn").click( function () {
+			$(".popover a").css('cursor', 'pointer');
+			$(".popover a").click(function(ev) {
+				ev.preventDefault();
+				$("#anonymizedMachineName_modal").modal('show');
+			});
+		});	
 	}
 }
 
@@ -1317,4 +1599,62 @@ function check(sMenuId, bChecked) {
 
 function injectGlobalLabelsIntoSystray(globalLabels) {
 	GLOBAL.labels.set(globalLabels);
+}
+
+/*
+ * Call from SDK side at start to know if the windows password has already be set or not
+ */
+function checkEnablePassword(enable) {
+	if(enable) {
+		_oSettingsMap.windowsPassword.settingValue = 'SAP-1-1-1-1-1-1';
+		_oSettingsMap.radioWindowsPassword.settingValue = true;
+		$("#rdPutPassword").prop('checked', true);
+		$("#itemPasswordRestartAgent").val('SAP-1-1-1-1-1-1'); //SET FAKE PASSWORD IF IT IS ALREADY SET
+	} else {
+		_oSettingsMap.windowsPassword.settingValue = '';
+		_oSettingsMap.radioWindowsPassword.settingValue = false;
+		$("#rdRemoveWindowsPassword").prop('checked', true);
+		$("#itemPasswordRestartAgent").prop("disabled",true);
+	}
+}
+
+function checkEnableProxy(enable, userName) {
+	$("#chItemcheckBoxProxy").prop('disabled', false);
+	if (enable) {
+		$("#chItemcheckBoxProxy").prop('checked', true);
+		
+		$("#itemProxyPassword_content").show(); 
+		$("#itemProxyUserName_content").show();
+	if(userName)
+		{
+			$("#itemProxyPassword").val('SAP-1-1-1-1-1-1'); //SET FAKE PASSWORD IF IT IS ALREADY SET
+			$("#itemProxyUserName").val(userName);
+		}
+		else
+		{
+			
+			//No Value
+			$("#itemProxyPassword").val(); 
+			$("#itemProxyUserName").val();
+		}
+	}
+	else {
+		//$("#chItemcheckBoxProxy").prop('checked', false);
+		$("#itemProxyPassword_content").hide(); 
+		$("#itemProxyUserName_content").hide();
+	}
+}
+
+
+function disableOrEnableAllMenu(enable) {
+	if(enable)
+	{
+		$("#projectMenuList a").prop('disabled',false);
+		$("#projectMenuList a").css('color','');		
+	}
+	else
+	{
+		$("#projectMenuList a").prop('disabled',true);
+		$("#projectMenuList a").css('color','#ddd'); //temporary
+	}
 }

@@ -33,27 +33,27 @@ GLOBAL.events.START.on(function (ev) {
 POPUPS.Systray.onTest(function(popup) {	
 	// TODO : add your tests here
 	var aboutList = [
-		{labelValuePair: [
+		{id: "projectName", labelValuePair: [
 			GLOBAL.labels.aboutPopup.projectLabel,
 			"Demo project for the new systray"
 		], isProjectSpecific: true},
-		{labelValuePair: [
+		{id: "projectVersion", labelValuePair: [
 			GLOBAL.labels.aboutPopup.projectVersion,
 			"1.10"
 		], isProjectSpecific: true},
-		{labelValuePair: [
+		{id: "date", labelValuePair: [
 			GLOBAL.labels.aboutPopup.date,
 			"23/09/2019"
 		], isProjectSpecific: true},
-		{labelValuePair: [
+		{id: "agentVersion", labelValuePair: [
 			"Agent version",
 			"1.0.4.6"
 		], isProjectSpecific: false},
-		{labelValuePair: [
+		{id: "frameworkVersion", labelValuePair: [
 			GLOBAL.labels.aboutPopup.frameworkVersion,
 			"1.0.4.6"
 		], isProjectSpecific: false},
-		{labelValuePair: [
+		{id: "tenantName", labelValuePair: [
 			"Tenant",
 			"Orsay master"
 		], isProjectSpecific: false}
@@ -301,10 +301,6 @@ var loadSystraySettings = function() {
 			},
 			{
 				id: "pgTenantAddEdit",
-				collapsed: false
-			},
-			{
-				id: "pgDiagnostic",
 				collapsed: false
 			},
 			{
@@ -665,22 +661,6 @@ var loadSystraySettings = function() {
 				id: "btTenants",
 				value: GLOBAL.labels.systray.tenants,
 				icon: e.item.icon.user,
-				iconStyle: e.item.style.None,
-				badge: "",
-				badgeStyle: e.item.style.None,
-				disabled: false,
-				active: false,
-				header: "",
-				tooltip: "",
-				tooltipPlacement: e.item.side.none,
-				divider: false,
-				myClass: "",
-				myStyle: ""
-			},
-			{
-				id: "btDiagnostic",
-				value: GLOBAL.labels.systray.diagnostic.diag,
-				icon: e.item.icon.wrench,
 				iconStyle: e.item.style.None,
 				badge: "",
 				badgeStyle: e.item.style.None,
@@ -1588,6 +1568,50 @@ var loadSystraySettings = function() {
 		parent: "row37"
 	}});
 
+	popup.item({ language: {
+		type: e.item.type.select,
+		label: GLOBAL.labels.systray.language,
+		items: [],
+		test: [],
+		auto: true,
+		saveAsHtml: false,
+		parent: "col21",
+		size: e.item.size.Medium,
+		multiple: false,
+		iconStyle: e.item.style.None,
+		inputStyle: e.item.inputStyle.None,
+		icon: e.item.icon.none,
+		iconSide: e.item.side.left,
+		myClass: ""
+	}});
+
+	popup.item({ alertSettingsChange: {
+		type: e.item.type.alert,
+		parent: "col21",
+		style: e.item.style.Red,
+		close: false,
+		value: GLOBAL.labels.systray.requestRestart,
+		test: "",
+		auto: true,
+		visible: false,
+		myClass: "agent-systray-alert"
+	}});
+
+	popup.item({ envList: {
+		type: e.item.type.select,
+		parent: "col21",
+		iconSide: e.item.side.left,
+		label: GLOBAL.labels.systray.environmentList,
+		icon: e.item.icon.none,
+		items: [],
+		test: "",
+		auto: true,
+		iconStyle: e.item.style.None,
+		inputStyle: e.item.inputStyle.None,
+		size: e.item.size.Medium,
+		visible: false
+	}});
+
 	popup.item({ chAutoRestartAgent: {
 		type: e.item.type.checkbox,
 		parent: "col21",
@@ -1609,6 +1633,114 @@ var loadSystraySettings = function() {
 		myClass: ""
 	}});
 
+	popup.item({ itemRadioButtonWindowsPassword: {
+                type: e.item.type.radio,
+                parent: "col21",
+				items: [
+						{
+							id: "rdRemoveWindowsPassword",
+							value: GLOBAL.labels.systray.noSpecificAccount,
+							checked: true,
+							style: e.item.style.Blue,
+							size: e.item.size.Small,
+						},
+						{
+							id: "rdPutPassword",
+							value: GLOBAL.labels.systray.useSpecificAccount,
+							checked: false,
+							style: e.item.style.Blue,
+							size: e.item.size.Small,
+						}
+				],
+                style: e.item.style.Grey,
+                size: e.item.size.Small,
+                myClass: "agent-systray-radio-button-password",
+				visible: true
+	}});
+
+
+	popup.item({ itemUserNameRestartAgent: {
+					type: e.item.type.text,
+					parent: "col21",
+					label: GLOBAL.labels.systray.windowsUser,
+					inline: true,
+					auto: true,
+					style: e.item.style.Grey,
+					size: e.item.size.Small,
+					myClass: "agent-systray-windows-user",
+					visible: false
+	}});
+
+	popup.item({ itemPasswordRestartAgent: {
+					type: e.item.type.password,
+					parent: "col21",
+					label: GLOBAL.labels.systray.windowsPassword,
+					inline: true,
+					auto: true,
+					style: e.item.style.Grey,
+					size: e.item.size.Small,
+					myClass: "agent-systray-windows-password",
+					visible: false
+	}});
+
+	popup.item({ alertBadPassword: {
+		type: e.item.type.alert,
+		parent: "col21",
+		style: e.item.style.Red,
+		close: false,
+		value: GLOBAL.labels.systray.badWindowsPassword,
+		test: "",
+		auto: true,
+		visible: false,
+		myClass: "agent-systray-alert"
+	}});
+
+	popup.item({ itemcheckBoxProxy: {
+	type: e.item.type.checkbox,
+	parent: "col21",
+	inline: true,
+	items: [
+		{
+			id: "chItemcheckBoxProxy",
+			value: GLOBAL.labels.systray.proxyCheckBox,
+			checked: false,
+			disabled: false,
+			style: e.item.style.Blue,
+			myClass: "",
+			myStyle: ""
+		}
+	],
+	auto: true,
+	style: e.item.style.Grey,
+	size: e.item.size.Medium,
+	myClass: ""
+}});
+
+popup.item({ itemProxyUserName: {
+                type: e.item.type.text,
+                parent: "col21",
+				label: GLOBAL.labels.systray.proxyUser,
+                inline: true,
+                auto: true,
+                style: e.item.style.Grey,
+                size: e.item.size.Small,
+                myClass: "agent-systray-proxy-user",
+				visible: false
+}});
+
+popup.item({ itemProxyPassword: {
+                type: e.item.type.password,
+                parent: "col21",
+				label: GLOBAL.labels.systray.proxyPassword,
+                inline: true,
+                auto: true,
+                style: e.item.style.Grey,
+                size: e.item.size.Small,
+                myClass: "agent-systray-proxy-password",
+				visible: false
+}});
+
+
 	popup.item({ row3: {
 		type: e.item.type.row,
 		auto: false,
@@ -1625,22 +1757,7 @@ var loadSystraySettings = function() {
 		parent: "row3"
 	}});
 
-	popup.item({ language: {
-		type: e.item.type.select,
-		label: GLOBAL.labels.systray.language,
-		items: [],
-		test: [],
-		auto: true,
-		saveAsHtml: false,
-		parent: "col3",
-		size: e.item.size.Medium,
-		multiple: false,
-		iconStyle: e.item.style.None,
-		inputStyle: e.item.inputStyle.None,
-		icon: e.item.icon.none,
-		iconSide: e.item.side.left,
-		myClass: ""
-	}});
+	
 
 	popup.item({ row48: {
 		type: e.item.type.row,
@@ -1656,49 +1773,6 @@ var loadSystraySettings = function() {
 		md: 0,
 		lg: 12,
 		parent: "row48"
-	}});
-
-	popup.item({ envList: {
-		type: e.item.type.select,
-		parent: "col67",
-		iconSide: e.item.side.left,
-		label: GLOBAL.labels.systray.environmentList,
-		icon: e.item.icon.none,
-		items: [],
-		test: "",
-		auto: true,
-		iconStyle: e.item.style.None,
-		inputStyle: e.item.inputStyle.None,
-		size: e.item.size.Medium,
-		visible: false
-	}});
-
-	popup.item({ row21: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerContentSettings"
-	}});
-
-	popup.item({ col24: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row21"
-	}});
-
-	popup.item({ alertSettingsChange: {
-		type: e.item.type.alert,
-		parent: "col24",
-		style: e.item.style.Red,
-		close: false,
-		value: GLOBAL.labels.systray.requestRestart,
-		test: "",
-		auto: true,
-		visible: false,
-		myClass: "agent-systray-alert"
 	}});
 
 	popup.item({ containerTenants: {
@@ -2332,379 +2406,6 @@ var loadSystraySettings = function() {
 		auto: true,
 		visible: false,
 		myClass: "agent-systray-alert"
-	}});
-
-	popup.item({ containerDiagnostic: {
-		type: e.item.type.container,
-		auto: false,
-		fluid: true,
-		parent: "pgDiagnostic"
-	}});
-
-	popup.item({ row43: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerDiagnostic"
-	}});
-
-	popup.item({ col53: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row43"
-	}});
-
-	popup.item({ containerHeaderDiagnostic: {
-		type: e.item.type.container,
-		auto: false,
-		fluid: true,
-		background: e.item.style.None,
-		parent: "col53",
-		myClass: "agent-systray-header-container"
-	}});
-
-	popup.item({ row20: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerHeaderDiagnostic"
-	}});
-
-	popup.item({ col43: {
-		type: e.item.type.column,
-		auto: false,
-		parent: "row20",
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 2
-	}});
-
-	popup.item({ btDiagnosticCancel: {
-		type: e.item.type.button,
-		parent: "col43",
-		value: "",
-		tooltip: GLOBAL.labels.systray.back,
-		style: e.item.style.Cyan,
-		icon: e.item.icon.chevronLeft,
-		iconSide: e.item.side.left,
-		badge: "",
-		badgeStyle: e.item.style.None,
-		size: e.item.size.Small,
-		close: false,
-		submit: false,
-		disabled: false,
-		right: false,
-		justified: false,
-		fa: "",
-		animated: false,
-		pulse: false,
-		tooltipPlacement: e.item.side.none,
-		auto: true,
-		iconStyle: e.item.style.None,
-		myClass: "agent-systray-transparent-btn-white"
-	}});
-
-	popup.item({ col23: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 8,
-		parent: "row20"
-	}});
-
-	popup.item({ itemDiagnosticTitle: {
-		type: e.item.type.item,
-		textSize: e.item.textSize.H5,
-		parent: "col23",
-		alignment: e.item.alignment.None,
-		textTransform: e.item.textTransform.None,
-		icon: e.item.icon.none,
-		value: GLOBAL.labels.systray.diagnostic.diag,
-		auto: true,
-		tooltipPlacement: e.item.side.none,
-		badgeStyle: e.item.style.None,
-		style: e.item.style.Grey,
-		myClass: "agent-systray-h5"
-	}});
-
-	popup.item({ col63: {
-		type: e.item.type.column,
-		auto: false,
-		parent: "row20",
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 2
-	}});
-
-	popup.item({ row18: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerDiagnostic",
-		myClass: "agent-systray-toolbar-row"
-	}});
-
-	popup.item({ col22: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row18"
-	}});
-
-	popup.item({ containerMenuDiagnostic: {
-		type: e.item.type.container,
-		auto: false,
-		fluid: true,
-		parent: "col22",
-		background: e.item.style.None,
-		myClass: "agent-systray-footer-container"
-	}});
-
-	popup.item({ btDiagnosticRecordTraces: {
-		type: e.item.type.button,
-		parent: "containerMenuDiagnostic",
-		value: GLOBAL.labels.systray.diagnostic.start,
-		tooltip: "",
-		style: e.item.style.Cyan,
-		icon: e.item.icon.none,
-		iconSide: e.item.side.left,
-		badge: "",
-		badgeStyle: e.item.style.None,
-		size: e.item.size.Small,
-		close: false,
-		submit: false,
-		disabled: false,
-		right: false,
-		justified: false,
-		fa: "",
-		animated: false,
-		pulse: false,
-		tooltipPlacement: e.item.side.none,
-		auto: true
-	}});
-
-	popup.item({ row51: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerDiagnostic"
-	}});
-
-	popup.item({ col70: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row51"
-	}});
-
-	popup.item({ containerContentDiagnostic: {
-		type: e.item.type.container,
-		auto: false,
-		fluid: true,
-		background: e.item.style.None,
-		parent: "col70",
-		myClass: "agent-systray-content-container"
-	}});
-
-	popup.item({ row17: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerContentDiagnostic"
-	}});
-
-	popup.item({ col19: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row17"
-	}});
-
-	popup.item({ itemDiagnosticText: {
-		type: e.item.type.item,
-		textSize: e.item.textSize.None,
-		parent: "col19",
-		alignment: e.item.alignment.None,
-		icon: e.item.icon.none,
-		value: GLOBAL.labels.systray.diagnostic.initRecording,
-		auto: true,
-		tooltipPlacement: e.item.side.none,
-		badgeStyle: e.item.style.None,
-		style: e.item.style.Grey
-	}});
-
-	popup.item({ row30: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerContentDiagnostic"
-	}});
-
-	popup.item({ col33: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row30"
-	}});
-
-	popup.item({ containerIncludeScreenshots: {
-		type: e.item.type.container,
-		auto: false,
-		fluid: true,
-		background: e.item.style.None,
-		parent: "col33"
-	}});
-
-	popup.item({ btHelpIncludeScreenshots: {
-		type: e.item.type.button,
-		parent: "containerIncludeScreenshots",
-		value: "",
-		tooltip: "",
-		style: e.item.style.Cyan,
-		icon: e.item.icon.questionSign,
-		iconSide: e.item.side.left,
-		badge: "",
-		badgeStyle: e.item.style.None,
-		size: e.item.size.Small,
-		close: false,
-		submit: false,
-		disabled: false,
-		right: false,
-		justified: false,
-		fa: "",
-		animated: false,
-		pulse: false,
-		auto: true,
-		tooltipPlacement: e.item.side.none,
-		iconStyle: e.item.style.None,
-		myClass: "agent-systray-help-button-no-margin-left",
-		myStyle: ""
-	}});
-
-	popup.item({ chIncludeScreenshots: {
-		type: e.item.type.checkbox,
-		parent: "containerIncludeScreenshots",
-		label: "",
-		inline: true,
-		items: [
-			{
-				id: "chIncludeScreenshotsItem",
-				value: GLOBAL.labels.systray.diagnostic.screenshot,
-				checked: false,
-				disabled: false,
-				style: e.item.style.Blue,
-				myClass: "",
-				myStyle: ""
-			}
-		],
-		auto: true,
-		style: e.item.style.Grey,
-		size: e.item.size.Medium
-	}});
-
-	popup.item({ row28: {
-		type: e.item.type.row,
-		auto: false,
-		parent: "containerContentDiagnostic"
-	}});
-
-	popup.item({ col31: {
-		type: e.item.type.column,
-		auto: false,
-		xs: 0,
-		sm: 0,
-		md: 0,
-		lg: 12,
-		parent: "row28"
-	}});
-
-	popup.item({ containerDiagnosticComment: {
-		type: e.item.type.container,
-		auto: false,
-		fluid: true,
-		background: e.item.style.None,
-		parent: "col31"
-	}});
-
-	popup.item({ btHelpDiagnosticComment: {
-		type: e.item.type.button,
-		parent: "containerDiagnosticComment",
-		value: "",
-		tooltip: "",
-		style: e.item.style.Cyan,
-		icon: e.item.icon.questionSign,
-		iconSide: e.item.side.left,
-		badge: "",
-		badgeStyle: e.item.style.None,
-		size: e.item.size.Small,
-		close: false,
-		submit: false,
-		disabled: false,
-		right: false,
-		justified: false,
-		fa: "",
-		animated: false,
-		pulse: false,
-		auto: true,
-		tooltipPlacement: e.item.side.none,
-		iconStyle: e.item.style.None,
-		myClass: "agent-systray-help-button-no-margin-left",
-		myStyle: ""
-	}});
-
-	popup.item({ diagnosticComment: {
-		type: e.item.type.textarea,
-		test: "",
-		icon: e.item.icon.none,
-		iconSide: e.item.side.right,
-		label: "",
-		placeholder: GLOBAL.labels.systray.diagnostic.comment,
-		myClass: "agent-systray-textarea",
-		iconStyle: e.item.style.None,
-		inputStyle: e.item.inputStyle.None,
-		parent: "containerDiagnosticComment",
-		auto: true,
-		feedbackIcon: e.item.icon.none,
-		size: e.item.size.Medium
-	}});
-
-	popup.item({ btDiagnosticInsertComment: {
-		type: e.item.type.button,
-		parent: "containerDiagnosticComment",
-		value: GLOBAL.labels.systray.diagnostic.addCommentButton,
-		tooltip: "",
-		style: e.item.style.Cyan,
-		icon: e.item.icon.none,
-		iconSide: e.item.side.left,
-		badge: "",
-		badgeStyle: e.item.style.None,
-		size: e.item.size.Small,
-		close: false,
-		submit: false,
-		disabled: true,
-		right: false,
-		justified: false,
-		fa: "",
-		animated: false,
-		pulse: false,
-		tooltipPlacement: e.item.side.none,
-		auto: true,
-		iconStyle: e.item.style.None,
-		myClass: "agent-systray-btn-right"
 	}});
 
 	popup.item({ containerJobProgress: {

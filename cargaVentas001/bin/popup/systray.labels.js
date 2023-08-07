@@ -1,4 +1,7 @@
 ﻿GLOBAL.labels.set({
+  buttons: {
+		ok: { _type:"XBUT", en:"OK" }
+	 },
   systray: {
 		emptyRequiredInput: { _comment:"Required input is empty", _type:"XFLD", en:"Required input is empty" },
 		desktopAgent: { _comment:"Desktop Agent", _type:"XFLD", en:"Desktop Agent" },
@@ -28,9 +31,9 @@
 	    comment: { _type:"XFLD", en:"Comment" },
 	    addCommentButton: { _type:"XTIT", en:"Add Comment" }
 	  },
-    switchProjectText: { _comment:"switch to project ", _type:"XMSG", en:"Are you sure you want to switch to project " },
-		switchTenantText: { _comment:"switch to tenant ", _type:"XMSG", en:"Are you sure you want to switch to tenant " },
-		deleteTenantText: { _comment:"delete tenant ", _type:"XMSG", en:"Are you sure you want to delete tenant " },
+    switchProjectText: { _comment:"switch to project ", _type:"XMSG", en:"Are you sure you want to switch to project '{0}' ?" },
+		switchTenantText: { _comment:"switch to tenant ", _type:"XMSG", en:"Are you sure you want to switch to tenant '{0}' ?" },
+		deleteTenantText: { _comment:"delete tenant ", _type:"XMSG", en:"Are you sure you want to delete tenant '{0}' ?" },
 		unsavedDataLoss: { _comment:"loss of unsaved data", _type:"XMSG", en:"Going back will result in the loss of unsaved data" },
 		language: { _comment:"Language:", _type:"XFLD",	en:"Language:" },
 		about: { _comment:"About menu item", _type:"XMIT", en:"About..." },
@@ -73,6 +76,8 @@
 		includeScreenshotsHelp: { _comment:"Include Screenshots Help", _type:"XFLD", en:"To include screenshots in the diagnostic file" },
 		diagnosticCommentHelp: { _comment:"Diagnostic Comment Help", _type:"XFLD", en:"To insert a comment at the current timestamp in the diagnostic file" },
 		trialVersion: { _comment:"Trial Version label", _type:"XFLD", en:"Trial version with limited features." },
+		shutdownOnEvaluation: { _comment:"Evaluation Ve shutdown version label", _type:"XFLD", en:"Agent will shutdown after being inactive for 4 hours." },
+		evaluationVersion: { _comment:"Evaluation Version label", _type:"XFLD", en:"Evaluation version with some restrictions." },
 		moreInfoOnProduct: { _comment:"More Info on product link", _type:"XFLD", en:"More information on the product and license" },
 		desktopAgentTenantRegistration: { _comment:"Desktop Agent Tenant Registration", _type:"XFLD", en:"Desktop Agent Tenant Registration" },
 		enterTenantNameUrl: { _comment:"No Tenant File - Enter the name and the URL of your tenant to register your agent.", _type:"XFLD", en:"Enter the name and the URL of your tenant to register your agent." },
@@ -88,7 +93,18 @@
 		switchToAutoProjectSwitchMode : { _comment:"Switch from manual to automatic mode", _type:"XBUT", en:"You are currently in Interactive mode (attended). If you switch to Background mode (unattended), projects may be executed automatically  on your machine without any notification. Do you wish to continue?" },
 		tenantNameNotUnique: { _comment:"Tenant name is not unique", _type:"XFLD", en:"Tenant name is not unique" },
 		tenantNameNoSpecialCharacters: { _comment:"Tenant name must not contain special characters", _type:"XFLD", en:"Tenant name must not contain special characters" },
+		windowsPassword: { _comment:"passeword label on systray", _type:"XFLD", en:"Password:" },
+		windowsUser: { _comment:"username label on systray", _type:"XFLD", en:"Username:" },
 		testMode: { _comment:"Test Mode", _type:"XFLD", en:"Test Mode" },
-    active: { _comment:"ACTIVE", _type:"XFLD", en:"ACTIVE" }
+    	active: { _comment:"ACTIVE", _type:"XFLD", en:"ACTIVE" },
+		badWindowsPassword: { _comment:"bad Windows password", _type:"XBUT", en:"Windows password is not correct." },
+		noSpecificAccount: { _comment:"no using windows Account", _type:"XBUT", en:"Leveraging a windows opened session" },
+		useSpecificAccount: { _comment:"Use a specific windows account Account", _type:"XBUT", en:"By opening a windows session with this account:" },
+		anonymousField: { _comment:"Hint: The Agent reported name is customized by your administrator and might not correspond to the one reported by your operating system", _type:"XFLD", en:"Hint: The Agent reported name is customized by your administrator and might not correspond to the one reported by your operating system" },
+		fullAnonymousUserName: { _comment:"full anonymous username link", _type:"XFLD", en:"Full anonymous user name" },
+		fullAnonymousMachineName: { _comment:"full anonymous machine link", _type:"XFLD", en:"Full anonymous machine name" },
+		proxyCheckBox: { _comment:"Configure a proxy setting", _type:"XFLD", en:"Configure proxy authentication (advanced):" },
+		proxyUser: { _comment:"Configure a proxy user", _type:"XFLD", en:"Proxy username:" },
+		proxyPassword: { _comment:"Configure a proxy password", _type:"XFLD", en:"Proxy password:" }
 	}
 });

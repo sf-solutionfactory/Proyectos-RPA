@@ -1,0 +1,1350 @@
+{
+  "technology": "SAPGUI",
+  "name": "GuiMainWindow - SAP",
+  "processName": "SAPLOGON.EXE",
+  "paramName": "SAP",
+  "parentTree": "wnd[0]",
+  "capturedData": {
+    "Text": "SAP",
+    "Type": "GuiMainWindow",
+    "Name": "wnd[0]",
+    "Changeable": "true",
+    "ContainerType": "true",
+    "Deepness": "0",
+    "TAG": "GuiMainWindow",
+    "X": "-8",
+    "Y": "-8",
+    "CX": "1178",
+    "CY": "751",
+    "EXE": "SAPLOGON.EXE"
+  },
+  "items": [
+    {
+      "capturedData": {
+        "Text": "SAP",
+        "Type": "GuiMainWindow",
+        "Name": "wnd[0]",
+        "Changeable": "true",
+        "ContainerType": "true",
+        "Deepness": "0",
+        "TAG": "GuiMainWindow",
+        "X": "-8",
+        "Y": "-8",
+        "CX": "1178",
+        "CY": "751",
+        "EXE": "SAPLOGON.EXE"
+      },
+      "boundingRect": {
+        "top": 0,
+        "left": 0,
+        "width": 1178,
+        "height": 751
+      },
+      "title": "GuiMainWindow - SAP",
+      "nameKey": "Name",
+      "controlType": "GuiMainWindow",
+      "prefix": null,
+      "text": "SAP",
+      "textKey": "Text",
+      "paramName": "SAP",
+      "parentTree": "wnd[0]",
+      "isVisible": "True",
+      "isPreferred": "False",
+      "children": [
+        {
+          "capturedData": {
+            "Id": "mbar",
+            "Type": "GuiMenubar",
+            "Name": "mbar",
+            "Changeable": "false",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiMenubar",
+            "X": "20",
+            "Y": "6",
+            "CX": "1142",
+            "CY": "18"
+          },
+          "boundingRect": {
+            "top": 14,
+            "left": 28,
+            "width": 1142,
+            "height": 18
+          },
+          "title": "GuiMenubar",
+          "nameKey": "Name",
+          "controlType": "GuiMenubar",
+          "prefix": null,
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiMenubar",
+          "parentTree": "mbar|wnd[0]",
+          "isVisible": "True",
+          "isPreferred": "False",
+          "children": [
+            {
+              "capturedData": {
+                "Id": "mbar/menu[0]",
+                "Text": "Usuarios",
+                "Type": "GuiMenu",
+                "Name": "Usuarios",
+                "Changeable": "true",
+                "ContainerType": "true",
+                "Deepness": "2",
+                "TAG": "GuiMenu",
+                "X": "-1",
+                "Y": "-1",
+                "CX": "-1",
+                "CY": "-1"
+              },
+              "boundingRect": {
+                "top": 7,
+                "left": 7,
+                "width": -1,
+                "height": -1
+              },
+              "title": "GuiMenu - Usuarios",
+              "nameKey": "Name",
+              "controlType": "GuiMenu",
+              "prefix": null,
+              "text": "Usuarios",
+              "textKey": "Text",
+              "paramName": "Usuarios",
+              "parentTree": "Usuarios|mbar|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False",
+              "children": [
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[0]/menu[0]",
+                    "Text": "Acceder al sistema",
+                    "Type": "GuiMenu",
+                    "Name": "Acceder al sistema",
+                    "Changeable": "true",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Acceder al sistema",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Acceder al sistema",
+                  "textKey": "Text",
+                  "paramName": "Acceder al sistema",
+                  "parentTree": "Acceder al sistema|Usuarios|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[0]/menu[1]",
+                    "Text": "Clave acceso nueva",
+                    "Type": "GuiMenu",
+                    "Name": "Clave acceso nueva",
+                    "Changeable": "true",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Clave acceso nueva",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Clave acceso nueva",
+                  "textKey": "Text",
+                  "paramName": "Clave acceso nueva",
+                  "parentTree": "Clave acceso nueva|Usuarios|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[0]/menu[2]",
+                    "Text": "Salir del sistema",
+                    "Type": "GuiMenu",
+                    "Name": "Salir del sistema",
+                    "Changeable": "true",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Salir del sistema",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Salir del sistema",
+                  "textKey": "Text",
+                  "paramName": "Salir del sistema",
+                  "parentTree": "Salir del sistema|Usuarios|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                }
+              ]
+            },
+            {
+              "capturedData": {
+                "Id": "mbar/menu[1]",
+                "Text": "Sistema",
+                "Type": "GuiMenu",
+                "Name": "Sistema",
+                "Changeable": "true",
+                "ContainerType": "true",
+                "Deepness": "2",
+                "TAG": "GuiMenu",
+                "X": "-1",
+                "Y": "-1",
+                "CX": "-1",
+                "CY": "-1"
+              },
+              "boundingRect": {
+                "top": 7,
+                "left": 7,
+                "width": -1,
+                "height": -1
+              },
+              "title": "GuiMenu - Sistema",
+              "nameKey": "Name",
+              "controlType": "GuiMenu",
+              "prefix": null,
+              "text": "Sistema",
+              "textKey": "Text",
+              "paramName": "Sistema",
+              "parentTree": "Sistema|mbar|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False",
+              "children": [
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[0]",
+                    "Text": "Ventana GUI nueva",
+                    "Type": "GuiMenu",
+                    "Name": "Ventana GUI nueva",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Ventana GUI nueva",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Ventana GUI nueva",
+                  "textKey": "Text",
+                  "paramName": "Ventana GUI nueva",
+                  "parentTree": "Ventana GUI nueva|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[1]",
+                    "Text": "Cerrar ventana GUI",
+                    "Type": "GuiMenu",
+                    "Name": "Cerrar ventana GUI",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Cerrar ventana GUI",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Cerrar ventana GUI",
+                  "textKey": "Text",
+                  "paramName": "Cerrar ventana GUI",
+                  "parentTree": "Cerrar ventana GUI|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[2]",
+                    "Text": "Valores prefijados",
+                    "Type": "GuiMenu",
+                    "Name": "Valores prefijados",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Valores prefijados",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Valores prefijados",
+                  "textKey": "Text",
+                  "paramName": "Valores prefijados",
+                  "parentTree": "Valores prefijados|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False",
+                  "children": [
+                    {
+                      "capturedData": {
+                        "Id": "mbar/menu[1]/menu[2]/menu[0]",
+                        "Text": "Retener datos",
+                        "Type": "GuiMenu",
+                        "Name": "Retener datos",
+                        "Changeable": "false",
+                        "ContainerType": "true",
+                        "Deepness": "4",
+                        "TAG": "GuiMenu",
+                        "X": "-1",
+                        "Y": "-1",
+                        "CX": "-1",
+                        "CY": "-1"
+                      },
+                      "boundingRect": {
+                        "top": 7,
+                        "left": 7,
+                        "width": -1,
+                        "height": -1
+                      },
+                      "title": "GuiMenu - Retener datos",
+                      "nameKey": "Name",
+                      "controlType": "GuiMenu",
+                      "prefix": null,
+                      "text": "Retener datos",
+                      "textKey": "Text",
+                      "paramName": "Retener datos",
+                      "parentTree": "Retener datos|Valores prefijados|Sistema|mbar|wnd[0]",
+                      "isVisible": "True",
+                      "isPreferred": "False"
+                    },
+                    {
+                      "capturedData": {
+                        "Id": "mbar/menu[1]/menu[2]/menu[1]",
+                        "Text": "Fijar datos",
+                        "Type": "GuiMenu",
+                        "Name": "Fijar datos",
+                        "Changeable": "false",
+                        "ContainerType": "true",
+                        "Deepness": "4",
+                        "TAG": "GuiMenu",
+                        "X": "-1",
+                        "Y": "-1",
+                        "CX": "-1",
+                        "CY": "-1"
+                      },
+                      "boundingRect": {
+                        "top": 7,
+                        "left": 7,
+                        "width": -1,
+                        "height": -1
+                      },
+                      "title": "GuiMenu - Fijar datos",
+                      "nameKey": "Name",
+                      "controlType": "GuiMenu",
+                      "prefix": null,
+                      "text": "Fijar datos",
+                      "textKey": "Text",
+                      "paramName": "Fijar datos",
+                      "parentTree": "Fijar datos|Valores prefijados|Sistema|mbar|wnd[0]",
+                      "isVisible": "True",
+                      "isPreferred": "False"
+                    },
+                    {
+                      "capturedData": {
+                        "Id": "mbar/menu[1]/menu[2]/menu[2]",
+                        "Text": "Borrar datos",
+                        "Type": "GuiMenu",
+                        "Name": "Borrar datos",
+                        "Changeable": "false",
+                        "ContainerType": "true",
+                        "Deepness": "4",
+                        "TAG": "GuiMenu",
+                        "X": "-1",
+                        "Y": "-1",
+                        "CX": "-1",
+                        "CY": "-1"
+                      },
+                      "boundingRect": {
+                        "top": 7,
+                        "left": 7,
+                        "width": -1,
+                        "height": -1
+                      },
+                      "title": "GuiMenu - Borrar datos",
+                      "nameKey": "Name",
+                      "controlType": "GuiMenu",
+                      "prefix": null,
+                      "text": "Borrar datos",
+                      "textKey": "Text",
+                      "paramName": "Borrar datos",
+                      "parentTree": "Borrar datos|Valores prefijados|Sistema|mbar|wnd[0]",
+                      "isVisible": "True",
+                      "isPreferred": "False"
+                    }
+                  ]
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[3]",
+                    "Text": "Servicios",
+                    "Type": "GuiMenu",
+                    "Name": "Servicios",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Servicios",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Servicios",
+                  "textKey": "Text",
+                  "paramName": "Servicios",
+                  "parentTree": "Servicios|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[4]",
+                    "Text": "Utilidades",
+                    "Type": "GuiMenu",
+                    "Name": "Utilidades",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Utilidades",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Utilidades",
+                  "textKey": "Text",
+                  "paramName": "Utilidades",
+                  "parentTree": "Utilidades|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[5]",
+                    "Text": "Lista",
+                    "Type": "GuiMenu",
+                    "Name": "Lista",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Lista",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Lista",
+                  "textKey": "Text",
+                  "paramName": "Lista",
+                  "parentTree": "Lista|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[6]",
+                    "Text": "Servicios para objeto",
+                    "Type": "GuiMenu",
+                    "Name": "Servicios para objeto",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Servicios para objeto",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Servicios para objeto",
+                  "textKey": "Text",
+                  "paramName": "Servicios para objeto",
+                  "parentTree": "Servicios para objeto|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[7]",
+                    "Text": "Mis objetos",
+                    "Type": "GuiMenu",
+                    "Name": "Mis objetos",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Mis objetos",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Mis objetos",
+                  "textKey": "Text",
+                  "paramName": "Mis objetos",
+                  "parentTree": "Mis objetos|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[8]",
+                    "Text": "Órdenes SPOOL propias",
+                    "Type": "GuiMenu",
+                    "Name": "Órdenes SPOOL propias",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Órdenes SPOOL propias",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Órdenes SPOOL propias",
+                  "textKey": "Text",
+                  "paramName": "Órdenes SPOOL propias",
+                  "parentTree": "Órdenes SPOOL propias|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[9]",
+                    "Text": "Jobs propios",
+                    "Type": "GuiMenu",
+                    "Name": "Jobs propios",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Jobs propios",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Jobs propios",
+                  "textKey": "Text",
+                  "paramName": "Jobs propios",
+                  "parentTree": "Jobs propios|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[10]",
+                    "Text": "Mensaje breve",
+                    "Type": "GuiMenu",
+                    "Name": "Mensaje breve",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Mensaje breve",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Mensaje breve",
+                  "textKey": "Text",
+                  "paramName": "Mensaje breve",
+                  "parentTree": "Mensaje breve|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[11]",
+                    "Text": "Status...",
+                    "Type": "GuiMenu",
+                    "Name": "Status...",
+                    "Changeable": "false",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Status...",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Status...",
+                  "textKey": "Text",
+                  "paramName": "Status...",
+                  "parentTree": "Status...|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                },
+                {
+                  "capturedData": {
+                    "Id": "mbar/menu[1]/menu[12]",
+                    "Text": "Salir del sistema",
+                    "Type": "GuiMenu",
+                    "Name": "Salir del sistema",
+                    "Changeable": "true",
+                    "ContainerType": "true",
+                    "Deepness": "3",
+                    "TAG": "GuiMenu",
+                    "X": "-1",
+                    "Y": "-1",
+                    "CX": "-1",
+                    "CY": "-1"
+                  },
+                  "boundingRect": {
+                    "top": 7,
+                    "left": 7,
+                    "width": -1,
+                    "height": -1
+                  },
+                  "title": "GuiMenu - Salir del sistema",
+                  "nameKey": "Name",
+                  "controlType": "GuiMenu",
+                  "prefix": null,
+                  "text": "Salir del sistema",
+                  "textKey": "Text",
+                  "paramName": "Salir del sistema",
+                  "parentTree": "Salir del sistema|Sistema|mbar|wnd[0]",
+                  "isVisible": "True",
+                  "isPreferred": "False"
+                }
+              ]
+            },
+            {
+              "capturedData": {
+                "Id": "mbar/menu[2]",
+                "Text": "Ayuda",
+                "Type": "GuiMenu",
+                "Name": "Ayuda",
+                "Changeable": "true",
+                "ContainerType": "true",
+                "Deepness": "2",
+                "TAG": "GuiMenu",
+                "X": "-1",
+                "Y": "-1",
+                "CX": "-1",
+                "CY": "-1"
+              },
+              "boundingRect": {
+                "top": 7,
+                "left": 7,
+                "width": -1,
+                "height": -1
+              },
+              "title": "GuiMenu - Ayuda",
+              "nameKey": "Name",
+              "controlType": "GuiMenu",
+              "prefix": null,
+              "text": "Ayuda",
+              "textKey": "Text",
+              "paramName": "Ayuda",
+              "parentTree": "Ayuda|mbar|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            }
+          ]
+        },
+        {
+          "capturedData": {
+            "Id": "tbar[0]",
+            "Type": "GuiToolbar",
+            "Name": "tbar[0]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiToolbar",
+            "X": "8",
+            "Y": "32",
+            "CX": "0",
+            "CY": "0"
+          },
+          "boundingRect": {
+            "top": 40,
+            "left": 16,
+            "width": 0,
+            "height": 0
+          },
+          "title": "GuiToolbar",
+          "nameKey": "Name",
+          "controlType": "GuiToolbar",
+          "prefix": "tb",
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiToolbar",
+          "parentTree": "tbar[0]|wnd[0]",
+          "isVisible": "True",
+          "isPreferred": "False",
+          "children": [
+            {
+              "capturedData": {
+                "Id": "tbar[0]/btn[15]",
+                "Text": "i: Finalizar",
+                "Type": "GuiButton",
+                "IconName": "2",
+                "Name": "btn[15]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "1056",
+                "Y": "91",
+                "CX": "74",
+                "CY": "26"
+              },
+              "boundingRect": {
+                "top": 99,
+                "left": 1064,
+                "width": 74,
+                "height": 26
+              },
+              "title": "GuiButton - i: Finalizar",
+              "nameKey": "Name",
+              "controlType": "GuiButton",
+              "prefix": "bt",
+              "text": "i: Finalizar",
+              "textKey": "Text",
+              "paramName": "i: Finalizar",
+              "parentTree": "btn[15]|tbar[0]|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "tbar[0]/okcd",
+                "Type": "GuiOkCodeField",
+                "Name": "okcd",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiOkCodeField",
+                "X": "32",
+                "Y": "91",
+                "CX": "156",
+                "CY": "26"
+              },
+              "boundingRect": {
+                "top": 99,
+                "left": 40,
+                "width": 156,
+                "height": 26
+              },
+              "title": "GuiOkCodeField",
+              "nameKey": "Name",
+              "controlType": "GuiOkCodeField",
+              "prefix": null,
+              "text": null,
+              "textKey": "Text",
+              "paramName": "GuiOkCodeField",
+              "parentTree": "okcd|tbar[0]|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            }
+          ]
+        },
+        {
+          "capturedData": {
+            "Id": "titl",
+            "Text": "SAP",
+            "Type": "GuiTitlebar",
+            "Name": "titl",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiTitlebar",
+            "X": "8",
+            "Y": "32",
+            "CX": "1146",
+            "CY": "48"
+          },
+          "boundingRect": {
+            "top": 40,
+            "left": 16,
+            "width": 1146,
+            "height": 48
+          },
+          "title": "GuiTitlebar - SAP",
+          "nameKey": "Name",
+          "controlType": "GuiTitlebar",
+          "prefix": null,
+          "text": "SAP",
+          "textKey": "Text",
+          "paramName": "SAP",
+          "parentTree": "titl|wnd[0]",
+          "isVisible": "True",
+          "isPreferred": "False"
+        },
+        {
+          "capturedData": {
+            "Id": "tbar[1]",
+            "Type": "GuiToolbar",
+            "Name": "tbar[1]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiToolbar",
+            "X": "8",
+            "Y": "80",
+            "CX": "1146",
+            "CY": "48"
+          },
+          "boundingRect": {
+            "top": 88,
+            "left": 16,
+            "width": 1146,
+            "height": 48
+          },
+          "title": "GuiToolbar",
+          "nameKey": "Name",
+          "controlType": "GuiToolbar",
+          "prefix": "tb",
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiToolbar",
+          "parentTree": "tbar[1]|wnd[0]",
+          "isVisible": "True",
+          "isPreferred": "False",
+          "children": [
+            {
+              "capturedData": {
+                "Id": "tbar[1]/btnvhmore",
+                "Text": "Más",
+                "Type": "GuiButton",
+                "Name": "btnvhmore",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "358",
+                "Y": "91",
+                "CX": "51",
+                "CY": "26"
+              },
+              "boundingRect": {
+                "top": 99,
+                "left": 366,
+                "width": 51,
+                "height": 26
+              },
+              "title": "GuiButton - Más",
+              "nameKey": "Name",
+              "controlType": "GuiButton",
+              "prefix": "bt",
+              "text": "Más",
+              "textKey": "Text",
+              "paramName": "Más",
+              "parentTree": "btnvhmore|tbar[1]|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "tbar[1]/btn[5]",
+                "Text": "Clave acceso nueva",
+                "Type": "GuiButton",
+                "Name": "btn[5]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "204",
+                "Y": "91",
+                "CX": "138",
+                "CY": "26"
+              },
+              "boundingRect": {
+                "top": 99,
+                "left": 212,
+                "width": 138,
+                "height": 26
+              },
+              "title": "GuiButton - Clave acceso nueva",
+              "nameKey": "Name",
+              "controlType": "GuiButton",
+              "prefix": "bt",
+              "text": "Clave acceso nueva",
+              "textKey": "Text",
+              "paramName": "Clave acceso nueva",
+              "parentTree": "btn[5]|tbar[1]|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            }
+          ]
+        },
+        {
+          "capturedData": {
+            "Id": "usr",
+            "Type": "GuiUserArea",
+            "Name": "usr",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiUserArea",
+            "X": "8",
+            "Y": "128",
+            "CX": "1146",
+            "CY": "554"
+          },
+          "boundingRect": {
+            "top": 136,
+            "left": 16,
+            "width": 1146,
+            "height": 554
+          },
+          "title": "GuiUserArea",
+          "nameKey": "Name",
+          "controlType": "GuiUserArea",
+          "prefix": null,
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiUserArea",
+          "parentTree": "usr|wnd[0]",
+          "isVisible": "True",
+          "isPreferred": "False",
+          "children": [
+            {
+              "capturedData": {
+                "Id": "usr/lblRSYST-MANDT",
+                "Text": "Mandante",
+                "Type": "GuiLabel",
+                "Name": "RSYST-MANDT",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiLabel",
+                "X": "22",
+                "Y": "148",
+                "CX": "189",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 156,
+                "left": 30,
+                "width": 189,
+                "height": 25
+              },
+              "title": "GuiLabel - Mandante",
+              "nameKey": "Name",
+              "controlType": "GuiLabel",
+              "prefix": null,
+              "text": "Mandante",
+              "textKey": "Text",
+              "paramName": "Mandante",
+              "parentTree": "RSYST-MANDT|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/txtRSYST-MANDT",
+                "Text": "300",
+                "Type": "GuiTextField",
+                "LeftLabel": "Mandante",
+                "Name": "RSYST-MANDT",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "212",
+                "Y": "148",
+                "CX": "39",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 156,
+                "left": 220,
+                "width": 39,
+                "height": 25
+              },
+              "title": "GuiTextField - 300",
+              "nameKey": "Name",
+              "controlType": "GuiTextField",
+              "prefix": "ed",
+              "text": "300",
+              "textKey": "Text",
+              "paramName": "Mandante",
+              "parentTree": "RSYST-MANDT|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/lblRSYST-BNAME",
+                "Text": "*Usuarios",
+                "Type": "GuiLabel",
+                "Name": "RSYST-BNAME",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiLabel",
+                "X": "22",
+                "Y": "212",
+                "CX": "189",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 220,
+                "left": 30,
+                "width": 189,
+                "height": 25
+              },
+              "title": "GuiLabel - *Usuarios",
+              "nameKey": "Name",
+              "controlType": "GuiLabel",
+              "prefix": null,
+              "text": "*Usuarios",
+              "textKey": "Text",
+              "paramName": "*Usuarios",
+              "parentTree": "RSYST-BNAME|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/txtRSYST-BNAME",
+                "Type": "GuiTextField",
+                "LeftLabel": "*Usuarios",
+                "Name": "RSYST-BNAME",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "212",
+                "Y": "212",
+                "CX": "129",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 220,
+                "left": 220,
+                "width": 129,
+                "height": 25
+              },
+              "title": "GuiTextField",
+              "nameKey": "Name",
+              "controlType": "GuiTextField",
+              "prefix": "ed",
+              "text": null,
+              "textKey": "Text",
+              "paramName": "*Usuarios",
+              "parentTree": "RSYST-BNAME|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/lblRSYST-BCODE",
+                "Text": "*Clv.acc.",
+                "Type": "GuiLabel",
+                "Name": "RSYST-BCODE",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiLabel",
+                "X": "22",
+                "Y": "244",
+                "CX": "189",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 252,
+                "left": 30,
+                "width": 189,
+                "height": 25
+              },
+              "title": "GuiLabel - *Clv.acc.",
+              "nameKey": "Name",
+              "controlType": "GuiLabel",
+              "prefix": null,
+              "text": "*Clv.acc.",
+              "textKey": "Text",
+              "paramName": "*Clv.acc.",
+              "parentTree": "RSYST-BCODE|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/pwdRSYST-BCODE",
+                "Type": "GuiPasswordField",
+                "LeftLabel": "*Clv.acc.",
+                "Name": "RSYST-BCODE",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiPasswordField",
+                "X": "212",
+                "Y": "244",
+                "CX": "129",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 252,
+                "left": 220,
+                "width": 129,
+                "height": 25
+              },
+              "title": "GuiPasswordField",
+              "nameKey": "Name",
+              "controlType": "GuiPasswordField",
+              "prefix": null,
+              "text": null,
+              "textKey": "Text",
+              "paramName": "*Clv.acc.",
+              "parentTree": "RSYST-BCODE|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/lblRSYST-LANGU",
+                "Text": "Idioma",
+                "Type": "GuiLabel",
+                "Name": "RSYST-LANGU",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiLabel",
+                "X": "22",
+                "Y": "308",
+                "CX": "189",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 316,
+                "left": 30,
+                "width": 189,
+                "height": 25
+              },
+              "title": "GuiLabel - Idioma",
+              "nameKey": "Name",
+              "controlType": "GuiLabel",
+              "prefix": null,
+              "text": "Idioma",
+              "textKey": "Text",
+              "paramName": "Idioma",
+              "parentTree": "RSYST-LANGU|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/txtRSYST-LANGU",
+                "Text": "ES",
+                "Type": "GuiTextField",
+                "LeftLabel": "Idioma",
+                "Name": "RSYST-LANGU",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "212",
+                "Y": "308",
+                "CX": "29",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 316,
+                "left": 220,
+                "width": 29,
+                "height": 25
+              },
+              "title": "GuiTextField - ES",
+              "nameKey": "Name",
+              "controlType": "GuiTextField",
+              "prefix": "ed",
+              "text": "ES",
+              "textKey": "Text",
+              "paramName": "Idioma",
+              "parentTree": "RSYST-LANGU|usr|wnd[0]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            }
+          ]
+        },
+        {
+          "capturedData": {
+            "Id": "sbar",
+            "Type": "GuiStatusbar",
+            "Name": "sbar",
+            "Changeable": "false",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiStatusbar",
+            "X": "8",
+            "Y": "687",
+            "CX": "1146",
+            "CY": "40"
+          },
+          "boundingRect": {
+            "top": 695,
+            "left": 16,
+            "width": 1146,
+            "height": 40
+          },
+          "title": "GuiStatusbar",
+          "nameKey": "Name",
+          "controlType": "GuiStatusbar",
+          "prefix": null,
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiStatusbar",
+          "parentTree": "sbar|wnd[0]",
+          "isVisible": "True",
+          "isPreferred": "False"
+        }
+      ]
+    }
+  ],
+  "rootPath": [
+    0
+  ]
+}

@@ -1,0 +1,185 @@
+================== Export Applications ===========================
+
+------------- Export 'SAPLogon750' application
+
+
+================== Export Automations ===========================
+
+------------- Export 'cargaSQL_PG' automation
+WARNING : Step 1 - Activity comment_2 not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.declare not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity setting.get_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 14 - Activity comment_2 not mapped
+
+------------- Export 'cargaSQL_Manual' automation
+WARNING : Step 1 - Activity comment_2 not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.declare not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity setting.get_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 14 - Activity comment_2 not mapped
+
+------------- Export 'cargaSQL_Diaria' automation
+WARNING : Step 1 - Activity comment_2 not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.declare not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity setting.get_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 14 - Activity comment_2 not mapped
+
+------------- Export 'cargaSQL_Lunes' automation
+WARNING : Step 1 - Activity comment_2 not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.declare not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity setting.get_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 14 - Activity comment_2 not mapped
+
+------------- Export 'cargaSQL_EntradaDiaria' automation
+WARNING : Step 1 - Activity comment_2 not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.declare not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity setting.get_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 14 - Activity comment_2 not mapped
+
+------------- Export 'cargaSAP_Manual' automation
+WARNING : Step 1 - Activity setting.declare not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.get_2 not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity comment_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 18 - Activity credential.declare not mapped
+WARNING : Step 19 - Activity credential.get_2 not mapped
+WARNING : Step 29 - Activity step_disableTimeout not mapped
+
+------------- Export 'cargaSAP_Diaria' automation
+WARNING : Step 1 - Activity setting.declare not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.get_2 not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity comment_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 18 - Activity credential.declare not mapped
+WARNING : Step 19 - Activity credential.get_2 not mapped
+WARNING : Step 29 - Activity step_disableTimeout not mapped
+
+------------- Export 'cargaSAP_Lunes' automation
+WARNING : Step 1 - Activity setting.declare not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.get_2 not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity comment_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 18 - Activity credential.declare not mapped
+WARNING : Step 19 - Activity credential.get_2 not mapped
+WARNING : Step 29 - Activity step_disableTimeout not mapped
+
+------------- Export 'cargaSAP_EntradaDiaria' automation
+WARNING : Step 1 - Activity setting.declare not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.get_2 not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity comment_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 18 - Activity credential.declare not mapped
+WARNING : Step 19 - Activity credential.get_2 not mapped
+WARNING : Step 29 - Activity step_disableTimeout not mapped
+
+------------- Export 'cargaSAP_PG' automation
+WARNING : Step 1 - Activity setting.declare not mapped
+WARNING : Step 2 - Activity setting.declare not mapped
+WARNING : Step 3 - Activity setting.declare not mapped
+WARNING : Step 4 - Activity setting.declare not mapped
+WARNING : Step 5 - Activity setting.declare not mapped
+WARNING : Step 6 - Activity setting.get_2 not mapped
+WARNING : Step 7 - Activity setting.get_2 not mapped
+WARNING : Step 8 - Activity setting.get_2 not mapped
+WARNING : Step 9 - Activity setting.get_2 not mapped
+WARNING : Step 10 - Activity setting.get_2 not mapped
+WARNING : Step 11 - Activity comment_2 not mapped
+WARNING : Step 12 - Activity comment_2 not mapped
+WARNING : Step 13 - Activity comment_2 not mapped
+WARNING : Step 18 - Activity credential.declare not mapped
+WARNING : Step 19 - Activity credential.get_2 not mapped
+WARNING : Step 29 - Activity step_disableTimeout not mapped
+
+
+================== Export DataTypes ===========================
+DataType used in Workflows : rootData
+
+------------- Export 'rootData' datatype
+
+------------- Export 'rootData' datatype
+Duplicated datatype rootData -> ignored

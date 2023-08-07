@@ -238,6 +238,15 @@ ctx.options.galaxyAPI = {
 	}
 };
 
+ctx.options.workstation = { 
+	/** Unlock waiting time in second
+	* @property {number} unlockTimeout
+	* @path ctx.options.workstation.unlockTimeout */ unlockTimeout: 10,
+
+	/** After unlock, time before relock in second
+	* @property {number} timeBeforeRelocking
+	* @path ctx.options.workstation.timeBeforeRelocking */ timeBeforeRelocking: 10
+	};
 
 	/**
 	* Description
@@ -356,6 +365,11 @@ ctx.m2m = (function () {
 	self.isConnected = function () {
 		return _isConnected;
 	}
+	
+	self.clearPendingUpdateRunJobs = function () {
+		_pendingupdateRunJobs = [];
+	}
+	
 
 	/**
 	 * @ignore
@@ -509,7 +523,7 @@ ctx.m2m = (function () {
 				}
 				var msg = _pendingCallbacks[m2mMsg.tid];
 				if (msg && msg.callback && ('function' === typeof msg.callback)) {
-					msg.callback(m2mMsg.code, m2mMsg.label, m2mMsg.data); 
+						msg.callback(m2mMsg.code, m2mMsg.label, m2mMsg.data); 
 					delete _pendingCallbacks[m2mMsg.tid];
 				}
 			}
@@ -678,7 +692,7 @@ ctx.m2m = (function () {
 				if (!encryptedData) {
 					// encryption failed
 					if (callback && ('function' === typeof(callback))) {
-						callback(e.error.Fail, "Data encryption failed", m2mMsg.data);
+							callback(e.error.Fail, "Data encryption failed", m2mMsg.data);
 					}
 					return false; // invalid content
 				} else {
@@ -692,7 +706,7 @@ ctx.m2m = (function () {
 		//if (!(m2mMsg.name && m2mMsg.tid && m2mMsg.source && m2mMsg.destination)) {
 		if (!(m2mMsg.name && m2mMsg.tid)) {
 			if (callback && ('function' === typeof(callback))) {
-				callback(e.error.InvalidArgument, "Invalid message", m2mMsg.data);
+					callback(e.error.InvalidArgument, "Invalid message", m2mMsg.data);
 			}
 			return false; // invalid content
 		}
@@ -762,7 +776,7 @@ ctx.m2m = (function () {
 					if (m2mMsg.tid) {
 						var msg = _pendingCallbacks[m2mMsg.tid];
 						if (msg && msg.callback && ('function' === typeof msg.callback)) {
-							msg.callback(e.error.NotConnected, "No connection available", null); 
+								msg.callback(e.error.NotConnected, "No connection available", null); 
 							delete _pendingCallbacks[m2mMsg.tid];
 							ctx.log("Request '" + m2mMsg.tid + "' could not be sent", e.logIconType.Warning, null, _options);
 						}
@@ -781,7 +795,7 @@ ctx.m2m = (function () {
 						_pendingTimers[m2mMsg.tid] = setTimeout( function(tid) { return function() { 
 							var msg = _pendingCallbacks[tid];
 							if (msg && msg.callback && ('function' === typeof msg.callback)) {
-								msg.callback(e.error.TimeOut, "Request was not answered", null); 
+									msg.callback(e.error.TimeOut, "Request was not answered", null); 
 								delete _pendingCallbacks[tid];
 								ctx.log("Request '" + tid + "' was not answered", e.logIconType.Warning, null, _options);
 							}
@@ -964,7 +978,8 @@ ctx.galaxyAPI = (function () {
 		updateDisabledScenarios: 'updateDisabledScenarios',
 		setBusy: 'setBusy',
 		setIdle: 'setIdle',
-		sendBAMNotification: 'sendBAMNotification'
+		sendBAMNotification: 'sendBAMNotification',
+		notifyShutdown: 'notifyShutdown'
 	};
 	
 	// commands Server --> Client 
@@ -1019,7 +1034,9 @@ ctx.galaxyAPI = (function () {
 	/** @type {string} */ var _configurationUid = '';
 	/** @type {string} */ var _packageVersionUid = '';
 	/** @type {string} */ var _packageUid = '';
+	/** @type {string} */ var _environmentUid = '';
 	/** @type {Array} */ var _availableProjects = null;
+	/** @type {string} */ var _defaultProjectUid = "3247a7e3-23ff-4684-bbea-9919746cd14b";
 	
 	//var _publicCypheringKey = '';
 	var _m2mSupervisorId = 'Supervisor';
@@ -1076,14 +1093,14 @@ ctx.galaxyAPI = (function () {
 		//jobContent.configurationUid = _configurationUid;
 		jobContent.dataFormat = job.format || e.data.format.json;
 		if (job.data) {
-			if (typeof job.data === 'object') {
+			/*if (typeof job.data === 'object') {
 				var tmp = ctx.json.stringify(job.data);
 				if (tmp.length > 65000) job.data = {};
 			}
 			else if (typeof job.data === 'string') {
 				if (job.data.length > 65000) job.data = '{}';
-			}
-			jobContent.data = job.data;
+			}*/
+			jobContent.data = ctx.limits(job.data);
 		}
 		jobContent.priority = job.priority;
 		if (job.label)
@@ -1284,7 +1301,7 @@ ctx.galaxyAPI = (function () {
 		});
 		self.sendCommand(_serverCommand.updateDisabledScenarios, disabledScenarios, function(code, label) {
 			if (callback && ('function' === typeof callback)) {
-				callback(e.error.OK, "");
+					callback(e.error.OK, "");
 			}
 		}, false, undefined, 0, e.error.OK, "", true);			
 	}
@@ -1376,6 +1393,7 @@ ctx.galaxyAPI = (function () {
 			resObj = resObj || { code: e.error.None };
 			ctx.log(updateClientInfos, e.logIconType.Info, 'Received Project update', _options);
 			if (updateClientInfos && ('object' === typeof updateClientInfos)) {
+				ctx.m2m.setConnected(true);
 				if (updateClientInfos.availableProjects) {
 					
 					// If old agent ( < 1.0.5 ) get the current packageversionuid
@@ -1392,7 +1410,7 @@ ctx.galaxyAPI = (function () {
 
 					//update project list in new systray
 					if  ('undefined' !== typeof systray) {
-						systray.updateProjectList(ctx.availableProjects, _packageVersionUid);
+						systray.updateProjectList(ctx.availableProjects, _packageVersionUid, _environmentUid);
 					}
 
 					// Change project if needed / requested / authorized
@@ -1439,7 +1457,7 @@ ctx.galaxyAPI = (function () {
 					
 					// Search if target project is in list
 					ctx.each(ctx.availableProjects, function(id, val) {
-						if (val['packageVersionUid'] == targetProjectVersion) {
+						if (val['packageVersionUid'] == targetProjectVersion && val['environmentUid'] == _environmentUid) {
 							projectFound = true; // Current project still authorized : staying on it
 							requestedPackageUid = val['packageUid'];
 							requestedPackageVersionUid = val['packageVersionUid'];
@@ -1458,7 +1476,7 @@ ctx.galaxyAPI = (function () {
 								// Switch to 1st project
 								//ctx.wkMng.SwitchProject(ctx.availableProjects[0]['packageUid'], ctx.availableProjects[0]['packageVersionUid']);
 								ctx.galaxyAPI.setBusy(true, function(code) {
-									ctx.restartOnProject(ctx.availableProjects[0]['packageUid'], ctx.availableProjects[0]['packageVersionUid']);
+									ctx.restartOnProject(ctx.availableProjects[0]['packageUid'], ctx.availableProjects[0]['packageVersionUid'], ctx.availableProjects[0]['environmentUid']);
 								});
 							}
 							else {
@@ -1492,7 +1510,7 @@ ctx.galaxyAPI = (function () {
 
 								// ctx.wkMng.SwitchProject(requestedPackageUid, requestedPackageVersionUid);
 								ctx.galaxyAPI.setBusy(true, function(code) {
-									ctx.restartOnProject(requestedPackageUid, requestedPackageVersionUid);
+									ctx.restartOnProject(requestedPackageUid, requestedPackageVersionUid, requestedEnvironmentUid);
 								});
 							}
 							else {
@@ -1507,7 +1525,7 @@ ctx.galaxyAPI = (function () {
 							// Switch to target project
 							// ctx.wkMng.SwitchProject(requestedPackageUid, requestedPackageVersionUid);
 							ctx.galaxyAPI.setBusy(true, function() {
-								ctx.restartOnProject(requestedPackageUid, requestedPackageVersionUid);
+								ctx.restartOnProject(requestedPackageUid, requestedPackageVersionUid, requestedEnvironmentUid);
 							});
 						}
 					}
@@ -1533,11 +1551,20 @@ ctx.galaxyAPI = (function () {
 				// send job update to server
 				var updateReceived = false;
 				var timerUpdateReceived = 0;
-			  var jobContent = _jobToJobContentConverter(job);
+				var jobContent = _jobToJobContentConverter(job);
 				res = self.sendCommand(_serverCommand.updateRunJob, jobContent, function(code, label, data) {
 					if  ('undefined' !== typeof systray) {
 						systray.updateRunningStatus(false, job);
 					}
+
+					//set a timer in try2buy or trial mode 
+					if (ctx.options.needPlanTimer) {
+						if (ctx.options.planTimer) clearTimeout(ctx.options.planTimer);
+						ctx.options.planTimer = setTimeout(function (){ 
+							ctx.log('shutdown agent after inactivity'); 
+							ctx.shutdownAgent(false, true);}, 14400000);
+					}
+
 					updateReceived = true;
 					if (timerUpdateReceived) 
 						clearTimeout(timerUpdateReceived);
@@ -1558,11 +1585,18 @@ ctx.galaxyAPI = (function () {
 		//}
 	}
 
-		// Environment management in Studio Mode
-		// -------------------------------------
+	// Environment management in Studio Mode
+	// -------------------------------------
 	_executeServerCommand[_serverCommand.sendClientInfos] = function(clientInfosAnswer, source, resObj, answer) {
 		if (answer && resObj && (resObj.code == e.error.OK)) {
 			ctx.m2m.setConnected(true);
+			if (clientInfosAnswer && !clientInfosAnswer.resume) {
+				//cancem current job
+				ctx.runningScenarios.clearAll(true);
+				if(!clientInfosAnswer.resume) ctx.m2m.clearPendingUpdateRunJobs();
+				systray.updateAgentStatus(e.agentStatus.Idle, GLOBAL.labels.systray.agentStatus.AwaitingProject, '');
+			}
+
 			if  ('undefined' !== typeof systray) {
 				systray.updateEnvironmentList(clientInfosAnswer.availableEnvironments, clientInfosAnswer.studioMode);
 			}
@@ -1629,7 +1663,7 @@ ctx.galaxyAPI = (function () {
 			job.label = 'Unknown job type: ' + job.appliName + '.' + job.scenario;
 			ctx.log(job, e.logIconType.Warning, 'ctx.galaxyAPI.runJob: '+ job.label, _options);
 			if (callback && ('function' === typeof callback)) {
-				callback(job.code, job.label, job);
+					callback(job.code, job.label, job);
 			}
 			return;
 		} 
@@ -1675,7 +1709,7 @@ ctx.galaxyAPI = (function () {
 					job.label = 'Could not get previous job : ' + id;
 					ctx.log(job, e.logIconType.Warning, 'ctx.galaxyAPI.runJob: '+ job.label, _options);
 					if (callback && ('function' === typeof callback)) {
-						callback(job.code, job.label, job);
+							callback(job.code, job.label, job);
 					}
 				}
 			});
@@ -1685,7 +1719,7 @@ ctx.galaxyAPI = (function () {
 				if (_m2mId)
 					sc.job.runBy = _m2mId;			
 				if (callback && ('function' === typeof callback)) {
-					callback(sc.code, sc.label, sc.job);
+						callback(sc.code, sc.label, sc.job);
 				}
 			});
 			scenario.start(data, job);
@@ -1811,7 +1845,7 @@ ctx.galaxyAPI = (function () {
 								systray.addToJobList(jobToDisplay);
 							}					
 					}
-					callback(code, label, job);
+						callback(code, label, job);
 				}
 			}
 			var jobContent = _jobToJobContentConverter(job);
@@ -1837,6 +1871,14 @@ ctx.galaxyAPI = (function () {
 			if  ('undefined' !== typeof systray) {
 				systray.updateRunningStatus(false, job);
 			}
+
+			//set a timer in try2buy or trial mode 
+			if (ctx.options.needPlanTimer) {
+				if (ctx.options.planTimer) clearTimeout(ctx.options.planTimer);
+				ctx.options.planTimer = setTimeout( function(){ 
+							ctx.log('shutdown agent after inactivity'); 
+							ctx.shutdownAgent(false, true);}, 14400000);
+			}
 			
 			return job;
 		},
@@ -1851,7 +1893,8 @@ ctx.galaxyAPI = (function () {
 		* @return boolean
 		*/
 		addJobAndWaitRun : function (obj, data, callback) {
-      //ctx.notifyAction('ctx.galaxyAPI.addJobAndWaitRun');
+			// SAPMLIPA-21677: ctx.galaxyAPI.addJobAndWaitRun is deprecated
+			ctx.log("ctx.galaxyAPI.addJobAndWaitRun: this function is not scalable and has been deprecated. Please use addJob function instead.", e.logIconType.Warning); 
 			if ('function' === typeof data) {
 				callback = data;
 				data = undefined;
@@ -1859,7 +1902,7 @@ ctx.galaxyAPI = (function () {
 			var res = self.addJob(obj, data, true, function(code, label, job) {
 				if (callback && ('function' === typeof callback)) {
 					if (code != e.error.OK)
-						callback(code, label, job);
+							callback(code, label, job);
 					else
 						_pendingNotifications[job.id] = callback;
 				} 
@@ -1885,7 +1928,7 @@ ctx.galaxyAPI = (function () {
 			}
 			GLOBAL.scenarios.scAddJobs.start(data).onEnd(function(sc2) {
 				if (callback && ('function' === typeof callback)) {
-					callback(sc2.code, sc2.label, sc2.data.jobs);
+						callback(sc2.code, sc2.label, sc2.data.jobs);
 				}
 			});
 			return true;
@@ -2002,7 +2045,7 @@ ctx.galaxyAPI = (function () {
 						}
 					}
 					if (callback && ('function' === typeof callback)) {
-						callback(code, label, credential);
+							callback(code, label, credential);
 					}
 				});
 			}
@@ -2054,7 +2097,7 @@ ctx.galaxyAPI = (function () {
 						setting.value = serverVariableAnswer.value;
 					}
 					if (callback && ('function' === typeof callback)) {
-						callback(code, label, setting);
+							callback(code, label, setting);
 					}
 				}, false);
 			}
@@ -2078,7 +2121,7 @@ ctx.galaxyAPI = (function () {
 					newMsg.values = message;
 					res = self.sendCommand(_serverCommand.sendBAMNotification, newMsg, function(code, label, answer) {
 					if (callback && ('function' === typeof callback)) {
-						callback(code, label, answer);
+							callback(code, label, answer);
 					}
 				}, false);
 			}
@@ -2098,7 +2141,7 @@ ctx.galaxyAPI = (function () {
 			var data = { criteria: criteria };
 			GLOBAL.scenarios.scGetJobs.start(data).onEnd(function(sc2) {
 				if (callback && ('function' === typeof callback)) {
-					callback(sc2.code, sc2.label, sc2.data.jobs);
+						callback(sc2.code, sc2.label, sc2.data.jobs);
 				}
 			});
 			return true;
@@ -2123,7 +2166,7 @@ ctx.galaxyAPI = (function () {
 							self.updateJob(runJob, function(code, label, updatedJob) {
 								self.setBusy(false, function(code) {
 									if (callback && ('function' === typeof callback)) {
-										callback(code, label, runJob);
+											callback(code, label, runJob);
 									}
 								});
 							});
@@ -2132,7 +2175,7 @@ ctx.galaxyAPI = (function () {
 						// no valid job to run
 						self.setBusy(false, function(code) {
 							if (callback && ('function' === typeof callback)) {
-								callback(code, '', null);
+									callback(code, '', null);
 							}
 						});
 					}
@@ -2261,7 +2304,7 @@ ctx.galaxyAPI = (function () {
 				scenarioContent.scenarioUid = sc.scenarioId;
 				self.sendCommand(_serverCommand.disableScenario, scenarioContent, function(code, label) {
 					if (callback && ('function' === typeof callback)) {
-						callback(code, label);
+							callback(code, label);
 					}
 				}, false, undefined, 0, e.error.OK, "", true);			
 				return true;
@@ -2286,7 +2329,7 @@ ctx.galaxyAPI = (function () {
 				scenarioContent.scenarioUid = sc.scenarioId;
 				self.sendCommand(_serverCommand.enableScenario, scenarioContent, function(code, label) {
 					if (callback && ('function' === typeof callback)) {
-						callback(code, label);
+							callback(code, label);
 					}
 				}, false, undefined, 0, e.error.OK, "", true);			
 				return true;
@@ -2438,6 +2481,12 @@ ctx.galaxyAPI = (function () {
 				res = self.sendCommand(_serverCommand.sendProjectInfos, projectContent, function(code, label) {
 					if (code != e.error.OK) {
 						ctx.log("sendProjectInfos not OK: " + code + (label ? ' (' + label + ')' : ''), e.logIconType.Warning);
+						
+						//SendProjectInfo is not OK => restart on Default project
+						ctx.registry.del('Software\\SAP\\Intelligent RPA\\Desktop Agent\\LastAttendedProjectEnvironment', ctx.enums.registry.root.CurrentUser);
+						ctx.registry.del('Software\\SAP\\Intelligent RPA\\Desktop Agent\\LastAttendedProjectVersion', ctx.enums.registry.root.CurrentUser);
+						ctx.registry.del('Software\\SAP\\Intelligent RPA\\Desktop Agent\\LastAttendedProject', ctx.enums.registry.root.CurrentUser);
+						ctx.shutdownAgent(true, false);
 					}
 					else {
 						// sendProjectInfos OK --> push cached updateClientInfos requests from older connexion, and send them
@@ -2456,6 +2505,25 @@ ctx.galaxyAPI = (function () {
 			
 			return res;
 		},
+		/**
+		* @ignore
+		* Notify shutdown of agent to factory
+		* @method notifyShutdown
+		* @path ctx.galaxyAPI.notifyShutdown
+		* @param {function(e.error, string)} [callback]
+		* @return boolean
+		*/
+		notifyShutdown: function ( callback) {
+
+			// If old agent ( < 2.0.13.0 ) don't send notifyShutdown
+			if (ctx.compareVersion('2.0.13.0') < 0) {
+				if (callback && ('function' === typeof callback)) {
+			      callback(e.error.OK, '');
+				}
+				return false;
+			}
+			return self.sendCommand(_serverCommand.notifyShutdown, null, callback) ; 
+		},
 
 		/**
 		* @ignore
@@ -2473,7 +2541,7 @@ ctx.galaxyAPI = (function () {
 			// If old agent ( < 1.0.5 ) don't send setMode
 			if (ctx.compareVersion('1.0.5.0') < 0) {
 				if (callback && ('function' === typeof callback)) {
-				      callback(e.error.OK, '');
+			      callback(e.error.OK, '');
 				}
 				return res;
 			}
@@ -2484,7 +2552,7 @@ ctx.galaxyAPI = (function () {
 					ctx.log("setMode failed: " + code + (label ? ' (' + label + ')' : ''), e.logIconType.Warning); // non blocking issue (not implemented on older Factory releases)
 				}
 				if (callback && ('function' === typeof callback)) {
-					callback(code, label);
+						callback(code, label);
 				}
 			});
 
@@ -2576,7 +2644,7 @@ ctx.galaxyAPI = (function () {
 						self.setBusy(false, function(code, label) {
 							res = true;
 							if (callback && ('function' === typeof callback)) {
-								callback(runCode, runLabel, runJob);
+									callback(runCode, runLabel, runJob);
 							}
 						});
 					});
@@ -2610,7 +2678,7 @@ ctx.galaxyAPI = (function () {
 				} else {
 					// no more job to run
 					if (callback && ('function' === typeof callback)) {
-						callback(code, label, job);
+							callback(code, label, job);
 					}					
 				}
 			});
@@ -2665,7 +2733,7 @@ ctx.galaxyAPI = (function () {
 			if (ctx.options.m2m && ctx.options.m2m.enabled && ('function' === typeof(ctx.m2m.sendMessage))) {
 				if (('function' === typeof(_executeServerCommand[command])) && (!_authorized)) {
 					if (('function' === typeof(callback))) {
-						callback(e.error.Canceled, "Unauthorized client", obj); 
+							callback(e.error.Canceled, "Unauthorized client", obj); 
 					}
 				} else {
 					if (undefined === destination) {
@@ -2682,7 +2750,7 @@ ctx.galaxyAPI = (function () {
 				var resObj = { code: e.error.None, label: '' };
 				obj = _executeServerCommand[command](obj, '', resObj, answer);
 				if (('function' === typeof(callback))) {
-					callback(resObj.code, resObj.label, obj); // immediate return
+						callback(resObj.code, resObj.label, obj); // immediate return
 				}
 				res = true;
 			} 
@@ -2747,7 +2815,7 @@ ctx.galaxyAPI = (function () {
 			if (!res) {
 				// failed: immediate return
 				if (callback && ('function' === typeof callback)) {
-					callback(e.error.KO, "Could not execute job", job);
+						callback(e.error.KO, "Could not execute job", job);
 				}					
 				_running = false;
 			}
@@ -2779,7 +2847,7 @@ ctx.galaxyAPI = (function () {
 					if (code == e.error.OK)
 						_busy = (state ? true : false);
 					if ('function' === typeof callback) {
-						callback(code, label);
+							callback(code, label);
 					}
 				}
 				var booleanContent = ctx.dataManagers.booleanContent.create();
@@ -2787,7 +2855,7 @@ ctx.galaxyAPI = (function () {
 				res = self.sendCommand( _serverCommand.setBusy, booleanContent, busyCallback);
 			} else {
 				if ('function' === typeof callback) {
-					callback(e.error.OK, '');
+						callback(e.error.OK, '');
 				}
 			}
 			return res;
@@ -2879,6 +2947,20 @@ ctx.galaxyAPI = (function () {
 					case 'WAIT_BINARY_MESSAGE':				
 					case 'WAIT_BINARY_MESSAGE_SYNC':				
 					case 'FORWARDING':
+
+							//init timer on trial or try2buy
+							if (ctx.compareVersion('2.0.15.17')>=0)
+								ctx.options.needPlanTimer =  (ctx.getPlanState()===1 || ctx.getPlanState()===2);
+							else {
+								ctx.options.needPlanTimer =  ctx.getTrialMode();
+							}		
+							if (ctx.options.needPlanTimer) {
+								if (ctx.options.planTimer) clearTimeout(ctx.options.planTimer);
+									ctx.options.planTimer = setTimeout( function(){ 
+									ctx.log('shutdown agent after inactivity'); 
+									ctx.shutdownAgent(false, true);},14400000);
+							}
+
 						if (_packageVersionUid != '' || ctx.isStudioUsed()) {
 							if (!msgContent.Error) {
 								agentStatus = e.agentStatus.Ready;
@@ -2903,6 +2985,12 @@ ctx.galaxyAPI = (function () {
 							systray.onNoSelectTenantFile();
 						}
 						break;
+						
+					case 'REFRESH_TENANT_LIST':
+							if  ('undefined' !== typeof systray) {
+								systray.onRefreshTenantList();
+							}
+							break;
 					
 					case 'ASK_SWITCH':
 						if  ('undefined' !== typeof systray) {
@@ -2913,7 +3001,7 @@ ctx.galaxyAPI = (function () {
 
 					case 'CONNECT_SENDCLIENTINFOS_STATE':
 						if  ('undefined' !== typeof systray) {
-							systray.refreshTrialMode();//If we are not already logged on trial tenant, systray is built before tenant credentials are stored in credentials manager
+							systray.refreshPlanMode();//If we are not already logged on trial tenant, systray is built before tenant credentials are stored in credentials manager
 							//therefore trial mode can only be false. So, we need to send ctx.getTrialMode again to systray once credentials are stored
 						}
 						break;
@@ -2931,6 +3019,13 @@ ctx.galaxyAPI = (function () {
 								ctx.m2m.setAskingSwitching(false);
 							}
 							break;
+
+						case  'SWITCHING_ERROR':
+				
+							ctx.galaxyAPI.setBusy(false,function(){});
+							ctx.m2m.setAskingSwitching(false);
+							break;
+				
 					}
 			}
 			
@@ -2984,7 +3079,10 @@ ctx.galaxyAPI = (function () {
 				
 			if (!_dontUpdateSystray) {
 				if  ('undefined' !== typeof systray) {
-					systray.updateAgentStatus(agentStatus, label, description);
+					//SAPMLIPA-20398 : Fix issue "While agent is running job, when switching project or restarting we loose the blue icon on agent icon"
+					if (!systray.getRunningStatus() || (agentStatus && (agentStatus === e.agentStatus.Error || agentStatus === e.agentStatus.Warning))) {
+						systray.updateAgentStatus(agentStatus, label, description);
+					}
 				}
 			} else
 				_dontUpdateSystray = false;
@@ -3026,8 +3124,11 @@ ctx.galaxyAPI = (function () {
 			if (msgContent) {
 				_packageVersionUid = msgContent['PackageVersionUid'] || "";
 				_packageUid = msgContent['PackageUid'] || "";
+				if (msgContent['EnvironmentUID'] && msgContent['EnvironmentUID'] !== '00000000-0000-0000-0000-000000000000') {
+					_environmentUid = msgContent['EnvironmentUID'];
+				}				
 				if  ('undefined' !== typeof systray) {
-					systray.setDefaultMode(_packageVersionUid !== "" ? false : true);
+					systray.setDefaultMode(ctx.options.projectUid !== _defaultProjectUid ? false : true);
 				}				
 			}
 			return true;			

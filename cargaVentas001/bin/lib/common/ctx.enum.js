@@ -1989,7 +1989,8 @@ e.nature = {
   MESSBOX : 'MESSBOX',
   MESSBOX2 : 'MESSBOX2',
   POPUP : 'POPUP',
-  MESSBOXALERT : 'MESSBOXALERT'
+  MESSBOXALERT : 'MESSBOXALERT',
+  JAVA : 'JAVA'
 }
 
 /**
@@ -2004,13 +2005,15 @@ myApplication.start();
 * @enumeration e.navigator
 * @enum {string}
 * @path e.navigator
-* @var IE Internet Explorer
-* @var Firefox Firefox
 * @var Chrome Chrome
+* @var Edge Edge
+* @var Firefox Firefox
+* @var IE Internet Explorer
 * @readonly
 */
 e.navigator = {
   Chrome : 'chrome.exe',
+  Edge: 'msedge.exe',
   Firefox : 'firefox.exe',
   IE : 'iexplore.exe',
   Undefined : ''
@@ -5045,6 +5048,31 @@ e.SAPUI5.meetingType = {
   Discussions: 'Type08',
   OutofOffice: 'Type09',
   PrivateMeeting: 'Type03'
+};
+/**
+* @description Check Path Rules
+* @enumeration e.checkPathRules
+* @path e.checkPathRules
+* @enum {string}
+* @var None None
+* @var WorkFolder WorkFolder
+*/
+e.checkPathRules = {
+	None: 'None',
+	WorkFolder: 'WorkFolder'
+};
+
+/**
+* @description Escaping Type
+* @enumeration e.escapingType
+* @path e.escapingType
+* @enum {string}
+* @var HTML HTML
+* @var URL URL
+*/
+e.escapingType = {
+	HTML: 'HTML',
+	URL: 'URL'
 };
 
 

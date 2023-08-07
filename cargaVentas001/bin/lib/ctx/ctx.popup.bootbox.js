@@ -5241,6 +5241,8 @@ ctx.popupMeta = {
   canMove: { type: 'boolean', name: 'can move', description: 'popup can be moved', group: '5 - Container', value: true },
   topMost: { type: 'boolean', name: 'top most', description: 'top most', group: '5 - Container', value: false },
   IEHost: { type: 'boolean', name: 'IE host', description: 'hosting mode: ActiveX (false) or embedded IE (true)', group: '5 - Container', value: false },
+	ChromiumHost: { type: 'boolean', name: 'Chromium host', description: 'Chromium host', group: '5 - Container', value: true  },
+  debugMode: { type: 'boolean', name: 'Debug Mode', description: 'Debug Mode', group: '5 - Container', value: false },
   template: { type: e.popup.template, description: '', group: '0 - Html content', value: e.popup.template.None },
   header: { type: 'string', name: 'header', description: 'html header', group: '0 - Html content', value: '' },
   message: { type: 'string', name: 'message', description: 'html message', group: '0 - Html content', value: '' },
@@ -5319,7 +5321,8 @@ GLOBAL.events.START.on(function (ev) {
     message: undefined,
     icon: undefined,
     escape: undefined,
-    color: e.popup.color.None
+    color: e.popup.color.None,
+    ChromiumHost: true
   });
 
   // *** popupNone ***

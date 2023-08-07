@@ -36,7 +36,8 @@ GLOBAL.labels.set({
     date: { _comment:"Date", _type:"XFLD", en:"Date" },
     serialNumber: { _comment:"Serial number", _type:"XFLD", en:"Serial number" },
     environment: { _comment:"Environment", _type:"XFLD", en:"Environment" },
-    frameworkVersion: { _comment:"SDK Version", _type:"XFLD", en:"SDK version" }
+    frameworkVersion: { _comment:"SDK Version", _type:"XFLD", en:"SDK version" },
+    renderer: { _comment:"Renderer", _type:"XFLD", en:"Renderer" }
   },
 	env: {
 		envList: { _comment: "List of environments", _type: "XFLD", en: "Environments"},
@@ -49,7 +50,7 @@ GLOBAL.labels.set({
   systray: {
 	  agentStatus: {
       AwaitingAutomation: { _comment:"Awaiting to start an automation", _type:"XFLD", en:"Awaiting to start an automation" },
-      AwaitingProject: { _comment:"Awaiting project or job assignment ", _type:"XFLD", en:"Awaiting project assignment" },
+      AwaitingProject: { _comment:"Waiting to start a project", _type:"XFLD", en:"Waiting to start a project" },
 		  Idle : { _comment:"Idle agent status", _type:"XFLD", en:"Idle" },
 		  Ready : { _comment:"Ready agent status", _type:"XFLD", en:"Ready" },
 		  Paused : { _comment:"Idle agent status when we are with default project", _type:"XFLD", en:"Idle" },
@@ -164,6 +165,7 @@ ctx.systrayClass = function (name, parentProcess) {
 	/** @type {Array} */ var _agentStatusCallbacks = [];
 	
   /** @type {string} */ var _currentProjectUid = '';
+  /** @type {string} */ var _currentEnvironmentUid = '';
   /** @type {boolean} */ var _defaultMode = true;
 
 	/** @type {string} */ var _autoRestartKey = 'HKCU\\Software\\SAP\\Intelligent RPA\\Desktop Agent\\AutoRestart';
@@ -172,6 +174,8 @@ ctx.systrayClass = function (name, parentProcess) {
 	/** @type {string} */ var _lastAttendedProjectVersion = 'HKCU\\Software\\SAP\\Intelligent RPA\\Desktop Agent\\LastAttendedProjectVersion';
 	/** @type {string} */ var _lastAttendedProject = 'HKCU\\Software\\SAP\\Intelligent RPA\\Desktop Agent\\LastAttendedProject';
 	/** @type {string} */ var _lastAttendedProjectEnvironment = 'HKCU\\Software\\SAP\\Intelligent RPA\\Desktop Agent\\LastAttendedProjectEnvironment';	
+
+  /** @type {string} */ var _hasProxy = 'HKCU\\Software\\SAP\\Intelligent RPA\\Desktop Agent\\HasProxy';
 
 	/** @type {e.agentStatus} */ var _agentStatus = e.agentStatus.None;
 	/** @type {string} */ var _statusLabel = "";
@@ -252,6 +256,30 @@ ctx.systrayClass = function (name, parentProcess) {
     return res;
   }
 
+  var _checkWindowsPassword = function () {
+
+			if (_newMode && _popup) {
+				var indexOfFirst = ctx.options.fullUserName.indexOf('\\');
+				var domain = ctx.options.fullUserName.substring(0,indexOfFirst);
+				var isEnable = ctx.hasWindowsCredentials(domain,ctx.options.userName);
+				if (_popup.exist()) {
+					_popup.execScript('checkEnablePassword', isEnable);
+				}
+				return true;
+			}
+			return false;
+	}
+
+  var enableAll = function (enable) {
+			if (_newMode && _popup) {
+				if (_popup.exist()) {
+					_popup.execScript('disableOrEnableAllMenu', enable);
+				}
+				return true;
+			}
+			return false;
+		};
+
   var _loadSystraySettings = function () {
     var res = false;
 		if (_newMode && _popup) {
@@ -295,7 +323,7 @@ ctx.systrayClass = function (name, parentProcess) {
     //set variable _currentLanguage in popup
     _sendSDKVariableToPopup('setCurrentLanguage', GLOBAL.labels.GetI18NCurrentLang());
     // set variable _isTrialMode in popup
-    _systray.refreshTrialMode();
+    _systray.refreshPlanMode();
     var _autorestart = ctx.registry.get(_autoRestartKey);
 		if (_autorestart == undefined) {
 			_autorestart = true;
@@ -306,10 +334,26 @@ ctx.systrayClass = function (name, parentProcess) {
 			_autoswitch = false;
 			ctx.registry.set(_autoSwitchKey, _autoswitch);
 		}		
+
+    var hasProxy = ctx.registry.get(_hasProxy);
+		if (hasProxy === undefined) {
+				hasProxy = false;
+				ctx.registry.set(_hasProxy, hasProxy);
+		}
+
 		//set variable _isAutoRestartEnabled in popup
     _sendSDKVariableToPopup('setIsAutoRestartEnabled', _autorestart);
     //set variable _isAutoSwitchEnabled in popup
     _sendSDKVariableToPopup('setIsAutoSwitchEnabled', _autoswitch);
+    //set isAnonymous
+		_sendSDKVariableToPopup('setIsAnonymous', ctx.options.isAnonymous === 'true' ? true : false);
+    //set hasProxy
+    _sendSDKVariableToPopup('setHasProxySetting', hasProxy);
+	systray.enableWindowsPassword(ctx.compareVersion('2.0.10.19') >= 0 && _autoswitch && !ctx.isStudioUsed(), ctx.options.fullUserNameReal || ctx.options.fullUserName);
+
+    var userName = ctx.hasProxyCredentials();
+	systray.enableProxyPassword(ctx.compareVersion('2.0.14.27') >= 0 , hasProxy, userName);
+			
 		ctx.lockNoNotify = false;
   }
 
@@ -327,6 +371,14 @@ ctx.systrayClass = function (name, parentProcess) {
     _updateMenuItems();//must be after updateProjectList
 		ctx.lockNoNotify = false;
   }
+	
+	
+	var _updateUITenantList = function () {
+			ctx.lockNoNotify = true;
+			// *** force tenant list refresh ***
+			_systray.updateTenantList([]);
+			ctx.lockNoNotify = false;
+		};
 
   var _postUpdateUIDynamicElements = function () {
 		ctx.lockNoNotify = true;
@@ -369,6 +421,11 @@ ctx.systrayClass = function (name, parentProcess) {
 		ctx.lockNoNotify = false;
   }
 	
+	var _refreshTenantList = function () {
+			// 2. Update popup dynamic elements
+			_updateUITenantList();
+		};
+	
   /**
 	* @param {ctx.event} event
 	*/
@@ -390,7 +447,7 @@ ctx.systrayClass = function (name, parentProcess) {
 				// Do the switch (different if back to default or a real project)
 				if (event.data.value['packageVersionUid'] != '') {
 					// ctx.wkMng.SwitchProject(event.data.value['packageUid'], event.data.value['packageVersionUid']);
-					ctx.restartOnProject(event.data.value['packageUid'], event.data.value['packageVersionUid']);
+					ctx.restartOnProject(event.data.value['packageUid'], event.data.value['packageVersionUid'], event.data.value['environmentUid']);
 				}
 				else {
 					ctx.shutdownAgent(true, true);
@@ -449,9 +506,10 @@ ctx.systrayClass = function (name, parentProcess) {
       case 'RESTART_AGENT':
 				var lastAttendProjectPackageUid = ctx.registry.get(_lastAttendedProject);
         var lastAttendProjectPackageVersionUid = ctx.registry.get(_lastAttendedProjectVersion);
+        var lastAttendProjectEnvironmentUid = ctx.registry.get(_lastAttendedProjectEnvironment);
         var unattended = ctx.registry.get(_autoSwitchKey);
-        if ('undefined' !== typeof unattended && !unattended && 'undefined' !== typeof lastAttendProjectPackageUid && 'undefined' !== typeof lastAttendProjectPackageVersionUid && lastAttendProjectPackageUid !== '' && lastAttendProjectPackageVersionUid !== '') {
-          ctx.restartOnProject(lastAttendProjectPackageUid, lastAttendProjectPackageVersionUid);
+        if ('undefined' !== typeof unattended && !unattended && 'undefined' !== typeof lastAttendProjectPackageUid && 'undefined' !== typeof lastAttendProjectPackageVersionUid && 'undefined' !== typeof lastAttendProjectEnvironmentUid && lastAttendProjectPackageUid !== '' && lastAttendProjectPackageVersionUid !== '' && lastAttendProjectEnvironmentUid !== '') {
+          ctx.restartOnProject(lastAttendProjectPackageUid, lastAttendProjectPackageVersionUid, lastAttendProjectEnvironmentUid);
         } else {
           ctx.shutdownAgent(true, true);
         }
@@ -465,6 +523,34 @@ ctx.systrayClass = function (name, parentProcess) {
       case 'AUTO_RESTART_AGENT':
 				ctx.registry.set(_autoRestartKey, event.data.value['isAutoRestartEnabled']);
         break;
+      case 'PROXY_STORE':
+				ctx.registry.set(_hasProxy, event.data.value['isProxyChecked']);
+				if(!event.data.value['isProxyChecked'])
+					ctx.setProxyPassword('','');
+				break;
+			case 'SET_PROXY':
+				if (event.data.value['proxyPassword'] && event.data.value['proxyUser']) 
+					ctx.setProxyPassword(event.data.value['proxyUser'], event.data.value['proxyPassword']);
+				break;
+      case 'SET_WINDOWS_PASSWORD':
+					if(event.data.value['windowsPassword'])
+					{
+						if(event.data.value['windowsPassword'] === '-1')//remove password
+						{
+							ctx.setWindowsPassword("","","");
+						}
+						else{
+							if(event.data.value['windowsPassword'] !== "SAP-1-1-1-1-1-1") //code when setWindowsPassword already registered
+							{ 
+								var indexOfFirst = ctx.options.fullUserName.indexOf('\\');
+								var domain = ctx.options.fullUserName.substring(0,indexOfFirst);
+								var hasBeenSet = ctx.setWindowsPassword(domain,ctx.options.userName,event.data.value['windowsPassword']);
+								_systray.setPasswordFailed(!hasBeenSet);
+							}
+							
+						}
+					}
+					break;
       case 'HIDE_SYSTRAY':
         _popup.show(false);
         break;
@@ -475,6 +561,7 @@ ctx.systrayClass = function (name, parentProcess) {
         ctx.galaxyAPI.setMode( event.data.value['unattended'] ? e.agentMode.unattended : e.agentMode.attended);
         ctx.registry.set(_lastAttendedProjectVersion, '');
         ctx.registry.set(_lastAttendedProject, '');
+        ctx.registry.set(_lastAttendedProjectEnvironment, '');
         ctx.shutdownAgent(true, true);
         break;
       case 'OPEN_HELP_PORTAL':
@@ -1082,7 +1169,7 @@ systray.display( );
 					display: e.popup.display.Main,
 					systray: true,
 					XSlide: e.popup.position.None,
-	        resizable: false
+					resizable: false
 				}});
 				if (!_popup && POPUPS && ('undefined' !== typeof POPUPS.Systray)) {
 					_popup = POPUPS.Systray;
@@ -1095,10 +1182,12 @@ systray.display( );
 						visible: false 
 					});
 					_popup.wait(function(ev) {
-		        _injectGlobalLabelsIntoSystray();
+					 _injectGlobalLabelsIntoSystray();
 		        _loadSystraySettings();
 		        _initializeSystray();
+            _checkWindowsPassword();
 						_refreshContent();
+		       
 					});
 				}
 			});
@@ -1432,6 +1521,7 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
 			_aboutData = aboutData ? aboutData : [];
 			if (!_aboutData || (_aboutData.length == 0)) {
 				_aboutData = [];
+        var isAnonymous = ctx.options.isAnonymous === 'true' ? true : false;
 				_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.projectLabel, ctx.options.projectLabel || ctx.options.projectName], isProjectSpecific: true});
 				_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.projectVersion, ctx.options.projectVersion], isProjectSpecific: true});
 				_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.date, ctx.options.projectDate], isProjectSpecific: true});
@@ -1441,15 +1531,21 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
 					_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.studioVersion, ctx.options.productVersions['UnifiedStudio']], isProjectSpecific: false});
 				if (ctx.options.env != e.env.prod)
 					_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.environment, GLOBAL.labels.env[ctx.options.env]], isProjectSpecific: false});
-				if (ctx.options.fullUserName)
-					_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.user, ctx.options.fullUserName], isProjectSpecific: false});
+				if (ctx.options.fullUserName && ctx.options.userName)
+					_aboutData.push({id: 'userName', labelValuePair: [GLOBAL.labels.aboutPopup.user, isAnonymous ? ctx.options.userName.slice(0,25)+'...'  : ctx.options.fullUserNameReal], isProjectSpecific: false});//SAPMLIPA-18075 : Display anonymized username and computername
 				if (ctx.options.computerName)
-					_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.machine, ctx.options.computerName], isProjectSpecific: false});
+					_aboutData.push({id: 'machineName', labelValuePair: [GLOBAL.labels.aboutPopup.machine, isAnonymous ? ctx.options.computerName.slice(0,25)+'...' : ctx.options.computerNameReal], isProjectSpecific: false});
 				if (ctx.options.serverVersion)
 					_aboutData.push({labelValuePair: [GLOBAL.labels.aboutPopup.galaxyVersion, ctx.options.serverVersion], isProjectSpecific: false});
+        _aboutData.push({id: 'renderer', labelValuePair: [GLOBAL.labels.aboutPopup.renderer, ''], isProjectSpecific: false });
 			}
 			if (_popup.exist()) {
 				_popup.execScript('updateAbout', _aboutData);
+        /** SAPMLIPA-18361 : Display full anonymized username and machinename in tooltip on about page */
+        if (isAnonymous) {
+          _popup.execScript('setUserNameAnonymized', ctx.options.userName);
+          _popup.execScript('setMachineNameAnonymized', ctx.options.computerName);
+        }
 			}
 			res = true;
 		}
@@ -1550,6 +1646,59 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
     return res;
   }
 
+
+  /**
+		 * @method setPasswordFailed
+		 * @summary TBC...
+		 * @description
+		 * TBC...
+		 */
+		this.setPasswordFailed = function (hasFailed) {
+			var res = false;
+			if (_newMode && _popup) {
+				if (_popup.exist()) {
+					_popup.execScript('setPasswordFailed', hasFailed);
+				}
+				res = true;
+			}
+			return res;
+		};
+
+		/**
+		 * @method enableWindowsPassword
+		 * @summary TBC...
+		 * @description
+		 * TBC...
+		 */
+		this.enableWindowsPassword = function (enable, fullUserName) {
+			var res = false;
+			if (_newMode && _popup) {
+				if (_popup.exist()) {
+					_popup.execScript('enableWindowsPassword',enable, fullUserName);
+				}
+				res = true;
+			}
+			return res;
+		};
+
+		/**
+		 * @method enableProxyPassword
+		 * @summary TBC...
+		 * @description
+		 * TBC...
+		 */
+		this.enableProxyPassword = function (enable, hasProxy, userName) {
+			if (_newMode && _popup) {
+				if (_popup.exist()) {
+					_popup.execScript('enableProxyPassword', enable, hasProxy, userName);
+				}
+				return true;
+			}
+			return false;
+		};
+		
+
+
  /**
   * @method      updateProjectList
   * @summary     TBC...
@@ -1558,16 +1707,18 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
   * @path        ctx.systrayClass.updateProjectList
   * @param       {Array} [projectList]
   * @param       {string} [currentProjectUid]
+  * @param       {string} [currentEnvironmentUid]
   * @return      {boolean} Return value
   */
-  this.updateProjectList = function (projectList, currentProjectUid) {
+  this.updateProjectList = function (projectList, currentProjectUid, currentEnvironmentUid) {
     var res = false;    
 		ctx.lockNoNotify = true;
 		if (_newMode && _popup) {
 			_projectList = projectList || _projectList || [];
 			_currentProjectUid = currentProjectUid || _currentProjectUid || '';
+      _currentEnvironmentUid = currentEnvironmentUid || _currentEnvironmentUid || '';
 			if (_popup.exist()) {
-				_popup.execScript('updateProjectList', _projectList, _currentProjectUid);
+				_popup.execScript('updateProjectList', _projectList, _currentProjectUid, _currentEnvironmentUid);
 			}
 			res = true;
 		}
@@ -1619,7 +1770,7 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
 		ctx.lockNoNotify = true;
 		if (_newMode && _popup) {
 			_tenantList = tenantList || _tenantList || [];
-			if (_tenantList.length == 0) {
+			if (_tenantList.length == 0 ) {
 				_tenantList = ctx.tenantManager.getAll();
 			}
 			if (_popup.exist()) {
@@ -1676,6 +1827,18 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
 		ctx.lockNoNotify = false;
     return res;
   }
+	
+	
+	/**
+		* @method onRefreshTenantList
+		* @ignore
+		* @description
+		* Refresh Tenant list
+		*/
+		this.onRefreshTenantList = function () {
+			_refreshTenantList();
+		};
+
 
   /**
   * @method      onNoSelectTenantFile
@@ -1714,7 +1877,10 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
 		if (_newMode && _popup) {
 			if (job) {
 				if (_popup.exist()) {
+					var data = job.data;
+					job.data = null;
 					_popup.execScript('addToJobList', job);
+					job.data = data;
 				}
 				res = true;
 			}			
@@ -1770,14 +1936,18 @@ systray.showBalloon( ctx.options.projectLabel, "Ready for testing...", e.systray
 }
 
 /**
-  * @method      refreshTrialMode
+  * @method      refreshPlanMode
   * @ignore
   * @description
   * Sets the 'isTrialMode' variable in the systray popup
-  * @path        ctx.systrayClass.refreshTrialMode
+  * @path        ctx.systrayClass.refreshPlanMode
   */
-this.refreshTrialMode = function () {
-  return _sendSDKVariableToPopup('setIsTrialMode', ctx.getTrialMode());
+this.refreshPlanMode = function () {
+  if (ctx.compareVersion('2.0.15.17')>=0)
+		return _sendSDKVariableToPopup('setPlanMode', ctx.getPlanState());
+	else {
+		return _sendSDKVariableToPopup('setPlanMode', ctx.getTrialMode()?1:0);
+	}
 }
 
 /**
@@ -1850,4 +2020,17 @@ this.displayLoadingSpinner = function () {
   ctx.lockNoNotify = false;
   return res;
 }
+
+/**
+  * @method      getRunningStatus
+  * @ignore
+  * @description
+  * Get agent running status
+  * @path        ctx.systrayClass.getRunningStatus
+  * @return      {boolean} Return value
+  */
+ this.getRunningStatus = function () {
+  return _nbJobsRunning > 0;
+}
+
 };

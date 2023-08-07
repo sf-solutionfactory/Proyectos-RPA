@@ -21,7 +21,7 @@
  * @namespace ctx.options.sapui5
  * @path      ctx.options.sapui5
  */
-ctx.options.sapui5 = {
+ ctx.options.sapui5 = {
   /**
    * Trace level (see [[:lib:common:ctx.enum#enumeration_etracelevel|e.trace.level]])
    * @property    {e.trace.level} traceLevel
@@ -1061,7 +1061,9 @@ ctx.apiui5 = {
    * @method selectItems
    * @path   ctx.apiui5.selectItemByValue
    * @param {Object} [item] items
-   * @param {Object} [values] values
+   * @param {(Object | string)} [data] data
+	 * @param {boolean} [testExist] if true, test existence before setting value
+   * @param {boolean} [ifDefined] if true, set value only if defined
    * @return {string} result value
    */
   selectItemByValue: function(item, data, testExist, ifDefined){
@@ -1083,7 +1085,9 @@ ctx.apiui5 = {
    * @method selectItems
    * @path   ctx.apiui5.removeToken
    * @param {Object} [item] items
-   * @param {Object} [values] values
+   * @param {(Object |string)} [data] data
+	 * @param {boolean} [testExist] if true, test existence before setting value
+   * @param {boolean} [ifDefined] if true, set value only if defined
    * @return {string} result value
    */
   removeToken: function(item, data, testExist, ifDefined){
@@ -1135,7 +1139,146 @@ ctx.apiui5 = {
 		  var res = item.execScript('SAPUI5GetToken', timeout);
 		  ctx.notifyAction('SAPUI5GetToken', res, desc);
 		  return res;
-	}
+	},
+		/**
+   * Call the api ui5 control method.
+	 * @description
+   *  <wrap help> //Example://</wrap>
+   *  <code javascript> </code>
+   * @method setValue
+   * @path   ctx.apiui5.setServiceURL
+	 * @param {Object} item
+	 * @param {string} value value to be set
+	 * @param {string} serviceURL value to be set
+	 * @return {string} result value
+   */
+	setServiceURL: function(item, value, serviceURL){		
+    var res;
+    var desc = item.getObjectDescriptor();
+    var timeout = 60000;
+    ctx.noNotify = true;
+   
+     var properties = {size: '', type: ''};
+         
+    var fileData = ctx.fso.file.read(value, e.file.encoding.Binary, properties);
+         var fileName = value.replace(/^.*[\\\/]/, '');
+         var fileType = fileName.split('.').pop();
+         var fileDetails = {
+           fileName: fileName,
+           fileType: fileType,
+           fileCat: properties.type,
+           fileSize: properties.size,
+           mimeType: ctx.apiui5.getMimeType(fileType)
+         }
+         var _dom = new ActiveXObject('Microsoft.XMLDOM');
+         var elem = _dom.createElement('tmpCtxt');
+         elem.dataType = e.ajax.content.base64;
+         elem.nodeTypedValue = fileData;
+         var result = elem.text.replace(/[^A-Z\d+=\/]/gi, '');
+         res = item.execScript('SAPUI5FileUploaderTokenizer', result, fileDetails, serviceURL, timeout);  
+         ctx.notifyAction('SAPUI5FileUploaderTokenizer', res, desc);
+				
+         return res;
+ },
+
+ 	/**
+   * Call the api ui5 control method.
+	 * @description
+   *  <wrap help> //Example://</wrap>
+   *  <code javascript> </code>
+   * @method setValue
+   * @path   ctx.apiui5.uploadFile
+	 * @param {Object} item
+	 * @param {string} value value to be set
+	 * @param {string} serviceURL value to be set
+	 * @return {string} result value
+   */
+    uploadFile: function(item, value,serviceURL){
+      var res;
+      var desc = item.getObjectDescriptor();
+      var timeout = 60000;
+      ctx.noNotify = true;
+     
+       var properties = {size: '', type: ''};
+           
+      var fileData = ctx.fso.file.read(value, e.file.encoding.Binary, properties);
+           var fileName = value.replace(/^.*[\\\/]/, '');
+           var fileType = fileName.split('.').pop();
+           var fileDetails = {
+             fileName: fileName,
+             fileType: fileType,
+             fileCat: properties.type,
+             fileSize: properties.size,
+             mimeType: ctx.apiui5.getMimeType(fileType)
+           }
+           var _dom = new ActiveXObject('Microsoft.XMLDOM');
+           var elem = _dom.createElement('tmpCtxt');
+           elem.dataType = e.ajax.content.base64;
+           elem.nodeTypedValue = fileData;
+           var result = elem.text.replace(/[^A-Z\d+=\/]/gi, '');           
+           res = item.execScript('SAPUI5FileUploader', result, fileDetails, serviceURL, timeout);  
+
+           ctx.notifyAction('SAPUI5FileUploader', res, desc);
+           
+           return res;
+   },
+/**
+   * Call the api ui5 control method.
+	 * @description
+   *  <wrap help> //Example://</wrap>
+   *  <code javascript> </code>
+   * @method setValue
+   * @path   ctx.apiui5.getMimeType
+	 * @param {string} fileType type of file
+	 * @return {string} result value
+   */
+	getMimeType: function(fileType){
+				 var mimeTypes = {'323' : 'text/h323', '3g2': 'video/3gpp2', '3gp': 'video/3gpp', '3gp2': 'video/3gpp2', '3gpp': 'video/3gpp', '7z': 'application/x-7z-compressed', 'aa': 'audio/audible', 'AAC': 'audio/aac', 'aaf': 'application/octet-stream', 'aax': 'audio/vndaudibleaax', 'ac3': 'audio/ac3', 'aca': 'application/octet-stream', 'accda': 'application/msaccessaddin', 'accdb': 'application/msaccess', 'accdc': 'application/msaccesscab', 'accde': 'application/msaccess', 'accdr': 'application/msaccessruntime', 'accdt': 'application/msaccess', 'accdw': 'application/msaccesswebapplication', 'accft': 'application/msaccessftemplate', 'acx': 'application/internet-property-stream', 'AddIn': 'text/xml', 'ade': 'application/msaccess', 'adobebridge': 'application/x-bridge-url', 'adp': 'application/msaccess', 'ADT': 'audio/vnddlnaadts', 'ADTS': 'audio/aac', 'afm': 'application/octet-stream', 'ai': 'application/postscript', 'aif': 'audio/aiff', 'aifc': 'audio/aiff', 'aiff': 'audio/aiff', 'air': 'application/vndadobeair-application-installer-package+zip', 'amc': 'application/mpeg', 'anx': 'application/annodex', 'apk': 'application/vndandroidpackage-archive', 'application': 'application/x-ms-application', 'art': 'image/x-jg', 'asa': 'application/xml', 'asax': 'application/xml', 'ascx': 'application/xml', 'asd': 'application/octet-stream', 'asf': 'video/x-ms-asf', 'ashx': 'application/xml', 'asi': 'application/octet-stream', 'asm': 'text/plain', 'asmx': 'application/xml', 'aspx': 'application/xml', 'asr': 'video/x-ms-asf', 'asx': 'video/x-ms-asf', 'atom': 'application/atom+xml', 'au': 'audio/basic', 'avci': 'image/avci', 'avcs': 'image/avcs', 'avi': 'video/x-msvideo', 'avif': 'image/avif', 'avifs': 'image/avif-sequence', 'axa': 'audio/annodex', 'axs': 'application/olescript', 'axv': 'video/annodex', 'bas': 'text/plain', 'bcpio': 'application/x-bcpio', 'bin': 'application/octet-stream', 'bmp': 'image/bmp', 'c': 'text/plain', 'cab': 'application/octet-stream', 'caf': 'audio/x-caf', 'calx': 'application/vndms-officecalx', 'cat': 'application/vndms-pkiseccat', 'cc': 'text/plain', 'cd': 'text/plain', 'cdda': 'audio/aiff', 'cdf': 'application/x-cdf', 'cer': 'application/x-x509-ca-cert', 'cfg': 'text/plain', 'chm': 'application/octet-stream', 'class': 'application/x-java-applet', 'clp': 'application/x-msclip', 'cmd': 'text/plain', 'cmx': 'image/x-cmx', 'cnf': 'text/plain', 'cod': 'image/cis-cod', 'config': 'application/xml', 'contact': 'text/x-ms-contact', 'coverage': 'application/xml', 'cpio': 'application/x-cpio', 'cpp': 'text/plain', 'crd': 'application/x-mscardfile', 'crl': 'application/pkix-crl', 'crt': 'application/x-x509-ca-cert', 'cs': 'text/plain', 'csdproj': 'text/plain', 'csh': 'application/x-csh', 'csproj': 'text/plain', 'css': 'text/css', 'csv': 'text/csv', 'cur': 'application/octet-stream', 'cxx': 'text/plain', 'dat': 'application/octet-stream', 'datasource': 'application/xml', 'dbproj': 'text/plain', 'dcr': 'application/x-director', 'def': 'text/plain', 'deploy': 'application/octet-stream', 'der': 'application/x-x509-ca-cert', 'dgml': 'application/xml', 'dib': 'image/bmp', 'dif': 'video/x-dv', 'dir': 'application/x-director', 'disco': 'text/xml', 'divx': 'video/divx', 'dll': 'application/x-msdownload', 'dllconfig': 'text/xml', 'dlm': 'text/dlm', 'doc': 'application/msword', 'docm': 'application/vndms-worddocumentmacroEnabled12', 'docx': 'application/vndopenxmlformats-officedocumentwordprocessingmldocument', 'dot': 'application/msword', 'dotm': 'application/vndms-wordtemplatemacroEnabled12', 'dotx': 'application/vndopenxmlformats-officedocumentwordprocessingmltemplate', 'dsp': 'application/octet-stream', 'dsw': 'text/plain', 'dtd': 'text/xml', 'dtsConfig': 'text/xml', 'dv': 'video/x-dv', 'dvi': 'application/x-dvi', 'dwf': 'drawing/x-dwf', 'dwg': 'application/acad', 'dwp': 'application/octet-stream', 'dxf': 'application/x-dxf', 'dxr': 'application/x-director', 'eml': 'message/rfc822', 'emf': 'image/emf', 'emz': 'application/octet-stream', 'eot': 'application/vndms-fontobject', 'eps': 'application/postscript', 'es': 'application/ecmascript', 'etl': 'application/etl', 'etx': 'text/x-setext', 'evy': 'application/envoy', 'exe': 'application/vndmicrosoftportable-executable', 'execonfig': 'text/xml', 'f4v': 'video/mp4', 'fdf': 'application/vndfdf', 'fif': 'application/fractals', 'filters': 'application/xml', 'fla': 'application/octet-stream', 'flac': 'audio/flac', 'flr': 'x-world/x-vrml', 'flv': 'video/x-flv', 'fsscript': 'application/fsharp-script', 'fsx': 'application/fsharp-script', 'generictest': 'application/xml', 'gif': 'image/gif', 'gpx': 'application/gpx+xml', 'group': 'text/x-ms-group', 'gsm': 'audio/x-gsm', 'gtar': 'application/x-gtar', 'gz': 'application/x-gzip', 'h': 'text/plain', 'hdf': 'application/x-hdf', 'hdml': 'text/x-hdml', 'heic': 'image/heic', 'heics': 'image/heic-sequence', 'heif': 'image/heif', 'heifs': 'image/heif-sequence', 'hhc': 'application/x-oleobject', 'hhk': 'application/octet-stream', 'hhp': 'application/octet-stream', 'hlp': 'application/winhlp', 'hpp': 'text/plain', 'hqx': 'application/mac-binhex40', 'hta': 'application/hta', 'htc': 'text/x-component', 'htm': 'text/html', 'html': 'text/html', 'htt': 'text/webviewhtml', 'hxa': 'application/xml', 'hxc': 'application/xml', 'hxd': 'application/octet-stream', 'hxe': 'application/xml', 'hxf': 'application/xml', 'hxh': 'application/octet-stream', 'hxi': 'application/octet-stream', 'hxk': 'application/xml', 'hxq': 'application/octet-stream', 'hxr': 'application/octet-stream', 'hxs': 'application/octet-stream', 'hxt': 'text/html', 'hxv': 'application/xml', 'hxw': 'application/octet-stream', 'hxx': 'text/plain', 'i': 'text/plain', 'ical': 'text/calendar', 'icalendar': 'text/calendar', 'ico': 'image/x-icon', 'ics': 'text/calendar', 'idl': 'text/plain', 'ief': 'image/ief', 'ifb': 'text/calendar', 'iii': 'application/x-iphone', 'inc': 'text/plain', 'inf': 'application/octet-stream', 'ini': 'text/plain', 'inl': 'text/plain', 'ins': 'application/x-internet-signup', 'ipa': 'application/x-itunes-ipa', 'ipg': 'application/x-itunes-ipg', 'ipproj': 'text/plain', 'ipsw': 'application/x-itunes-ipsw', 'iqy': 'text/x-ms-iqy', 'isp': 'application/x-internet-signup', 'isma': 'application/octet-stream', 'ismv': 'application/octet-stream', 'ite': 'application/x-itunes-ite', 'itlp': 'application/x-itunes-itlp', 'itms': 'application/x-itunes-itms', 'itpc': 'application/x-itunes-itpc', 'IVF': 'video/x-ivf', 'jar': 'application/java-archive', 'java': 'application/octet-stream', 'jck': 'application/liquidmotion', 'jcz': 'application/liquidmotion', 'jfif': 'image/pjpeg', 'jnlp': 'application/x-java-jnlp-file', 'jpb': 'application/octet-stream', 'jpe': 'image/jpeg', 'jpeg': 'image/jpeg', 'jpg': 'image/jpeg', 'js': 'application/javascript', 'json': 'application/json', 'jsx': 'text/jscript', 'jsxbin': 'text/plain', 'latex': 'application/x-latex', 'library-ms': 'application/windows-library+xml', 'lit': 'application/x-ms-reader', 'loadtest': 'application/xml', 'lpk': 'application/octet-stream', 'lsf': 'video/x-la-asf', 'lst': 'text/plain', 'lsx': 'video/x-la-asf', 'lzh': 'application/octet-stream', 'm13': 'application/x-msmediaview', 'm14': 'application/x-msmediaview', 'm1v': 'video/mpeg', 'm2t': 'video/vnddlnampeg-tts', 'm2ts': 'video/vnddlnampeg-tts', 'm2v': 'video/mpeg', 'm3u': 'audio/x-mpegurl', 'm3u8': 'audio/x-mpegurl', 'm4a': 'audio/m4a', 'm4b': 'audio/m4b', 'm4p': 'audio/m4p', 'm4r': 'audio/x-m4r', 'm4v': 'video/x-m4v', 'mac': 'image/x-macpaint', 'mak': 'text/plain', 'man': 'application/x-troff-man', 'manifest': 'application/x-ms-manifest', 'map': 'text/plain', 'master': 'application/xml', 'mbox': 'application/mbox', 'mda': 'application/msaccess', 'mdb': 'application/x-msaccess', 'mde': 'application/msaccess', 'mdp': 'application/octet-stream', 'me': 'application/x-troff-me', 'mfp': 'application/x-shockwave-flash', 'mht': 'message/rfc822', 'mhtml': 'message/rfc822', 'mid': 'audio/mid', 'midi': 'audio/mid', 'mix': 'application/octet-stream', 'mk': 'text/plain', 'mk3d': 'video/x-matroska-3d', 'mka': 'audio/x-matroska', 'mkv': 'video/x-matroska', 'mmf': 'application/x-smaf', 'mno': 'text/xml', 'mny': 'application/x-msmoney', 'mod': 'video/mpeg', 'mov': 'video/quicktime', 'movie': 'video/x-sgi-movie', 'mp2': 'video/mpeg', 'mp2v': 'video/mpeg', 'mp3': 'audio/mpeg', 'mp4': 'video/mp4', 'mp4v': 'video/mp4', 'mpa': 'video/mpeg', 'mpe': 'video/mpeg', 'mpeg': 'video/mpeg', 'mpf': 'application/vndms-mediapackage', 'mpg': 'video/mpeg', 'mpp': 'application/vndms-project', 'mpv2': 'video/mpeg', 'mqv': 'video/quicktime', 'ms': 'application/x-troff-ms', 'msg': 'application/vndms-outlook', 'msi': 'application/octet-stream', 'mso': 'application/octet-stream', 'mts': 'video/vnddlnampeg-tts', 'mtx': 'application/xml', 'mvb': 'application/x-msmediaview', 'mvc': 'application/x-miva-compiled', 'mxf': 'application/mxf', 'mxp': 'application/x-mmxp', 'nc': 'application/x-netcdf', 'nsc': 'video/x-ms-asf', 'nws': 'message/rfc822', 'ocx': 'application/octet-stream', 'oda': 'application/oda', 'odb': 'application/vndoasisopendocumentdatabase', 'odc': 'application/vndoasisopendocumentchart', 'odf': 'application/vndoasisopendocumentformula', 'odg': 'application/vndoasisopendocumentgraphics', 'odh': 'text/plain', 'odi': 'application/vndoasisopendocumentimage', 'odl': 'text/plain', 'odm': 'application/vndoasisopendocumenttext-master', 'odp': 'application/vndoasisopendocumentpresentation', 'ods': 'application/vndoasisopendocumentspreadsheet', 'odt': 'application/vndoasisopendocumenttext', 'oga': 'audio/ogg', 'ogg': 'audio/ogg', 'ogv': 'video/ogg', 'ogx': 'application/ogg', 'one': 'application/onenote', 'onea': 'application/onenote', 'onepkg': 'application/onenote', 'onetmp': 'application/onenote', 'onetoc': 'application/onenote', 'onetoc2': 'application/onenote', 'opus': 'audio/ogg', 'orderedtest': 'application/xml', 'osdx': 'application/opensearchdescription+xml', 'otf': 'application/font-sfnt', 'otg': 'application/vndoasisopendocumentgraphics-template', 'oth': 'application/vndoasisopendocumenttext-web', 'otp': 'application/vndoasisopendocumentpresentation-template', 'ots': 'application/vndoasisopendocumentspreadsheet-template', 'ott': 'application/vndoasisopendocumenttext-template', 'oxps': 'application/oxps', 'oxt': 'application/vndopenofficeorgextension', 'p10': 'application/pkcs10', 'p12': 'application/x-pkcs12', 'p7b': 'application/x-pkcs7-certificates', 'p7c': 'application/pkcs7-mime', 'p7m': 'application/pkcs7-mime', 'p7r': 'application/x-pkcs7-certreqresp', 'p7s': 'application/pkcs7-signature', 'pbm': 'image/x-portable-bitmap', 'pcast': 'application/x-podcast', 'pct': 'image/pict', 'pcx': 'application/octet-stream', 'pcz': 'application/octet-stream', 'pdf': 'application/pdf', 'pfb': 'application/octet-stream', 'pfm': 'application/octet-stream', 'pfx': 'application/x-pkcs12', 'pgm': 'image/x-portable-graymap', 'pic': 'image/pict', 'pict': 'image/pict', 'pkgdef': 'text/plain', 'pkgundef': 'text/plain', 'pko': 'application/vndms-pkipko', 'pls': 'audio/scpls', 'pma': 'application/x-perfmon', 'pmc': 'application/x-perfmon', 'pml': 'application/x-perfmon', 'pmr': 'application/x-perfmon', 'pmw': 'application/x-perfmon', 'png': 'image/png', 'pnm': 'image/x-portable-anymap', 'pnt': 'image/x-macpaint', 'pntg': 'image/x-macpaint', 'pnz': 'image/png', 'pot': 'application/vndms-powerpoint', 'potm': 'application/vndms-powerpointtemplatemacroEnabled12', 'potx': 'application/vndopenxmlformats-officedocumentpresentationmltemplate', 'ppa': 'application/vndms-powerpoint', 'ppam': 'application/vndms-powerpointaddinmacroEnabled12', 'ppm': 'image/x-portable-pixmap', 'pps': 'application/vndms-powerpoint', 'ppsm': 'application/vndms-powerpointslideshowmacroEnabled12', 'ppsx': 'application/vndopenxmlformats-officedocumentpresentationmlslideshow', 'ppt': 'application/vndms-powerpoint', 'pptm': 'application/vndms-powerpointpresentationmacroEnabled12', 'pptx': 'application/vndopenxmlformats-officedocumentpresentationmlpresentation', 'prf': 'application/pics-rules', 'prm': 'application/octet-stream', 'prx': 'application/octet-stream', 'ps': 'application/postscript', 'psc1': 'application/PowerShell', 'psd': 'application/octet-stream', 'psess': 'application/xml', 'psm': 'application/octet-stream', 'psp': 'application/octet-stream', 'pst': 'application/vndms-outlook', 'pub': 'application/x-mspublisher', 'pwz': 'application/vndms-powerpoint', 'qht': 'text/x-html-insertion', 'qhtm': 'text/x-html-insertion', 'qt': 'video/quicktime', 'qti': 'image/x-quicktime', 'qtif': 'image/x-quicktime', 'qtl': 'application/x-quicktimeplayer', 'qxd': 'application/octet-stream', 'ra': 'audio/x-pn-realaudio', 'ram': 'audio/x-pn-realaudio', 'rar': 'application/x-rar-compressed', 'ras': 'image/x-cmu-raster', 'rat': 'application/rat-file', 'rc': 'text/plain', 'rc2': 'text/plain', 'rct': 'text/plain', 'rdlc': 'application/xml', 'reg': 'text/plain', 'resx': 'application/xml', 'rf': 'image/vndrn-realflash', 'rgb': 'image/x-rgb', 'rgs': 'text/plain', 'rm': 'application/vndrn-realmedia', 'rmi': 'audio/mid', 'rmp': 'application/vndrn-rn_music_package', 'rmvb': 'application/vndrn-realmedia-vbr', 'roff': 'application/x-troff', 'rpm': 'audio/x-pn-realaudio-plugin', 'rqy': 'text/x-ms-rqy', 'rtf': 'application/rtf', 'rtx': 'text/richtext', 'rvt': 'application/octet-stream', 'ruleset': 'application/xml', 's': 'text/plain', 'safariextz': 'application/x-safari-safariextz', 'scd': 'application/x-msschedule', 'scr': 'text/plain', 'sct': 'text/scriptlet', 'sd2': 'audio/x-sd2', 'sdp': 'application/sdp', 'sea': 'application/octet-stream', 'searchConnector-ms': 'application/windows-search-connector+xml', 'setpay': 'application/set-payment-initiation', 'setreg': 'application/set-registration-initiation', 'settings': 'application/xml', 'sgimb': 'application/x-sgimb', 'sgml': 'text/sgml', 'sh': 'application/x-sh', 'shar': 'application/x-shar', 'shtml': 'text/html', 'sit': 'application/x-stuffit', 'sitemap': 'application/xml', 'skin': 'application/xml', 'skp': 'application/x-koan', 'sldm': 'application/vndms-powerpointslidemacroEnabled12', 'sldx': 'application/vndopenxmlformats-officedocumentpresentationmlslide', 'slk': 'application/vndms-excel', 'sln': 'text/plain', 'slupkg-ms': 'application/x-ms-license', 'smd': 'audio/x-smd', 'smi': 'application/octet-stream', 'smx': 'audio/x-smd', 'smz': 'audio/x-smd', 'snd': 'audio/basic', 'snippet': 'application/xml', 'snp': 'application/octet-stream', 'sql': 'application/sql', 'sol': 'text/plain', 'sor': 'text/plain', 'spc': 'application/x-pkcs7-certificates', 'spl': 'application/futuresplash', 'spx': 'audio/ogg', 'src': 'application/x-wais-source', 'srf': 'text/plain', 'SSISDeploymentManifest': 'text/xml', 'ssm': 'application/streamingmedia', 'sst': 'application/vndms-pkicertstore', 'stl': 'application/vndms-pkistl', 'sv4cpio': 'application/x-sv4cpio', 'sv4crc': 'application/x-sv4crc', 'svc': 'application/xml', 'svg': 'image/svg+xml', 'swf': 'application/x-shockwave-flash', 'step': 'application/step', 'stp': 'application/step', 't': 'application/x-troff', 'tar': 'application/x-tar', 'tcl': 'application/x-tcl', 'testrunconfig': 'application/xml', 'testsettings': 'application/xml', 'tex': 'application/x-tex', 'texi': 'application/x-texinfo', 'texinfo': 'application/x-texinfo', 'tgz': 'application/x-compressed', 'thmx': 'application/vndms-officetheme', 'thn': 'application/octet-stream', 'tif': 'image/tiff', 'tiff': 'image/tiff', 'tlh': 'text/plain', 'tli': 'text/plain', 'toc': 'application/octet-stream', 'tr': 'application/x-troff', 'trm': 'application/x-msterminal', 'trx': 'application/xml', 'ts': 'video/vnddlnampeg-tts', 'tsv': 'text/tab-separated-values', 'ttf': 'application/font-sfnt', 'tts': 'video/vnddlnampeg-tts', 'txt': 'text/plain', 'u32': 'application/octet-stream', 'uls': 'text/iuls', 'user': 'text/plain', 'ustar': 'application/x-ustar', 'vb': 'text/plain', 'vbdproj': 'text/plain', 'vbk': 'video/mpeg', 'vbproj': 'text/plain', 'vbs': 'text/vbscript', 'vcf': 'text/x-vcard', 'vcproj': 'application/xml', 'vcs': 'text/plain', 'vcxproj': 'application/xml', 'vddproj': 'text/plain', 'vdp': 'text/plain', 'vdproj': 'text/plain', 'vdx': 'application/vndms-visioviewer', 'vml': 'text/xml', 'vscontent': 'application/xml', 'vsct': 'text/xml', 'vsd': 'application/vndvisio', 'vsi': 'application/ms-vsi', 'vsix': 'application/vsix', 'vsixlangpack': 'text/xml', 'vsixmanifest': 'text/xml', 'vsmdi': 'application/xml', 'vspscc': 'text/plain', 'vss': 'application/vndvisio', 'vsscc': 'text/plain', 'vssettings': 'text/xml', 'vssscc': 'text/plain', 'vst': 'application/vndvisio', 'vstemplate': 'text/xml', 'vsto': 'application/x-ms-vsto', 'vsw': 'application/vndvisio', 'vsx': 'application/vndvisio', 'vtt': 'text/vtt', 'vtx': 'application/vndvisio', 'wasm': 'application/wasm', 'wav': 'audio/wav', 'wave': 'audio/wav', 'wax': 'audio/x-ms-wax', 'wbk': 'application/msword', 'wbmp': 'image/vndwapwbmp', 'wcm': 'application/vndms-works', 'wdb': 'application/vndms-works', 'wdp': 'image/vndms-photo', 'webarchive': 'application/x-safari-webarchive', 'webm': 'video/webm', 'webp': 'image/webp','webtest': 'application/xml', 'wiq': 'application/xml', 'wiz': 'application/msword', 'wks': 'application/vndms-works', 'WLMP': 'application/wlmoviemaker', 'wlpginstall': 'application/x-wlpg-detect', 'wlpginstall3': 'application/x-wlpg3-detect', 'wm': 'video/x-ms-wm', 'wma': 'audio/x-ms-wma', 'wmd': 'application/x-ms-wmd', 'wmf': 'application/x-msmetafile', 'wml': 'text/vndwapwml', 'wmlc': 'application/vndwapwmlc', 'wmls': 'text/vndwapwmlscript', 'wmlsc': 'application/vndwapwmlscriptc', 'wmp': 'video/x-ms-wmp', 'wmv': 'video/x-ms-wmv', 'wmx': 'video/x-ms-wmx', 'wmz': 'application/x-ms-wmz', 'woff': 'application/font-woff', 'woff2': 'application/font-woff2', 'wpl': 'application/vndms-wpl', 'wps': 'application/vndms-works', 'wri': 'application/x-mswrite', 'wrl': 'x-world/x-vrml', 'wrz': 'x-world/x-vrml', 'wsc': 'text/scriptlet', 'wsdl': 'text/xml', 'wvx': 'video/x-ms-wvx', 'x': 'application/directx', 'xaf': 'x-world/x-vrml', 'xaml': 'application/xaml+xml', 'xap': 'application/x-silverlight-app', 'xbap': 'application/x-ms-xbap', 'xbm': 'image/x-xbitmap', 'xdr': 'text/plain', 'xht': 'application/xhtml+xml', 'xhtml': 'application/xhtml+xml', 'xla': 'application/vndms-excel', 'xlam': 'application/vndms-exceladdinmacroEnabled12', 'xlc': 'application/vndms-excel', 'xld': 'application/vndms-excel', 'xlk': 'application/vndms-excel', 'xll': 'application/vndms-excel', 'xlm': 'application/vndms-excel', 'xls': 'application/vndms-excel', 'xlsb': 'application/vndms-excelsheetbinarymacroEnabled12', 'xlsm': 'application/vndms-excelsheetmacroEnabled12', 'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'xlt': 'application/vndms-excel', 'xltm': 'application/vndms-exceltemplatemacroEnabled12', 'xltx': 'application/vndopenxmlformats-officedocumentspreadsheetmltemplate', 'xlw': 'application/vndms-excel', 'xml': 'text/xml', 'xmp': 'application/octet-stream', 'xmta': 'application/xml', 'xof': 'x-world/x-vrml', 'XOML': 'text/plain', 'xpm': 'image/x-xpixmap', 'xps': 'application/vndms-xpsdocument', 'xrm-ms': 'text/xml', 'xsc': 'application/xml', 'xsd': 'text/xml', 'xsf': 'text/xml', 'xsl': 'text/xml', 'xslt': 'text/xml', 'xsn': 'application/octet-stream', 'xss': 'application/xml', 'xspf': 'application/xspf+xml', 'xtp': 'application/octet-stream', 'xwd': 'image/x-xwindowdump', 'z': 'application/x-compress', 'zip': 'application/zip'}; 
+
+				 var type = mimeTypes[fileType];
+				 if(!type){
+				   type = mimeTypes['txt'];
+				 }
+				 return type;
+},
+/**
+   * Call the api ui5 control method.
+	 * @description
+   *  <wrap help> //Example://</wrap>
+   *  <code javascript> </code>
+   * @method setValue
+   * @path   ctx.apiui5.setFile
+	 * @param {Object} item
+	 * @param {string} value value to be set
+	 * @return {string} result value
+   */
+ setFile:function(item, value){
+  var res;
+      var desc = item.getObjectDescriptor();
+      var timeout = item.parent.getPageWaitReadyTimeout();
+      ctx.noNotify = true;
+     
+       var properties = {size: '', type: ''};
+           
+      var fileData = ctx.fso.file.read(value, e.file.encoding.Binary, properties);
+           var fileName = value.replace(/^.*[\\\/]/, '');
+           var fileType = fileName.split('.').pop();
+           var fileDetails = {
+             fileName: fileName,
+             fileType: fileType,
+             fileCat: properties.type,
+             fileSize: properties.size,
+             mimeType: ctx.apiui5.getMimeType(fileType)
+           }
+           var _dom = new ActiveXObject('Microsoft.XMLDOM');
+           var elem = _dom.createElement('tmpCtxt');
+           elem.dataType = e.ajax.content.base64;
+           elem.nodeTypedValue = fileData;
+           var result = elem.text.replace(/[^A-Z\d+=\/]/gi, '');
+           res = item.execScript('SAPUI5BrowseFile', result, fileDetails,timeout);
+           ctx.notifyAction('setFile', res, desc);
+           return res;	
+  }		
 }
 /**
  * @ignore
@@ -1152,7 +1295,6 @@ ctx.apiui5.common={
    * @method get
    * @path   ctx.apiui5.common.get
    * @param {Object} item
-   * @return {string} result value
    */
 	get:function(item){
 		item.get=function(){
@@ -1290,40 +1432,42 @@ ctx.customTypes.SAPUI5 = {
     /**
     * @ignore
     * @method SAPUI5PageWaitReady
+		* @suppress {missingProperties}
     */
-    function SAPUI5PageWaitReady(eventName, timeout) {
-			var checkBusy = function(){
-				var coreBusy = false;
-				var isBusy = false;
+    function SAPUI5PageWaitReady(eventName, oDesc, timeout) {
+      var startTimer = 0;
+      var checkBusy = function () {
+         var coreBusy = false;
+         var isBusy = false;
+   
 				window['sap']['ui'].core.Element.registry.forEach(function(oControl) { 
 					try{
 						if(oControl.getBusy() === true)
 						{
 							isBusy = true;
 						}
-					}catch(er){}
+					} catch(er){}
 				});
-				if(window['sap']['ui'].core.BusyIndicator.oDomRef){
-					coreBusy = (window['sap']['ui'].core.BusyIndicator.oDomRef.offsetHeight > 0)? true: false;
-				}
-				if(!isBusy && !coreBusy) {
-					clearInterval(checkBusyTimer);
-					checkBusyTimer = false;
-					Contextor.Event(eventName, '', '', '', -1, -1, '');
-					return '';
-				}
-			}
-			var checkBusyTimer = setInterval(function(){ checkBusy() }, 1000);
-			if(timeout && timeout > 1000){
-				setTimeout(function() 
-				{
-					if(checkBusyTimer !== false){
-						clearInterval(checkBusyTimer); 
-						return '';
-					}
-				}, timeout);
-			}
-    } ;
+   
+         if (window['sap']['ui'].core.BusyIndicator.oDomRef) {
+            coreBusy = (window['sap']['ui'].core.BusyIndicator.oDomRef.offsetHeight > 0) ? true : false;
+         }
+   
+         if (!isBusy && !coreBusy) {
+            clearInterval(checkBusyTimer);
+            checkBusyTimer = false;
+            // @ts-ignore
+            Contextor.Event(eventName, oDesc.appliName, oDesc.pageName, oDesc.itemName, oDesc.appliInst, oDesc.pageInst, '');
+         }
+      }
+   
+      var checkBusyTimer = setInterval(function () {
+         if (timeout && timeout > startTimer) {
+            startTimer = startTimer + 1000;
+            checkBusy();
+         }
+      }, 1000);
+   }
 
     /**
     * @ignore
@@ -1798,81 +1942,70 @@ ctx.customTypes.SAPUI5 = {
       * @method SAPUI5Convert
       * @param  {Object} data
       */
-		 function SAPUI5Convert(data) {
-			 try{
-				 var item = eval("new " + data.type + "()");
-				 
-				 if(data.type == "sap.ui.core.Item"
-					 || data.type == "sap.tnt.NavigationListItem"
-					 || data.type == "sap.m.Token"
-					 || data.type == "sap.m.SegmentedButtonItem")
-				 {
-					 item['setText'](data.text);
-					 item['setKey'](data.key);
-				 }
-				 if(data.type == "sap.suite.ui.commons.taccount.TAccountItem")
-				 {
-					 item.setValue(data.value);
-				 }
-				 return item;
-			 }
-			 catch(err)
-			 {
-			 	 return undefined;
-			 }
-		 }
+      function SAPUI5Convert(data) {
+        try{
+          var item = null;
+          switch (data.type) {
+             case "sap.ui.core.Item" :  item = eval("new sap.ui.core.Item()"); break;
+             case "sap.tnt.NavigationListItem" :  item = eval("new sap.tnt.NavigationListItem()"); break;
+             case "sap.m.Token" :  item = eval("new sap.m.Token()"); break;
+             case "sap.m.SegmentedButtonItem" : item = eval("new sap.m.SegmentedButtonItem()"); break;
+             default: item = null; 
+          }
+          
+         if(item) {
+           if(data.type == "sap.ui.core.Item" || data.type == "sap.tnt.NavigationListItem" || data.type == "sap.m.Token" || data.type == "sap.m.SegmentedButtonItem") {
+                item['setText'](data.text);
+                item['setKey'](data.key);
+           }
+           if(data.type == "sap.suite.ui.commons.taccount.TAccountItem") {
+               item.setValue(data.value);
+           }
+           return item;
+         }
+         else{
+           return undefined;
+         }
+        }
+        catch(err)
+        {
+           return undefined;
+        }
+      }
       /**
       * @ignore
       * @method SAPUI5InputSet
       * @param  {HTMLElement} element DOM element
       * @param  {string} value Value to be set
       * @param {number} [timeout] optional Timeout for execution
+		 	* @suppress {missingProperties}
       */
      function SAPUI5InputSet( element, value, timeout) {
      	
       var oControl = CtxFindUI5Control(element);
-			 
       if (oControl) {
-        try {
-					if(element.type == 'checkbox' 
-						|| element.type == 'radio')
-					{
-						oControl.setSelected(value);
-					}
-					if(element.id.includes('slider'))
-					{
-						oControl.setRange(value);
-					}
-					if(oControl["getMetadata"]()["_sClassName"]==="sap.m.DateRangeSelection" ||oControl["getMetadata"]()["_sClassName"]==="sap.m.DatePicker"|| oControl["getMetadata"]()["_sClassName"]==="sap.m.DateTimePicker"){
-						return SAPUI5InputSetDate(element,value);
-					}
-					if(oControl.getShowSuggestion()){
-						oControl.setValue(value); 
-						var itemsRetern=oControl.getSuggestionItems().filter(function(item){return item.getText().includes(oControl.getValue())})
-						if(itemsRetern.length===0)
-						{		
-								oControl.setValue();
-							}
-						if(itemsRetern.length>1){   //if more than one item is retun then first item get selected.
-							oControl.setValue(itemsRetern[0].getText());
-						}
-						oControl.fireChange({value: oControl.getValue()});
-						oControl['getModel']().refresh(true);
-					}
-					else
-					{
-          	oControl.setValue(value);
-						oControl.fireChange({value: oControl.getValue()});
-						if(oControl.getValueState()==="Error"){
-							return oControl.getValueState();
-						}
-            oControl['getModel']().refresh(true);
-					}
-        } catch (oErr) {
-			SAPUI5InputSetDEFAULT(element, value);   
-        }				 
+          try {
+              if (element.type === 'checkbox' || element.type === 'radio') {
+                  oControl.setSelected(value);
+              }
+              if (element.id.includes('slider')) {
+                  oControl.setRange(value);
+              }
+              if (oControl.getMetadata()._sClassName === 'sap.m.DateRangeSelection' || oControl.getMetadata()._sClassName === 'sap.m.DatePicker' || oControl.getMetadata()._sClassName === 'sap.m.DateTimePicker') {
+                  return SAPUI5InputSetDate(element, value);
+              }
+              oControl.setValue(value);
+              oControl.fireChange({ value: oControl.getValue() });
+              if (oControl.getValueState() === 'Error') {
+                  return oControl.getValueState();
+              }
+              oControl.getModel().refresh(true);
+
+          } catch (oErr) {
+              SAPUI5InputSetDEFAULT(element, value);
+          }
       } else {
-        SAPUI5InputSetDEFAULT(element, value);   
+          SAPUI5InputSetDEFAULT(element, value);
       }    
       return '';
     }
@@ -2142,6 +2275,7 @@ ctx.customTypes.SAPUI5 = {
    * @param  {HTMLElement} element DOM element
    * @param {Object} values to be selected
    * @param {number} [timeout] optional Timeout for execution
+	 * @suppress {missingProperties}
    */
 function SAPUI5ComboboxSelectItemByValue(element, values, timeout) {
     var oControl = CtxFindUI5Control(element);    
@@ -2171,6 +2305,7 @@ function SAPUI5ComboboxSelectItemByValue(element, values, timeout) {
    * @param  {HTMLElement} element DOM element
    * @param {Object} values to be selected
    * @param {number} [timeout] optional Timeout for execution
+		* @suppress {missingProperties}
    */
 function SAPUI5MultiInputRemoveToken(element, values, timeout) {
     var oControl = CtxFindUI5Control(element);    
@@ -2195,7 +2330,7 @@ function SAPUI5MultiInputRemoveToken(element, values, timeout) {
    * @ignore
    * @method SAPUI5InputSetDATE
    * @param  {HTMLElement} element DOM element
-   * @param {Object} values to be selected
+   * @param {(Object| string)} values to be selected
    */
 function SAPUI5InputSetDate(element, values){
 	 var oControl = CtxFindUI5Control(element);    
@@ -2251,7 +2386,7 @@ function SAPUI5InputSetDate(element, values){
 * @ignore
 * @method SAPUI5GetToken
 * @param  {HTMLElement} element DOM element
-* @param {Object} values to be selected
+* @param {number} [timeout] optional Timeout for execution
 */
 function SAPUI5GetToken(element, timeout){
 	 var oControl = CtxFindUI5Control(element);    
@@ -2271,13 +2406,19 @@ function SAPUI5GetToken(element, timeout){
 * @ignore
 * @method SAPUI5MultiInputAddToken
 * @param  {HTMLElement} element DOM element
-* @param {Object} values to be selected
+* @param {Object} data to be selected
+* @param {number} [timeout] optional Timeout for execution
 */
 function SAPUI5MultiInputAddToken(element, data, timeout){
 	 var oControl = CtxFindUI5Control(element);    
     if (oControl) {
 	    try {
-				oControl["setValue"](data.text.trim());
+				if(data.text!=undefined){
+					oControl["setValue"](data.text.trim());
+				}
+				else{
+					oControl["setValue"](data.trim());
+				}
 				oControl["onsapfocusleave"](jQuery.Event( "keydown", { keyCode: 9 } ));
 				oControl["onsapenter"](jQuery.Event( "keydown", { keyCode: 13 } ));
 				var res=oControl["getTokens"]();
@@ -2292,6 +2433,392 @@ function SAPUI5MultiInputAddToken(element, data, timeout){
     }
     return '';
 }
+/**
+* @ignore
+* @method SAPUI5GetUserName
+* @param {number} [timeout] optional Timeout for execution
+*/	   
+function SAPUI5GetUserName(timeout){
+	var res=' '; 
+	try{
+		res= eval("new "+"sap.ushell.services.UserInfo().getUser().getFullName()");
+	}
+	catch(oErr){
+		res="Error : Unable to access User Name";	
+	}	
+    return res;
+}
+/**
+* @ignore
+* @method SAPUI5GetUserId
+* @param {number} [timeout] optional Timeout for execution
+*/	   
+function SAPUI5GetUserId(timeout){
+	var res=' '; 
+	try{
+		res= eval("new "+"sap.ushell.services.UserInfo().getUser().getId()");
+	}
+	catch(oErr){
+		res="Error : Unable to access User Id";	
+	}	
+    return res;
+}
+/**
+* @ignore
+* @method SAPUI5GetUserEmail
+* @param {number} [timeout] optional Timeout for execution
+*/	   
+function SAPUI5GetUserEmail(timeout){
+	var res=' '; 
+	try{
+		res= eval("new "+"sap.ushell.services.UserInfo().getUser().getEmail()");
+	}
+	catch(oErr){
+		res="Error : Unable to access User Email";	
+	}	
+    return res;
+}
+/**
+* @ignore
+* @method SAPUI5FileUploaderTokenizer
+* @param  {HTMLElement} element DOM element
+* @param {string} value absolute path of the file to upload
+* @param {string} [fileDetails] optional FileType for execution
+* @param {string} [serviceURL] optional urlpath to upload
+* @param {number} [timeout] optional Timeout for execution
+* @suppress {missingProperties|checkTypes}
+*/
+function SAPUI5FileUploaderTokenizer(element, value, fileDetails, serviceURL, timeout) {	
+  var res = ' ';  
+  var bControl = CtxFindUI5Control(element);
+  var oControl = bControl.getParent();
+  var oModel = oControl.getModel();
+  var sCSRFToken;
+  if (oModel) {
+      sCSRFToken = oModel.getSecurityToken();
+  }
+
+  var busyIndicator = eval("new" + " sap.m.BusyDialog({showCancelButton: false})");
+  var fileData;
+  var uploadURL = oControl.getUploadUrl();
+
+  if (!uploadURL) {
+      if (serviceURL) {
+          uploadURL = serviceURL;
+          console.log(uploadURL);
+      }
+      else {
+          return "ServiceURL not found!!";
+      }
+  }
+  var tokenURL = uploadURL.substring(0, uploadURL.lastIndexOf("/")); 
+
+  if (fileDetails.fileCat === 1) {
+      var byteCharacters = atob(value);
+      var byteNumbers = new Array(byteCharacters.length);
+      for (var i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      var byteArray = new Uint8Array(byteNumbers);
+      var blob = new Blob([byteArray], { type: fileDetails.mimeType });
+      fileData = new File([blob], fileDetails.fileName, { type: fileDetails.mimeType });
+  } else if (fileDetails.fileCat === 2) {
+      var blob = new Blob([value], { type: fileDetails.mimeType });
+      fileData = new File([blob], fileDetails.fileName, { type: fileDetails.mimeType });
+  }
+
+  var oDialogElems = document.querySelectorAll(".sapMDialog");
+  var oDialogEle;
+  var oDialog;
+  var oTokenizerElement;
+  if (oDialogElems) {
+      oDialogElems.forEach(function (itemDialog) {
+          if (itemDialog.contains(element)) {
+              oDialogEle = itemDialog;
+              oDialog = CtxFindUI5Control(oDialogEle);
+              return;
+          }
+      });
+  }
+
+  if (oDialogEle) {
+      oTokenizerElement = oDialogEle.querySelector(".sapMTokenizer");
+  }
+
+  var oUploadCollection = oControl.getParent().getParent().getParent();
+  if (oUploadCollection.getMetadata().getElementName() === "sap.m.UploadCollection") {
+      var oFileItem = eval("new" + " sap.m.UploadCollectionItem( {fileName: fileDetails.fileName,mimeType:fileDetails.mimeType})");
+      oUploadCollection.addItem(oFileItem);
+  }
+
+
+  if (oDialogEle && oDialogEle.contains(element) && oTokenizerElement && oDialogEle.contains(oTokenizerElement)) {
+
+      var sFileType = oDialog.getParent().getController()._oUploadDialogController._selectedFileType;
+      var sFileREcognURL = tokenURL + "/FileForRecognitionSet";
+      $.ajax({
+          url: sFileREcognURL,
+          type: 'POST',
+          headers: { "x-csrf-token": sCSRFToken, "slug": "fileType=" + sFileType },
+          data: fileData,
+          contentType: false,
+          processData: false,
+          async: false,
+          success: function (Data, Status, Request) {
+
+              //The Data returned as XML Document, get the JSON Data and convert it Object (oData)
+              var oJsonData = Data.querySelector("JSON").textContent;
+              var oData = JSON.parse(oJsonData);
+              var oRecFormats = oData.FORMATS;
+              //get the reference of Tokenizer control
+              var oTokenControl = CtxFindUI5Control(oTokenizerElement);
+
+              oTokenControl.removeAllTokens();
+
+              //Add oRecFormats as tokens in Tokenizer(oTokenControl)
+              oRecFormats.forEach(function (itemFormat) {
+                  var k = itemFormat["BANKSTATEMENT_FORMAT"];
+                  var t = itemFormat["ELECTRONICBANKSTMNTFORMATNAME"];
+                  var tokenData = { key: k, text: t, type: "sap.m.Token" };
+                  var token = SAPUI5Convert(tokenData);
+                  oTokenControl.addToken(token);
+              });
+              oTokenControl.fireTokenChange();	
+						res = 'Success';
+          },
+          error: function (error) {
+              busyIndicator.close();
+              res = "Error:Tokenizer POST Call ERROR"
+          }
+      });
+
+      }	
+
+	else{
+		res = 'INFO: Not a tokenizer element';
+	}
+
+  return res;
+}
+
+
+/**
+   * @ignore
+   * @method SAPUI5FileUploader
+   * @param  {HTMLElement} element DOM element
+   * @param {string} value absolute path of the file to upload
+   * @param {string} [fileDetails] optional FileType for execution
+   * @param {string} [serviceURL] optional urlpath to upload
+   * @param {number} [timeout] optional Timeout for execution
+   * @suppress {missingProperties|checkTypes}
+   */
+function SAPUI5FileUploader(element, value, fileDetails, serviceURL, timeout) {
+  var res = ' ';
+  var bControl = CtxFindUI5Control(element);
+  var oControl = bControl.getParent();
+  //var oModel = oControl.getModel();
+  var sCSRFToken;
+  // if (oModel) {
+  //     sCSRFToken = oModel.getSecurityToken();
+  // }
+
+  var busyIndicator = eval("new" + " sap.m.BusyDialog({showCancelButton: false})");
+  var headers = [];
+  var headerData = {};
+  var fileData;
+  var uploadURL = oControl.getUploadUrl();
+
+  if (!uploadURL) {
+      if (serviceURL) {
+          uploadURL = serviceURL;
+          console.log(uploadURL);
+      }
+      else {
+          return "ServiceURL not found!!";
+      }
+  }
+  var tokenURL = uploadURL.substring(0, uploadURL.lastIndexOf("/"));
+
+  if (fileDetails.fileCat === 1) {
+      var byteCharacters = atob(value);
+      var byteNumbers = new Array(byteCharacters.length);
+      for (var i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      var byteArray = new Uint8Array(byteNumbers);
+      var blob = new Blob([byteArray], { type: fileDetails.mimeType });
+      fileData = new File([blob], fileDetails.fileName, { type: fileDetails.mimeType });
+  } else if (fileDetails.fileCat === 2) {
+      var blob = new Blob([value], { type: fileDetails.mimeType });
+      fileData = new File([blob], fileDetails.fileName, { type: fileDetails.mimeType });
+  }
+
+  
+
+   var oUploadCollection = oControl.getParent().getParent().getParent();
+  
+
+  //function to set request headers
+  function setRequestHeaders() {
+      oControl.fireUploadStart({ "fileName": fileDetails.fileName, "requestHeaders": headers });
+
+      headers.forEach(function (header) {
+          var name = header.name;
+          headerData[name] = header.value;
+      })
+  }
+
+  //function to call for file upload post
+  function fnUpload() {
+      setRequestHeaders()
+      $.ajax({
+          url: tokenURL,
+          type: 'GET',
+          headers: { "x-csrf-token": "Fetch" },
+          contentType: false,
+          processData: false,
+          async: false,
+          success: function (data, textStatus, request) {
+              sCSRFToken = request.getResponseHeader("x-csrf-token");
+              headerData['x-csrf-token'] = sCSRFToken;
+              if (headerData["slug"] === undefined || headerData["slug"] === "") {
+                  headerData["slug"] = fileDetails.fileName;
+              }
+
+              $.ajax({
+                  url: uploadURL,
+                  type: 'POST',
+                  headers: headerData,
+                  data: fileData,
+                  contentType: false,
+                  processData: false,
+                  async: false,
+                  success: function (data, textStatus, request) {
+                      busyIndicator.close();
+                      if (!oUploadCollection.getInstantUpload()) {
+                          oUploadCollection.fireChange({ files: oUploadCollection.getItems() });
+                      };
+
+
+                      var sResponse;
+                      var sResponseRaw;
+                      var mHeaders = {};
+                      var sPlainHeader;
+                      var aHeaderLines;
+                      var iHeaderIdx;
+                      var sReadyState;
+                      if (data.contentType) {
+                          sResponse = data.documentElement.textContent;
+                      }
+                      sResponseRaw = request.responseText;
+                      sReadyState = request.readyState;
+                      busyIndicator.close();
+                      sPlainHeader = request.getAllResponseHeaders();
+                      if (sPlainHeader) {
+                          aHeaderLines = sPlainHeader.split("\u000d\u000a");
+                          for (var i = 0; i < aHeaderLines.length; i++) {
+                              if (aHeaderLines[i]) {
+                                  iHeaderIdx = aHeaderLines[i].indexOf("\u003a\u0020");
+                                  mHeaders[aHeaderLines[i].substring(0, iHeaderIdx)] = aHeaderLines[i].substring(iHeaderIdx + 2);
+                              }
+                          }
+                      }
+
+                      if (oUploadCollection && oUploadCollection.getMetadata().getElementName() === "sap.m.UploadCollection") {
+                          oUploadCollection.getModel().refresh(true);
+                      } else {
+                          oControl.fireUploadComplete({
+                              "fileName": fileDetails.fileName,
+                              "headers": mHeaders,
+                              "response": sResponse,
+                              "responseRaw": sResponseRaw,
+                              "readyStateXHR": sReadyState,
+                              "status": request.status,
+                              "requestHeaders": headerData
+                          });
+                      }
+											
+											var indexOfUploadedFile = mHeaders.location.split('(\'')[1];
+											indexOfUploadedFile = indexOfUploadedFile.split('\')')[0];
+											res = indexOfUploadedFile;
+                  },
+                  error: function (error) {
+                      busyIndicator.close();
+                      res = "Error:FILE UPLOAD ERROR, Message: " + error.responseText;
+                  }
+              });
+          },
+          error: function (error) {
+              busyIndicator.close();
+              res = "Error:XCSRF TOKEN FETCH ERROR, Message: " + error.responseText;
+          }
+      });
+
+  }
+
+  fnUpload();
+  return res;
+}
+  /**
+     * @ignore
+     * @method SAPUI5BrowseFile
+     * @param  {HTMLElement} element DOM element
+     * @param {string} value absolute path of the file to upload
+     * @param {string} fileDetails optional FileType for execution
+     * @param {number} [timeout] optional Timeout for execution
+     * @suppress {missingProperties|checkTypes}
+     */
+  function SAPUI5BrowseFile(element, value, fileDetails, timeout){
+		var res='';
+		var dFlag = false;
+		var oControl = CtxFindUI5Control(element);
+		if(!oControl.FUEl){
+			 oControl= oControl.getParent();
+		}
+		if(oControl.FUEl){
+			//Check FileType
+		var acceptedFileType=oControl.getFileType();
+		if(oControl.getFileType()!=undefined && oControl.getFileType().length>0){
+			var fileTypeCheck=acceptedFileType.includes(fileDetails.fileType);
+			if(!fileTypeCheck){
+				oControl.setValue('',true);
+				oControl.fireTypeMissmatch({fileName:fileDetails.name ,fileType: fileDetails.fileType,mimeType: fileDetails.mimeType})
+				return res='Error: File Type Missmatch';
+			}
+		}
+    var oModel = oControl.getModel();
+    var sCSRFToken;
+    if(oModel){
+      sCSRFToken = oModel.getSecurityToken();
+    }
+		var headers = [];
+		var headerData = {};
+		var fileData;
+		if(fileDetails.fileCat === 1){
+			var byteCharacters = atob(value);
+			var byteNumbers = new Array(byteCharacters.length);
+			for (var i = 0; i < byteCharacters.length; i++) {
+    		byteNumbers[i] = byteCharacters.charCodeAt(i);
+			}
+			var byteArray = new Uint8Array(byteNumbers);
+			var blob = new Blob([byteArray], {type: fileDetails.mimeType});
+			fileData = new File([blob], fileDetails.fileName,{type: fileDetails.mimeType});
+			}else if(fileDetails.fileCat === 2){
+			var blob = new Blob([value], {type: fileDetails.mimeType});
+			fileData = new File([blob], fileDetails.fileName,{type: fileDetails.mimeType});
+		}
+		var dataTransfer = new DataTransfer();
+		dataTransfer.items.add(fileData)
+		oControl.FUEl.files=dataTransfer.files;
+		oControl.setValue(fileData.name,true);
+		oControl.fireChange({id:oControl.getId(), newValue:oControl.getValue(), files:oControl.oFilePath});
+		}
+		else {
+			res ='Error : Not a FileBrowse Control';
+		}
+		return res;
+	}
+  
   var map = {
     CtxPolyfill: CtxPolyfill,
     CtxFindUI5Control: CtxFindUI5Control,
@@ -2324,7 +2851,13 @@ function SAPUI5MultiInputAddToken(element, data, timeout){
 	  SAPUI5MultiInputRemoveToken: SAPUI5MultiInputRemoveToken,
    	SAPUI5InputSetDate:SAPUI5InputSetDate,
 		SAPUI5GetToken:SAPUI5GetToken,
-		SAPUI5MultiInputAddToken:SAPUI5MultiInputAddToken
+		SAPUI5MultiInputAddToken:SAPUI5MultiInputAddToken,
+	  SAPUI5GetUserName:SAPUI5GetUserName,
+	  SAPUI5GetUserId:SAPUI5GetUserId,
+	  SAPUI5GetUserEmail:SAPUI5GetUserEmail,
+		SAPUI5FileUploaderTokenizer:SAPUI5FileUploaderTokenizer,
+    SAPUI5FileUploader:SAPUI5FileUploader,
+    SAPUI5BrowseFile:SAPUI5BrowseFile
   };
      
     return {name: functionName, func:map[functionName], execute: bExecute}
@@ -2371,6 +2904,9 @@ ctx.customTypes.SAPUI5.page = function(page) {
   page.customMethods.CtxPolyfill = ctx.customTypes.SAPUI5.findCodeToInject('CtxPolyfill', true);
   page.customMethods.SAPUI5PageWaitReadyRRAPI = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5PageWaitReadyRRAPI');
   page.customMethods.SAPUI5PageWaitReady = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5PageWaitReady');
+page.customMethods.SAPUI5GetUserName = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5GetUserName');		
+ page.customMethods.SAPUI5GetUserId = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5GetUserId');
+ page.customMethods.SAPUI5GetUserEmail = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5GetUserEmail');
 
 	/**
   * The Record Replay API status.
@@ -2408,30 +2944,78 @@ ctx.customTypes.SAPUI5.page = function(page) {
   * @description
   *  <wrap help> //Example://</wrap>
   *  <code javascript> </code>
-  * @method waitReady
-  * @param {function(ctx.event)} callback callback to be called when page is closed or absent
-  * @param {number} [delay] optional delay to wait before calling the callback (default is 0)
-  * @return {Object} an object to be provided to 'ctx.off()' to disable listening
-  * @path   ctx.customTypes.SAPUI5.button.click
+	* @method waitReady
+	* @path ctx.page.waitReady
+	* @param {function(ctx.event)} callback callback to be called when page is closed or absent
+	* @param {number} [delay] optional delay to wait before calling the callback (default is 0)
   */
-  page.waitReady = function(callback, delay) {
+  page.waitReady = function (callback, delay) {
+
     ctx.noNotify = true;
     var desc = page.getObjectDescriptor();
     ctx.notifyAction('waitReady', '', desc);
-	  var res = page.wait(function(evWait) {
-          // 1. Add calback on Page to handle evReadyPage event
-          var offReady = page.events['evReadyPage'].on(function(ev) {
-						if ((ev.appliInst == desc.appliInst || desc.appliInst ==- -1 ) && (ev.pageInst == desc.pageInst || desc.pageInst === -1) && ('function' === typeof callback)) {
-              // Execute callback
-              callback(ev);
-              //stop listen to evReadyPage event
-              ctx.off(offReady);
-            }
-          });
-					page.execScript(this.getPageWaitReadyFunctionName(), 'evReadyPage', 60000);
-		}, delay);
-    return '';
+
+    if (typeof callback === 'function') {
+      return page.wait(function () {
+        // 1. Add calback on Page to handle evReadyPage event
+        var offReady = page.events['evReadyPage'].on(function (ev) {
+          //stop listen to evReadyPage event
+          ctx.off(offReady);
+          if ((ev.appliInst === desc.appliInst || desc.appliInst === -1 ) && (ev.pageInst === desc.pageInst || desc.pageInst === -1)) {
+            // Execute callback
+            callback(ev);
+          }
+        });
+        page.execScript(this.getPageWaitReadyFunctionName(), 'evReadyPage', desc, 60000);
+      }, delay);
+    }
   }
+	
+	/**
+  * Returns User Name
+  * @description
+  *  <wrap help> //Example://</wrap>
+  *  <code javascript> </code>
+  * @method getUserName
+  * @return {string} return S4 User Name
+  */
+page.getUserName=function(){
+    ctx.noNotify = true;
+    var desc = page.getObjectDescriptor();
+    ctx.notifyAction('getUserName', '', desc);
+    var res = page.execScript('SAPUI5GetUserName', 60000);
+	return res;
+	}
+	/**
+  * Returns User ID
+  * @description
+  *  <wrap help> //Example://</wrap>
+  *  <code javascript> </code>
+  * @method getUserID
+  * @return {string} return S4 User ID
+  */
+page.getUserId=function(){
+    ctx.noNotify = true;
+    var desc = page.getObjectDescriptor();
+    ctx.notifyAction('getUserId', '', desc);
+    var res = page.execScript('SAPUI5GetUserId', 60000);
+	return res;
+    }
+	/**
+  * Returns User Email
+  * @description
+  *  <wrap help> //Example://</wrap>
+  *  <code javascript> </code>
+  * @method getUserEmail
+  * @return {string} return S4 User Email
+  */
+page.getUserEmail=function(){
+    ctx.noNotify = true;
+    var desc = page.getObjectDescriptor();
+    ctx.notifyAction('getUserEmail', '', desc);
+    var res = page.execScript('SAPUI5GetUserEmail', 60000);
+	return res;
+    }
 }
 
 /**
@@ -3041,7 +3625,7 @@ ctx.customTypes.SAPUI5.multiinput = function(item) {
    * @param {boolean} [ifDefined] if true, remove value only if defined
    * @return {string} result value
    */
-  item.removeToken = function (item, data, testExist, ifDefined) {
+  item.removeToken = function ( data, testExist, ifDefined) {
     return ctx.apiui5.removeToken(item, data, testExist, ifDefined);
   };
 	/**
@@ -3057,7 +3641,7 @@ ctx.customTypes.SAPUI5.multiinput = function(item) {
 	 * @return {string} result value
    */
 	item.get=function (testExist, ifDefined) {
-    return ctx.apiui5.getToken(item, testExist, ifDefined);
+    return ctx.apiui5.getToken(item, testExist);
   };
 }
 /**
@@ -3940,3 +4524,72 @@ ctx.customTypes.SAPUI5.icon = function(item) {
 		return ctx.apiui5.click(item);
   };
 }
+  /**
+ * @ignore
+ * SAPUI5 UploadCollection
+ * @class       ctx.customTypes.SAPUI5.uploadCollection
+ * @constructor
+ * @path        ctx.customTypes.SAPUI5.uploadCollection
+ */
+ctx.customTypes.SAPUI5.uploadCollection = function(item){
+  item.parent.customMethods.CtxFindUI5Control = ctx.customTypes.SAPUI5.findCodeToInject('CtxFindUI5Control');
+  item.parent.customMethods.SAPUI5InputSetRRAPI = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5InputSetRRAPI');
+  item.parent.customMethods.SAPUi5RecordReplayStatus =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUi5RecordReplayStatus');
+  item.parent.customMethods.SAPUI5CallFunction =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5CallFunction');
+  item.parent.customMethods.SAPUI5FileUploaderTokenizer =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5FileUploaderTokenizer'); 
+  item.parent.customMethods.SAPUI5FileUploader =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5FileUploader');
+	item.parent.customMethods.SAPUI5Convert =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5Convert');
+ /**
+  * Click on a Add file button and uload file from file system.
+  * @description
+  *  <wrap help> //Example://</wrap>
+  *  <code javascript> SAPS4.pHome.ouploadCollection.uploadFile( );</code>
+  * @method uploadFile
+  * @return {string} result
+  * @path   ctx.customTypes.SAPUI5.uploadCollection.uploadFile
+  */
+  item.uploadFile = function (value, serviceURL) {
+			return ctx.apiui5.uploadFile(item, value,serviceURL);
+};
+
+ /**
+  * Click on a Add file button and uload file from file system.
+  * @description
+  *  <wrap help> //Example://</wrap>
+  *  <code javascript> SAPS4.pHome.ouploadCollection.addFileForUpload( );</code>
+  * @method addFileForUpload
+  * @return {string} result
+  * @path   ctx.customTypes.SAPUI5.uploadCollection.addFileForUpload
+  */
+
+item.addFileForUpload = function(value,serviceURL){
+  return ctx.apiui5.setServiceURL(item, value,serviceURL);
+};
+}
+  /**
+ * @ignore
+ * SAPUI5 filebrowser
+ * @class       ctx.customTypes.SAPUI5.filebrowser
+ * @constructor
+ * @path        ctx.customTypes.SAPUI5.filebrowser
+ */
+   ctx.customTypes.SAPUI5.filebrowser = function(item){
+    item.parent.customMethods.CtxFindUI5Control = ctx.customTypes.SAPUI5.findCodeToInject('CtxFindUI5Control');
+    item.parent.customMethods.SAPUI5InputSetRRAPI = ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5InputSetRRAPI');
+    item.parent.customMethods.SAPUi5RecordReplayStatus =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUi5RecordReplayStatus');
+    item.parent.customMethods.SAPUI5CallFunction =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5CallFunction');
+    item.parent.customMethods.SAPUI5BrowseFile =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5BrowseFile');
+    item.parent.customMethods.SAPUI5Convert =  ctx.customTypes.SAPUI5.findCodeToInject('SAPUI5Convert');
+   /**
+    * Click on a Add file button and uload file from file system.
+    * @description
+    *  <wrap help> //Example://</wrap>
+    *  <code javascript> SAPS4.pHome.ouploadCollection.browseFile("C:\\Users\\Pictures\\crossword.png");</code>
+    * @method browseFile
+    * @return {string} result
+    * @path   ctx.customTypes.SAPUI5.uploadCollection.browseFile
+    */
+    item.browseFile = function (value) {
+        return ctx.apiui5.setFile(item, value);
+  };
+  }

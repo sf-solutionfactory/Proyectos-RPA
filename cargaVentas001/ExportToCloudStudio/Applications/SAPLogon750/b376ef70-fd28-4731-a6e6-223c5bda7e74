@@ -1,0 +1,284 @@
+{
+  "technology": "SAPGUI",
+  "name": "GuiModalWindow - Salir del sistema",
+  "processName": "SAPLOGON.EXE",
+  "paramName": "Salir del sistema",
+  "parentTree": "wnd[1]",
+  "capturedData": {
+    "Text": "Salir del sistema",
+    "Type": "GuiModalWindow",
+    "Name": "wnd[1]",
+    "Changeable": "true",
+    "ContainerType": "true",
+    "Deepness": "0",
+    "TAG": "GuiModalWindow",
+    "X": "153",
+    "Y": "309",
+    "CX": "510",
+    "CY": "234",
+    "EXE": "SAPLOGON.EXE"
+  },
+  "items": [
+    {
+      "capturedData": {
+        "Text": "Salir del sistema",
+        "Type": "GuiModalWindow",
+        "Name": "wnd[1]",
+        "Changeable": "true",
+        "ContainerType": "true",
+        "Deepness": "0",
+        "TAG": "GuiModalWindow",
+        "X": "153",
+        "Y": "309",
+        "CX": "510",
+        "CY": "234",
+        "EXE": "SAPLOGON.EXE"
+      },
+      "boundingRect": {
+        "top": 0,
+        "left": 0,
+        "width": 510,
+        "height": 234
+      },
+      "title": "GuiModalWindow - Salir del sistema",
+      "nameKey": "Name",
+      "controlType": "GuiModalWindow",
+      "prefix": null,
+      "text": "Salir del sistema",
+      "textKey": "Text",
+      "paramName": "Salir del sistema",
+      "parentTree": "wnd[1]",
+      "isVisible": "True",
+      "isPreferred": "False",
+      "children": [
+        {
+          "capturedData": {
+            "Id": "tbar[0]",
+            "Type": "GuiToolbar",
+            "Name": "tbar[0]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiToolbar",
+            "X": "54",
+            "Y": "250",
+            "CX": "100",
+            "CY": "100"
+          },
+          "boundingRect": {
+            "top": -59,
+            "left": -99,
+            "width": 100,
+            "height": 100
+          },
+          "title": "GuiToolbar",
+          "nameKey": "Name",
+          "controlType": "GuiToolbar",
+          "prefix": "tb",
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiToolbar",
+          "parentTree": "tbar[0]|wnd[1]",
+          "isVisible": "True",
+          "isPreferred": "False"
+        },
+        {
+          "capturedData": {
+            "Id": "usr",
+            "Type": "GuiUserArea",
+            "Name": "usr",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "1",
+            "TAG": "GuiUserArea",
+            "X": "170",
+            "Y": "366",
+            "CX": "476",
+            "CY": "160"
+          },
+          "boundingRect": {
+            "top": 57,
+            "left": 17,
+            "width": 476,
+            "height": 160
+          },
+          "title": "GuiUserArea",
+          "nameKey": "Name",
+          "controlType": "GuiUserArea",
+          "prefix": null,
+          "text": null,
+          "textKey": "Text",
+          "paramName": "GuiUserArea",
+          "parentTree": "usr|wnd[1]",
+          "isVisible": "True",
+          "isPreferred": "False",
+          "children": [
+            {
+              "capturedData": {
+                "Id": "usr/txtSPOP-TEXTLINE1",
+                "Text": "Se perderán los datos no grabados.",
+                "Type": "GuiTextField",
+                "Name": "SPOP-TEXTLINE1",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "234",
+                "Y": "386",
+                "CX": "359",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 77,
+                "left": 81,
+                "width": 359,
+                "height": 25
+              },
+              "title": "GuiTextField - Se perderán los datos no grabados.",
+              "nameKey": "Name",
+              "controlType": "GuiTextField",
+              "prefix": "ed",
+              "text": "Se perderán los datos no grabados.",
+              "textKey": "Text",
+              "paramName": "Se perderán los datos no grabados.",
+              "parentTree": "SPOP-TEXTLINE1|usr|wnd[1]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/lbl%_AUTOTEXT001",
+                "Type": "GuiLabel",
+                "IconName": "M_QUES",
+                "Name": "%_AUTOTEXT001",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiLabel",
+                "X": "174",
+                "Y": "418",
+                "CX": "39",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 109,
+                "left": 21,
+                "width": 39,
+                "height": 25
+              },
+              "title": "GuiLabel",
+              "nameKey": "Name",
+              "controlType": "GuiLabel",
+              "prefix": null,
+              "text": null,
+              "textKey": "Text",
+              "paramName": "GuiLabel",
+              "parentTree": "%_AUTOTEXT001|usr|wnd[1]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/txtSPOP-TEXTLINE2",
+                "Text": "¿Desea salir del sistema?",
+                "Type": "GuiTextField",
+                "Name": "SPOP-TEXTLINE2",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "234",
+                "Y": "418",
+                "CX": "359",
+                "CY": "25"
+              },
+              "boundingRect": {
+                "top": 109,
+                "left": 81,
+                "width": 359,
+                "height": 25
+              },
+              "title": "GuiTextField - ¿Desea salir del sistema?",
+              "nameKey": "Name",
+              "controlType": "GuiTextField",
+              "prefix": "ed",
+              "text": "¿Desea salir del sistema?",
+              "textKey": "Text",
+              "paramName": "¿Desea salir del sistema?",
+              "parentTree": "SPOP-TEXTLINE2|usr|wnd[1]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/btnSPOP-OPTION1",
+                "Text": "Sí",
+                "Type": "GuiButton",
+                "Name": "SPOP-OPTION1",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "234",
+                "Y": "481",
+                "CX": "119",
+                "CY": "27"
+              },
+              "boundingRect": {
+                "top": 172,
+                "left": 81,
+                "width": 119,
+                "height": 27
+              },
+              "title": "GuiButton - Sí",
+              "nameKey": "Name",
+              "controlType": "GuiButton",
+              "prefix": "bt",
+              "text": "Sí",
+              "textKey": "Text",
+              "paramName": "Sí",
+              "parentTree": "SPOP-OPTION1|usr|wnd[1]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            },
+            {
+              "capturedData": {
+                "Id": "usr/btnSPOP-OPTION2",
+                "Text": "No",
+                "Type": "GuiButton",
+                "Name": "SPOP-OPTION2",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "354",
+                "Y": "481",
+                "CX": "119",
+                "CY": "27"
+              },
+              "boundingRect": {
+                "top": 172,
+                "left": 201,
+                "width": 119,
+                "height": 27
+              },
+              "title": "GuiButton - No",
+              "nameKey": "Name",
+              "controlType": "GuiButton",
+              "prefix": "bt",
+              "text": "No",
+              "textKey": "Text",
+              "paramName": "No",
+              "parentTree": "SPOP-OPTION2|usr|wnd[1]",
+              "isVisible": "True",
+              "isPreferred": "False"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "rootPath": [
+    0
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "cargaSAP_Diaria",
+  "identifier": "cargaSAP_Diaria",
+  "type": "automation",
+  "visibility": true,
+  "maxDuration": 12000,
+  "triggerable": true,
+  "header": {},
+  "inputs": [
+    {
+      "identifier": "InputData",
+      "type": "complex",
+      "typeName": "rootData",
+      "dimension": 0
+    }
+  ],
+  "outputs": [
+    {
+      "identifier": "OutputData",
+      "type": "complex",
+      "typeName": "rootData",
+      "typeValue": "rootData",
+      "dimension": 0
+    }
+  ]
+}

@@ -773,22 +773,64 @@ ctx.SAPScripting = (function() {
 		this.clickToolbarMenuButtonByText = function(buttonId, text){
 			var desc = itemOrPage.getObjectDescriptor();
 			ctx.notifyAction('clickToolbarMenuButtonByText', '', desc);
-			ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressContextButton', buttonId,'','','');
-			return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectMenuItemByText', text,'','','');
+			ctx.actionApp(desc, 'Lock Refresh', 'LOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			ctx.actionApp(desc, 'Hold Session', 'HOLDSESSION', desc.itemFullName, '', '', '', '');
+			try
+			{
+				ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressContextButton', buttonId,'','','');
+				return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectMenuItemByText', text,'','','');
+			}
+			catch (err)
+			{
+				ctx.log(err.toString());
+			}
+			finally
+			{
+				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
+				ctx.actionApp(desc, 'Lock Refresh', 'UNLOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			}
 		};
 		
 		this.clickToolbarMenuButtonByFunCode = function (buttonId, functionCode ) {
 			var desc = itemOrPage.getObjectDescriptor();
 			ctx.notifyAction('clickToolbarMenuButtonByFunCode', '', desc);
-			ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressContextButton', buttonId,'','','');
-			return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItem', functionCode,'','','');
+			ctx.actionApp(desc, 'Lock Refresh', 'LOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			ctx.actionApp(desc, 'Hold Session', 'HOLDSESSION', desc.itemFullName, '', '', '', '');
+			try
+			{
+				ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressContextButton', buttonId,'','','');
+				return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItem', functionCode,'','','');
+			}
+			catch (err)
+			{
+				ctx.log(err.toString());
+			}
+			finally
+			{
+				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
+				ctx.actionApp(desc, 'Lock Refresh', 'UNLOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			}
 		};
 		
 		this.clickToolbarMenuButtonByPosition = function (buttonId, pos) {
 			var desc = itemOrPage.getObjectDescriptor();
 			ctx.notifyAction('clickToolbarMenuButtonByPosition', '', desc);
-			ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressContextButton', buttonId,'','','');
-			return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByPosition', pos,'','','');
+			ctx.actionApp(desc, 'Lock Refresh', 'LOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			ctx.actionApp(desc, 'Hold Session', 'HOLDSESSION', desc.itemFullName, '', '', '', '');
+			try
+			{
+				ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressContextButton', buttonId,'','','');
+				return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByPosition', pos,'','','');
+			}
+			catch (err)
+			{
+				ctx.log(err.toString());
+			}
+			finally
+			{
+				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
+				ctx.actionApp(desc, 'Lock Refresh', 'UNLOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			}
 		};
 		
 		/**		
@@ -1586,7 +1628,7 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 				}
 			}
 			catch (err)	{
-				ctx.log(err);
+				ctx.log(err.toString());
 			}
 			finally {
 				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
@@ -1647,7 +1689,7 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 				}
 			}
 			catch (err) {
-				ctx.log(err);
+				ctx.log(err.toString());
 			}
 			finally {
 				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
@@ -1707,7 +1749,7 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 				}
 			}
 			catch (err) {
-				ctx.log(err);
+				ctx.log(err.toString());
 			}
 			finally {
 				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
@@ -2016,8 +2058,22 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 		this.clickToolbarMenuButtonByText = function (buttonId, text) {
 			var desc = itemOrPage.getObjectDescriptor();
 			ctx.notifyAction('clickToolbarMenuButtonByText', '', desc);
-			ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressToolbarContextButton', buttonId,'','','');
-			return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByText', text,'','','');
+			ctx.actionApp(desc, 'Lock Refresh', 'LOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			ctx.actionApp(desc, 'Hold Session', 'HOLDSESSION', desc.itemFullName, '', '', '', '');
+			try
+			{
+				ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressToolbarContextButton', buttonId,'','','');
+				return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByText', text,'','','');
+			}
+			catch (err)
+			{
+				ctx.log(err.toString());
+			}
+			finally
+			{
+				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
+				ctx.actionApp(desc, 'Lock Refresh', 'UNLOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			}
 		};
 
 		/**
@@ -2037,8 +2093,22 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 		this.clickToolbarMenuButtonByPosition = function (buttonId, pos) {
 			var desc = itemOrPage.getObjectDescriptor();
 			ctx.notifyAction('clickToolbarMenuButtonByPosition', '', desc);
-			ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressToolbarContextButton', buttonId,'','','');
-			return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByPosition', pos,'','','');
+			ctx.actionApp(desc, 'Lock Refresh', 'LOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			ctx.actionApp(desc, 'Hold Session', 'HOLDSESSION', desc.itemFullName, '', '', '', '');
+			try
+			{
+				ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressToolbarContextButton', buttonId,'','','');
+				return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByPosition', pos,'','','');
+			}
+			catch (err)
+			{
+				ctx.log(err.toString());
+			}
+			finally
+			{
+				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
+				ctx.actionApp(desc, 'Lock Refresh', 'UNLOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			}
 		};
 
 		/**
@@ -2058,8 +2128,22 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 		this.clickToolbarMenuButtonByFunCode = function (buttonId, functionCode ) {
 			var desc = itemOrPage.getObjectDescriptor();
 			ctx.notifyAction('clickToolbarMenuButtonByFunCode', '', desc);
-			ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressToolbarContextButton', buttonId,'','','');
-			return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItem', functionCode,'','','');
+			ctx.actionApp(desc, 'Lock Refresh', 'LOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			ctx.actionApp(desc, 'Hold Session', 'HOLDSESSION', desc.itemFullName, '', '', '', '');
+			try
+			{
+				ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'pressToolbarContextButton', buttonId,'','','');
+				return ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItem', functionCode,'','','');
+			}
+			catch (err)
+			{
+				ctx.log(err.toString());
+			}
+			finally
+			{
+				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
+				ctx.actionApp(desc, 'Lock Refresh', 'UNLOCKREFRESH', desc.itemFullName, REFRESH_CALLER, '', '', '');
+			}
 		};
 
 		/**
@@ -2086,7 +2170,7 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 				var res = '' === ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByText', itemText, '','','');
 			}
 			catch (err) {
-				ctx.log(err);
+				ctx.log(err.toString());
 			}
 			finally {
 				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
@@ -2119,7 +2203,7 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 				var res = '' === ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItemByPosition', itemPos, '','','');
 			}
 			catch (err) {
-				ctx.log(err);
+				ctx.log(err.toString());
 			}
 			finally {
 				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');
@@ -2152,7 +2236,7 @@ Similar functionality can be achieved by using either clickToolbarMenuButtonByTe
 				var res = '' === ctx.SAPScripting.executeSAPGuiFunction(desc, type, 'selectContextMenuItem', itemID, '','','');
 			}
 			catch (err) {
-				ctx.log(err);
+				ctx.log(err.toString());
 			}
 			finally {
 				ctx.actionApp(desc, 'Release Session', 'RELEASESESSION', desc.itemFullName, '', '', '', '');

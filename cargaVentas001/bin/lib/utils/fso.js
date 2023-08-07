@@ -671,7 +671,9 @@ ctx.options.fso = {
                // success
                res = destinationPath + "\\" + filename;
              }
-             callback.call(null, res);
+							ctx.wait(function() {
+	             callback.call(null, res);
+							}, 100);
            }
          });
        }
@@ -1109,46 +1111,47 @@ ctx.options.fso = {
 		 
 		 
       /**
-     * Opens an Explorer dialog to select a file or folder.
+     * Opens an Explorer dialog to select a file.
      * @method      openFileDialog
      * @description
      *  <wrap help> //Example://</wrap>
-     *  <code javascript> ctx.fso.file.openDialog( "", 0, function(filePath){ //your code });</code>
+     *  <code javascript> ctx.fso.file.openFileDialog( "", 0, function(filePath){ //your code });</code>
      * @param       {string} [args] not used
      * @param       {number} [hwnd] Hwnd parent window handle
-     * @param       {function(filePath)} [callback] Callback function with result
+     * @param       {function(string)} [callback] Callback function with result filepath as string
      * @path        ctx.fso.file.openFileDialog
      */
-		  /**  */
 		 _file.openFileDialog = function (args, hwnd,  callback) {
-			 
-			 
-			 var _popup = ctx.popup('openFileDialog');
-			 
-			 
-			 
-			 GLOBAL.events.evFileBrowsing.on(function(ev){
-         if (ev && ev.data) {
-									var filePath = ev.data;
-									
-	                if (callback && ('function' === typeof callback)) {
-	                  callback(filePath);
-									}
-						}
-
-       });
-			 
-			 _popup.open({
-				    visible: false,
-            url: 'popup/fileOpen.html',
-            title: GLOBAL.labels.popup.defaultTitle,
-            CX: 0,
-            CY: 0
-            
-        });
-     
-     }
+				return this.openFileDialogExt('openDialogFile', args, hwnd,  '', true, callback);
+    	}
  
+		  /**
+     * Opens an Explorer dialog to select a file 
+     * @method      openFileDialogExt
+     * @description
+     *  <wrap help> //Example://</wrap>
+      *  <code javascript> ctx.fso.file.openFileDialogExt('mywindow', '*.txt;*.doc;*.json',ev.page.hwndMain, 'c:\\temp\\', function(filePath){ //your code });</code>
+     * @param      {string} [title] title of dialog box
+     * @param      {string} [filter] file filter ex: '*.txt;*.doc'
+     * @param       {number} [hwnd] Hwnd parent window handle
+     * @param      {string} [rootFolder] root folder on open dialog box
+		 * @param      {boolean} [selectFile] not implemented yet, it will be use file if true, folder if false
+     * @param       {function(string)} [callback] Callback function with result filepath as string
+     * @path        ctx.fso.file.openFileDialogExt
+     */
+		 _file.openFileDialogExt = function (title, filter, hwnd, rootFolder, selectFile,  callback) {
+			 
+			 title = title || '';
+       		rootFolder = ctx.wscript.shell.expandEnvString(rootFolder || '') || '';
+			 
+			 var filePath = ctx.BrowseFile(hwnd, title, rootFolder, filter, selectFile);
+			 if (callback && ('function' === typeof callback)) {
+						ctx.wait(function() {
+	        		callback(filePath);
+						}, 100);
+				}
+		 }
+		 
     /**
      * Opens an Explorer application, and selects the mentioned filename.
      * @method      openExplorer
@@ -1686,10 +1689,12 @@ ctx.options.fso = {
        } else {
          // no credential : anonymous access
          if (callback && ('function' === typeof callback)) {
-           callback(e.error.OK, "");
-         }
-       }
-     }
+						ctx.wait(function() {
+	          	callback(e.error.OK, "");
+						}, 100);
+       		}
+      	}
+    	}
  
     /**
      * Downloads files from a FTP site.
@@ -1754,13 +1759,17 @@ ctx.options.fso = {
 								 callback(e.error.Fail, checkError()[1]);
              }
            } catch (ex) {
-             if (callback && ('function' === typeof callback)) {
-               callback(e.error.Fail, ex.description);
-             }
-           }
-         } else {
+            if (callback && ('function' === typeof callback)) {
+							ctx.wait(function() {
+              	callback(e.error.Fail, ex.description);
+							}, 100);
+          	}
+          }
+        } else {
            if (callback && ('function' === typeof callback)) {
-             callback(code, label);
+							ctx.wait(function() {
+	             callback(code, label);
+							}, 100);
            }
          }
        });
@@ -1949,21 +1958,29 @@ ctx.options.fso = {
                });
              }*/
              if (callback && ('function' === typeof callback)) {
-							 if(checkError()[0])
-               	 callback(e.error.OK, "get list file OK", tab);
-							 else
+							if(checkError()[0])
+									ctx.wait(function() {
+	               	 callback(e.error.OK, "get list file OK", tab);
+									}, 100);
+							else
+								ctx.wait(function() {
 								 callback(e.error.Fail, checkError()[1], null);
-             }
+								}, 100);
+             	}
            } catch (ex) {
              if (callback && ('function' === typeof callback)) {
-               callback(e.error.Fail, ex.description, null);
+								ctx.wait(function() {
+	              	callback(e.error.Fail, ex.description, null);
+								}, 100);
              }
            }
          } else {
            if (callback && ('function' === typeof callback)) {
-             callback(code, label, null);
-           }
-         }
+							ctx.wait(function() {
+	             callback(code, label, null);
+							}, 100);
+          	}
+        	}
        });
      }
  
@@ -2047,20 +2064,26 @@ ctx.options.fso = {
              + " >" + "ftp.log 2>&1",1,true);
 						 fso1.DeleteFile("ftp.txt");
              if (callback && ('function' === typeof callback)) {
-               if(checkError()[0])
-               	 callback(e.error.OK, "upload OK");
-							 else
-								 callback(e.error.Fail, checkError()[1]);
+								ctx.wait(function() {
+	               	if(checkError()[0])
+	               		callback(e.error.OK, "upload OK");
+								 	else
+										callback(e.error.Fail, checkError()[1]);
+								}, 100);
              }
            } catch (ex) {
              if (callback && ('function' === typeof callback)) {
-               callback(e.error.Fail, ex.description);
+								ctx.wait(function() {
+	               callback(e.error.Fail, ex.description);
+								}, 100);
              }
            }
          } else {
            if (callback && ('function' === typeof callback)) {
-             callback(code, label);
-           }
+							ctx.wait(function() {
+	             callback(code, label);
+							}, 100);
+           	}
          }
        });
      }

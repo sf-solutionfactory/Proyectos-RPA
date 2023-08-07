@@ -1,0 +1,1705 @@
+{
+  "applicationDescription": {
+    "applicationProperties": {
+      "techno": "UIAutomation",
+      "technos": [
+        "UIAutomation"
+      ],
+      "framework": "",
+      "settings": {
+        "applicationPath": "C:\\Program Files (x86)\\SAP\\FrontEnd\\SapGui\\saplogon.exe",
+        "Server": "None",
+        "PollingDelay": 0,
+        "RefreshOnPolling": true,
+        "PendingDelay": 0
+      }
+    },
+    "data": {
+      "applicationPath": "C:\\Program Files (x86)\\SAP\\FrontEnd\\SapGui\\saplogon.exe",
+      "capturedData": {
+        "EXE": "SAPLOGON.EXE",
+        "TITLE": "SAP Logon 750"
+      },
+      "criteria": [
+        {
+          "attribute": "EXE",
+          "rule": "Full",
+          "value": "SAPLOGON.EXE"
+        }
+      ]
+    },
+    "screens": [
+      {
+        "uid": "a8651eb9-3044-40f6-a092-cb332d3810f3",
+        "identifier": "pWindowSAPLogon75",
+        "name": "pWindowSAPLogon75",
+        "data": {
+          "capturedData": {
+            "ControlType": "Window",
+            "Name": "SAP Logon 750",
+            "ClassName": "#32770",
+            "Range": "R0",
+            "Deepness": "0",
+            "Value": "SAP Logon 750",
+            "TAG": "Window",
+            "X": "0",
+            "Y": "0",
+            "CX": "1178",
+            "CY": "751",
+            "IsRequiredForForm": "false",
+            "IsKeyboardFocusable": "true",
+            "IsOffscreen": "false",
+            "IsEnabled": "true",
+            "FrameworkId": "Win32",
+            "IsPassword": "false",
+            "IsControlElement": "true",
+            "IsContentElement": "true",
+            "hWnd": "0x1C046C",
+            "RuntimeId": "[42][1836140]",
+            "EXE": "SAPLOGON.EXE",
+            "WindowPattern": "true",
+            "TransformPattern": "true"
+          },
+          "customType": "Window",
+          "criteria": [
+            {
+              "attribute": "Name",
+              "rule": "start-with",
+              "value": "SAP Logon 7"
+            },
+            {
+              "attribute": "Value",
+              "rule": "start-with",
+              "value": "SAP Logon 7"
+            }
+          ]
+        },
+        "techno": "UIAutomation",
+        "type": "irpa_core.core.UIAutomationPage",
+        "framework": "",
+        "captures": [
+          {
+            "name": "Window - SAP Logon 750",
+            "index": 1,
+            "hash": 14272777
+          }
+        ],
+        "items": [
+          {
+            "uid": "25a24fb0-e6c9-4bc3-9f5e-5a8e473f6182",
+            "identifier": "stQAS",
+            "name": "stQAS",
+            "type": "irpa_core.core.Text",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  10,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  4,
+                  0
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "ControlType": "Text",
+                "Name": "QAS",
+                "Range": "R0R10R0R1R0R0R0R0R0R4R0",
+                "Deepness": "10",
+                "Value": "QAS",
+                "TAG": "Text",
+                "X": "422",
+                "Y": "187",
+                "CX": "100",
+                "CY": "20",
+                "IsRequiredForForm": "false",
+                "IsKeyboardFocusable": "false",
+                "IsOffscreen": "false",
+                "IsEnabled": "true",
+                "FrameworkId": "Win32",
+                "IsPassword": "false",
+                "IsControlElement": "true",
+                "IsContentElement": "true",
+                "hWnd": "0x0",
+                "RuntimeId": "[42][656154][2][2][0]",
+                "EXE": "SAPLOGON.EXE",
+                "GridItemPattern": "true",
+                "TableItemPattern": "true"
+              },
+              "controlType": "Text",
+              "customType": "",
+              "path": [
+                0,
+                10,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                4,
+                0
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "Text"
+                },
+                {
+                  "attribute": "Value",
+                  "rule": "Part",
+                  "value": "QAS"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 187,
+                "left": 422,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "occurs": false,
+            "settings": {
+              "UseWin32Events": false
+            },
+            "valid": {}
+          },
+          {
+            "uid": "8925993f-d7e4-4ef8-ba75-81944e735372",
+            "identifier": "stPRD",
+            "name": "stPRD",
+            "type": "irpa_core.core.Text",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  10,
+                  0,
+                  1,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  3,
+                  0
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "ControlType": "Text",
+                "Name": "PRD",
+                "Range": "R0R10R0R1R0R0R0R0R0R3R0",
+                "Deepness": "10",
+                "Value": "PRD",
+                "TAG": "Text",
+                "X": "422",
+                "Y": "167",
+                "CX": "100",
+                "CY": "20",
+                "IsRequiredForForm": "false",
+                "IsKeyboardFocusable": "false",
+                "IsOffscreen": "false",
+                "IsEnabled": "true",
+                "FrameworkId": "Win32",
+                "IsPassword": "false",
+                "IsControlElement": "true",
+                "IsContentElement": "true",
+                "hWnd": "0x0",
+                "RuntimeId": "[42][656154][2][1][0]",
+                "EXE": "SAPLOGON.EXE",
+                "GridItemPattern": "true",
+                "TableItemPattern": "true"
+              },
+              "controlType": "Text",
+              "customType": "",
+              "path": [
+                0,
+                10,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                3,
+                0
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "Text"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Part",
+                  "value": "PRD"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 167,
+                "left": 422,
+                "width": 100,
+                "height": 20
+              }
+            ],
+            "occurs": false,
+            "settings": {
+              "UseWin32Events": false
+            },
+            "valid": {}
+          },
+          {
+            "uid": "9c81c054-0ffb-4ae0-8575-bab18aedb8c7",
+            "identifier": "btAccederAlSistema",
+            "name": "btAccederAlSistema",
+            "type": "irpa_core.core.Button",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  0
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "ControlType": "Button",
+                "AutomationId": "1068",
+                "Name": "Acceder al sistema",
+                "ClassName": "Button",
+                "Range": "R0R0",
+                "Deepness": "1",
+                "Value": "Acceder al sistema",
+                "TAG": "Button",
+                "X": "1022",
+                "Y": "703",
+                "CX": "133",
+                "CY": "26",
+                "IsRequiredForForm": "false",
+                "IsKeyboardFocusable": "true",
+                "IsOffscreen": "false",
+                "IsEnabled": "true",
+                "FrameworkId": "Win32",
+                "IsPassword": "false",
+                "IsControlElement": "true",
+                "IsContentElement": "true",
+                "hWnd": "0xE008A",
+                "RuntimeId": "[42][917642]",
+                "EXE": "SAPLOGON.EXE",
+                "InvokePattern": "true"
+              },
+              "controlType": "Button",
+              "customType": "",
+              "path": [
+                0,
+                0
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "Button"
+                },
+                {
+                  "attribute": "AutomationId",
+                  "rule": "Full",
+                  "value": "1068"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 703,
+                "left": 1022,
+                "width": 133,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {
+              "UseWin32Events": false
+            },
+            "valid": {}
+          }
+        ],
+        "mustExists": [],
+        "mustNotExists": [],
+        "settings": {
+          "eRefreshMode": "Window",
+          "MultiInstance": false,
+          "eSubpagesType": "Multiple"
+        },
+        "valid": {
+          "1": true
+        }
+      },
+      {
+        "uid": "9a330cc0-313c-4613-aea2-0a2e7fc476ab",
+        "identifier": "pSAPLogin",
+        "name": "pSAPLogin",
+        "data": {
+          "capturedData": {
+            "Text": "SAP",
+            "Type": "GuiMainWindow",
+            "Name": "wnd[0]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "0",
+            "TAG": "GuiMainWindow",
+            "X": "-8",
+            "Y": "-8",
+            "CX": "1178",
+            "CY": "751",
+            "EXE": "SAPLOGON.EXE"
+          },
+          "customType": "GuiMainWindow",
+          "criteria": [
+            {
+              "attribute": "Text",
+              "rule": "Full",
+              "value": "SAP"
+            }
+          ]
+        },
+        "techno": "SAPGUI",
+        "type": "irpa_core.SAPScripting.GuiMainWindow",
+        "framework": "",
+        "captures": [
+          {
+            "name": "GuiMainWindow - SAP",
+            "index": 1,
+            "hash": 61346130
+          }
+        ],
+        "items": [
+          {
+            "uid": "88839f4c-a899-4e75-ae09-142003c7cc34",
+            "identifier": "edMandante",
+            "name": "edMandante",
+            "type": "irpa_core.SAPScripting.GuiTextField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  1
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/txtRSYST-MANDT",
+                "Text": "300",
+                "Type": "GuiTextField",
+                "LeftLabel": "Mandante",
+                "Name": "RSYST-MANDT",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "212",
+                "Y": "148",
+                "CX": "39",
+                "CY": "25"
+              },
+              "controlType": "GuiTextField",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                1
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiTextField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "RSYST-MANDT"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 156,
+                "left": 220,
+                "width": 39,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "c7aead83-7141-4cb4-9f68-ac3936ad0beb",
+            "identifier": "edUsuarios",
+            "name": "edUsuarios",
+            "type": "irpa_core.SAPScripting.GuiTextField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  3
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/txtRSYST-BNAME",
+                "Type": "GuiTextField",
+                "LeftLabel": "*Usuarios",
+                "Name": "RSYST-BNAME",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "212",
+                "Y": "212",
+                "CX": "129",
+                "CY": "25"
+              },
+              "controlType": "GuiTextField",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                3
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiTextField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "RSYST-BNAME"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 220,
+                "left": 220,
+                "width": 129,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "18de99ea-3401-47fc-93dc-a51bac7684da",
+            "identifier": "oClvAcc",
+            "name": "oClvAcc",
+            "type": "irpa_core.SAPScripting.GuiPasswordField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  5
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/pwdRSYST-BCODE",
+                "Type": "GuiPasswordField",
+                "LeftLabel": "*Clv.acc.",
+                "Name": "RSYST-BCODE",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiPasswordField",
+                "X": "212",
+                "Y": "244",
+                "CX": "129",
+                "CY": "25"
+              },
+              "controlType": "GuiPasswordField",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                5
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiPasswordField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "RSYST-BCODE"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 252,
+                "left": 220,
+                "width": 129,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "96741402-e8c4-4119-8e3a-f750685e5934",
+            "identifier": "edIdioma",
+            "name": "edIdioma",
+            "type": "irpa_core.SAPScripting.GuiTextField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  7
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/txtRSYST-LANGU",
+                "Text": "ES",
+                "Type": "GuiTextField",
+                "LeftLabel": "Idioma",
+                "Name": "RSYST-LANGU",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiTextField",
+                "X": "212",
+                "Y": "308",
+                "CX": "29",
+                "CY": "25"
+              },
+              "controlType": "GuiTextField",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                7
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiTextField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "RSYST-LANGU"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 316,
+                "left": 220,
+                "width": 29,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          }
+        ],
+        "mustExists": [],
+        "mustNotExists": [],
+        "settings": {
+          "eRefreshMode": "No",
+          "MultiInstance": false,
+          "eSubpagesType": "Multiple"
+        },
+        "valid": {
+          "1": true
+        }
+      },
+      {
+        "uid": "b510b556-bd2c-46d7-ab63-6f25b8a41a60",
+        "identifier": "pSAPEasyAccess",
+        "name": "pSAPEasyAccess",
+        "data": {
+          "capturedData": {
+            "Text": "SAP Easy Access",
+            "Type": "GuiMainWindow",
+            "Name": "wnd[0]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "0",
+            "TAG": "GuiMainWindow",
+            "X": "-8",
+            "Y": "-8",
+            "CX": "1178",
+            "CY": "751",
+            "EXE": "SAPLOGON.EXE"
+          },
+          "customType": "GuiMainWindow",
+          "criteria": [
+            {
+              "attribute": "Text",
+              "rule": "Full",
+              "value": "SAP Easy Access"
+            }
+          ]
+        },
+        "techno": "SAPGUI",
+        "type": "irpa_core.SAPScripting.GuiMainWindow",
+        "framework": "",
+        "captures": [
+          {
+            "name": "GuiMainWindow - SAP Easy Access",
+            "index": 1,
+            "hash": 15244259
+          }
+        ],
+        "items": [
+          {
+            "uid": "01827a40-22e3-4a34-88ef-1056f0488700",
+            "identifier": "oGuiOkCodeField",
+            "name": "oGuiOkCodeField",
+            "type": "irpa_core.SAPScripting.GuiOkCodeField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  1,
+                  4
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "tbar[0]/okcd",
+                "Type": "GuiOkCodeField",
+                "Name": "okcd",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiOkCodeField",
+                "X": "32",
+                "Y": "91",
+                "CX": "156",
+                "CY": "26"
+              },
+              "controlType": "GuiOkCodeField",
+              "customType": "",
+              "path": [
+                0,
+                1,
+                4
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiOkCodeField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "okcd"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 99,
+                "left": 40,
+                "width": 156,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "f3356ecc-f891-4821-a7a6-5074912b88a2",
+            "identifier": "btIFinalizar",
+            "name": "btIFinalizar",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  1,
+                  0
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "tbar[0]/btn[15]",
+                "Text": "i: Finalizar",
+                "Type": "GuiButton",
+                "IconName": "2",
+                "Name": "btn[15]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "1056",
+                "Y": "91",
+                "CX": "74",
+                "CY": "26"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                1,
+                0
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "btn[15]"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 99,
+                "left": 1064,
+                "width": 74,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          }
+        ],
+        "mustExists": [],
+        "mustNotExists": [],
+        "settings": {
+          "eRefreshMode": "No",
+          "MultiInstance": false,
+          "eSubpagesType": "Multiple"
+        },
+        "valid": {
+          "1": true
+        }
+      },
+      {
+        "uid": "be073dff-d2b2-4da4-953e-6e3b9912db35",
+        "identifier": "pVentasYFacturasMas",
+        "name": "pVentasYFacturasMas",
+        "data": {
+          "capturedData": {
+            "Text": "Ventas y Facturas masiva",
+            "Type": "GuiMainWindow",
+            "Name": "wnd[0]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "0",
+            "TAG": "GuiMainWindow",
+            "X": "-8",
+            "Y": "-8",
+            "CX": "1178",
+            "CY": "751",
+            "EXE": "SAPLOGON.EXE"
+          },
+          "customType": "GuiMainWindow",
+          "criteria": [
+            {
+              "attribute": "Text",
+              "rule": "Full",
+              "value": "Ventas y Facturas masiva"
+            }
+          ]
+        },
+        "techno": "SAPGUI",
+        "type": "irpa_core.SAPScripting.GuiMainWindow",
+        "framework": "",
+        "captures": [
+          {
+            "name": "GuiMainWindow - Ventas y Facturas masiva",
+            "index": 1,
+            "hash": 2980605
+          }
+        ],
+        "items": [
+          {
+            "uid": "b1d2c808-051b-44aa-8970-5a28e1f75e1b",
+            "identifier": "edFichero",
+            "name": "edFichero",
+            "type": "irpa_core.SAPScripting.GuiCTextField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  2
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/ctxtP_PATH",
+                "Type": "GuiCTextField",
+                "LeftLabel": "*Fichero                       ",
+                "Name": "P_PATH",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiCTextField",
+                "X": "352",
+                "Y": "180",
+                "CX": "459",
+                "CY": "25"
+              },
+              "controlType": "GuiCTextField",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                2
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiCTextField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "P_PATH"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 188,
+                "left": 360,
+                "width": 459,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "950997a6-92a7-412d-ab89-f62cec72a4ea",
+            "identifier": "oSoloCarga",
+            "name": "oSoloCarga",
+            "type": "irpa_core.SAPScripting.GuiCTextField",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  4
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/ctxtP_RPA",
+                "Type": "GuiCTextField",
+                "LeftLabel": "Solo carga                    ",
+                "Name": "P_RPA",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiCTextField",
+                "X": "352",
+                "Y": "212",
+                "CX": "19",
+                "CY": "25"
+              },
+              "controlType": "GuiCTextField",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                4
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiCTextField"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "P_RPA"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 220,
+                "left": 360,
+                "width": 19,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "ce32b483-1da1-46ac-8306-d1f18c4516d8",
+            "identifier": "oVentaPorLínea",
+            "name": "oVentaPorLínea",
+            "type": "irpa_core.SAPScripting.GuiCheckBox",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  4,
+                  5
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/chkP_LINE",
+                "Text": "Venta por línea",
+                "Type": "GuiCheckBox",
+                "Name": "P_LINE",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiCheckBox",
+                "X": "62",
+                "Y": "244",
+                "CX": "309",
+                "CY": "25"
+              },
+              "controlType": "GuiCheckBox",
+              "customType": "",
+              "path": [
+                0,
+                4,
+                5
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiCheckBox"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "P_LINE"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 252,
+                "left": 70,
+                "width": 309,
+                "height": 25
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "2a31e1de-12af-48dc-8190-e9874e4b191d",
+            "identifier": "btIFinalizar",
+            "name": "btIFinalizar",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  1,
+                  2
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "tbar[0]/btn[15]",
+                "Text": "i: Finalizar",
+                "Type": "GuiButton",
+                "IconName": "2",
+                "Name": "btn[15]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "1056",
+                "Y": "91",
+                "CX": "74",
+                "CY": "26"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                1,
+                2
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "btn[15]"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 99,
+                "left": 1064,
+                "width": 74,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "d4c7a030-bae2-49e8-adbb-c0b12e7c7cdf",
+            "identifier": "btEjecutar",
+            "name": "btEjecutar",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  3,
+                  1
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "tbar[1]/btn[8]",
+                "Text": "Ejecutar",
+                "Type": "GuiButton",
+                "Name": "btn[8]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "1080",
+                "Y": "694",
+                "CX": "66",
+                "CY": "26"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                3,
+                1
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "btn[8]"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 702,
+                "left": 1088,
+                "width": 66,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          }
+        ],
+        "mustExists": [],
+        "mustNotExists": [],
+        "settings": {
+          "eRefreshMode": "No",
+          "MultiInstance": false,
+          "eSubpagesType": "Multiple"
+        },
+        "valid": {
+          "1": true
+        }
+      },
+      {
+        "uid": "361e23f7-d53d-453d-b475-2d77d5f35a35",
+        "identifier": "pPosDocumVisualiza",
+        "name": "pPosDocumVisualiza",
+        "data": {
+          "capturedData": {
+            "Text": "Pos.docum.: Visualizar mensajes",
+            "Type": "GuiModalWindow",
+            "Name": "wnd[1]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "0",
+            "TAG": "GuiModalWindow",
+            "X": "0",
+            "Y": "218",
+            "CX": "1162",
+            "CY": "314",
+            "EXE": "SAPLOGON.EXE"
+          },
+          "customType": "GuiMainWindow",
+          "criteria": [
+            {
+              "attribute": "Text",
+              "rule": "Full",
+              "value": "Pos.docum.: Visualizar mensajes"
+            }
+          ]
+        },
+        "techno": "SAPGUI",
+        "type": "irpa_core.SAPScripting.GuiMainWindow",
+        "framework": "",
+        "captures": [
+          {
+            "name": "GuiModalWindow - Pos.docum.: Visualizar mensajes",
+            "index": 1,
+            "hash": 26825449
+          }
+        ],
+        "items": [
+          {
+            "uid": "8a09c44f-edee-438e-bf4a-50dfc9164213",
+            "identifier": "btAceptar",
+            "name": "btAceptar",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  0,
+                  0
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "tbar[0]/btn[0]",
+                "Type": "GuiButton",
+                "IconName": "B_OKAY",
+                "Name": "btn[0]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "9",
+                "Y": "498",
+                "CX": "26",
+                "CY": "26"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                0,
+                0
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "btn[0]"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 280,
+                "left": 9,
+                "width": 26,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "950cb0cd-b0ef-4f37-beb3-c5131d37b01b",
+            "identifier": "btCancelar",
+            "name": "btCancelar",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  0,
+                  19
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "tbar[0]/btn[12]",
+                "Type": "GuiButton",
+                "IconName": "B_CANC",
+                "Name": "btn[12]",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "1127",
+                "Y": "498",
+                "CX": "26",
+                "CY": "26"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                0,
+                19
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "btn[12]"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 280,
+                "left": 1127,
+                "width": 26,
+                "height": 26
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "eeda7273-e087-4dff-abac-3ba0da37de8a",
+            "identifier": "oTable",
+            "name": "oTable",
+            "type": "irpa_core.SAPScripting.GuiLabel",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  1,
+                  0
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/lbl[1,1]",
+                "Text": "Tip",
+                "Type": "GuiLabel",
+                "Changeable": "false",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiLabel",
+                "X": "29",
+                "Y": "314",
+                "CX": "24",
+                "CY": "25"
+              },
+              "controlType": "GuiLabel",
+              "customType": "",
+              "path": [
+                0,
+                1,
+                0
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiLabel"
+                },
+                {
+                  "attribute": "Type",
+                  "rule": "Full",
+                  "value": "GuiLabel"
+                }
+              ],
+              "direct": false,
+              "occurs": true
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 96,
+                "left": 29,
+                "width": 24,
+                "height": 25
+              }
+            ],
+            "occurs": true,
+            "settings": {},
+            "valid": {}
+          }
+        ],
+        "mustExists": [],
+        "mustNotExists": [],
+        "settings": {
+          "eRefreshMode": "No",
+          "MultiInstance": false,
+          "eSubpagesType": "Multiple"
+        },
+        "valid": {
+          "1": true
+        }
+      },
+      {
+        "uid": "b6a80817-63b4-4b5f-a4c8-14324b2ccede",
+        "identifier": "pSalirDelSistema",
+        "name": "pSalirDelSistema",
+        "data": {
+          "capturedData": {
+            "Text": "Salir del sistema",
+            "Type": "GuiModalWindow",
+            "Name": "wnd[1]",
+            "Changeable": "true",
+            "ContainerType": "true",
+            "Deepness": "0",
+            "TAG": "GuiModalWindow",
+            "X": "153",
+            "Y": "309",
+            "CX": "510",
+            "CY": "234",
+            "EXE": "SAPLOGON.EXE"
+          },
+          "customType": "GuiMainWindow",
+          "criteria": [
+            {
+              "attribute": "Text",
+              "rule": "Full",
+              "value": "Salir del sistema"
+            }
+          ]
+        },
+        "techno": "SAPGUI",
+        "type": "irpa_core.SAPScripting.GuiMainWindow",
+        "framework": "",
+        "captures": [
+          {
+            "name": "GuiModalWindow - Salir del sistema",
+            "index": 1,
+            "hash": 40102457
+          }
+        ],
+        "items": [
+          {
+            "uid": "2dca36b2-8ece-417b-aeff-e63a37b21444",
+            "identifier": "btSí",
+            "name": "btSí",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  1,
+                  3
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/btnSPOP-OPTION1",
+                "Text": "Sí",
+                "Type": "GuiButton",
+                "Name": "SPOP-OPTION1",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "234",
+                "Y": "481",
+                "CX": "119",
+                "CY": "27"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                1,
+                3
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "SPOP-OPTION1"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 172,
+                "left": 81,
+                "width": 119,
+                "height": 27
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          },
+          {
+            "uid": "adb0ab76-8aad-4bcb-ad83-61fed4a05849",
+            "identifier": "btNo",
+            "name": "btNo",
+            "type": "irpa_core.SAPScripting.GuiButton",
+            "paths": [
+              {
+                "captureRef": 1,
+                "path": [
+                  0,
+                  1,
+                  4
+                ]
+              }
+            ],
+            "data": {
+              "capturedData": {
+                "Id": "usr/btnSPOP-OPTION2",
+                "Text": "No",
+                "Type": "GuiButton",
+                "Name": "SPOP-OPTION2",
+                "Changeable": "true",
+                "ContainerType": "false",
+                "Deepness": "2",
+                "TAG": "GuiButton",
+                "X": "354",
+                "Y": "481",
+                "CX": "119",
+                "CY": "27"
+              },
+              "controlType": "GuiButton",
+              "customType": "",
+              "path": [
+                0,
+                1,
+                4
+              ],
+              "criteria": [
+                {
+                  "attribute": "TAG",
+                  "rule": "Full",
+                  "value": "GuiButton"
+                },
+                {
+                  "attribute": "Name",
+                  "rule": "Full",
+                  "value": "SPOP-OPTION2"
+                }
+              ],
+              "direct": false,
+              "occurs": false
+            },
+            "boundingRects": [
+              {
+                "captureRef": 1,
+                "top": 172,
+                "left": 201,
+                "width": 119,
+                "height": 27
+              }
+            ],
+            "occurs": false,
+            "settings": {},
+            "valid": {}
+          }
+        ],
+        "mustExists": [],
+        "mustNotExists": [],
+        "settings": {
+          "eRefreshMode": "No",
+          "MultiInstance": false,
+          "eSubpagesType": "Multiple"
+        },
+        "valid": {
+          "1": true
+        }
+      }
+    ],
+    "identifier": "SAPLogon750",
+    "name": "SAPLogon750",
+    "description": "SAPLogon750"
+  },
+  "contents": [
+    {
+      "name": "PAGE_WindowSAPLogon75_1734230_1",
+      "hash": 14272777,
+      "imageFile": "1b4685cd-cad3-458f-bf77-0897c988e1ae",
+      "structureFile": "16244d1d-2ac3-42e8-983c-0107ddcbcae7"
+    },
+    {
+      "name": "PAGE_SAP_1736173_1",
+      "hash": 61346130,
+      "imageFile": "101d9bd7-c59d-4d23-8941-d7f7584e920f",
+      "structureFile": "1d32c091-2057-4324-9ccd-f5e920979329"
+    },
+    {
+      "name": "PAGE_SAPEasyAccess_1739144_1",
+      "hash": 15244259,
+      "imageFile": "58c72bc9-54fd-48b0-8a96-ba64295bc339",
+      "structureFile": "a30c6310-0719-4984-a8d2-dfe5ec6a7d00"
+    },
+    {
+      "name": "PAGE_VentasYFacturasMas_1741054_1",
+      "hash": 2980605,
+      "imageFile": "ee058bc9-a1c0-4792-8d73-c72c0e829ac3",
+      "structureFile": "5b8a4be3-b837-49b5-a3bf-e1968bb88ba8"
+    },
+    {
+      "name": "PAGE_PosDocumVisualiza_1743248_1",
+      "hash": 26825449,
+      "imageFile": "c53cd199-e281-4712-ae90-7b0734f541db",
+      "structureFile": "e106f698-359f-4cde-b7f4-6fe4bb3e2740"
+    },
+    {
+      "name": "PAGE_SalirDelSistema_1753427_1",
+      "hash": 40102457,
+      "imageFile": "a690246f-bc5d-4ded-9ae3-8212050b4576",
+      "structureFile": "b376ef70-fd28-4731-a6e6-223c5bda7e74"
+    }
+  ]
+}

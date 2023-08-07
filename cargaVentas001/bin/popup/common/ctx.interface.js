@@ -2784,6 +2784,90 @@ var ctx = (function () {
 			
 			if ($("#Ctx_Result").length == 0) {
 				$('body').append('<div style="display: none;"><textarea name="Ctx_Result" id="Ctx_Result"/></textarea><textarea name="Ctx_Event" id="Ctx_Event"></textarea><textarea name="Ctx_Item" id="Ctx_Item"></textarea><button name="Ctx_Resize" id="Ctx_Resize">Resize</button><button name="Ctx_Close" id="Ctx_Close">Close</button><button name="Ctx_Notify" id="Ctx_Notify">Notify</button></div>');
+				$('body').append('<script>if (window.chrome && window.chrome.webview){\
+				var ctxResultElement = window.document.getElementById("Ctx_Notify");\
+				if (ctxResultElement)\
+				{\
+				ctxResultElement.addEventListener("click",SetNotify);\
+				}\
+				var ctxCloseElement = window.document.getElementById("Ctx_Close");\
+				if (ctxCloseElement)\
+				{\
+				ctxCloseElement.addEventListener("click",SetClose);\
+				}\
+				var ctxResizeElement = window.document.getElementById("Ctx_Resize");\
+				if (ctxResizeElement)\
+				{\
+				ctxResizeElement.addEventListener("click",SetResize);\
+				}\
+				function SetResize() {\
+				var message = { "message": "Ctx_Resize", "result" : "" };\
+				window.chrome.webview.postMessage(message);\
+				}\
+				function SetClose() {\
+				var dataValue = "";\
+				var dataEvent = "";\
+				var dataItem = "";\
+				var ctxNotifyElement = window.document.getElementById("Ctx_Result");\
+				if (ctxNotifyElement)\
+				{\
+				dataValue = ctxNotifyElement.value;\
+				}\
+				var ctxEventElement = window.document.getElementById("Ctx_Event");\
+				if (ctxEventElement)\
+				{\
+				dataEvent = ctxEventElement.value;\
+				}\
+				var ctxItemElement = window.document.getElementById("Ctx_Item");\
+				if (ctxItemElement)\
+				dataItem = ctxItemElement.value;\
+				var message = { "message": "Ctx_Close", "result" : dataValue, "event" : dataEvent, "item" : dataItem };\
+				window.chrome.webview.postMessage(message);\
+				}\
+				function SetNotify() {\
+				var dataValue = document.getElementById("Ctx_Result").value;\
+				var dataEvent = "";\
+				var dataItem = "";\
+				var ctxEventElement = window.document.getElementById("Ctx_Event");\
+				if (ctxEventElement)\
+				dataEvent = ctxEventElement.value;\
+				var ctxItemElement = window.document.getElementById("Ctx_Item");\
+				if (ctxItemElement)\
+				dataItem = ctxItemElement.value;\
+				var message = { "message": "Ctx_Notify", "result" : dataValue, "event" : dataEvent, "item" : dataItem };\
+				window.chrome.webview.postMessage(message);\
+				}\
+				}</script>');
+
+				if (obj && obj.autoSizeId !="")
+				{
+					var autoSizeScript = 'if (window.chrome && window.chrome.webview)\
+					{\
+					function autoSizeIRPA(){\
+					var ctxAutoSizeIdElem = window.document.getElementById("';
+					autoSizeScript += obj.autoSizeId;
+					autoSizeScript += '");\
+				    if (!ctxAutoSizeIdElem){\
+					ctxAutoSizeIdElem = window.document.getElementByClassName("';
+					autoSizeScript += obj.autoSizeId;
+					autoSizeScript += '");}\
+					if (ctxAutoSizeIdElem){\
+					var OffsetWidth = ctxAutoSizeIdElem.offsetWidth;\
+					var OffsetHeight = ctxAutoSizeIdElem.offsetHeight;\
+					var OffsetLeft = ctxAutoSizeIdElem.offsetLeft;\
+					var OffsetTop = ctxAutoSizeIdElem.offsetTop;\
+					var message = { "message": "Ctx_AutoSizeId", "offsetWidth" : OffsetWidth, "offsetHeight" : OffsetHeight, "offsetLeft" : OffsetLeft, "offsetTop" : OffsetTop };\
+					window.chrome.webview.postMessage(message);}}\
+					}';
+					$(document).ready( function () {
+						if (window.chrome && window.chrome.webview)
+						{
+							var message = { "message": "CallAutoSize" };
+							window.chrome.webview.postMessage(message);
+						}
+ 					});
+					$('body').append('<script>'+autoSizeScript+'</script>');
+				}
 			}
 
 			// add optional auto-close
